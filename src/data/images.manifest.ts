@@ -48,6 +48,17 @@ export const images: Record<ImageKey, ImageEntry> = {
       url: "https://unsplash.com/photos/assorted-color-syringes-on-clear-glass-rack-zsKFQs2kDpM",
     },
   },
+  "ana/medikal-perde": {
+    src: "/images/hizmetler/medikal.jpg",
+    alt: "Hastane odasında yatak ve medikal ekipmanlar",
+    width: 1200,
+    height: 900,
+    credit: {
+      site: "Unsplash · Annie Spratt",
+      photographer: "Annie Spratt",
+      url: "https://unsplash.com/photos/a-hospital-room-with-a-bed-and-medical-equipment-RfanFy_lHp8",
+    },
+  },
   "hizmetler/insaat": {
     src: "/images/hizmetler/insaat.jpg",
     alt: "Masa üzerinde mimari ve inşaat planları",

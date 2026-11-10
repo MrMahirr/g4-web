@@ -35,7 +35,8 @@ export function CountUp({ value, duration = 1.8, className }: Props) {
   }, [inView, reduceMotion, value, duration]);
 
   return (
-    <span className={className} aria-label={String(value)}>
+    <span className={className}>
+      <span className="sr-only">{value}</span>
       <span ref={ref} aria-hidden="true" className="tabular-nums">
         {value}
       </span>
