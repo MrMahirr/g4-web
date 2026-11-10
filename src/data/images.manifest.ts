@@ -1,4 +1,6 @@
 import type { ImageEntry, ImageKey } from "@/core/types";
+import productImages from "@/data/g4-product-images.json";
+import categoryImages from "@/data/g4-category-images.json";
 import { categories } from "@/data/categories.data";
 import { news } from "@/data/news.data";
 import { products } from "@/data/products.data";
@@ -95,11 +97,11 @@ export const images: Record<ImageKey, ImageEntry> = {
   },
   "kategoriler/bipolar-forceps": {
     src: "/images/kategoriler/bipolar-forceps.jpg",
-    alt: "Mavi steril ?rt? ?zerinde cerrahi forceps ve makaslar (temsili)",
+    alt: "Mavi steril örtü üzerinde cerrahi forseps ve makaslar (temsili)",
     width: 1000,
     height: 1000,
     representative: true,
-    credit: { site: "Unsplash ? Jonathan Borba", photographer: "Jonathan Borba", url: "https://unsplash.com/photos/a-pile-of-surgical-scissors-on-a-blue-cloth-ucnh3ldFKcE" },
+    credit: { site: "Unsplash · Jonathan Borba", photographer: "Jonathan Borba", url: "https://unsplash.com/photos/a-pile-of-surgical-scissors-on-a-blue-cloth-ucnh3ldFKcE" },
   },
   "kategoriler/temizlik-hijyen-grubu": {
     src: "/images/kategoriler/temizlik-hijyen-grubu.jpg",
@@ -131,10 +133,10 @@ export const images: Record<ImageKey, ImageEntry> = {
   },
   "hizmetler/arac-kiralama": {
     src: "/images/hizmetler/arac-kiralama.jpg",
-    alt: "Ya?murlu havada park edilmi? koyu renkli otomobil",
+    alt: "Yağmurlu havada park edilmiş koyu renkli otomobil",
     width: 1200,
     height: 900,
-    credit: { site: "Unsplash ? Andreas Rasmussen", photographer: "Andreas Rasmussen", url: "https://unsplash.com/photos/parked-black-vehicle-during-daytime-MBW3F1jEhh0" },
+    credit: { site: "Unsplash · Andreas Rasmussen", photographer: "Andreas Rasmussen", url: "https://unsplash.com/photos/parked-black-vehicle-during-daytime-MBW3F1jEhh0" },
   },
   "menu/hizmetler": {
     src: "/images/menu/hizmetler.jpg",
@@ -146,13 +148,23 @@ export const images: Record<ImageKey, ImageEntry> = {
 };
 
 
-/** T?m kullan?lan g?rsel yuvalar?n?n durumu. Eksik dosyalar a??k?a ?ablon olarak i?aretlenir. */
+// Mevcut G4 kataloğundaki görseller slug ile eşleştirilir.
+for (const product of products) {
+  const src = (productImages as Record<string, string>)[product.slug];
+  if (src) images[product.imageKey] = { src, alt: product.name, width: 1000, height: 1000 };
+}
+for (const category of categories) {
+  const src = (categoryImages as Record<string, string>)[category.slug];
+  if (src) images[category.imageKey] = { src, alt: category.title, width: 1000, height: 1000 };
+}
+
+/** Tüm kullanılan görsel yuvalarının durumu. Eksik dosyalar açıkça şablon olarak işaretlenir. */
 export type ImageSlotStatus = "available" | "representative" | "unavailable-template";
 export const imageSlotStatus: Record<string, { status: ImageSlotStatus; note: string }> = {};
 for (const [key, image] of Object.entries(images)) {
   imageSlotStatus[key] = {
     status: image.representative ? "representative" : "available",
-    note: image.representative ? "Temsili stok g?rsel; birebir ?r?n foto?raf? de?ildir." : "Dosya mevcut.",
+    note: image.representative ? "Temsili stok görsel; birebir ürün fotoğrafı değildir." : "Dosya mevcut.",
   };
 }
 const expectedKeys = [
@@ -167,7 +179,7 @@ for (const key of expectedKeys) {
   if (!imageSlotStatus[key]) {
     imageSlotStatus[key] = {
       status: "unavailable-template",
-      note: "Uygun ve do?rulanm?? kaynak bulunamad?; aray?z g?rsel ?ablonu g?sterir.",
+      note: "Uygun ve doğrulanmış kaynak bulunamadı; arayüz görsel şablonu gösterir.",
     };
   }
 }

@@ -1,31 +1,32 @@
 "use client";
 
-import { motion } from "motion/react";
-import type { ReactNode } from "react";
-import { EASE_CURTAIN, EASE_SOFT } from "@/lib/utils";
+import { motion, useReducedMotion, useTransform } from "motion/react";
+import { useRef, type ReactNode } from "react";
+import { useCoverProgress } from "./useCoverProgress";
 
-/** Perde açılımı: kor rengi perde sağa çekilir, içerik 1.3x'ten yerine oturur (tasarımdaki .curtain). */
+/**
+ * Perde (tasarım: .curtain): kaydırdıkça kor rengi perde sağa çekilir (entry 10% … cover 45%),
+ * görsel 1.3x'ten yerine oturur (… cover 55%). Geri kaydırınca perde geri kapanır.
+ */
 export function CurtainFrame({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const progress = useCoverProgress(ref);
+  const curtain = useTransform(progress, [0.04, 0.45], [1, 0]);
+  const scale = useTransform(progress, [0.04, 0.55], [1.3, 1]);
+
   return (
-    <motion.div
-      className="absolute inset-0"
-      initial="closed"
-      whileInView="open"
-      viewport={{ once: true, amount: 0.25 }}
-    >
-      <motion.div
-        className="curtain-visual absolute inset-0"
-        variants={{ closed: { scale: 1.3 }, open: { scale: 1 } }}
-        transition={{ duration: 1.4, ease: EASE_SOFT }}
-      >
+    <div ref={ref} className="absolute inset-0">
+      <motion.div className="absolute inset-0" style={reduceMotion ? undefined : { scale }}>
         {children}
       </motion.div>
-      <motion.span
-        aria-hidden="true"
-        className="curtain-overlay absolute inset-0 z-[4] origin-right bg-ember"
-        variants={{ closed: { scaleX: 1 }, open: { scaleX: 0 } }}
-        transition={{ duration: 1.1, ease: EASE_CURTAIN }}
-      />
-    </motion.div>
+      {reduceMotion ? null : (
+        <motion.span
+          aria-hidden="true"
+          className="absolute inset-0 z-[4] origin-right bg-ember"
+          style={{ scaleX: curtain }}
+        />
+      )}
+    </div>
   );
 }

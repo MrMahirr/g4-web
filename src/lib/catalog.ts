@@ -14,7 +14,10 @@ export function trLower(value: string): string {
 
 const collator = new Intl.Collator(TR, { sensitivity: "base", numeric: true });
 
-function sortProducts(list: ProductItem[], sort: ProductSort): ProductItem[] {
+/** Filtreleme için gereken en küçük ürün biçimi (istemciye tüm ürün nesnesi gönderilmesin diye). */
+export type FilterableProduct = Pick<ProductItem, "title" | "name" | "code" | "categorySlugs" | "subGroup">;
+
+function sortProducts<T extends FilterableProduct>(list: T[], sort: ProductSort): T[] {
   switch (sort) {
     case "default":
       return list;
@@ -30,7 +33,7 @@ function sortProducts(list: ProductItem[], sort: ProductSort): ProductItem[] {
 }
 
 /** Kategori, alt grup, arama metni ve sıralamaya göre ürün listesi. */
-export function filterProducts(all: ProductItem[], query: ProductQuery = {}): ProductItem[] {
+export function filterProducts<T extends FilterableProduct>(all: T[], query: ProductQuery = {}): T[] {
   const { categorySlug, subGroup, q, sort = "default" } = query;
   const needle = q ? trLower(q.trim()) : "";
 
@@ -46,8 +49,8 @@ export function filterProducts(all: ProductItem[], query: ProductQuery = {}): Pr
 
 export type SearchFilter = "all" | SearchEntryType;
 
-export interface SearchHit {
-  entry: SearchEntry;
+export interface SearchHit<T extends SearchEntry = SearchEntry> {
+  entry: T;
   /** Adın eşleşmeden önceki, eşleşen ve sonraki parçaları (vurgulama için). Eşleşme adda değilse `hit` boştur. */
   pre: string;
   hit: string;
@@ -61,7 +64,7 @@ function splitName(name: string, needle: string): Pick<SearchHit, "pre" | "hit" 
 }
 
 /** Dizinde arar. Boş sorguda sonuç dönmez. */
-export function searchEntries(index: SearchEntry[], rawQuery: string): SearchHit[] {
+export function searchEntries<T extends SearchEntry>(index: T[], rawQuery: string): SearchHit<T>[] {
   const needle = trLower(rawQuery.trim());
   if (!needle) return [];
   return index
@@ -70,7 +73,7 @@ export function searchEntries(index: SearchEntry[], rawQuery: string): SearchHit
 }
 
 /** Sekme sayıları: tümü + tür başına. */
-export function countByType(hits: SearchHit[]): Record<SearchFilter, number> {
+export function countByType(hits: SearchHit<SearchEntry>[]): Record<SearchFilter, number> {
   const counts: Record<SearchFilter, number> = { all: hits.length, urun: 0, grup: 0, hizmet: 0 };
   for (const hit of hits) counts[hit.entry.type] += 1;
   return counts;

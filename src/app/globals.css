@@ -62,6 +62,38 @@
   --animate-rot-word: rot-word 9s var(--ease-soft) infinite both;
   --animate-dot-pulse: dot-pulse 2s ease-in-out infinite;
   --animate-marquee: marquee 32s linear infinite;
+  --animate-map-ripple: map-ripple 2.6s var(--ease-soft) infinite;
+  /* Mega menü: aşağı doğru perde açılımı (tasarım: .mg clip-path .7s) */
+  --animate-mega-in: mega-in 0.7s var(--ease-soft) both;
+  --animate-mega-out: mega-out 0.45s var(--ease-soft) both;
+
+  @keyframes mega-in {
+    from {
+      clip-path: inset(0 0 100% 0 round 8px);
+    }
+    to {
+      clip-path: inset(0 0 0 0 round 8px);
+    }
+  }
+  @keyframes mega-out {
+    from {
+      clip-path: inset(0 0 0 0 round 8px);
+    }
+    to {
+      clip-path: inset(0 0 100% 0 round 8px);
+    }
+  }
+
+  @keyframes map-ripple {
+    from {
+      transform: scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: scale(14);
+      opacity: 0;
+    }
+  }
 
   @keyframes arrow-loop {
     0% {
@@ -179,7 +211,10 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .curtain-visual { transform: none !important; }
-  .curtain-overlay { display: none; }
+/* Haritadaki ızgara çizgileri (iletişim kartı) */
+@utility bg-map-grid {
+  background-image:
+    linear-gradient(rgb(30 48 64 / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(30 48 64 / 0.07) 1px, transparent 1px);
+  background-size: 44px 44px;
 }

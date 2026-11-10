@@ -6,7 +6,7 @@ import { countByType, searchEntries, type SearchFilter } from "@/lib/catalog";
 import { useOverlay } from "./useOverlay";
 
 /** Arama katmanının sorgusu, sekmesi ve sonuçları. Dizin sunucudan prop olarak gelir. */
-export function useSearchOverlay(index: SearchEntry[]) {
+export function useSearchOverlay<T extends SearchEntry>(index: T[]) {
   const overlay = useOverlay("search");
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<SearchFilter>("all");

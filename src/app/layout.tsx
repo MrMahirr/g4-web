@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
-import { MotionProvider } from "@/components/motion/MotionProvider";
-import { SiteChrome, SiteFooter } from "@/components/layout/SiteChrome";
-import { container } from "@/core/container";
 import { Toaster } from "sonner";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import type { HeaderData } from "@/components/layout/types";
+import { MotionProvider } from "@/components/motion/MotionProvider";
+import { container } from "@/core/container";
+import { corporateLinks, routes } from "@/data/navigation.data";
 import { StoreProvider } from "@/store/StoreProvider";
 import "./globals.css";
 
@@ -34,17 +37,43 @@ export const metadata: Metadata = {
     "Hastaneler, klinikler ve sağlık kuruluşları için medikal ürünler, hastane tekstili ve tıbbi cihazlar.",
 };
 
+/** Header'ın ihtiyaç duyduğu veriyi sunucuda hazırlar; istemciye yalnız gereken alanlar gider. */
+function buildHeaderData(): HeaderData {
+  const catalog = container.resolve("CatalogService");
+  const company = catalog.getCompany();
+  const imageSrc = (key: string | undefined) => catalog.getImage(key)?.src;
+
+  return {
+    phone: company.phone,
+    email: company.email,
+    corporateLinks,
+    serviceLinks: catalog.getServices().map((service) => ({ label: service.title, href: routes.service(service.slug) })),
+    categoryLinks: catalog
+      .getCategories()
+      .map((category) => ({ label: category.title, href: routes.category(category.slug) })),
+    menuImages: { kurumsal: imageSrc("menu/kurumsal"), hizmetler: imageSrc("menu/hizmetler") },
+    searchIndex: catalog.getSearchIndex().map((entry) => ({ ...entry, imageSrc: imageSrc(entry.imageKey) })),
+    quoteProducts: catalog.getProducts().map((product) => ({
+      slug: product.slug,
+      name: product.name,
+      code: product.code,
+      imageSrc: imageSrc(product.imageKey),
+    })),
+  };
+}
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   const catalog = container.resolve("CatalogService");
+
   return (
     <html lang="tr" className={`${geist.variable} ${inter.variable} ${geistMono.variable}`}>
       <body>
         <StoreProvider>
           <MotionProvider>
-            <SiteChrome company={catalog.getCompany()} categories={catalog.getCategories()} services={catalog.getServices()} products={catalog.getProducts()} searchIndex={catalog.getSearchIndex()} />
+            <SiteHeader data={buildHeaderData()} />
             <main id="icerik">{children}</main>
             <SiteFooter company={catalog.getCompany()} services={catalog.getServices()} />
-            <Toaster richColors position="bottom-right" />
+            <Toaster position="bottom-right" toastOptions={{ className: "font-sans" }} />
           </MotionProvider>
         </StoreProvider>
       </body>

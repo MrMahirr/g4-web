@@ -1,11 +1,31 @@
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Picture } from "@/components/shared/Picture";
-import { images } from "@/data/images.manifest";
-import type { ProductItem } from "@/core/types";
-import { Kicker } from "./Kicker";
-const asset = (key: string) => images[key];
+import { FeaturedProductList, type FeaturedRow } from "@/components/catalog/FeaturedProductList";
+import { Reveal } from "@/components/motion/Reveal";
+import { Container } from "@/components/ui/Container";
+import { Tag } from "@/components/ui/Tag";
+import { UnderlineLink } from "@/components/ui/UnderlineLink";
+import { homeCopy } from "@/data/home.data";
+import { routes } from "@/data/navigation.data";
 
-export function FeaturedProducts({ products }: { products: ProductItem[] }) {
- return <section className="home-wrap home-section products-section"><div className="home-heading"><div><Kicker>Ürünler</Kicker><h2>Öne Çıkan Ürünlerimiz</h2></div><Link className="home-more" href="/urunler">Tümünü Göster <ArrowUpRight size={18}/></Link></div><div className="product-list">{products.map((p,i)=>{const img=asset(p.imageKey);return <Link href={`/urun/${p.slug}`} className="product-row" key={p.id}><span className="product-index">{String(i+1).padStart(2,"0")}</span><span className="product-name">{p.name}</span><span className="product-ref">{p.code ? `REF: ${p.code}` : "G4 MEDİKAL"}</span><span className="product-preview"><Picture src={img?.src} alt={img?.alt ?? ""} fit="contain" sizes="180px" className="product-preview-image"/></span><ArrowUpRight className="product-arrow"/></Link>})}</div></section>;
+const copy = homeCopy.featured;
+
+/** Öne çıkan ürünler (tasarım: D4Main 5. bölüm — liste satırları). */
+export function FeaturedProducts({ rows }: { rows: FeaturedRow[] }) {
+  return (
+    <Container as="section" className="flex flex-col gap-10 pt-[100px] pb-[130px]">
+      <div className="flex flex-wrap items-end justify-between gap-6">
+        <div className="flex flex-col gap-5">
+          <Reveal>
+            <Tag>{copy.tag}</Tag>
+          </Reveal>
+          <Reveal kind="skew">
+            <h2 className="font-display text-d2">{copy.title}</h2>
+          </Reveal>
+        </div>
+        <Reveal>
+          <UnderlineLink href={routes.products}>{copy.all}</UnderlineLink>
+        </Reveal>
+      </div>
+      <FeaturedProductList rows={rows} />
+    </Container>
+  );
 }

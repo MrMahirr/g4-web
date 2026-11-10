@@ -67,6 +67,7 @@ export interface ProductItem {
   subGroup?: SarfSubGroup;
   imageKey: ImageKey;
   description: string;
+  galleryKeys?: ImageKey[];
   isFeaturedOnHome?: boolean;
 }
 

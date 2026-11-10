@@ -9,14 +9,14 @@ type Props = {
   lines: ReactNode[];
   as?: "h1" | "h2";
   size?: "d1" | "d2";
-  /** İlk satırın gecikmesi (sn). */
+  /** İlk satırın gecikmesi (sn) — tasarımdaki --d. */
   delay?: number;
   /** Satırlar arası gecikme (sn). */
   stagger?: number;
   className?: string;
 };
 
-/** Satır maskeli başlık: satırlar eğik açıyla alttan yükselir (tasarımdaki .ln). */
+/** Satır maskeli başlık (tasarım: .ln / lnUp 1.2s): satırlar eğik açıyla alttan yükselir. */
 export function MaskedHeading({ lines, as: Heading = "h1", size = "d1", delay = 0.1, stagger = 0.1, className }: Props) {
   return (
     <Heading className={cn("font-display text-balance", size === "d1" ? "text-d1" : "text-d2", className)}>
