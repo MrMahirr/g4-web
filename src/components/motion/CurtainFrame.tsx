@@ -14,7 +14,7 @@ export function CurtainFrame({ children }: { children: ReactNode }) {
       viewport={{ once: true, amount: 0.25 }}
     >
       <motion.div
-        className="absolute inset-0"
+        className="curtain-visual absolute inset-0"
         variants={{ closed: { scale: 1.3 }, open: { scale: 1 } }}
         transition={{ duration: 1.4, ease: EASE_SOFT }}
       >
@@ -22,7 +22,7 @@ export function CurtainFrame({ children }: { children: ReactNode }) {
       </motion.div>
       <motion.span
         aria-hidden="true"
-        className="absolute inset-0 z-[4] origin-right bg-ember"
+        className="curtain-overlay absolute inset-0 z-[4] origin-right bg-ember"
         variants={{ closed: { scaleX: 1 }, open: { scaleX: 0 } }}
         transition={{ duration: 1.1, ease: EASE_CURTAIN }}
       />

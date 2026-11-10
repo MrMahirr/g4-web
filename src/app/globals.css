@@ -178,3 +178,8 @@
     @apply outline-2 outline-offset-[3px] outline-ember;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain-visual { transform: none !important; }
+  .curtain-overlay { display: none; }
+}
