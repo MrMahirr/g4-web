@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { MotionProvider } from "@/components/motion/MotionProvider";
+import { SiteChrome } from "@/components/layout/SiteChrome";
+import { container } from "@/core/container";
+import { Toaster } from "sonner";
 import { StoreProvider } from "@/store/StoreProvider";
 import "./globals.css";
 
@@ -32,11 +35,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const catalog = container.resolve("CatalogService");
   return (
     <html lang="tr" className={`${geist.variable} ${inter.variable} ${geistMono.variable}`}>
       <body>
         <StoreProvider>
-          <MotionProvider>{children}</MotionProvider>
+          <MotionProvider>
+            <SiteChrome company={catalog.getCompany()} categories={catalog.getCategories()} services={catalog.getServices()} products={catalog.getProducts()} searchIndex={catalog.getSearchIndex()} />
+            <main id="icerik">{children}</main>
+            <Toaster richColors position="bottom-right" />
+          </MotionProvider>
         </StoreProvider>
       </body>
     </html>
