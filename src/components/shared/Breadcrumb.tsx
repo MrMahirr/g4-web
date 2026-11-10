@@ -15,7 +15,7 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
         return (
           <Fragment key={`${item.label}-${index}`}>
             {index > 0 ? <span aria-hidden="true">/</span> : null}
-            {item.href && !isLast ? (
+            {item.href ? (
               <Link href={item.href} className="no-underline transition-colors hover:text-ember-d">
                 {item.label}
               </Link>

@@ -148,6 +148,9 @@ export const images: Record<ImageKey, ImageEntry> = {
 };
 
 
+// Hakkımızda kapağı: kurumsal menüdeki lisanslı bina fotoğrafı (aynı Unsplash kaynağı).
+images["kurumsal/hakkimizda-1"] = { ...images["menu/kurumsal"], alt: "Geometrik cepheli çağdaş kurumsal bina" };
+
 // Mevcut G4 kataloğundaki görseller slug ile eşleştirilir.
 for (const product of products) {
   const src = (productImages as Record<string, string>)[product.slug];

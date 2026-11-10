@@ -19,7 +19,16 @@ type Props = {
 /** Satır maskeli başlık (tasarım: .ln / lnUp 1.2s): satırlar eğik açıyla alttan yükselir. */
 export function MaskedHeading({ lines, as: Heading = "h1", size = "d1", delay = 0.1, stagger = 0.1, className }: Props) {
   return (
-    <Heading className={cn("font-display text-balance", size === "d1" ? "text-d1" : "text-d2", className)}>
+    <Heading
+      className={cn(
+        // Kalınlık ve aralıklar ayrıca, en sonda yazılır: çağıran boyutu (text-[...]) değiştirse de
+        // tailwind-merge satır aralığını silmez, tasarımdaki ağırlık korunur.
+        "font-display font-bold text-balance",
+        size === "d1" ? "text-d1" : "text-d2",
+        className,
+        size === "d1" ? "leading-[0.95] tracking-[-0.05em]" : "leading-none tracking-[-0.04em]",
+      )}
+    >
       {lines.map((line, index) => (
         <span key={index} className="-mb-[0.06em] block overflow-hidden pb-[0.06em]">
           <motion.span

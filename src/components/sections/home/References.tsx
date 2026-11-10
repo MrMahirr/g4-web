@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const copy = homeCopy.references;
 
 /** Hücre: üzerine gelince beyaz zemin merkezden daireyle dolar (tasarım: .lg). */
-const cellClass = cn(
+export const referenceCellClass = cn(
   "group/lg relative isolate flex h-[200px] items-center justify-center overflow-hidden border-r border-b border-line p-[34px]",
   "before:absolute before:inset-0 before:-z-10 before:bg-paper before:content-[''] before:[clip-path:circle(0_at_50%_50%)]",
   "before:transition-[clip-path] before:duration-700 before:ease-soft hover:before:[clip-path:circle(75%_at_50%_50%)]",
@@ -33,7 +33,7 @@ export function References({ references }: Props) {
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] border-t border-l border-line">
         {references.map(({ reference, logo }, index) => (
-          <Reveal key={reference.id} index={index % 4} className={cellClass}>
+          <Reveal key={reference.id} index={index % 4} className={referenceCellClass}>
             {logo ? (
               <Image
                 src={logo.src}
@@ -54,7 +54,7 @@ export function References({ references }: Props) {
         ))}
         <Link
           href={routes.references}
-          className={cn(cellClass, "flex-col items-start justify-between bg-tint text-ink no-underline")}
+          className={cn(referenceCellClass, "flex-col items-start justify-between bg-tint text-ink no-underline")}
         >
           <span className="font-mono text-xs tracking-[0.04em] text-ember-d uppercase">{copy.allKicker}</span>
           <span className="font-display text-2xl font-semibold tracking-[-0.02em]">{copy.all}</span>

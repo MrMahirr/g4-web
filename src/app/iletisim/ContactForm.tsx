@@ -9,6 +9,7 @@ import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type { QuoteProductInfo } from "@/components/layout/types";
+import { KvkkConsent } from "@/components/forms/KvkkConsent";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Field, Textarea, TextInput } from "@/components/ui/Field";
@@ -189,28 +190,7 @@ export function ContactForm({ email, products }: Props) {
           <Textarea id="iletisim-mesaj" auto={auto} invalid={Boolean(errors.message)} className="min-h-[210px]" {...register("message")} />
         </Field>
 
-        <div className="col-span-full flex flex-col gap-2">
-          <label className="flex cursor-pointer items-start gap-3 text-sm leading-[1.6] text-muted">
-            <input
-              type="checkbox"
-              aria-invalid={Boolean(errors.kvkk) || undefined}
-              aria-describedby={errors.kvkk ? "iletisim-kvkk-hata" : undefined}
-              className="mt-1 size-4 flex-none cursor-pointer accent-ember-d"
-              {...register("kvkk")}
-            />
-            <span>
-              <Link href={routes.kvkk} className="font-semibold text-ink">
-                KVKK Aydınlatma Metni
-              </Link>
-              &apos;ni okudum; kişisel verilerimin talebimin yanıtlanması amacıyla işlenmesini kabul ediyorum.
-            </span>
-          </label>
-          {errors.kvkk ? (
-            <p id="iletisim-kvkk-hata" role="alert" className="text-[13px] text-ember-d">
-              {errors.kvkk.message}
-            </p>
-          ) : null}
-        </div>
+        <KvkkConsent id="iletisim-kvkk" error={errors.kvkk?.message} registration={register("kvkk")} />
 
         <div className="col-span-full flex flex-wrap items-center gap-5">
           <Button type="submit" disabled={isSubmitting}>

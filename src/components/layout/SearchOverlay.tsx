@@ -1,17 +1,17 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Box, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useRef, type FormEvent, type KeyboardEvent } from "react";
 import { popularSearches, routes } from "@/data/navigation.data";
 import { tr } from "@/dictionaries/tr";
 import { useSearchOverlay } from "@/hooks/useSearchOverlay";
-import { searchTypeLabel, type SearchFilter } from "@/lib/catalog";
+import type { SearchFilter } from "@/lib/catalog";
 import { cn, EASE_SOFT } from "@/lib/utils";
+import { SearchResultRow } from "./SearchResultRow";
 import type { NavLinkItem, SearchEntryWithImage } from "./types";
 
 const FILTERS: SearchFilter[] = ["all", "urun", "grup", "hizmet"];
@@ -29,10 +29,11 @@ export function SearchOverlay({ index, categories }: { index: SearchEntryWithIma
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
+    const query = search.query.trim();
+    if (!query) return;
     const first = shown[0];
-    if (!first) return;
     close();
-    router.push(first.entry.href);
+    router.push(first ? first.entry.href : `${routes.search}?q=${encodeURIComponent(query)}`);
   };
 
   /** Ok tuşlarıyla sonuçlar arasında gezinme. */
@@ -137,41 +138,17 @@ export function SearchOverlay({ index, categories }: { index: SearchEntryWithIma
 
                       <div ref={resultsRef} aria-live="polite" className="flex flex-col">
                         {shown.map((hit, position) => (
-                          <motion.div
-                            key={`${hit.entry.type}-${hit.entry.href}`}
-                            initial={{ opacity: 0, y: 6 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4, ease: EASE_SOFT, delay: position * 0.03 }}
-                          >
-                            <Link
-                              href={hit.entry.href}
-                              data-result
-                              onClick={close}
-                              className="group/sr -mx-3 flex items-center gap-4 rounded-[10px] px-3 py-3.5 text-ink no-underline transition-colors duration-200 outline-none hover:bg-ink/4.5 focus-visible:bg-ink/4.5"
-                            >
-                              <span className="relative flex size-10 flex-none items-center justify-center overflow-hidden rounded-[8px] bg-[#F1F5F8] text-[#8A9AA7]">
-                                <Box size={18} strokeWidth={1.6} aria-hidden="true" />
-                                {hit.entry.imageSrc ? (
-                                  <Image src={hit.entry.imageSrc} alt="" fill sizes="40px" className="bg-white object-contain p-1" />
-                                ) : null}
-                              </span>
-                              <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-                                <span className="truncate text-base leading-[1.35]">
-                                  {hit.pre}
-                                  <b className="font-semibold text-ember-d">{hit.hit}</b>
-                                  {hit.post}
-                                </span>
-                                <span className="text-[13px] text-faint">{hit.entry.meta}</span>
-                              </span>
-                              <span className="flex-none text-xs text-faint">{searchTypeLabel(hit.entry.type)}</span>
-                              <ArrowRight
-                                size={16}
-                                aria-hidden="true"
-                                className="flex-none text-[#B5C2CC] transition-[translate,color] duration-300 ease-soft group-hover/sr:translate-x-[3px] group-hover/sr:text-ink"
-                              />
-                            </Link>
-                          </motion.div>
+                          <SearchResultRow key={`${hit.entry.type}-${hit.entry.href}`} hit={hit} position={position} onSelect={close} />
                         ))}
+                        {search.results.length > MAX_RESULTS ? (
+                          <Link
+                            href={`${routes.search}?q=${encodeURIComponent(search.query.trim())}`}
+                            onClick={close}
+                            className="mt-3 self-start font-mono text-xs tracking-[0.06em] text-ember-d uppercase no-underline hover:underline"
+                          >
+                            Tüm sonuçlar ({search.results.length}) →
+                          </Link>
+                        ) : null}
                         {shown.length === 0 ? (
                           <p className="py-[18px] text-[15px] leading-[1.6] text-muted">
                             “{search.query}” {tr.search.noResultsBefore}{" "}

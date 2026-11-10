@@ -3,6 +3,7 @@ import { MaskedHeading } from "@/components/motion/MaskedHeading";
 import { Enter } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { Tag } from "@/components/ui/Tag";
+import { cn } from "@/lib/utils";
 import { Breadcrumb, type Crumb } from "./Breadcrumb";
 
 type Props = {
@@ -18,13 +19,35 @@ type Props = {
   aside?: ReactNode;
   /** Başlık ilk satır gecikmesi (sn). */
   delay?: number;
+  /** "mask": satır maskesi (.ln), "rise": tek blok yükselme (hizmet detay). */
+  titleMotion?: "mask" | "rise";
+  /** Başlık boyutu (varsayılan text-d1). */
+  titleClassName?: string;
+  /** Alt boşluk (varsayılan 90px). */
+  className?: string;
   children?: ReactNode;
+  /** Başlık bloğunun altında, tam genişlikte duran içerik (kariyer adımları). */
+  footer?: ReactNode;
 };
 
 /** İç sayfa başlığı (tasarım: .ph-hero) — sayfa yolu, etiket, maskeli başlık, hayalet dev yazı. */
-export function PageHero({ crumbs, title, tag, description, ghost, aside, delay = 0.1, children }: Props) {
+export function PageHero({
+  crumbs,
+  title,
+  tag,
+  description,
+  ghost,
+  aside,
+  delay = 0.1,
+  titleMotion = "mask",
+  titleClassName,
+  className,
+  children,
+  footer,
+}: Props) {
+  const headingDelay = tag ? delay + 0.05 : delay;
   return (
-    <section className="relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-[190px] pb-[90px] grain">
+    <section className={cn("relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-[190px] pb-[90px] grain", className)}>
       {ghost ? (
         <Enter
           kind="ghost"
@@ -45,7 +68,15 @@ export function PageHero({ crumbs, title, tag, description, ghost, aside, delay 
               <Tag>{tag}</Tag>
             </Enter>
           ) : null}
-          <MaskedHeading lines={title} delay={tag ? delay + 0.05 : delay} />
+          {titleMotion === "rise" ? (
+            <Enter kind="rise" delay={headingDelay}>
+              <h1 className={cn("font-display text-d1 leading-[0.95] font-bold tracking-[-0.05em] text-balance", titleClassName)}>
+                {title}
+              </h1>
+            </Enter>
+          ) : (
+            <MaskedHeading lines={title} delay={headingDelay} className={titleClassName} />
+          )}
           {description ? (
             <Enter kind="rise" delay={0.5}>
               <p className="max-w-[640px] text-lead text-pretty text-muted">{description}</p>
@@ -54,6 +85,7 @@ export function PageHero({ crumbs, title, tag, description, ghost, aside, delay 
           {children}
         </div>
         {aside}
+        {footer ? <div className="basis-full">{footer}</div> : null}
       </Container>
     </section>
   );

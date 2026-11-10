@@ -13,13 +13,15 @@ type Props = {
   meta?: ReactNode;
   /** Üzerine gelince dönerek açılan önizleme. `undefined`: önizleme yok; `null`: "Görsel alanı" şablonu. */
   previewSrc?: string | null;
+  /** Başlığın altında düz metin (haber özeti). */
+  description?: ReactNode;
   /** Başlık yazı boyutu (varsayılan: tasarımdaki clamp(18px, 1.8vw, 24px)). */
   titleClassName?: string;
   className?: string;
 };
 
 /** Liste satırı (tasarım: .rowl) — üzerine gelince zemin alttan dolar, ok döner, önizleme açılır. */
-export function ListRow({ href, index, title, meta, previewSrc, titleClassName, className }: Props) {
+export function ListRow({ href, index, title, meta, description, previewSrc, titleClassName, className }: Props) {
   return (
     <Link
       href={href}
@@ -46,6 +48,7 @@ export function ListRow({ href, index, title, meta, previewSrc, titleClassName, 
           {title}
         </strong>
         {meta ? <span className="font-mono text-xs tracking-[0.04em] opacity-70">{meta}</span> : null}
+        {description ? <span className="text-[15px] leading-relaxed opacity-75">{description}</span> : null}
       </span>
       <span
         aria-hidden="true"

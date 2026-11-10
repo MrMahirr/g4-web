@@ -40,6 +40,8 @@ type RevealProps = {
   kind?: ScrollKind;
   /** Kademe (tasarımdaki --i): her adım başlangıcı ve sonu biraz geciktirir. */
   index?: number;
+  /** "scale" türünde köşe yarıçapının vardığı değer (px) — tasarımda öğenin kendi yarıçapı. */
+  radius?: number;
   className?: string;
   style?: CSSProperties;
 };
@@ -48,7 +50,7 @@ type RevealProps = {
  * Kaydırmaya bağlı belirme: öğe ekrana girerken ilerler, geri kaydırınca geri oynar.
  * "Hareketi azalt" tercihinde öğe hareketsiz ve tam görünür çizilir.
  */
-export function Reveal({ children, kind = "up", index = 0, className, style }: RevealProps) {
+export function Reveal({ children, kind = "up", index = 0, radius = 0, className, style }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const progress = useCoverProgress(ref);
@@ -61,7 +63,7 @@ export function Reveal({ children, kind = "up", index = 0, className, style }: R
   const y = useTransform(progress, range, [from.y, 0]);
   const skewY = useTransform(progress, range, [from.skewY, 0]);
   const scale = useTransform(progress, range, [from.scale, 1]);
-  const borderRadius = useTransform(progress, range, [from.radius, 0]);
+  const borderRadius = useTransform(progress, range, [from.radius, radius]);
 
   const motionStyle = reduceMotion
     ? style
