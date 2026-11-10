@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { MotionProvider } from "@/components/motion/MotionProvider";
+import { StoreProvider } from "@/store/StoreProvider";
 import "./globals.css";
 
 const geist = Geist({
@@ -34,7 +35,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="tr" className={`${geist.variable} ${inter.variable} ${geistMono.variable}`}>
       <body>
-        <MotionProvider>{children}</MotionProvider>
+        <StoreProvider>
+          <MotionProvider>{children}</MotionProvider>
+        </StoreProvider>
       </body>
     </html>
   );
