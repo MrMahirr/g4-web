@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# G4 Web (g4.com.tr)
 
-## Getting Started
+G4 kurumsal sitesi. Next.js 16 (App Router, Cache Components) + React 19 + Tailwind CSS 4 + TypeScript.
 
-First, run the development server:
+## Komutlar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # geliştirme sunucusu (http://localhost:3000)
+npm run build   # üretim derlemesi
+npm run start   # derlenmiş siteyi çalıştırır
+npm run lint    # ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Kaynaklar
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Ne | Nerede |
+|---|---|
+| Uygulama planı (Faz 0–8) ve kararlar | Obsidian vault: `../../g4/10 - Yapılacak Planlar/` |
+| Tasarım (Tasarım D · Şifa) | `../tasarim-D-sifa-acik/*.dc.html`, `../assets/d4.css` |
+| Metinler ve ürün listesi | Vault: `03 - İçerik/` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Klasör yapısı
 
-## Learn More
+```text
+src/
+├── app/            # route'lar (App Router)
+├── components/     # ui · shared · sections · layout
+├── core/           # interfaces · repositories · services · container (IoC)
+├── data/           # tip güvenli içerik dosyaları
+├── store/          # Redux Toolkit
+├── hooks/          # custom hook'lar
+├── lib/            # yardımcılar, zod şemaları
+└── dictionaries/   # arayüz metinleri (tr)
+public/
+├── logo/           # G4 logosu
+└── images/         # stok görseller (Faz 2)
+scripts/            # yardımcı betikler (görsel indirme vb.)
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Kurallar
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Kod yazmadan önce `node_modules/next/dist/docs/` altındaki ilgili Next.js 16 dokümanı okunur (`AGENTS.md`).
+- Görseller yerel dosyadır (`public/images`); `g4.com.tr` adresinden görsel bağlanmaz.
+- Bileşenler veriyi `src/core` servisleri üzerinden alır, `src/data` dosyalarını doğrudan içe aktarmaz.

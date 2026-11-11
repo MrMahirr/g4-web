@@ -1,0 +1,298 @@
+@import "tailwindcss";
+
+/*
+  G4 — Tasarım D "Şifa" (açık palet) tasarım sistemi.
+  Kaynak ölçüler: g4-web/assets/d4.css + D4DesignPattern.
+  Tüm stil Tailwind üzerinden yazılır: tokenlar @theme içinde, Tailwind'in
+  hazır sınıfıyla ifade edilemeyen birkaç efekt @utility ile tanımlıdır.
+  Kaydırma / giriş hareketleri CSS ile değil `motion` kütüphanesiyle yapılır.
+*/
+
+@theme {
+  /* Renk */
+  --color-paper: #ffffff; /* kart, form, header */
+  --color-ivory: #f6f9fb; /* sayfa zemini */
+  --color-tint: #eaf3f8; /* vurgulu bölüm, footer */
+  --color-tint-2: #e2edf4;
+  --color-sand: #e7eff4; /* görsel zemini */
+  --color-ink: #1e3040; /* başlık, metin, koyu düğme */
+  --color-muted: #4c6274; /* ikincil metin (5.7:1) */
+  --color-faint: #5e707e; /* arama katmanı yardımcı metin — tasarımdaki #6B7F8F 3.9:1 idi; AA için koyulaştırıldı (ivory 4.85:1, tint 4.56:1) */
+  --color-line: #d3e0e8; /* 1px ayırıcı */
+  --color-ember: #e4482f; /* vurgu — yalnız büyük yazı / şekil */
+  --color-ember-d: #b8321d; /* birincil düğme, bağlantı, etiket (6.0:1) */
+  --color-wine: #8e1b26; /* hover, ikincil vurgu */
+
+  /* Yazı ölçeği: text-d1 / text-d2 / text-d3 / text-lead */
+  --text-d1: clamp(48px, 8.4vw, 132px);
+  --text-d1--line-height: 0.95;
+  --text-d1--letter-spacing: -0.05em;
+  --text-d1--font-weight: 700;
+  --text-d2: clamp(36px, 5vw, 76px);
+  --text-d2--line-height: 1;
+  --text-d2--letter-spacing: -0.04em;
+  --text-d2--font-weight: 700;
+  --text-d3: clamp(22px, 2.2vw, 30px);
+  --text-d3--line-height: 1.15;
+  --text-d3--letter-spacing: -0.025em;
+  --text-d3--font-weight: 600;
+  --text-lead: clamp(18px, 1.5vw, 21px);
+  --text-lead--line-height: 1.65;
+
+  /* Biçim */
+  --radius-tag: 3px;
+  --radius-btn: 4px;
+  --radius-card: 6px;
+  --container-site: 1320px;
+
+  /* Kırılımlar (tasarımdaki 1080 / 960 / 760px): max-nav: · max-stack: · max-row: */
+  --breakpoint-row: 47.5rem;
+  --breakpoint-stack: 60rem;
+  --breakpoint-nav: 67.5rem;
+
+  /* Hareket eğrileri */
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-curtain: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Sürekli / hover animasyonları (kaydırmaya bağlı girişler motion ile) */
+  --animate-arrow-swap: arrow-swap 0.7s both;
+  --animate-ul-redraw: ul-redraw 0.8s var(--ease-soft);
+  --animate-spin-badge: spin 18s linear infinite;
+  --animate-spin-ring: spin 14s linear infinite;
+  --animate-rot-word: rot-word 9s var(--ease-soft) infinite both;
+  --animate-dot-pulse: dot-pulse 2s ease-in-out infinite;
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-map-ripple: map-ripple 2.6s var(--ease-soft) infinite;
+  /*
+    Yüklemede giriş (tasarım: .fade · .rise · .ghost · .ln). Kaydırmaya bağlı olanlar motion ile kalır;
+    bunlar CSS'tir çünkü ekranın üstündeki içerik JS yüklenmeden görünmeli (LCP — plan 8.5).
+    Gecikme `animation-delay` ile verilir (tasarımdaki --d).
+    Başlangıç opaklığı 0 değil 0.01: Chrome opaklığı 0 olan öğeyi animasyon bitene kadar LCP saymaz;
+    0.01 gözle ayırt edilmez ama öğe ilk karede çizilmiş sayılır.
+  */
+  --animate-enter-fade: enter-fade 1.2s var(--ease-soft) both;
+  --animate-enter-rise: enter-rise 1.2s var(--ease-soft) both;
+  --animate-enter-ghost: enter-ghost 1.6s var(--ease-soft) both;
+  --animate-line-up: line-up 1.2s var(--ease-soft) both;
+
+  @keyframes enter-fade {
+    from {
+      opacity: 0.01;
+    }
+  }
+  @keyframes enter-rise {
+    from {
+      opacity: 0.01;
+      translate: 0 40px;
+    }
+  }
+  @keyframes enter-ghost {
+    from {
+      opacity: 0.01;
+      translate: 12% 0;
+    }
+  }
+  @keyframes line-up {
+    from {
+      transform: translateY(105%) skewY(6deg);
+    }
+  }
+  /* .hero-img circleOpen 1.6s, .3s gecikme; açılış noktası --circle-origin */
+  --animate-circle-open: circle-open 1.6s var(--ease-curtain) 0.3s both;
+  @keyframes circle-open {
+    from {
+      clip-path: circle(0% at var(--circle-origin, 70% 60%));
+    }
+    to {
+      clip-path: circle(140% at var(--circle-origin, 70% 60%));
+    }
+  }
+
+  /* Hizmet vitrini: etkin satırın alt çizgisi, otomatik geçiş süresi boyunca dolar */
+  --animate-bar-fill: bar-fill var(--bar-ms, 5000ms) linear both;
+
+  @keyframes bar-fill {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  /* Mega menü: aşağı doğru perde açılımı (tasarım: .mg clip-path .7s) */
+  --animate-mega-in: mega-in 0.7s var(--ease-soft) both;
+  --animate-mega-out: mega-out 0.45s var(--ease-soft) both;
+
+  @keyframes mega-in {
+    from {
+      clip-path: inset(0 0 100% 0 round 8px);
+    }
+    to {
+      clip-path: inset(0 0 0 0 round 8px);
+    }
+  }
+  @keyframes mega-out {
+    from {
+      clip-path: inset(0 0 0 0 round 8px);
+    }
+    to {
+      clip-path: inset(0 0 100% 0 round 8px);
+    }
+  }
+
+  /* SSS cevabı: yukarıdan perdeyle açılır (tasarım: .qa anIn .7s) */
+  --animate-faq-in: faq-in 0.7s var(--ease-soft) both;
+
+  @keyframes faq-in {
+    from {
+      opacity: 0;
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      opacity: 1;
+      clip-path: inset(0);
+    }
+  }
+
+  @keyframes map-ripple {
+    from {
+      transform: scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: scale(14);
+      opacity: 0;
+    }
+  }
+
+  /* Tek ok: hızlanarak çıkıp söner, görünmezken karşı tarafa geçer, yumuşakça yerine oturur. */
+  @keyframes arrow-swap {
+    0% {
+      transform: none;
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+    }
+    38% {
+      transform: translate(var(--arrow-x, 18px), var(--arrow-y, 0px));
+      opacity: 0;
+    }
+    39% {
+      transform: translate(calc(var(--arrow-x, 18px) * -1), calc(var(--arrow-y, 0px) * -1));
+      opacity: 0;
+      animation-timing-function: var(--ease-soft);
+    }
+    100% {
+      transform: none;
+      opacity: 1;
+    }
+  }
+  @keyframes ul-redraw {
+    0% {
+      transform: scaleX(1);
+      transform-origin: right;
+    }
+    45% {
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+    46% {
+      transform-origin: left;
+    }
+    100% {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+  @keyframes rot-word {
+    0% {
+      transform: translateY(100%);
+    }
+    5%,
+    30% {
+      transform: none;
+    }
+    35%,
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  @keyframes dot-pulse {
+    50% {
+      opacity: 0.35;
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* next/font değişkenlerine bağlı aileler: font-display · font-sans · font-mono */
+@theme inline {
+  --font-display: var(--font-geist), var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist), var(--font-inter), system-ui, sans-serif;
+}
+
+/* Kontur yazı ("Çözümler"): dolgu saydam, çizgi metin renginde */
+@utility text-outline {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px currentColor;
+}
+
+/* Arka plandaki dev hayalet yazılar ("G4", "Merhaba", "Güven") */
+@utility text-ghost {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgb(30 48 64 / 0.1);
+}
+
+/* Tanecik dokusu: kabın `relative overflow-hidden` olması gerekir */
+@utility grain {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+}
+
+/* Boş görsel şablonunun damalı zemini */
+@utility bg-checker {
+  background-color: #eef4f8;
+  background-image:
+    linear-gradient(45deg, rgb(30 48 64 / 0.05) 25%, transparent 25% 75%, rgb(30 48 64 / 0.05) 75%),
+    linear-gradient(45deg, rgb(30 48 64 / 0.05) 25%, transparent 25% 75%, rgb(30 48 64 / 0.05) 75%);
+  background-size: 24px 24px;
+  background-position:
+    0 0,
+    12px 12px;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth motion-reduce:scroll-auto;
+  }
+
+  body {
+    @apply overflow-x-clip bg-ivory font-sans text-base leading-[1.6] tracking-[-0.005em] text-ink antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  /* Görünür klavye odağı (tasarımda tanımlı değildi) */
+  :focus-visible {
+    @apply outline-2 outline-offset-[3px] outline-ember;
+  }
+}
+
+/* Haritadaki ızgara çizgileri (iletişim kartı) */
+@utility bg-map-grid {
+  background-image:
+    linear-gradient(rgb(30 48 64 / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(30 48 64 / 0.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
