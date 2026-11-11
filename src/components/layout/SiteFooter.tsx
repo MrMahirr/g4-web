@@ -1,5 +1,16 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUp,
+  ArrowUpRight,
+  Briefcase,
+  Building2,
+  type LucideIcon,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
+import type { IconType } from "react-icons";
+import { FaInstagram, FaLinkedinIn, FaTelegram, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import type { ReactNode } from "react";
 import { BackToTopLink } from "@/components/layout/BackToTopLink";
 import { Reveal } from "@/components/motion/Reveal";
@@ -20,9 +31,19 @@ const footerLinkClass = cn(
   "hover:text-ember-d",
 );
 
-function ColumnTitle({ children }: { children: ReactNode }) {
+/** Sosyal kanal → platformun kendi logosu (lucide 1.x marka ikonu içermez; react-icons Font Awesome 6 Brands). */
+const socialIcons: Record<string, IconType> = {
+  whatsapp: FaWhatsapp,
+  telegram: FaTelegram,
+  instagram: FaInstagram,
+  x: FaXTwitter,
+  linkedin: FaLinkedinIn,
+};
+
+function ColumnTitle({ icon: Icon, children }: { icon: LucideIcon; children: ReactNode }) {
   return (
-    <span className="mb-3 font-mono text-[11px] tracking-[0.12em] text-faint uppercase">
+    <span className="mb-3 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] text-faint uppercase">
+      <Icon size={14} aria-hidden="true" className="text-ember-d" />
       {children}
     </span>
   );
@@ -55,7 +76,7 @@ export function SiteFooter({
         </div>
 
         <nav aria-label="Site içi bağlantılar" className="flex flex-col">
-          <ColumnTitle>Kurumsal</ColumnTitle>
+          <ColumnTitle icon={Building2}>Kurumsal</ColumnTitle>
           {footerCorporateLinks.map((link) => (
             <Link key={link.href} href={link.href} className={footerLinkClass}>
               {link.label}
@@ -64,7 +85,7 @@ export function SiteFooter({
         </nav>
 
         <nav aria-label="Hizmetler" className="flex flex-col">
-          <ColumnTitle>Hizmetlerimiz</ColumnTitle>
+          <ColumnTitle icon={Briefcase}>Hizmetlerimiz</ColumnTitle>
           {services.map((service) => (
             <Link
               key={service.slug}
@@ -77,29 +98,33 @@ export function SiteFooter({
         </nav>
 
         <div className="flex flex-col gap-3">
-          <ColumnTitle>İletişim</ColumnTitle>
-          <address className="text-sm leading-[1.6] text-muted not-italic">
+          <ColumnTitle icon={MapPin}>İletişim</ColumnTitle>
+          <address className="flex items-start gap-2.5 text-sm leading-[1.6] text-muted not-italic">
+            <MapPin size={16} aria-hidden="true" className="mt-1 shrink-0 text-ember-d" />
             {company.address.full}
           </address>
           <a
             href={`tel:${company.phone.tel}`}
             className={cn(
               footerLinkClass,
-              "font-display text-lg font-semibold text-ink",
+              "gap-2.5 font-display text-lg font-semibold text-ink",
             )}
           >
+            <Phone size={16} aria-hidden="true" className="shrink-0 text-ember-d" />
             {company.phone.display}
           </a>
           <a
             href={`mailto:${company.email}`}
-            className={cn(footerLinkClass, "text-ink")}
+            className={cn(footerLinkClass, "gap-2.5 text-ink")}
           >
+            <Mail size={16} aria-hidden="true" className="shrink-0 text-ember-d" />
             {company.email}
           </a>
           <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
             {company.socials.map((social) => {
               const item =
-                "inline-flex min-h-9 items-center font-mono text-[11px] tracking-[0.08em] uppercase no-underline";
+                "inline-flex min-h-9 items-center gap-1.5 font-mono text-[11px] tracking-[0.08em] uppercase no-underline";
+              const SocialIcon = socialIcons[social.channel];
               return social.href ? (
                 <a
                   key={social.channel}
@@ -111,6 +136,7 @@ export function SiteFooter({
                     "text-muted transition-colors duration-300 hover:text-ember-d",
                   )}
                 >
+                  {SocialIcon ? <SocialIcon size={14} aria-hidden="true" /> : null}
                   {social.label}
                 </a>
               ) : (
@@ -120,6 +146,7 @@ export function SiteFooter({
                   title="Bağlantı yakında"
                   className={cn(item, "text-muted/50")}
                 >
+                  {SocialIcon ? <SocialIcon size={14} aria-hidden="true" /> : null}
                   {social.label}
                 </span>
               );
@@ -130,14 +157,14 @@ export function SiteFooter({
           <Link
             href={routes.contact}
             className={cn(
-              "relative flex size-32 items-center justify-center rounded-full bg-ember-d text-center font-display text-sm font-semibold text-white no-underline",
+              "group/ring relative flex size-32 items-center justify-center rounded-full bg-ember-d text-center font-display text-sm font-semibold text-white no-underline",
               "transition-[scale,rotate,background-color] duration-700 ease-soft hover:scale-[1.08] hover:-rotate-6 hover:bg-wine",
             )}
           >
             <svg
               viewBox="0 0 200 200"
               aria-hidden="true"
-              className="absolute -inset-[14px] size-[calc(100%+28px)] animate-spin-ring motion-reduce:animate-none"
+              className="absolute -inset-[14px] size-[calc(100%+28px)] animate-spin-ring [animation-play-state:paused] group-hover/ring:[animation-play-state:running] motion-reduce:animate-none"
             >
               <defs>
                 <path
@@ -191,8 +218,9 @@ export function SiteFooter({
               </Link>
             ))}
           </span>
-          <BackToTopLink className="text-ink no-underline hover:text-ember-d">
-            {tr.common.backToTop} ↑
+          <BackToTopLink className="inline-flex items-center gap-1.5 text-ink no-underline hover:text-ember-d">
+            {tr.common.backToTop}
+            <ArrowUp size={14} aria-hidden="true" />
           </BackToTopLink>
         </Container>
       </div>

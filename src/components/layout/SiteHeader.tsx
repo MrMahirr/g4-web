@@ -96,7 +96,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
                 href={`tel:${data.phone.tel}`}
                 className="inline-flex min-h-11 items-center gap-2 font-mono text-[13px] tracking-[0.04em] whitespace-nowrap text-muted no-underline max-[1320px]:hidden"
               >
-                <span className="size-[7px] animate-dot-pulse rounded-full bg-ember motion-reduce:animate-none" />
+                <span className="size-[7px] rounded-full bg-ember" />
                 {data.phone.display}
               </a>
               <span className="max-nav:hidden">
