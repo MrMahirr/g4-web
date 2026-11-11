@@ -43,7 +43,7 @@ export default function ReferencesPage() {
         image={catalog.getImage("hero/referanslar")}
       />
 
-      <Container as="section" className="py-[100px]">
+      <Container as="section" className="pt-lead pb-section">
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] border-t border-l border-line">
           {references.map((reference, index) => {
             const logo = catalog.getImage(reference.logoKey);
@@ -95,7 +95,7 @@ export default function ReferencesPage() {
         </div>
       </Container>
 
-      <section aria-hidden="true" className="overflow-hidden pb-[100px]">
+      <section aria-hidden="true" className="overflow-hidden pb-section">
         <Drift>
           <div className="font-display text-[clamp(90px,13vw,200px)] leading-none font-extrabold tracking-[-0.06em] whitespace-nowrap text-transparent [-webkit-text-stroke:1.5px_var(--color-line)] select-none">
             {copy.drift}

@@ -62,7 +62,7 @@ export default async function ProductPage({ params }: PageProps<"/urun/[slug]">)
     <>
       <JsonLd data={productLd(product, path, images, category?.title)} />
       <JsonLd data={breadcrumbLd([...crumbs.slice(0, -1), { label: product.name }], path)} />
-      <section className="bg-tint pt-[150px] pb-10">
+      <section className="bg-tint pt-[clamp(120px,10.4167vw,150px)] pb-10">
         <Container>
           <Enter>
             <Breadcrumb items={crumbs} />
@@ -70,7 +70,7 @@ export default async function ProductPage({ params }: PageProps<"/urun/[slug]">)
         </Container>
       </section>
 
-      <Container as="section" className="pt-14 pb-[120px]">
+      <Container as="section" className="pt-lead pb-section">
         <ProductDetail
           product={{
             slug: product.slug,
@@ -86,7 +86,7 @@ export default async function ProductPage({ params }: PageProps<"/urun/[slug]">)
       </Container>
 
       {related.length > 0 && category ? (
-        <section className="relative overflow-hidden bg-tint pt-[110px] pb-[120px] grain">
+        <section className="relative overflow-hidden bg-tint py-section grain">
           <Container>
             <FeaturedProductList
               rows={related}

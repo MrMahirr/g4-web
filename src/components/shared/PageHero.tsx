@@ -51,7 +51,7 @@ export function PageHero({
 }: Props) {
   const headingDelay = delay;
   return (
-    <section className={cn("relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-[190px] pb-[90px] grain", className)}>
+    <section className={cn("relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-hero-top pb-hero-bottom grain", className)}>
       {image ? (
         <>
           <Image src={image.src} alt="" fill priority sizes="100vw" className={cn("-z-20 object-cover", imagePosition)} />

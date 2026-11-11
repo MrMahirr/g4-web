@@ -89,7 +89,7 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
         image={catalog.getImage(`hero/kategori-${slug}`)}
       />
 
-      <Container as="section" className="flex flex-col gap-9 pt-10 pb-[130px]">
+      <Container as="section" className="flex flex-col gap-9 pt-lead pb-section">
         <Enter>
           <nav
             aria-label="Ürün grupları"

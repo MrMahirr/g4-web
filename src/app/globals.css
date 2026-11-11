@@ -46,6 +46,10 @@
   --container-site: 1320px;
   /* Anasayfa bölümleri arası dikey ritim: 390px → 72px, 1440px → 120px. Her bölüm yalnız alt boşluk taşır. */
   --spacing-section: clamp(72px, 8.3334vw, 120px);
+  /* İç sayfa ritmi: hero sonrası ilk bölümün üst boşluğu · hero üst/alt boşluğu (başlık sabit menünün altında kalır). */
+  --spacing-lead: clamp(40px, 5vw, 72px);
+  --spacing-hero-top: clamp(136px, 13.2vw, 190px);
+  --spacing-hero-bottom: clamp(56px, 6.25vw, 90px);
 
   /* Kırılımlar (tasarımdaki 1080 / 960 / 760px): max-nav: · max-stack: · max-row: */
   --breakpoint-row: 47.5rem;

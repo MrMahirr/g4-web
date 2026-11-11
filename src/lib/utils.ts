@@ -4,6 +4,8 @@ import { extendTailwindMerge } from "tailwind-merge";
 /** Temadaki özel yazı ölçeklerini (text-d1…) tailwind-merge'e tanıtır; yoksa renk sınıfı sanıp siler. */
 const twMerge = extendTailwindMerge({
   extend: {
+    // Özel boşluk adları (globals.css: --spacing-section…): pt-section gibi sınıflar çakışma çözümünde tanınsın.
+    theme: { spacing: ["section", "lead", "hero-top", "hero-bottom"] },
     classGroups: {
       "font-size": [{ text: ["d1", "d2", "d3", "lead"] }],
     },
