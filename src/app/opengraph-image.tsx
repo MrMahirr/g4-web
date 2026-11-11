@@ -1,8 +1,7 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { company } from "@/data/company.data";
 import { homeCopy } from "@/data/home.data";
+import { ogLogoSrc } from "@/lib/og-logo";
 
 /*
   Varsayılan paylaşım görseli (Tasarım D · Şifa paleti). Kendi görseli olan sayfalar
@@ -19,9 +18,6 @@ const MUTED = "#4c6274";
 const EMBER = "#e4482f";
 const TINT = "#eaf3f8";
 const LINE = "#d3e0e8";
-
-const logo = await readFile(join(process.cwd(), "public/logo/g4-logo.png"));
-const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
 
 export default async function OpengraphImage() {
   const [line1, line2, line3] = homeCopy.hero.lines;
@@ -43,7 +39,7 @@ export default async function OpengraphImage() {
         {/* Logo her zaman beyaz kutuda (tasarım kuralı). */}
         <div style={{ display: "flex", background: "#ffffff", padding: "14px 20px", borderRadius: 6 }}>
           {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse yalnız <img> destekler */}
-          <img src={logoSrc} alt="" height={56} style={{ objectFit: "contain" }} />
+          <img src={ogLogoSrc} alt="" height={56} style={{ objectFit: "contain" }} />
         </div>
         <div style={{ display: "flex", fontSize: 22, letterSpacing: 2, color: MUTED }}>
           {homeCopy.hero.tag.toLocaleUpperCase("tr")}
