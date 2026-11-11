@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  ArrowUp,
   ArrowUpRight,
   Briefcase,
   Building2,
@@ -12,10 +11,8 @@ import {
 import type { IconType } from "react-icons";
 import { FaInstagram, FaLinkedinIn, FaTelegram, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import type { ReactNode } from "react";
-import { BackToTopLink } from "@/components/layout/BackToTopLink";
 import { Reveal } from "@/components/motion/Reveal";
 import { G4Logo } from "@/components/shared/G4Logo";
-import { Container } from "@/components/ui/Container";
 import type { CompanyInfo, ServiceItem } from "@/core/types";
 import { about } from "@/data/about.data";
 import {
@@ -59,7 +56,7 @@ export function SiteFooter({
 }) {
   return (
     <footer className="relative overflow-hidden bg-tint text-ink grain">
-      <Container className="grid grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] items-start gap-x-10 gap-y-10 pt-14 pb-10 lg:grid-cols-[minmax(0,2.4fr)_1fr_1fr_1.3fr_auto]">
+      <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] items-start gap-x-10 gap-y-10 px-[clamp(16px,2vw,32px)] pt-14 pb-10 lg:grid-cols-[minmax(0,2.4fr)_1fr_1fr_1.3fr_auto]">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6 lg:col-span-1">
           <G4Logo size="footer" className="shrink-0 self-start" />
           <div className="flex min-w-0 flex-col gap-3.5">
@@ -191,21 +188,21 @@ export function SiteFooter({
             </span>
           </Link>
         </div>
-      </Container>
+      </div>
 
       <div
         aria-hidden="true"
-        className="flex justify-center overflow-hidden opacity-60"
+        className="flex justify-center overflow-hidden pb-2.5"
       >
         <Reveal>
-          <div className="font-display text-[clamp(56px,9vw,120px)] leading-[0.85] font-extrabold tracking-[-0.06em] whitespace-nowrap text-ghost [-webkit-text-stroke-color:rgb(30_48_64/0.12)] select-none">
+          <div className="font-display text-[clamp(120px,20vw,300px)] leading-[0.85] font-extrabold tracking-[-0.06em] whitespace-nowrap text-ghost [-webkit-text-stroke-color:rgb(30_48_64/0.16)] select-none">
             Güven
           </div>
         </Reveal>
       </div>
 
       <div className="border-t border-line">
-        <Container className="flex flex-wrap justify-between gap-3 py-4 font-mono text-[11px] tracking-[0.08em] text-faint uppercase">
+        <div className="flex w-full flex-wrap justify-between gap-3 px-[clamp(16px,2vw,32px)] py-4 font-mono text-[11px] tracking-[0.08em] text-faint uppercase">
           <span>© 2026 G4 · {tr.common.rights}</span>
           <span className="flex flex-wrap gap-x-6 gap-y-1">
             {footerLegalLinks.map((link) => (
@@ -218,11 +215,7 @@ export function SiteFooter({
               </Link>
             ))}
           </span>
-          <BackToTopLink className="inline-flex items-center gap-1.5 text-ink no-underline hover:text-ember-d">
-            {tr.common.backToTop}
-            <ArrowUp size={14} aria-hidden="true" />
-          </BackToTopLink>
-        </Container>
+        </div>
       </div>
     </footer>
   );
