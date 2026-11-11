@@ -108,6 +108,18 @@
     }
   }
 
+  /* Hizmet vitrini: etkin satırın alt çizgisi, otomatik geçiş süresi boyunca dolar */
+  --animate-bar-fill: bar-fill var(--bar-ms, 5000ms) linear both;
+
+  @keyframes bar-fill {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
   /* Mega menü: aşağı doğru perde açılımı (tasarım: .mg clip-path .7s) */
   --animate-mega-in: mega-in 0.7s var(--ease-soft) both;
   --animate-mega-out: mega-out 0.45s var(--ease-soft) both;

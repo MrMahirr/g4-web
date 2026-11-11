@@ -4,8 +4,8 @@ import { FeaturedProducts } from "@/components/sections/home/FeaturedProducts";
 import { Hero } from "@/components/sections/home/Hero";
 import { Introduction } from "@/components/sections/home/Introduction";
 import { References } from "@/components/sections/home/References";
-import { Services } from "@/components/sections/home/Services";
 import { container } from "@/core/container";
+import { routes } from "@/data/navigation.data";
 import { toFeaturedRow } from "@/lib/featured";
 import { pageMetadata, siteDescription, siteTitle } from "@/lib/seo";
 
@@ -19,29 +19,29 @@ export const metadata: Metadata = {
   title: { absolute: siteTitle },
 };
 
+/** Vitrin sırası: medikal ile açılır, diğer hizmetler arkasından gelir. */
+const showcaseOrder = ["medical", "textile", "construction", "fleet"];
+
 export default function HomePage() {
   const catalog = container.resolve("CatalogService");
-  const services = catalog.getServices();
-  const serviceSlug = (domain: "medical" | "textile") =>
-    services.find((service) => service.domain === domain)?.slug ?? "";
+  const showcase = catalog
+    .getServices()
+    .toSorted((a, b) => showcaseOrder.indexOf(a.domain) - showcaseOrder.indexOf(b.domain))
+    .map((service) => {
+    const image = catalog.getImage(service.imageKey);
+    return {
+      slug: service.slug,
+      href: routes.service(service.slug),
+      title: service.title,
+      description: service.shortDescription,
+      image: image ? { src: image.src, alt: image.alt } : null,
+    };
+  });
 
   return (
     <>
       <Hero image={catalog.getImage("hero/ana")} />
-      <Introduction
-        image={catalog.getImage("ana/medikal-perde")}
-        stats={catalog.getCompany().stats}
-        medicalServiceSlug={serviceSlug("medical")}
-        textileServiceSlug={serviceSlug("textile")}
-      />
-      <Services
-        services={catalog
-          .getHomeServices()
-          .map((service) => ({
-            service,
-            image: catalog.getImage(service.imageKey),
-          }))}
-      />
+      <Introduction services={showcase} stats={catalog.getCompany().stats} />
       <Categories
         categories={catalog
           .getCategories()
