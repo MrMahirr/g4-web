@@ -14,7 +14,7 @@ export const homeCopy = {
   intro: {
     tag: "G4 Medikal",
     statement: {
-      before: "G4 Medikal olarak sağlık sektörünün ihtiyaç duyduğu",
+      before: "G4 olarak sağlık sektörünün ihtiyaç duyduğu",
       accent: "ürün, ekipman ve profesyonel çözümleri",
       after: "tek çatı altında sunuyoruz.",
     },

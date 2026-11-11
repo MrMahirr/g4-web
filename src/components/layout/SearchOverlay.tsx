@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useRef, type FormEvent, type KeyboardEvent } from "react";
 import { popularSearches, routes } from "@/data/navigation.data";
 import { tr } from "@/dictionaries/tr";
+import { useReturnFocus } from "@/hooks/useReturnFocus";
 import { useSearchOverlay } from "@/hooks/useSearchOverlay";
 import type { SearchFilter } from "@/lib/catalog";
 import { cn, EASE_SOFT } from "@/lib/utils";
@@ -22,6 +23,7 @@ export function SearchOverlay({ index, categories }: { index: SearchEntryWithIma
   const search = useSearchOverlay(index);
   const router = useRouter();
   const resultsRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const hasQuery = search.query.trim().length > 0;
   const shown = search.results.slice(0, MAX_RESULTS);
 
@@ -47,12 +49,14 @@ export function SearchOverlay({ index, categories }: { index: SearchEntryWithIma
     links[(current + step + links.length) % links.length]?.focus();
   };
 
+  const returnFocus = useReturnFocus(inputRef);
+
   return (
     <Dialog.Root open={search.isOpen} onOpenChange={search.setOpen}>
       <AnimatePresence>
         {search.isOpen ? (
           <Dialog.Portal forceMount>
-            <Dialog.Content asChild forceMount aria-describedby={undefined} onKeyDown={onKeyDown}>
+            <Dialog.Content asChild forceMount aria-describedby={undefined} onKeyDown={onKeyDown} {...returnFocus}>
               <motion.div
                 className="fixed inset-0 z-[200] overflow-auto bg-ivory/60 backdrop-blur-[14px] backdrop-saturate-[1.4]"
                 initial={{ opacity: 0 }}
@@ -89,10 +93,10 @@ export function SearchOverlay({ index, categories }: { index: SearchEntryWithIma
                       {tr.search.open}
                     </label>
                     <input
+                      ref={inputRef}
                       id="site-arama"
                       type="search"
                       autoComplete="off"
-                      autoFocus
                       placeholder={tr.search.placeholder}
                       value={search.query}
                       onChange={(event) => search.setQuery(event.target.value)}

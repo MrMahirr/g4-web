@@ -8,7 +8,7 @@ import { services } from "@/data/services.data";
 
 /**
  * Görsel manifesti — sitedeki tüm fotoğrafların tek kaynağı.
- * Anahtar kuralı: "<klasör>/<slug>" → dosya public/images/<klasör>/<slug>.jpg
+ * Anahtar kuralı: "<klasör>/<slug>" → dosya public/images/<klasör>/<slug>.webp (orijinali gorsel-arsivi/ içinde; `npm run images` üretir)
  *   urunler/<ürün slug> · kategoriler/<kategori slug> · hizmetler/<kısa ad>
  *   haberler/<haber slug>[-n] · hero/ana · ana/medikal-perde · menu/kurumsal · menu/hizmetler
  *   kurumsal/hakkimizda-1 · kurumsal/kariyer · kurumsal/sss · genel/404 · genel/og
@@ -18,7 +18,7 @@ import { services } from "@/data/services.data";
  */
 export const images: Record<ImageKey, ImageEntry> = {
   "hero/ana": {
-    src: "/images/hero/ana.jpg",
+    src: "/images/hero/ana.webp",
     alt: "Temiz ve aydınlık bir hastane koridoru",
     width: 1200,
     height: 1500,
@@ -28,8 +28,20 @@ export const images: Record<ImageKey, ImageEntry> = {
       url: "https://unsplash.com/photos/empty-hospital-corridor-with-benches-and-doors-Pk-KuizxQv8",
     },
   },
+  "hero/iletisim": {
+    src: "/images/hero/iletisim.webp",
+    alt: "Aydınlık ve bitkilerle çevrili hastane karşılama alanı",
+    width: 2752,
+    height: 1536,
+  },
+  "hero/sorular": {
+    src: "/images/hero/sorular.webp",
+    alt: "Medikal cihaz ve ürünlerin sergilendiği aydınlık showroom",
+    width: 2752,
+    height: 1536,
+  },
   "hizmetler/medikal": {
-    src: "/images/hizmetler/medikal.jpg",
+    src: "/images/hizmetler/medikal.webp",
     alt: "Hastane odasında yatak ve medikal ekipmanlar",
     width: 1200,
     height: 900,
@@ -40,7 +52,7 @@ export const images: Record<ImageKey, ImageEntry> = {
     },
   },
   "kategoriler/genel-tibbi-sarf-malzemeler": {
-    src: "/images/kategoriler/genel-tibbi-sarf-malzemeler.jpg",
+    src: "/images/kategoriler/genel-tibbi-sarf-malzemeler.webp",
     alt: "Raf üzerinde sıralı tıbbi şırıngalar",
     width: 1000,
     height: 1000,
@@ -51,7 +63,7 @@ export const images: Record<ImageKey, ImageEntry> = {
     },
   },
   "ana/medikal-perde": {
-    src: "/images/hizmetler/medikal.jpg",
+    src: "/images/hizmetler/medikal.webp",
     alt: "Hastane odasında yatak ve medikal ekipmanlar",
     width: 1200,
     height: 900,
@@ -62,7 +74,7 @@ export const images: Record<ImageKey, ImageEntry> = {
     },
   },
   "hizmetler/insaat": {
-    src: "/images/hizmetler/insaat.jpg",
+    src: "/images/hizmetler/insaat.webp",
     alt: "Masa üzerinde mimari ve inşaat planları",
     width: 1200,
     height: 900,
@@ -73,7 +85,7 @@ export const images: Record<ImageKey, ImageEntry> = {
     },
   },
   "menu/kurumsal": {
-    src: "/images/menu/kurumsal.jpg",
+    src: "/images/menu/kurumsal.webp",
     alt: "Geometrik cepheli çağdaş cam ofis binası",
     width: 900,
     height: 1100,
@@ -84,7 +96,7 @@ export const images: Record<ImageKey, ImageEntry> = {
     },
   },
   "urunler/bipolar-forceps": {
-    src: "/images/urunler/bipolar-forceps.jpg",
+    src: "/images/urunler/bipolar-forceps.webp",
     alt: "Mavi steril örtü üzerinde cerrahi makas ve aletler",
     width: 1000,
     height: 1000,
@@ -96,7 +108,7 @@ export const images: Record<ImageKey, ImageEntry> = {
     },
   },
   "kategoriler/bipolar-forceps": {
-    src: "/images/kategoriler/bipolar-forceps.jpg",
+    src: "/images/kategoriler/bipolar-forceps.webp",
     alt: "Mavi steril örtü üzerinde cerrahi forseps ve makaslar (temsili)",
     width: 1000,
     height: 1000,
@@ -104,42 +116,42 @@ export const images: Record<ImageKey, ImageEntry> = {
     credit: { site: "Unsplash · Jonathan Borba", photographer: "Jonathan Borba", url: "https://unsplash.com/photos/a-pile-of-surgical-scissors-on-a-blue-cloth-ucnh3ldFKcE" },
   },
   "kategoriler/temizlik-hijyen-grubu": {
-    src: "/images/kategoriler/temizlik-hijyen-grubu.jpg",
+    src: "/images/kategoriler/temizlik-hijyen-grubu.webp",
     alt: "Elde tutulan el antiseptiği şişesi",
     width: 1000,
     height: 1000,
     credit: { site: "Unsplash · Kelly Sikkema", photographer: "Kelly Sikkema", url: "https://unsplash.com/photos/hand-sanitizer-bottle-V_-vbcHMATA" },
   },
   "kategoriler/tibbi-cihazlar": {
-    src: "/images/kategoriler/tibbi-cihazlar.jpg",
+    src: "/images/kategoriler/tibbi-cihazlar.webp",
     alt: "Dalga biçimleri gösteren tıbbi hasta monitörü",
     width: 1000,
     height: 1000,
     credit: { site: "Unsplash · Jair Lázaro", photographer: "Jair Lázaro", url: "https://unsplash.com/photos/medical-monitor-displaying-vital-signs-0lrJo37r6Nk" },
   },
   "kategoriler/gida-takviyesi-vitaminler": {
-    src: "/images/kategoriler/gida-takviyesi-vitaminler.jpg",
+    src: "/images/kategoriler/gida-takviyesi-vitaminler.webp",
     alt: "Beyaz kapaklı şeffaf takviye kapsülü şişesi",
     width: 1000,
     height: 1000,
     credit: { site: "Unsplash · NutraSeller Manufacturing", photographer: "NutraSeller Manufacturing", url: "https://unsplash.com/photos/clear-bottle-filled-with-capsules-and-blank-label-4zAj4yrcAIc" },
   },
   "kategoriler/kozmetik-urunler": {
-    src: "/images/kategoriler/kozmetik-urunler.jpg",
+    src: "/images/kategoriler/kozmetik-urunler.webp",
     alt: "Minimal bir sabun şişesi ve dağıtıcı",
     width: 1000,
     height: 1000,
     credit: { site: "Unsplash · Valeriia Miller", photographer: "Valeriia Miller", url: "https://unsplash.com/photos/a-bottle-of-soap-sitting-on-top-of-a-soap-dispenser-sBqXnldQ9ak" },
   },
   "hizmetler/arac-kiralama": {
-    src: "/images/hizmetler/arac-kiralama.jpg",
+    src: "/images/hizmetler/arac-kiralama.webp",
     alt: "Yağmurlu havada park edilmiş koyu renkli otomobil",
     width: 1200,
     height: 900,
     credit: { site: "Unsplash · Andreas Rasmussen", photographer: "Andreas Rasmussen", url: "https://unsplash.com/photos/parked-black-vehicle-during-daytime-MBW3F1jEhh0" },
   },
   "menu/hizmetler": {
-    src: "/images/menu/hizmetler.jpg",
+    src: "/images/menu/hizmetler.webp",
     alt: "Mavi ameliyat kıyafetli cerrahlar ameliyathanede çalışıyor",
     width: 900,
     height: 1100,

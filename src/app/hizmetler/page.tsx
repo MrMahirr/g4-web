@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { ArrowSwap } from "@/components/ui/ArrowSwap";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CallBackCard } from "@/components/shared/CallBackCard";
 import { PageHero } from "@/components/shared/PageHero";
@@ -11,10 +11,11 @@ import { routes } from "@/data/navigation.data";
 import { pageCopy } from "@/data/pages.data";
 import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo";
 
 const copy = pageCopy.services;
 
-export const metadata: Metadata = { title: copy.title, description: copy.lead };
+export const metadata: Metadata = pageMetadata({ title: copy.title, description: copy.lead, path: routes.services });
 
 /** Hizmetler (tasarım: D4Hizmetler) — her hizmet büyük başlıklı satır. */
 export default function ServicesPage() {
@@ -62,9 +63,9 @@ export default function ServicesPage() {
                     {tr.common.readMore}
                     <span
                       aria-hidden="true"
-                      className="flex size-[46px] items-center justify-center rounded-full bg-ink text-white transition-[rotate,background-color] duration-[600ms] ease-soft group-hover:-rotate-45 group-hover:bg-ember"
+                      className="relative flex size-[46px] items-center justify-center overflow-hidden rounded-full bg-ink text-white transition-colors duration-500 ease-soft group-hover:bg-ember"
                     >
-                      <ArrowRight size={18} />
+                      <ArrowSwap trigger="plain" />
                     </span>
                   </span>
                 </Reveal>

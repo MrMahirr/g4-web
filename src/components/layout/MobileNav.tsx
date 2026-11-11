@@ -9,6 +9,7 @@ import { routes } from "@/data/navigation.data";
 import { tr } from "@/dictionaries/tr";
 import { useOverlay } from "@/hooks/useOverlay";
 import { EASE_CURTAIN, EASE_SOFT } from "@/lib/utils";
+import { useReturnFocus } from "@/hooks/useReturnFocus";
 import type { HeaderData, NavLinkItem } from "./types";
 
 /** Hamburger düğmesinin merkezi: dairesel açılım buradan başlar (tasarım: .hd-m .sheet). */
@@ -27,12 +28,14 @@ export function MobileNav({ data }: { data: HeaderData }) {
     { label: tr.nav.contact, href: routes.contact },
   ];
 
+  const returnFocus = useReturnFocus();
+
   return (
     <Dialog.Root open={menu.isOpen} onOpenChange={menu.setOpen}>
       <AnimatePresence>
         {menu.isOpen ? (
           <Dialog.Portal forceMount>
-            <Dialog.Content asChild forceMount aria-describedby={undefined}>
+            <Dialog.Content asChild forceMount aria-describedby={undefined} {...returnFocus}>
               <motion.div
                 className="fixed inset-0 z-[90] overflow-auto bg-white px-8 pt-[120px] pb-10"
                 initial={reduceMotion ? { opacity: 0 } : { clipPath: `circle(0px at ${ORIGIN})` }}

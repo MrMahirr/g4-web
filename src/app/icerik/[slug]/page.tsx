@@ -7,6 +7,7 @@ import { container } from "@/core/container";
 import type { LegalDocument } from "@/core/types";
 import { routes } from "@/data/navigation.data";
 import { tr } from "@/dictionaries/tr";
+import { pageMetadata } from "@/lib/seo";
 
 const LEGAL_SLUGS: LegalDocument["slug"][] = ["cerez-politikasi", "kvkk-aydinlatma-metni"];
 
@@ -21,7 +22,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/icerik/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const document = isLegalSlug(slug) ? container.resolve("CatalogService").getLegalDocument(slug) : null;
-  return document ? { title: document.title, robots: document.approvalPending ? { index: false } : undefined } : {};
+  if (!document) return {};
+  return pageMetadata({ title: document.title, path: `/icerik/${document.slug}`, noindex: document.approvalPending });
 }
 
 /** Yasal metinler: Çerez Politikası, KVKK Aydınlatma Metni (tasarımı yok; Tasarım D bileşenleriyle). */

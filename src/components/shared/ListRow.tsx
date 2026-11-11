@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowSwap } from "@/components/ui/ArrowSwap";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Picture } from "./Picture";
@@ -53,13 +53,13 @@ export function ListRow({ href, index, title, meta, description, previewSrc, tit
       <span
         aria-hidden="true"
         className={cn(
-          "flex size-[52px] items-center justify-center rounded-full border border-current transition duration-[600ms] ease-soft",
-          "group-hover/row:-rotate-45 group-hover/row:border-ember group-hover/row:bg-ember group-hover/row:text-white",
-          "group-focus-visible/row:-rotate-45 group-focus-visible/row:border-ember group-focus-visible/row:bg-ember group-focus-visible/row:text-white",
+          "relative flex size-[52px] items-center justify-center overflow-hidden rounded-full border border-current transition-colors duration-500 ease-soft",
+          "group-hover/row:border-ember group-hover/row:bg-ember group-hover/row:text-white",
+          "group-focus-visible/row:border-ember group-focus-visible/row:bg-ember group-focus-visible/row:text-white",
           "max-row:hidden",
         )}
       >
-        <ArrowRight size={20} />
+        <ArrowSwap trigger="row" size={20} />
       </span>
       {previewSrc !== undefined ? (
         <Picture

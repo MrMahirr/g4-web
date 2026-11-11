@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Categories } from "@/components/sections/home/Categories";
 import { FeaturedProducts } from "@/components/sections/home/FeaturedProducts";
 import { Hero } from "@/components/sections/home/Hero";
@@ -6,6 +7,13 @@ import { References } from "@/components/sections/home/References";
 import { Services } from "@/components/sections/home/Services";
 import { container } from "@/core/container";
 import { toFeaturedRow } from "@/lib/featured";
+import { pageMetadata, siteDescription, siteTitle } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  ...pageMetadata({ title: siteTitle, description: siteDescription, path: "/" }),
+  // Anasayfada başlık şablonu ("%s · G4") uygulanmaz.
+  title: { absolute: siteTitle },
+};
 
 export default function HomePage() {
   const catalog = container.resolve("CatalogService");

@@ -112,12 +112,12 @@ export function ContactForm({ email, products }: Props) {
   const auto = Boolean(draft);
 
   return (
-    <Reveal>
+    <Reveal className="h-full">
       <form
         id="form"
         noValidate
         onSubmit={handleSubmit(onSubmit)}
-        className="grid scroll-mt-28 grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] content-start gap-x-6 gap-y-[30px] rounded-card bg-white p-[clamp(28px,4vw,56px)]"
+        className="grid h-full scroll-mt-28 grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] content-start gap-x-6 gap-y-[30px] rounded-card bg-white p-[clamp(28px,4vw,56px)]"
       >
         <div className="col-span-full flex flex-col gap-3.5">
           <Tag>{tr.common.requestInfo}</Tag>

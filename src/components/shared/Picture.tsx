@@ -9,7 +9,7 @@ type Props = {
   alt: string;
   /** contain: beyaz zeminde sığdır (ürün/kategori). cover: alanı doldur (hizmet, haber, hero). */
   fit?: "cover" | "contain";
-  /** Ekrana girerken kor rengi perde açılımı. */
+  /** Ekrana girerken yarı saydam, sol alta çapraz açılan gradyan perde. */
   curtain?: boolean;
   /** Üzerine (veya `group` işaretli üst öğeye) gelince yakınlaşma. */
   zoomOnHover?: boolean;

@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { container } from "@/core/container";
 import { sarfSubGroups } from "@/data/categories.data";
@@ -151,6 +153,13 @@ describe("diğer içerik", () => {
     expect(catalog.getImage("urunler/yok")).toBeNull();
     expect(catalog.getImage(undefined)).toBeNull();
     for (const entry of Object.values(images)) expect(entry.src.startsWith("/images/")).toBe(true);
+  });
+
+  it("manifestteki her görsel .webp ve public/ içinde var (orijinal gorsel-arsivi/ → npm run images)", () => {
+    const missing = Object.entries(images)
+      .filter(([, entry]) => !entry.src.endsWith(".webp") || !existsSync(join(process.cwd(), "public", entry.src)))
+      .map(([key, entry]) => `${key} → ${entry.src}`);
+    expect(missing).toEqual([]);
   });
 });
 

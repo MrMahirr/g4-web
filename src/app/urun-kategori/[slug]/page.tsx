@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -16,6 +16,10 @@ import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
 import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/shared/JsonLd";
+import type { Crumb } from "@/components/shared/Breadcrumb";
+import { breadcrumbLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return container
@@ -26,8 +30,15 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/urun-kategori/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const category = container.resolve("CatalogService").getCategoryBySlug(slug);
-  return category ? { title: category.title, description: homeCopy.categories.text } : {};
+  const catalog = container.resolve("CatalogService");
+  const category = catalog.getCategoryBySlug(slug);
+  if (!category) return {};
+  return pageMetadata({
+    title: category.title,
+    description: homeCopy.categories.text,
+    path: routes.category(category.slug),
+    image: catalog.getImage(category.imageKey),
+  });
 }
 
 /** Başlığı iki satıra böler: son kelime kor renkli satır olur (tasarım: "Bipolar / Forceps"). */
@@ -62,14 +73,17 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
     imageSrc: catalog.getImage(product.imageKey)?.src ?? null,
   }));
 
+  const crumbs: Crumb[] = [
+    { label: tr.common.home, href: routes.home },
+    { label: tr.nav.products, href: routes.products },
+    { label: category.title },
+  ];
+
   return (
     <>
+      <JsonLd data={breadcrumbLd(crumbs, routes.category(category.slug))} />
       <PageHero
-        crumbs={[
-          { label: tr.common.home, href: routes.home },
-          { label: tr.nav.products, href: routes.products },
-          { label: category.title },
-        ]}
+        crumbs={crumbs}
         title={splitTitle(category.title)}
         description={homeCopy.categories.text}
         ghost={String(position).padStart(2, "0")}

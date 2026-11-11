@@ -26,7 +26,7 @@ const COLORS = [
   { name: "Buz", hex: "#E7EFF4", token: "sand", swatch: "bg-sand text-ink", use: "Görsel zemini, şablon" },
   { name: "Derin Lacivert", hex: "#1E3040", token: "ink", swatch: "bg-ink text-white", use: "Başlık, metin, koyu düğme" },
   { name: "Arduvaz", hex: "#4C6274", token: "muted", swatch: "bg-muted text-white", use: "İkincil metin" },
-  { name: "Kor (logo)", hex: "#E4482F", token: "ember", swatch: "bg-ember text-ink", use: "Vurgu, perde, ikon" },
+  { name: "Kor (logo)", hex: "#E4482F", token: "ember", swatch: "bg-ember text-ink", use: "Vurgu, ikon" },
   { name: "Kor Koyu", hex: "#B8321D", token: "ember-d", swatch: "bg-ember-d text-white", use: "Birincil düğme, bağlantı" },
   { name: "Şarap (logo)", hex: "#8E1B26", token: "wine", swatch: "bg-wine text-white", use: "Hover, ikincil vurgu" },
   { name: "Çizgi", hex: "#D3E0E8", token: "line", swatch: "bg-line text-ink", use: "Ayırıcı ve hücre" },

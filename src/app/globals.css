@@ -17,7 +17,7 @@
   --color-sand: #e7eff4; /* görsel zemini */
   --color-ink: #1e3040; /* başlık, metin, koyu düğme */
   --color-muted: #4c6274; /* ikincil metin (5.7:1) */
-  --color-faint: #6b7f8f; /* arama katmanı yardımcı metin */
+  --color-faint: #5e707e; /* arama katmanı yardımcı metin — tasarımdaki #6B7F8F 3.9:1 idi; AA için koyulaştırıldı (ivory 4.85:1, tint 4.56:1) */
   --color-line: #d3e0e8; /* 1px ayırıcı */
   --color-ember: #e4482f; /* vurgu — yalnız büyük yazı / şekil */
   --color-ember-d: #b8321d; /* birincil düğme, bağlantı, etiket (6.0:1) */
@@ -55,7 +55,7 @@
   --ease-curtain: cubic-bezier(0.76, 0, 0.24, 1);
 
   /* Sürekli / hover animasyonları (giriş animasyonları motion ile) */
-  --animate-arrow-loop: arrow-loop 0.6s var(--ease-soft);
+  --animate-arrow-swap: arrow-swap 0.7s both;
   --animate-ul-redraw: ul-redraw 0.8s var(--ease-soft);
   --animate-spin-badge: spin 18s linear infinite;
   --animate-spin-ring: spin 14s linear infinite;
@@ -109,18 +109,25 @@
     }
   }
 
-  @keyframes arrow-loop {
+  /* Tek ok: hızlanarak çıkıp söner, görünmezken karşı tarafa geçer, yumuşakça yerine oturur. */
+  @keyframes arrow-swap {
     0% {
       transform: none;
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
     }
-    49% {
-      transform: translateX(140%);
+    38% {
+      transform: translate(var(--arrow-x, 18px), var(--arrow-y, 0px));
+      opacity: 0;
     }
-    50% {
-      transform: translateX(-140%);
+    39% {
+      transform: translate(calc(var(--arrow-x, 18px) * -1), calc(var(--arrow-y, 0px) * -1));
+      opacity: 0;
+      animation-timing-function: var(--ease-soft);
     }
     100% {
       transform: none;
+      opacity: 1;
     }
   }
   @keyframes ul-redraw {

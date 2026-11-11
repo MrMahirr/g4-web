@@ -3,10 +3,13 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { JsonLd } from "@/components/shared/JsonLd";
 import type { HeaderData } from "@/components/layout/types";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { container } from "@/core/container";
 import { corporateLinks, routes } from "@/data/navigation.data";
+import { siteDescription, siteTitle, siteUrl } from "@/lib/seo";
+import { siteGraph } from "@/lib/structured-data";
 import { StoreProvider } from "@/store/StoreProvider";
 import "./globals.css";
 
@@ -29,12 +32,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "G4 Yatırım İnşaat ve Danışmanlık A.Ş.",
+    default: siteTitle,
     template: "%s · G4",
   },
-  description:
-    "Hastaneler, klinikler ve sağlık kuruluşları için medikal ürünler, hastane tekstili ve tıbbi cihazlar.",
+  description: siteDescription,
+  applicationName: "G4",
+  // Kanonik adres burada verilmez: kökte verilirse tüm alt sayfalara anasayfa adresi olarak miras kalır.
+  openGraph: { type: "website", locale: "tr_TR", siteName: "G4", title: siteTitle, description: siteDescription },
+  twitter: { card: "summary_large_image" },
+  formatDetection: { telephone: false },
 };
 
 /** Header'ın ihtiyaç duyduğu veriyi sunucuda hazırlar; istemciye yalnız gereken alanlar gider. */
@@ -68,6 +76,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="tr" className={`${geist.variable} ${inter.variable} ${geistMono.variable}`}>
       <body>
+        <JsonLd data={siteGraph(catalog.getCompany())} />
         <StoreProvider>
           <MotionProvider>
             <SiteHeader data={buildHeaderData()} />

@@ -11,10 +11,11 @@ import { routes } from "@/data/navigation.data";
 import { pageCopy } from "@/data/pages.data";
 import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo";
 
 const copy = pageCopy.about;
 
-export const metadata: Metadata = { title: copy.title, description: copy.lead };
+export const metadata: Metadata = pageMetadata({ title: copy.title, description: copy.lead, path: routes.about });
 
 /** Hakkımızda (tasarım: D4Hakkimizda). */
 export default function AboutPage() {

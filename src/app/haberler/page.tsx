@@ -12,8 +12,13 @@ import { pageCopy } from "@/data/pages.data";
 import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
 import { formatShortDate, splitSentences } from "@/lib/text";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Haberler", description: "G4 kurumsal haberleri ve duyuruları." };
+export const metadata: Metadata = pageMetadata({
+  title: "Haberler",
+  description: "G4 kurumsal haberleri ve duyuruları.",
+  path: routes.news,
+});
 
 /** Haberler (tasarım: D4Haberler) — en yeni haber büyük, diğerleri tarih sütunlu satır. */
 export default function NewsPage() {

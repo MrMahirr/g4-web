@@ -1,6 +1,6 @@
 import Image from "next/image";
+import { ArrowSwap } from "@/components/ui/ArrowSwap";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { Tag } from "@/components/ui/Tag";
@@ -36,7 +36,6 @@ export function Categories({ categories }: Props) {
           <Link
             key={category.slug}
             href={routes.category(category.slug)}
-            aria-label={category.title}
             className={cn(
               "group/acc relative isolate min-w-0 flex-[1_1_0] overflow-hidden rounded-card bg-white text-white no-underline ring-1 ring-line ring-inset",
               "transition-[flex-grow] duration-800 ease-soft hover:grow-[4.5] focus-visible:grow-[4.5] motion-reduce:transition-none",
@@ -58,11 +57,11 @@ export function Categories({ categories }: Props) {
               ) : null}
             </span>
             <span className="absolute inset-0 -z-10 bg-linear-to-b from-ink/0 from-40% to-ink/92" />
-            <span className="absolute top-4 left-[18px] rounded-tag bg-ivory px-2 py-1 font-mono text-xs text-ink">
+            <span aria-hidden="true" className="absolute top-4 left-[18px] rounded-tag bg-ivory px-2 py-1 font-mono text-xs text-ink">
               {String(index + 1).padStart(2, "0")}
             </span>
+            {/* Bağlantının erişilebilir adı bu başlıktan gelir (aria-label görünen metinle çakışıyordu). */}
             <span
-              aria-hidden="true"
               className={cn(
                 "absolute bottom-7 left-1/2 -translate-x-1/2 rotate-180 font-display text-lg font-semibold whitespace-nowrap [writing-mode:vertical-rl]",
                 "transition-opacity duration-400 group-hover/acc:opacity-0 group-focus-visible/acc:opacity-0",
@@ -83,8 +82,8 @@ export function Categories({ categories }: Props) {
               )}
             >
               <strong className="font-display text-[26px] leading-[1.15] tracking-[-0.02em]">{category.title}</strong>
-              <span className="flex size-[52px] flex-none items-center justify-center rounded-full bg-ember">
-                <ArrowUpRight size={20} />
+              <span className="relative flex size-[52px] flex-none items-center justify-center overflow-hidden rounded-full bg-ember">
+                <ArrowSwap trigger="acc" direction="up-right" size={20} />
               </span>
             </span>
           </Link>

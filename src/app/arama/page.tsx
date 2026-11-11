@@ -7,8 +7,9 @@ import { routes } from "@/data/navigation.data";
 import { pageCopy } from "@/data/pages.data";
 import { tr } from "@/dictionaries/tr";
 import { SearchResults } from "./SearchResults";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: pageCopy.search.title, robots: { index: false, follow: true } };
+export const metadata: Metadata = pageMetadata({ title: pageCopy.search.title, path: routes.search, noindex: true });
 
 /** Arama sonuçları (/arama?q=) — tasarımı yok; arama katmanının görünümüyle. */
 export default function SearchPage() {

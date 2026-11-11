@@ -15,6 +15,9 @@ import { routes } from "@/data/navigation.data";
 import { pageCopy } from "@/data/pages.data";
 import { tr } from "@/dictionaries/tr";
 import { articleBlocks, formatShortDate, splitInTwo } from "@/lib/text";
+import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbLd, newsArticleLd } from "@/lib/structured-data";
 
 const copy = pageCopy.news;
 
@@ -29,7 +32,14 @@ export async function generateMetadata({ params }: PageProps<"/haber/[slug]">): 
   const { slug } = await params;
   const catalog = container.resolve("CatalogService");
   const item = catalog.getNewsBySlug(slug);
-  return item ? { title: item.title, description: catalog.getNewsExcerpt(item) } : {};
+  if (!item) return {};
+  return pageMetadata({
+    title: item.title,
+    description: catalog.getNewsExcerpt(item),
+    path: routes.newsItem(item.slug),
+    image: catalog.getImage(item.imageKey),
+    type: "article",
+  });
 }
 
 /** Haber detay (tasarım: D4HaberDetay) — okuma çubuğu, taşan kapak, yapışkan yan bilgi, gövde, sonraki haber. */
@@ -47,18 +57,17 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
   const socials = catalog.getCompany().socials.filter((social) => social.href && ["linkedin", "x", "whatsapp"].includes(social.channel));
   const [firstLine, secondLine] = splitInTwo(item.title);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline: item.title,
-    datePublished: item.publishedAt,
-    image: cover ? [cover.src] : undefined,
-    publisher: { "@type": "Organization", name: catalog.getCompany().legalName },
-  };
+  const path = routes.newsItem(item.slug);
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <JsonLd data={newsArticleLd(item, path, catalog.getNewsExcerpt(item), cover)} />
+      <JsonLd
+        data={breadcrumbLd(
+          [{ label: tr.common.home, href: routes.home }, { label: "Haberler", href: routes.news }, { label: item.title }],
+          path,
+        )}
+      />
       <ReadingProgress />
 
       <section className="relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-[190px] pb-[220px] grain">

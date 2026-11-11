@@ -8,10 +8,11 @@ import { routes } from "@/data/navigation.data";
 import { pageCopy } from "@/data/pages.data";
 import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo";
 
 const copy = pageCopy.career;
 
-export const metadata: Metadata = { title: "Kariyer", description: copy.lead };
+export const metadata: Metadata = pageMetadata({ title: "Kariyer", description: copy.lead, path: routes.career });
 
 /** Kariyer / İK başvurusu (tasarım: D4Kariyer). T.C. kimlik no alanı kaldırıldı (plan Ç10). */
 export default function CareerPage() {

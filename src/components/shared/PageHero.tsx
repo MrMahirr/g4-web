@@ -1,8 +1,10 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { MaskedHeading } from "@/components/motion/MaskedHeading";
 import { Enter } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { Tag } from "@/components/ui/Tag";
+import type { ImageEntry } from "@/core/types";
 import { cn } from "@/lib/utils";
 import { Breadcrumb, type Crumb } from "./Breadcrumb";
 
@@ -28,6 +30,8 @@ type Props = {
   children?: ReactNode;
   /** Başlık bloğunun altında, tam genişlikte duran içerik (kariyer adımları). */
   footer?: ReactNode;
+  /** Başlığın arkasında duran tam genişlik görsel (üzerine okunurluk için açık perde çekilir). */
+  image?: ImageEntry | null;
 };
 
 /** İç sayfa başlığı (tasarım: .ph-hero) — sayfa yolu, etiket, maskeli başlık, hayalet dev yazı. */
@@ -44,10 +48,17 @@ export function PageHero({
   className,
   children,
   footer,
+  image,
 }: Props) {
   const headingDelay = tag ? delay + 0.05 : delay;
   return (
     <section className={cn("relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-[190px] pb-[90px] grain", className)}>
+      {image ? (
+        <>
+          <Image src={image.src} alt="" fill priority sizes="100vw" className="-z-20 object-cover object-center" />
+          <div aria-hidden="true" className="absolute inset-0 -z-20 bg-linear-to-r from-white/95 via-white/75 to-white/20" />
+        </>
+      ) : null}
       {ghost ? (
         <Enter
           kind="ghost"

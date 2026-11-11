@@ -1,9 +1,9 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FeaturedProductList } from "@/components/catalog/FeaturedProductList";
 import { ProductDetail } from "@/components/catalog/ProductDetail";
 import { Enter } from "@/components/motion/Reveal";
-import { Breadcrumb } from "@/components/shared/Breadcrumb";
+import { Breadcrumb, type Crumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/ui/Container";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import { container } from "@/core/container";
@@ -11,6 +11,9 @@ import type { ImageEntry } from "@/core/types";
 import { routes } from "@/data/navigation.data";
 import { tr } from "@/dictionaries/tr";
 import { toFeaturedRow } from "@/lib/featured";
+import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbLd, productLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return container
@@ -24,12 +27,12 @@ export async function generateMetadata({ params }: PageProps<"/urun/[slug]">): P
   const catalog = container.resolve("CatalogService");
   const product = catalog.getProductBySlug(slug);
   if (!product) return {};
-  const image = catalog.getImage(product.imageKey);
-  return {
+  return pageMetadata({
     title: product.title,
     description: product.description,
-    openGraph: image ? { images: [image.src] } : undefined,
-  };
+    path: routes.product(product.slug),
+    image: catalog.getImage(product.imageKey),
+  });
 }
 
 /** Ürün detay sayfası (tasarım: D4UrunDetay). */
@@ -44,20 +47,22 @@ export default async function ProductPage({ params }: PageProps<"/urun/[slug]">)
     .map((key) => catalog.getImage(key))
     .filter((image): image is ImageEntry => image !== null);
   const related = catalog.getRelatedProducts(slug).map((item) => toFeaturedRow(catalog, item));
+  const path = routes.product(product.slug);
+  const crumbs: Crumb[] = [
+    { label: tr.common.home, href: routes.home },
+    { label: tr.nav.products, href: routes.products },
+    ...(category ? [{ label: category.title, href: routes.category(category.slug) }] : []),
+    { label: product.code ?? product.name },
+  ];
 
   return (
     <>
+      <JsonLd data={productLd(product, path, images, category?.title)} />
+      <JsonLd data={breadcrumbLd([...crumbs.slice(0, -1), { label: product.name }], path)} />
       <section className="bg-tint pt-[150px] pb-10">
         <Container>
           <Enter>
-            <Breadcrumb
-              items={[
-                { label: tr.common.home, href: routes.home },
-                { label: tr.nav.products, href: routes.products },
-                ...(category ? [{ label: category.title, href: routes.category(category.slug) }] : []),
-                { label: product.code ?? product.name },
-              ]}
-            />
+            <Breadcrumb items={crumbs} />
           </Enter>
         </Container>
       </section>

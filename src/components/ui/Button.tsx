@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { cva, type VariantProps } from "class-variance-authority";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { ArrowSwap } from "./ArrowSwap";
 
 /** Tasarım D düğmesi: köşeli, ok kutulu; üzerine gelince zıt renk alttan dolar. */
 const buttonVariants = cva(
@@ -45,20 +45,6 @@ const arrowBoxVariants = cva("relative flex items-center justify-center overflow
 
 export type ButtonArrow = "right" | "up-right" | "none";
 
-function ArrowGlyph({ arrow }: { arrow: Exclude<ButtonArrow, "none"> }) {
-  const className = "group-hover/bt:animate-arrow-loop motion-reduce:animate-none";
-  switch (arrow) {
-    case "right":
-      return <ArrowRight size={18} aria-hidden="true" className={className} />;
-    case "up-right":
-      return <ArrowUpRight size={16} aria-hidden="true" className={className} />;
-    default: {
-      const exhaustive: never = arrow;
-      return exhaustive;
-    }
-  }
-}
-
 type CommonProps = VariantProps<typeof buttonVariants> & {
   /** Ok kutusu: birincil eylemlerde var, ikincil (ghost) düğmelerde çoğunlukla yok. */
   arrow?: ButtonArrow;
@@ -66,14 +52,8 @@ type CommonProps = VariantProps<typeof buttonVariants> & {
   children: ReactNode;
 };
 
-type LinkButtonProps = CommonProps & { href: string } & Omit<
-    ComponentPropsWithoutRef<typeof Link>,
-    "href" | "className" | "children"
-  >;
-type NativeButtonProps = CommonProps & { href?: undefined } & Omit<
-    ComponentPropsWithoutRef<"button">,
-    "className" | "children"
-  >;
+type LinkButtonProps = CommonProps & { href: string } & Omit<ComponentPropsWithoutRef<typeof Link>, "href" | "className" | "children">;
+type NativeButtonProps = CommonProps & { href?: undefined } & Omit<ComponentPropsWithoutRef<"button">, "className" | "children">;
 
 export function Button(props: LinkButtonProps | NativeButtonProps) {
   const { variant, size, arrow = "right", className, children, ...rest } = props;
@@ -83,7 +63,7 @@ export function Button(props: LinkButtonProps | NativeButtonProps) {
       <span className="flex items-center px-6 whitespace-nowrap">{children}</span>
       {arrow !== "none" ? (
         <span className={arrowBoxVariants({ variant, size })}>
-          <ArrowGlyph arrow={arrow} />
+          <ArrowSwap trigger="bt" direction={arrow} size={arrow === "right" ? 18 : 16} />
         </span>
       ) : null}
     </>

@@ -11,10 +11,12 @@ type QtyProps = {
   value: number;
   onChange: (value: number) => void;
   size?: "md" | "sm";
+  /** Görünür <label htmlFor> yoksa ekran okuyucu adı (ör. teklif çekmecesindeki satırlar). */
+  label?: string;
 };
 
 /** Miktar kutusu (tasarım: .qbox) — eksi · sayı · artı. */
-export function QuantityBox({ id, value, onChange, size = "md" }: QtyProps) {
+export function QuantityBox({ id, value, onChange, size = "md", label }: QtyProps) {
   const clamp = (next: number) => Math.min(MAX_QTY, Math.max(1, Number.isFinite(next) ? Math.round(next) : 1));
   const height = size === "md" ? "h-14" : "h-11";
   const button = cn(
@@ -29,6 +31,7 @@ export function QuantityBox({ id, value, onChange, size = "md" }: QtyProps) {
       </button>
       <input
         id={id}
+        aria-label={label}
         type="number"
         inputMode="numeric"
         min={1}

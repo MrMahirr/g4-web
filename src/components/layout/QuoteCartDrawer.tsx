@@ -15,6 +15,7 @@ import { useInquiry } from "@/hooks/useInquiry";
 import { useOverlay } from "@/hooks/useOverlay";
 import { useQuoteCart } from "@/hooks/useQuoteCart";
 import { EASE_SOFT } from "@/lib/utils";
+import { useReturnFocus } from "@/hooks/useReturnFocus";
 import type { QuoteProductInfo } from "./types";
 
 /**
@@ -35,6 +36,8 @@ export function QuoteCartDrawer({ products }: { products: QuoteProductInfo[] }) 
     router.push(routes.contactForm);
   };
 
+  const returnFocus = useReturnFocus();
+
   return (
     <Dialog.Root open={drawer.isOpen} onOpenChange={drawer.setOpen}>
       <AnimatePresence>
@@ -49,7 +52,7 @@ export function QuoteCartDrawer({ products }: { products: QuoteProductInfo[] }) 
                 transition={{ duration: 0.3 }}
               />
             </Dialog.Overlay>
-            <Dialog.Content asChild forceMount aria-describedby={undefined}>
+            <Dialog.Content asChild forceMount aria-describedby={undefined} {...returnFocus}>
               <motion.div
                 className="fixed inset-y-0 right-0 z-[95] flex w-full max-w-[520px] flex-col bg-paper shadow-[0_40px_80px_-30px_rgb(30_48_64/0.45)]"
                 initial={reduceMotion ? { opacity: 0 } : { x: "100%" }}
@@ -111,6 +114,7 @@ export function QuoteCartDrawer({ products }: { products: QuoteProductInfo[] }) 
                             <div className="flex flex-wrap gap-3 pl-[72px] max-row:pl-0">
                               <QuantityBox
                                 id={`teklif-adet-${line.productSlug}`}
+                                label={`${name} — ${tr.product.qty}`}
                                 size="sm"
                                 value={line.qty}
                                 onChange={(qty) => cart.setQty(line.productSlug, qty)}

@@ -112,10 +112,11 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
         <button
           type="button"
           onClick={() => current && setLightboxOpen(true)}
-          aria-label={current ? "Görseli büyüt" : undefined}
           disabled={!current}
           className="relative aspect-square cursor-zoom-in overflow-hidden rounded-card bg-white disabled:cursor-default"
         >
+          {/* Ad görünen içerikten gelir: görselin alt metni + bu metin (+ "Temsili görsel" etiketi). */}
+          {current ? <span className="sr-only">Görseli büyüt</span> : null}
           <AnimatePresence initial={false}>
             {current ? (
               <motion.span
@@ -143,7 +144,11 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
             )}
           </AnimatePresence>
           {category ? (
-            <span className="absolute top-4 left-4 rounded-tag bg-tint px-2.5 py-1.5 font-mono text-[11px] tracking-[0.04em] text-ink uppercase">
+            // Kategori sayfa yolunda ve bilgi sütununda da var; düğme adına karışmasın.
+            <span
+              aria-hidden="true"
+              className="absolute top-4 left-4 rounded-tag bg-tint px-2.5 py-1.5 font-mono text-[11px] tracking-[0.04em] text-ink uppercase"
+            >
               {category.title}
             </span>
           ) : null}

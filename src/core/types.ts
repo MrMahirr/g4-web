@@ -6,7 +6,7 @@ export type ServiceDomain = "medical" | "construction" | "textile" | "fleet";
 export type ImageKey = string;
 
 export interface ImageEntry {
-  /** public/ altındaki yol ("/images/urunler/foley-sonda-cesitleri.jpg"). */
+  /** public/ altındaki yol ("/images/urunler/foley-sonda-cesitleri.webp") — `npm run images` ile gorsel-arsivi/ içinden üretilir. */
   src: string;
   alt: string;
   width: number;
@@ -126,7 +126,7 @@ export interface SocialLink {
 export interface CompanyInfo {
   legalName: string;
   shortName: string;
-  address: { full: string; street: string; district: string; city: string; mapsUrl: string };
+  address: { full: string; street: string; district: string; city: string; mapsUrl: string; mapsEmbedUrl: string };
   phone: { display: string; tel: string };
   email: string;
   whatsappUrl: string;

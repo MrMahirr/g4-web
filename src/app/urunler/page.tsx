@@ -1,7 +1,7 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import { ArrowSwap } from "@/components/ui/ArrowSwap";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { FeaturedProductList } from "@/components/catalog/FeaturedProductList";
 import { SearchTrigger } from "@/components/catalog/SearchTrigger";
 import { Reveal } from "@/components/motion/Reveal";
@@ -14,11 +14,13 @@ import { routes } from "@/data/navigation.data";
 import { tr } from "@/dictionaries/tr";
 import { toFeaturedRow } from "@/lib/featured";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Ürün Grupları",
   description: homeCopy.categories.text,
-};
+  path: routes.products,
+});
 
 /** Ürün grupları (tasarım: D4Urunler). */
 export default function ProductsPage() {
@@ -89,11 +91,11 @@ export default function ProductsPage() {
                     <span
                       aria-hidden="true"
                       className={cn(
-                        "flex size-[52px] flex-none items-center justify-center rounded-full border border-current transition duration-[600ms] ease-soft",
-                        "group-hover/cg:-rotate-45 group-hover/cg:border-ember group-hover/cg:bg-ember group-hover/cg:text-white",
+                        "relative flex size-[52px] flex-none items-center justify-center overflow-hidden rounded-full border border-current transition-colors duration-500 ease-soft",
+                        "group-hover/cg:border-ember group-hover/cg:bg-ember group-hover/cg:text-white",
                       )}
                     >
-                      <ArrowRight size={18} />
+                      <ArrowSwap trigger="cg" />
                     </span>
                   </span>
                 </Link>

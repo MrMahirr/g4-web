@@ -15,6 +15,10 @@ import { pageCopy } from "@/data/pages.data";
 import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
 import { splitSentences } from "@/lib/text";
+import { pageMetadata } from "@/lib/seo";
+import type { Crumb } from "@/components/shared/Breadcrumb";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbLd, serviceLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return container
@@ -25,8 +29,15 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/hizmet/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const service = container.resolve("CatalogService").getServiceBySlug(slug);
-  return service ? { title: service.title, description: service.shortDescription } : {};
+  const catalog = container.resolve("CatalogService");
+  const service = catalog.getServiceBySlug(slug);
+  if (!service) return {};
+  return pageMetadata({
+    title: service.title,
+    description: service.shortDescription,
+    path: routes.service(service.slug),
+    image: catalog.getImage(service.imageKey),
+  });
 }
 
 /** Hizmet detay (tasarım: D4HizmetDetay) — kapak, yapışkan hizmet listesi, gövde, teklif formu. */
@@ -45,14 +56,19 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
   const [lead, ...restOfFirst] = splitSentences(service.paragraphs[0] ?? "");
   const paragraphs = [restOfFirst.join(" "), ...service.paragraphs.slice(1)].filter(Boolean);
 
+  const path = routes.service(service.slug);
+  const crumbs: Crumb[] = [
+    { label: tr.common.home, href: routes.home },
+    { label: tr.nav.services, href: routes.services },
+    { label: service.title },
+  ];
+
   return (
     <>
+      <JsonLd data={serviceLd(service, path, image)} />
+      <JsonLd data={breadcrumbLd(crumbs, path)} />
       <PageHero
-        crumbs={[
-          { label: tr.common.home, href: routes.home },
-          { label: tr.nav.services, href: routes.services },
-          { label: service.title },
-        ]}
+        crumbs={crumbs}
         title={[service.title]}
         titleMotion="rise"
         titleClassName="max-w-[1100px] text-[clamp(42px,6vw,96px)] leading-none tracking-[-0.04em]"

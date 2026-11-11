@@ -1,6 +1,6 @@
 # G4 Web (g4.com.tr)
 
-G4 Yatırım İnşaat ve Danışmanlık A.Ş. kurumsal sitesi. Next.js 16 (App Router, Cache Components) + React 19 + Tailwind CSS 4 + TypeScript.
+G4 kurumsal sitesi. Next.js 16 (App Router, Cache Components) + React 19 + Tailwind CSS 4 + TypeScript.
 
 ## Komutlar
 

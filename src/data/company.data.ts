@@ -2,7 +2,7 @@ import type { CompanyInfo } from "@/core/types";
 
 /** İletişim bilgileri tek kaynak: header, footer, iletişim sayfası ve JSON-LD buradan okur. */
 export const company: CompanyInfo = {
-  legalName: "G4 Yatırım İnşaat ve Danışmanlık A.Ş.",
+  legalName: "G4",
   shortName: "G4",
   address: {
     full: "Remzi Oğuz Arık Mahallesi Paris Caddesi Paris Apartmanı No 64/5 Çankaya/Ankara",
@@ -10,6 +10,7 @@ export const company: CompanyInfo = {
     district: "Çankaya",
     city: "Ankara",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Paris+Caddesi+64%2F5+%C3%87ankaya+Ankara",
+    mapsEmbedUrl: "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sParis+Caddesi+64/5+%C3%87ankaya+Ankara!6i16!3m1!1str!5m1!1str",
   },
   phone: { display: "0539 516 3606", tel: "+905395163606" },
   email: "satinalma@g4.com.tr",

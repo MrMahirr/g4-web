@@ -7,27 +7,22 @@ import { container } from "@/core/container";
 import { routes } from "@/data/navigation.data";
 import { pageCopy } from "@/data/pages.data";
 import { tr } from "@/dictionaries/tr";
+import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { faqLd } from "@/lib/structured-data";
 
 const copy = pageCopy.faq;
 
-export const metadata: Metadata = { title: "Sıkça Sorulan Sorular", description: copy.lead };
+export const metadata: Metadata = pageMetadata({ title: "Sıkça Sorulan Sorular", description: copy.lead, path: routes.faq });
 
 /** Sıkça Sorulan Sorular (tasarım: D4SSS) + FAQPage yapılandırılmış verisi. */
 export default function FaqPage() {
-  const faq = container.resolve("CatalogService").getFaq();
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faq.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  };
+  const catalog = container.resolve("CatalogService");
+  const faq = catalog.getFaq();
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <JsonLd data={faqLd(faq)} />
       <PageHero
         crumbs={[{ label: tr.common.home, href: routes.home }, { label: tr.nav.corporate }, { label: "SSS" }]}
         title={[
@@ -38,6 +33,7 @@ export default function FaqPage() {
         ]}
         description={copy.lead}
         ghost="?"
+        image={catalog.getImage("hero/sorular")}
       />
 
       <Container as="section" className="max-w-[1100px] py-[110px]">

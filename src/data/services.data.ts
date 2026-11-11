@@ -9,7 +9,7 @@ export const services: ServiceItem[] = [
     shortDescription:
       "Sağlık kurumlarının ihtiyaçlarına uygun konsept geliştirme, projelendirme ve uygulama süreçlerinde uçtan uca hizmet sunmaktayız.",
     paragraphs: [
-      "G4 Yatırım İnşaat ve Danışmanlık olarak; sağlık kurumlarının ihtiyaçlarına uygun konsept geliştirme, projelendirme ve uygulama süreçlerinde uçtan uca hizmet sunmaktayız. Hastane, tıp merkezi, poliklinik ve sağlık tesislerinin konsept, mimari ve uygulama projeleri uzman ekiplerimiz tarafından hazırlanmakta; projeler ergonomik, işlevsel ve ilgili mevzuat ile ruhsatlandırma şartlarına uygun hale getirilmektedir.",
+      "G4 olarak; sağlık kurumlarının ihtiyaçlarına uygun konsept geliştirme, projelendirme ve uygulama süreçlerinde uçtan uca hizmet sunmaktayız. Hastane, tıp merkezi, poliklinik ve sağlık tesislerinin konsept, mimari ve uygulama projeleri uzman ekiplerimiz tarafından hazırlanmakta; projeler ergonomik, işlevsel ve ilgili mevzuat ile ruhsatlandırma şartlarına uygun hale getirilmektedir.",
       "Bununla birlikte mevcut sağlık tesislerinin tadilat, yenileme ve dönüşüm projeleri profesyonel olarak planlanmakta, uygulama ve yapım süreçleri titizlikle yönetilmektedir. G4, sağlık yatırımlarının planlama aşamasından anahtar teslim uygulamaya kadar tüm süreçlerinde güvenilir çözüm ortağı olarak hizmet vermektedir.",
     ],
     imageKey: "hizmetler/insaat",
@@ -48,9 +48,9 @@ export const services: ServiceItem[] = [
     slug: "g4-medikal-faaliyetler",
     title: "G4 Medikal Faaliyetler",
     shortDescription:
-      "G4 Medikal olarak sağlık sektörünün ihtiyaç duyduğu ürün, ekipman ve profesyonel çözümleri tek çatı altında sunuyoruz.",
+      "G4 olarak sağlık sektörünün ihtiyaç duyduğu ürün, ekipman ve profesyonel çözümleri tek çatı altında sunuyoruz.",
     paragraphs: [
-      "G4 Medikal olarak sağlık sektörünün ihtiyaç duyduğu ürün, ekipman ve profesyonel çözümleri tek çatı altında sunuyoruz. Hastaneler, tıp merkezleri, klinikler, poliklinikler, laboratuvarlar ve sağlık kuruluşlarının ihtiyaçlarına yönelik geniş ürün yelpazemizle hizmet vermekteyiz.",
+      "G4 olarak sağlık sektörünün ihtiyaç duyduğu ürün, ekipman ve profesyonel çözümleri tek çatı altında sunuyoruz. Hastaneler, tıp merkezleri, klinikler, poliklinikler, laboratuvarlar ve sağlık kuruluşlarının ihtiyaçlarına yönelik geniş ürün yelpazemizle hizmet vermekteyiz.",
       "Kalite, güvenilirlik ve sürdürülebilir hizmet anlayışını temel alan firmamız; medikal sarf malzemelerinden hastane tekstiline, tıbbi cihazlardan sağlık yapılarının projelendirilmesine kadar birçok alanda çözüm ortağı olarak faaliyet göstermektedir. Sağlık sektöründeki gelişmeleri yakından takip ederek, kurumların ihtiyaçlarına uygun yenilikçi ve ekonomik çözümler sunmayı hedefliyoruz.",
       "Uzman kadromuz ve güçlü tedarik ağımız sayesinde ürün temin süreçlerini hızlı, güvenilir ve etkin bir şekilde yönetiyor; müşterilerimizin operasyonel verimliliğine katkı sağlıyoruz. Her projede kalite standartlarını ön planda tutarak, sağlık hizmetlerinin daha güvenli ve daha verimli sunulmasına destek oluyoruz.",
     ],
