@@ -19,6 +19,10 @@ export function Hero({ image }: { image: ImageEntry | null }) {
       </div>
       <div
         aria-hidden="true"
+        className="absolute inset-0 -z-10 backdrop-blur-[10px] [mask-image:linear-gradient(to_right,black_30%,transparent_85%)] max-stack:[mask-image:none]"
+      />
+      <div
+        aria-hidden="true"
         className="absolute inset-0 -z-10 bg-linear-to-r from-white/85 via-white/55 via-40% to-white/0 max-stack:from-white/85 max-stack:via-white/70 max-stack:via-60% max-stack:to-white/30"
       />
       <Enter
