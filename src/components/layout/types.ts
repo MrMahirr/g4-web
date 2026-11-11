@@ -16,6 +16,10 @@ export type HeaderData = {
   serviceLinks: NavLinkItem[];
   categoryLinks: NavLinkItem[];
   menuImages: { kurumsal?: string; hizmetler?: string };
+};
+
+/** Arama katmanı ve teklif çekmecesinin ihtiyaç duyduğu katalog özeti — /api/katalog-ozet (plan 8.5). */
+export type CatalogSummary = {
   searchIndex: SearchEntryWithImage[];
   quoteProducts: QuoteProductInfo[];
 };

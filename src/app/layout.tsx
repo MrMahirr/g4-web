@@ -29,6 +29,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin", "latin-ext"],
   display: "swap",
+  // Yalnız küçük etiketlerde; önceden yüklenirse ekran üstü görselle bant genişliği için yarışıyordu (plan 8.5).
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -60,13 +62,6 @@ function buildHeaderData(): HeaderData {
       .getCategories()
       .map((category) => ({ label: category.title, href: routes.category(category.slug) })),
     menuImages: { kurumsal: imageSrc("menu/kurumsal"), hizmetler: imageSrc("menu/hizmetler") },
-    searchIndex: catalog.getSearchIndex().map((entry) => ({ ...entry, imageSrc: imageSrc(entry.imageKey) })),
-    quoteProducts: catalog.getProducts().map((product) => ({
-      slug: product.slug,
-      name: product.name,
-      code: product.code,
-      imageSrc: imageSrc(product.imageKey),
-    })),
   };
 }
 

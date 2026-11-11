@@ -7,7 +7,7 @@ export const pageCopy = {
   about: {
     title: "Hakkımızda",
     lead: "Yenilikçi vizyonumuz ve kurumsal yaklaşımımızla sizlere daha yakından tanıtmak istiyoruz.",
-    coverImageKey: "kurumsal/hakkimizda-1",
+    coverImageKey: "hero/hakkimizda",
     intro: [
       "Kalite, güven ve sürdürülebilir başarı anlayışıyla hareket eden şirketimiz; modern iş modeli, profesyonel yaklaşımı ve gelişime açık vizyonuyla sektörde fark yaratmayı hedeflemektedir.",
       "Geleceğe değer katan projelerimiz ve müşteri memnuniyetini esas alan hizmet anlayışımızla büyümeye ve üretmeye devam ediyoruz.",

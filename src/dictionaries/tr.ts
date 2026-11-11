@@ -44,6 +44,7 @@ export const tr = {
     noResultsBefore: "için sonuç yok.",
     noResultsLink: "Bize yazın",
     noResultsAfter: ", sizin için tedarik edelim.",
+    loading: "Aranıyor…",
   },
   product: {
     code: "Ürün Kodu",

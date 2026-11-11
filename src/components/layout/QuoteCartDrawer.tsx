@@ -15,15 +15,21 @@ import { useInquiry } from "@/hooks/useInquiry";
 import { useOverlay } from "@/hooks/useOverlay";
 import { useQuoteCart } from "@/hooks/useQuoteCart";
 import { EASE_SOFT } from "@/lib/utils";
+import { useCatalogSummary } from "@/hooks/useCatalogSummary";
 import { useReturnFocus } from "@/hooks/useReturnFocus";
 import type { QuoteProductInfo } from "./types";
+
+const NO_PRODUCTS: QuoteProductInfo[] = [];
 
 /**
  * Çoklu ürün teklif listesi (plan K5). Tasarımda karşılığı yok; Tasarım D bileşenleriyle kuruldu:
  * sağdan kayan beyaz panel, liste satırı, miktar kutusu ve birim seçici.
  */
-export function QuoteCartDrawer({ products }: { products: QuoteProductInfo[] }) {
+export function QuoteCartDrawer() {
   const drawer = useOverlay("quoteCart");
+  // Ürün adları/görselleri çekmece ilk açıldığında /api/katalog-ozet'ten gelir (plan 8.5);
+  // gelene kadar satırda slug görünür.
+  const products = useCatalogSummary(drawer.isOpen)?.quoteProducts ?? NO_PRODUCTS;
   const cart = useQuoteCart();
   const inquiry = useInquiry();
   const router = useRouter();

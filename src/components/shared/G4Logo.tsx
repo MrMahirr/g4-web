@@ -42,5 +42,5 @@ export function G4Logo({ size = "nav", inverted = false, alt = "G4", className }
   );
 
   if (inverted) return image;
-  return <span className={cn("flex rounded-btn bg-paper", box, className)}>{image}</span>;
+  return <span className={cn("flex rounded-btn ", box, className)}>{image}</span>;
 }

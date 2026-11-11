@@ -23,6 +23,12 @@ export const images: Record<ImageKey, ImageEntry> = {
     width: 2000,
     height: 1116,
   },
+  "hero/hakkimizda": {
+    src: "/images/hero/hakkimizda.webp",
+    alt: "Ahşap ve beton detaylı, “Güven” yazılı aydınlık G4 medikal mağaza salonu",
+    width: 2000,
+    height: 1116,
+  },
   "hero/iletisim": {
     src: "/images/hero/iletisim.webp",
     alt: "Aydınlık ve bitkilerle çevrili hastane karşılama alanı",

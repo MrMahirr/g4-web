@@ -8,6 +8,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { useRef, type FormEvent, type KeyboardEvent } from "react";
 import { popularSearches, routes } from "@/data/navigation.data";
 import { tr } from "@/dictionaries/tr";
+import { useCatalogSummary } from "@/hooks/useCatalogSummary";
+import { useOverlay } from "@/hooks/useOverlay";
 import { useReturnFocus } from "@/hooks/useReturnFocus";
 import { useSearchOverlay } from "@/hooks/useSearchOverlay";
 import type { SearchFilter } from "@/lib/catalog";
@@ -15,12 +17,18 @@ import { cn, EASE_SOFT } from "@/lib/utils";
 import { SearchResultRow } from "./SearchResultRow";
 import type { NavLinkItem, SearchEntryWithImage } from "./types";
 
+const NO_ENTRIES: SearchEntryWithImage[] = [];
+
 const FILTERS: SearchFilter[] = ["all", "urun", "grup", "hizmet"];
 const MAX_RESULTS = 8;
 
 /** Tam ekran site içi arama (tasarım: D4Header .so). Ctrl/⌘ + K ile de açılır. */
-export function SearchOverlay({ index, categories }: { index: SearchEntryWithImage[]; categories: NavLinkItem[] }) {
-  const search = useSearchOverlay(index);
+export function SearchOverlay({ categories }: { categories: NavLinkItem[] }) {
+  // Dizin katman ilk açıldığında /api/katalog-ozet'ten gelir (plan 8.5).
+  const { isOpen } = useOverlay("search");
+  const summary = useCatalogSummary(isOpen);
+  const search = useSearchOverlay(summary?.searchIndex ?? NO_ENTRIES);
+  const loading = summary === null;
   const router = useRouter();
   const resultsRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -153,7 +161,12 @@ export function SearchOverlay({ index, categories }: { index: SearchEntryWithIma
                             Tüm sonuçlar ({search.results.length}) →
                           </Link>
                         ) : null}
-                        {shown.length === 0 ? (
+                        {loading ? (
+                          <p role="status" className="py-[18px] text-[15px] leading-[1.6] text-muted">
+                            {tr.search.loading}
+                          </p>
+                        ) : null}
+                        {!loading && shown.length === 0 ? (
                           <p className="py-[18px] text-[15px] leading-[1.6] text-muted">
                             “{search.query}” {tr.search.noResultsBefore}{" "}
                             <Link href={routes.contact} onClick={close} className="font-semibold text-ink">
