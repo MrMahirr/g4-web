@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { CategoryResults, type CategoryProduct } from "@/components/catalog/CategoryResults";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
-import { CircleOpen } from "@/components/motion/HeroMotion";
 import { Enter } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/shared/PageHero";
 import { Button } from "@/components/ui/Button";
@@ -20,6 +18,12 @@ import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/shared/JsonLd";
 import type { Crumb } from "@/components/shared/Breadcrumb";
 import { breadcrumbLd } from "@/lib/structured-data";
+
+/**
+ * Sayfanın tamamı `slug`'a bağlı; kategoriler `generateStaticParams` ile üretim derlemesinde hazır gelir.
+ * Boş bir iskelet göstermek yerine navigasyonun bloklanmasına izin verilir (geçersiz slug'da 404 kodu da korunur).
+ */
+export const instant = false;
 
 export function generateStaticParams() {
   return container
@@ -62,7 +66,6 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
 
   const categories = catalog.getCategories();
   const position = categories.findIndex((item) => item.slug === slug) + 1;
-  const image = catalog.getImage(category.imageKey);
   const products: CategoryProduct[] = catalog.getProducts({ categorySlug: slug }).map((product) => ({
     slug: product.slug,
     title: product.title,
@@ -87,13 +90,7 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
         title={splitTitle(category.title)}
         description={homeCopy.categories.text}
         ghost={String(position).padStart(2, "0")}
-        aside={
-          <CircleOpen origin="50% 50%" className="relative size-[300px] flex-none overflow-hidden rounded-full bg-white max-row:size-[220px]">
-            {image ? (
-              <Image src={image.src} alt={image.alt || category.title} fill sizes="300px" className="object-contain p-[12%]" />
-            ) : null}
-          </CircleOpen>
-        }
+        image={catalog.getImage(`hero/kategori-${slug}`)}
       />
 
       <Container as="section" className="flex flex-col gap-9 pt-10 pb-[130px]">

@@ -30,6 +30,7 @@ export default function AboutPage() {
         title={[copy.title]}
         description={copy.lead}
         ghost="G4"
+        image={catalog.getImage("hero/hakkimizda")}
       />
 
       <Container as="section" className="pt-10">

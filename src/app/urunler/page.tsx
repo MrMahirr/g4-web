@@ -41,6 +41,7 @@ export default function ProductsPage() {
           </span>,
         ]}
         description={homeCopy.categories.text}
+        image={catalog.getImage("hero/urunler")}
         ghost={productVariety ? String(productVariety) : undefined}
       >
         <SearchTrigger label="Ürün adı veya Ref kodu ile ara" />
@@ -80,7 +81,7 @@ export default function ProductsPage() {
                         alt=""
                         fill
                         sizes="(max-width: 600px) 90vw, (max-width: 960px) 45vw, 30vw"
-                        className="object-contain transition-[scale,rotate] duration-1000 ease-soft group-hover/cg:scale-[1.08] group-hover/cg:-rotate-3"
+                        className="rounded-xl object-cover transition-[scale] duration-1000 ease-soft group-hover/cg:scale-[1.05]"
                       />
                     ) : null}
                   </span>

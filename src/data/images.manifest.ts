@@ -1,6 +1,5 @@
 import type { ImageEntry, ImageKey } from "@/core/types";
 import productImages from "@/data/g4-product-images.json";
-import categoryImages from "@/data/g4-category-images.json";
 import { categories } from "@/data/categories.data";
 import { news } from "@/data/news.data";
 import { products } from "@/data/products.data";
@@ -9,7 +8,7 @@ import { services } from "@/data/services.data";
 /**
  * Görsel manifesti — sitedeki tüm fotoğrafların tek kaynağı.
  * Anahtar kuralı: "<klasör>/<slug>" → dosya public/images/<klasör>/<slug>.webp (orijinali gorsel-arsivi/ içinde; `npm run images` üretir)
- *   urunler/<ürün slug> · kategoriler/<kategori slug> · hizmetler/<kısa ad>
+ *   urunler/<ürün slug> · hero/kategori-<kategori slug> · hizmetler/<kısa ad>
  *   haberler/<haber slug>[-n] · hero/ana · ana/medikal-perde · menu/kurumsal · menu/hizmetler
  *   kurumsal/hakkimizda-1 · kurumsal/kariyer · kurumsal/sss · genel/404 · genel/og
  *
@@ -24,6 +23,17 @@ export const images: Record<ImageKey, ImageEntry> = {
     height: 1116,
   },
   "hero/hakkimizda": {
+    src: "/images/hero/hakkimizda-stetoskop.webp",
+    alt: "Beyaz bir masada mavi stetoskop ve dizüstü bilgisayar",
+    width: 2000,
+    height: 1276,
+    credit: {
+      site: "Pexels · Negative Space",
+      photographer: "Negative Space",
+      url: "https://www.pexels.com/photo/48604/",
+    },
+  },
+  "hero/hakkimizda-salon": {
     src: "/images/hero/hakkimizda.webp",
     alt: "Ahşap ve beton detaylı, “Güven” yazılı aydınlık G4 medikal mağaza salonu",
     width: 2000,
@@ -79,6 +89,103 @@ export const images: Record<ImageKey, ImageEntry> = {
       url: "https://unsplash.com/photos/vN5s_G5SPkY",
     },
   },
+  "hero/hizmet-insaat": {
+    src: "/images/hero/hizmetler-insaat-iskele.webp",
+    alt: "Mavi gökyüzü altında kalıp ve iskele destekleriyle yükselen betonarme çok katlı yapı",
+    width: 1648,
+    height: 2000,
+    credit: {
+      site: "Unsplash · Tolu Olubode",
+      photographer: "Tolu Olubode",
+      url: "https://unsplash.com/photos/PlBsJ5MybGc",
+    },
+  },
+  "hero/hizmet-arac-kiralama": {
+    src: "/images/hero/hizmetler-arac-kiralama.webp",
+    alt: "Kızıl kayalıklar arasında kıvrılan yolda ilerleyen gri SUV",
+    width: 1333,
+    height: 2000,
+    credit: {
+      site: "Unsplash · clement proust",
+      photographer: "clement proust",
+      url: "https://unsplash.com/photos/ms0G5L_wN4U",
+    },
+  },
+  "hero/hizmet-hastane-tekstili": {
+    src: "/images/hero/hizmetler-hastane-tekstili.webp",
+    alt: "Beyaz çarşaflı, mavi örtülü ve pembe paravanlı sıralı hastane yatakları",
+    width: 2000,
+    height: 1251,
+    credit: {
+      site: "Unsplash · Adhy Savala",
+      photographer: "Adhy Savala",
+      url: "https://unsplash.com/photos/zbpgmGe27p8",
+    },
+  },
+  "hero/hizmet-medikal": {
+    src: "/images/hero/hizmetler-ameliyathane.webp",
+    alt: "Ameliyat masası, tavan lambaları ve monitörlerle donatılmış aydınlık ameliyathane",
+    width: 2000,
+    height: 1333,
+    credit: {
+      site: "Unsplash · Marcel Scholte",
+      photographer: "Marcel Scholte",
+      url: "https://unsplash.com/photos/LPurJnihmQI",
+    },
+  },
+  "hero/urunler": {
+    src: "/images/hero/urunler.webp",
+    alt: "Mavi steril örtü üzerinde dizili cerrahi pensler, neşter ve gazlı bez",
+    width: 2000,
+    height: 1333,
+    credit: {
+      site: "Unsplash · César Badilla Miranda",
+      photographer: "César Badilla Miranda",
+      url: "https://unsplash.com/photos/Z6sbbTdPJTY",
+    },
+  },
+  "hero/kategori-bipolar-forceps": {
+    src: "/images/hero/bipolar-forceps.webp",
+    alt: "Mavi steril örtü üzerinde dizili bipolar forsepsler, penset uçları ve bağlantı kabloları",
+    width: 2000,
+    height: 1116,
+  },
+  "hero/kategori-gida-takviyesi-vitaminler": {
+    src: "/images/hero/gidda-takviye.webp",
+    alt: "Mutfak tezgâhında vitamin ve takviye şişeleri, kapsüller, portakal ve bitki çayları",
+    width: 2000,
+    height: 1116,
+  },
+  "hero/kategori-hastane-tekstili": {
+    src: "/images/hero/hastane-tekstil.webp",
+    alt: "Paslanmaz tezgâhta düzenli katlanmış hastane çarşafları, hasta önlükleri ve steril örtüler",
+    width: 2000,
+    height: 1116,
+  },
+  "hero/kategori-kozmetik-urunler": {
+    src: "/images/hero/kozmetik.webp",
+    alt: "Mermer yüzeyde far paleti, fondöten, ruj, makyaj fırçaları ve ayna",
+    width: 2000,
+    height: 1116,
+  },
+  "hero/kategori-temizlik-hijyen-grubu": {
+    src: "/images/hero/temizlik-hijyen.webp",
+    alt: "Temizlik arabası, dezenfektan şişeleri, mendiller, eldiven ve maske kutuları",
+    width: 2000,
+    height: 1116,
+  },
+  "hero/kategori-tibbi-cihazlar": {
+    src: "/images/hero/tibbi-cigazlar.webp",
+    alt: "Hasta monitörleri, defibrilatörler ve biyomedikal cihazların sergilendiği aydınlık showroom",
+    width: 2000,
+    height: 1116,
+  },
+  "hero/kategori-genel-tibbi-sarf-malzemeler": {
+    src: "/images/hero/tibbi-sarf.webp",
+    alt: "Tezgâhta nitril eldiven, cerrahi maske, gazlı bez, şırınga ve steril paketler",
+    width: 2000,
+    height: 1116,
+  },
   "hero/sorular": {
     src: "/images/hero/sorular.webp",
     alt: "Medikal cihaz ve ürünlerin sergilendiği aydınlık showroom",
@@ -90,17 +197,6 @@ export const images: Record<ImageKey, ImageEntry> = {
     alt: "Hastane odasında paslanmaz tezgâh üzerinde tansiyon aleti, stetoskop, eldiven, serum seti ve hasta monitörü",
     width: 2000,
     height: 1493,
-  },
-  "kategoriler/genel-tibbi-sarf-malzemeler": {
-    src: "/images/kategoriler/genel-tibbi-sarf-malzemeler.webp",
-    alt: "Raf üzerinde sıralı tıbbi şırıngalar",
-    width: 1000,
-    height: 1000,
-    credit: {
-      site: "Unsplash · Ibrahim Boran",
-      photographer: "Ibrahim Boran",
-      url: "https://unsplash.com/photos/assorted-color-syringes-on-clear-glass-rack-zsKFQs2kDpM",
-    },
   },
   "ana/medikal-perde": {
     src: "/images/hero/medical.webp",
@@ -237,42 +333,6 @@ export const images: Record<ImageKey, ImageEntry> = {
       url: "https://unsplash.com/photos/a-pile-of-surgical-scissors-on-a-blue-cloth-ucnh3ldFKcE",
     },
   },
-  "kategoriler/bipolar-forceps": {
-    src: "/images/kategoriler/bipolar-forceps.webp",
-    alt: "Mavi steril örtü üzerinde cerrahi forseps ve makaslar (temsili)",
-    width: 1000,
-    height: 1000,
-    representative: true,
-    credit: { site: "Unsplash · Jonathan Borba", photographer: "Jonathan Borba", url: "https://unsplash.com/photos/a-pile-of-surgical-scissors-on-a-blue-cloth-ucnh3ldFKcE" },
-  },
-  "kategoriler/temizlik-hijyen-grubu": {
-    src: "/images/kategoriler/temizlik-hijyen-grubu.webp",
-    alt: "Elde tutulan el antiseptiği şişesi",
-    width: 1000,
-    height: 1000,
-    credit: { site: "Unsplash · Kelly Sikkema", photographer: "Kelly Sikkema", url: "https://unsplash.com/photos/hand-sanitizer-bottle-V_-vbcHMATA" },
-  },
-  "kategoriler/tibbi-cihazlar": {
-    src: "/images/kategoriler/tibbi-cihazlar.webp",
-    alt: "Dalga biçimleri gösteren tıbbi hasta monitörü",
-    width: 1000,
-    height: 1000,
-    credit: { site: "Unsplash · Jair Lázaro", photographer: "Jair Lázaro", url: "https://unsplash.com/photos/medical-monitor-displaying-vital-signs-0lrJo37r6Nk" },
-  },
-  "kategoriler/gida-takviyesi-vitaminler": {
-    src: "/images/kategoriler/gida-takviyesi-vitaminler.webp",
-    alt: "Beyaz kapaklı şeffaf takviye kapsülü şişesi",
-    width: 1000,
-    height: 1000,
-    credit: { site: "Unsplash · NutraSeller Manufacturing", photographer: "NutraSeller Manufacturing", url: "https://unsplash.com/photos/clear-bottle-filled-with-capsules-and-blank-label-4zAj4yrcAIc" },
-  },
-  "kategoriler/kozmetik-urunler": {
-    src: "/images/kategoriler/kozmetik-urunler.webp",
-    alt: "Minimal bir sabun şişesi ve dağıtıcı",
-    width: 1000,
-    height: 1000,
-    credit: { site: "Unsplash · Valeriia Miller", photographer: "Valeriia Miller", url: "https://unsplash.com/photos/a-bottle-of-soap-sitting-on-top-of-a-soap-dispenser-sBqXnldQ9ak" },
-  },
   "hizmetler/arac-kiralama": {
     src: "/images/hizmetler/arac-kiralama.webp",
     alt: "Yağmurlu havada park edilmiş koyu renkli otomobil",
@@ -308,9 +368,28 @@ for (const product of products) {
   const src = (productImages as Record<string, string>)[product.slug];
   if (src) images[product.imageKey] = { src, alt: product.name, width: 1000, height: 1000 };
 }
-for (const category of categories) {
-  const src = (categoryImages as Record<string, string>)[category.slug];
-  if (src) images[category.imageKey] = { src, alt: category.title, width: 1000, height: 1000 };
+
+// Haber görselleri: Güven Sağlık Grubu "Bizden Haberler" sayfasından (https://www.guven.com.tr/bizden-haberler).
+const newsImageSizes: Record<string, [number, number]> = {
+  "guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik": [1920, 840],
+  "peryon-networking-bulusmasinda-longevity-yi-prof-dr-pelin-aribal-ayral-dan-dinledik": [1920, 840],
+  "peryon-ilk-networking-bulusmasi-guven-de": [1920, 840],
+  "guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik-gunu": [1920, 1080],
+};
+for (const item of news) {
+  const size = newsImageSizes[item.slug];
+  if (!size) continue;
+  images[item.imageKey] = {
+    src: `/images/${item.imageKey}.webp`,
+    alt: item.title,
+    width: size[0],
+    height: size[1],
+    credit: {
+      site: "Güven Hastanesi",
+      photographer: "Güven Hastanesi",
+      url: `https://www.guven.com.tr/bizden-haberler/${item.slug}`,
+    },
+  };
 }
 
 /** Tüm kullanılan görsel yuvalarının durumu. Eksik dosyalar açıkça şablon olarak işaretlenir. */

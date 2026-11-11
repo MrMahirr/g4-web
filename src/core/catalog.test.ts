@@ -134,8 +134,8 @@ describe("diğer içerik", () => {
 
   it("haberler en yeniden eskiye sıralıdır ve özet kelime ortasında kesilmez", () => {
     const list = catalog.getNews();
-    expect(list[0].slug).toBe("yeni-ar-ge-merkezimiz-faaliyete-gecti");
-    expect(list.at(-1)?.slug).toBe("yeni-urun-lansmanimiz-gerceklesti");
+    expect(list[0].slug).toBe("guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik");
+    expect(list.at(-1)?.slug).toBe("guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik-gunu");
     const excerpt = catalog.getNewsExcerpt(list[0], 80);
     expect(excerpt.length).toBeLessThanOrEqual(81);
     expect(excerpt.endsWith("…")).toBe(true);

@@ -32,6 +32,8 @@ type Props = {
   footer?: ReactNode;
   /** Başlığın arkasında duran tam genişlik görsel (üzerine okunurluk için açık perde çekilir). */
   image?: ImageEntry | null;
+  /** Görselin kadraj konumu (varsayılan "object-center"; ör. "object-top" üst kısmı gösterir). */
+  imagePosition?: string;
 };
 
 /** İç sayfa başlığı (tasarım: .ph-hero) — sayfa yolu, etiket, maskeli başlık, hayalet dev yazı. */
@@ -49,13 +51,14 @@ export function PageHero({
   children,
   footer,
   image,
+  imagePosition = "object-center",
 }: Props) {
   const headingDelay = tag ? delay + 0.05 : delay;
   return (
     <section className={cn("relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-[190px] pb-[90px] grain", className)}>
       {image ? (
         <>
-          <Image src={image.src} alt="" fill priority sizes="100vw" className="-z-20 object-cover object-center" />
+          <Image src={image.src} alt="" fill priority sizes="100vw" className={cn("-z-20 object-cover", imagePosition)} />
           <div aria-hidden="true" className="absolute inset-0 -z-20 bg-linear-to-r from-white/95 via-white/75 to-white/20" />
         </>
       ) : null}
@@ -70,7 +73,7 @@ export function PageHero({
         </Enter>
       ) : null}
       <Container className="flex flex-wrap items-end justify-between gap-10">
-        <div className="flex max-w-[760px] min-w-0 flex-col gap-[30px]">
+        <div className="flex max-w-[1100px] min-w-0 flex-col gap-[30px]">
           <Enter>
             <Breadcrumb items={crumbs} />
           </Enter>

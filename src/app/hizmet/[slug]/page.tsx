@@ -20,6 +20,11 @@ import type { Crumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbLd, serviceLd } from "@/lib/structured-data";
 
+/** Dikey fotoğrafların geniş kapakta hangi bölgesinin görüneceği (varsayılan: orta). */
+const heroPositions: Record<string, string> = {
+  "hizmetler/arac-kiralama": "object-[50%_58%]",
+};
+
 export function generateStaticParams() {
   return container
     .resolve("CatalogService")
@@ -74,6 +79,8 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
         titleClassName="max-w-[1100px] text-[clamp(42px,6vw,96px)] leading-none tracking-[-0.04em]"
         description={pageCopy.services.lead}
         ghost={String(position).padStart(2, "0")}
+        image={catalog.getImage(`hero/hizmet-${service.imageKey.split("/")[1]}`)}
+        imagePosition={heroPositions[service.imageKey] ?? "object-center"}
       />
 
       <Container as="section" className="pt-10">

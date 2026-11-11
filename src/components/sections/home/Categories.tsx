@@ -49,10 +49,7 @@ export function Categories({ categories }: Props) {
                   alt=""
                   fill
                   sizes="(max-width: 900px) 50vw, 45vw"
-                  className={cn(
-                    "object-contain p-[14%_10%_34%] transition-transform duration-1000 ease-soft group-hover/acc:scale-[1.06]",
-                    "max-[900px]:p-[12px_50%_12px_12px]",
-                  )}
+                  className="object-cover transition-transform duration-1000 ease-soft group-hover/acc:scale-[1.06]"
                 />
               ) : null}
             </span>
