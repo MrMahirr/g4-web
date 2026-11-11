@@ -76,8 +76,8 @@ export function Hero({ image }: { image: ImageEntry | null }) {
           </Enter>
 
           <Enter kind="rise" delay={1} className="flex flex-wrap gap-3">
-            <Button href={routes.products}>{copy.primary}</Button>
-            <Button href={routes.contact} variant="ghost">
+            <Button href={routes.products} className="max-sm:w-full max-sm:justify-between">{copy.primary}</Button>
+            <Button href={routes.contact} variant="ghost" className="max-sm:w-full max-sm:justify-between">
               {copy.secondary}
             </Button>
           </Enter>

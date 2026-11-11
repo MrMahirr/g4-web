@@ -15,14 +15,14 @@ type Props = { categories: { category: ProductCategory; image: ImageEntry | null
 /** Ürün grupları akordeonu (tasarım: .acc) — üzerine gelinen panel 4.5 kat genişler. */
 export function Categories({ categories }: Props) {
   return (
-    <Container as="section" className="flex flex-col gap-12 pt-[140px] pb-[60px]">
+    <Container as="section" className="flex flex-col gap-[clamp(32px,3.4vw,48px)] pb-section">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div className="flex max-w-[720px] flex-col gap-5">
           <Reveal kind="skew">
             <h2 className="font-display text-d2">{copy.title}</h2>
           </Reveal>
         </div>
-        <Reveal className="max-w-[420px]">
+        <Reveal className="max-w-[440px]">
           <p className="leading-[1.75] text-pretty text-muted">{copy.text}</p>
         </Reveal>
       </div>

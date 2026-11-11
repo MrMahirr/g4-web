@@ -18,7 +18,7 @@ type Props = {
 /** "G4 Medikal" tanıtımı + hizmetler tek bölümde: büyük cümle, hizmet vitrini (hover'da görsel değişir), sayaçlar. */
 export function Introduction({ services, stats }: Props) {
   return (
-    <Container as="section" className="flex flex-col gap-[72px] pt-[120px] pb-[110px]">
+    <Container as="section" className="flex flex-col gap-[clamp(40px,5vw,72px)] pt-section pb-section">
       <div className="flex flex-col gap-7">
         <Reveal kind="skew">
           <p className="max-w-[1150px] font-display text-[clamp(28px,3.6vw,52px)] leading-[1.18] font-semibold tracking-[-0.03em] text-balance">

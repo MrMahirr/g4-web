@@ -12,7 +12,7 @@ const copy = homeCopy.featured;
 /** Öne çıkan ürünler — masaüstü: liste satırları (tasarım D4Main 5); mobil: 2 sütun görselli ürün ızgarası. */
 export function FeaturedProducts({ rows }: { rows: FeaturedRow[] }) {
   return (
-    <Container as="section" className="flex flex-col gap-6 pt-14 pb-16 row:gap-10 row:pt-[100px] row:pb-[130px]">
+    <Container as="section" className="flex flex-col gap-6 pb-section row:gap-10">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div className="flex flex-col gap-3 row:gap-5">
           <Reveal kind="skew">

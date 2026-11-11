@@ -84,12 +84,12 @@ export function ReferenceVisual({
 /** Referans ızgarası (tasarım: D4Main 6. bölüm). */
 export function References({ references }: Props) {
   return (
-    <Container as="section" className="flex flex-col gap-10 pb-[140px]">
+    <Container as="section" className="flex flex-col gap-10 pb-section">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <Reveal kind="skew">
           <h2 className="font-display text-d2">{copy.title}</h2>
         </Reveal>
-        <Reveal className="max-w-[460px]">
+        <Reveal className="max-w-[440px]">
           <p className="leading-[1.75] text-pretty text-muted">{copy.text}</p>
         </Reveal>
       </div>

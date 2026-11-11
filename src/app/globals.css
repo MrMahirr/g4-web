@@ -44,6 +44,8 @@
   --radius-btn: 4px;
   --radius-card: 6px;
   --container-site: 1320px;
+  /* Anasayfa bölümleri arası dikey ritim: 390px → 72px, 1440px → 120px. Her bölüm yalnız alt boşluk taşır. */
+  --spacing-section: clamp(72px, 8.3334vw, 120px);
 
   /* Kırılımlar (tasarımdaki 1080 / 960 / 760px): max-nav: · max-stack: · max-row: */
   --breakpoint-row: 47.5rem;
