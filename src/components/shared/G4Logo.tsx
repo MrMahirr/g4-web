@@ -8,7 +8,7 @@ function dimensions(size: LogoSize): { width: number; height: number; box: strin
     case "nav":
       return { width: 45, height: 38, box: "px-2 py-1.5" };
     case "footer":
-      return { width: 64, height: 54, box: "px-3 py-2.5" };
+      return { width: 104, height: 88, box: "px-4 py-3" };
     case "badge":
       return { width: 40, height: 34, box: "" };
     default: {
