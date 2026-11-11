@@ -51,7 +51,9 @@ export default function ContactPage() {
       />
 
       <Container as="section" className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 pt-[90px] pb-[130px]">
-        <Suspense fallback={<div className="min-h-[640px] rounded-card bg-white" />}>
+        {/* Form istemcide çizilir (useSearchParams); yer tutucu da "form" çapasını taşır ki
+            /iletisim#form ile doğrudan gelindiğinde tarayıcı kaydırabilsin (plan 8.7). */}
+        <Suspense fallback={<div id="form" className="min-h-[640px] scroll-mt-28 rounded-card bg-white" />}>
           <ContactForm email={company.email} products={products} />
         </Suspense>
 

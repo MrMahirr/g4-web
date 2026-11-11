@@ -74,7 +74,7 @@ export default function StyleGuidePage() {
             Şifa <span className="text-ember">·</span> Açık Palet
           </span>,
         ]}
-        description="Tasarım D: beyaz ve açık mavi zemin, Geist + Inter + Geist Mono. Logodaki kor kırmızısı yalnızca vurgu ve eylemde."
+        description="Tasarım D: beyaz ve açık mavi zemin, Geist + Inter. Logodaki kor kırmızısı yalnızca vurgu ve eylemde."
         ghost="D"
       >
         <div className="flex items-center gap-4">
@@ -104,7 +104,7 @@ export default function StyleGuidePage() {
         <Section
           no="02"
           title="Tipografi"
-          note="Geist başlık ve vurgular, Inter okunacak metin, Geist Mono kod, etiket ve sayılar. Türkçe: ğ ü ş ı ö ç İ."
+          note="Geist başlık ve vurgular, Inter okunacak metin, Geist kod, etiket ve sayılar. Türkçe: ğ ü ş ı ö ç İ."
         >
           <div className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-3">
             <Box className="gap-2.5">
@@ -120,7 +120,7 @@ export default function StyleGuidePage() {
             <Box className="gap-2.5">
               <Chip className="self-start">font-mono</Chip>
               <span className="font-mono text-[52px] leading-[1.1] font-medium tracking-[-0.02em]">01-110V</span>
-              <strong className="font-mono text-lg">Geist Mono</strong>
+              <strong className="font-mono text-lg">Geist · font-mono</strong>
             </Box>
           </div>
           <div className="border-t border-line">
@@ -147,7 +147,7 @@ export default function StyleGuidePage() {
             <TypeRow label="Etiket · <Tag>" spec="12px / BÜYÜK / +4% / ◆">
               <Tag>Medikal Ürünler</Tag>
             </TypeRow>
-            <TypeRow label="Ürün kodu · font-mono" spec="Geist Mono 12–13px">
+            <TypeRow label="Ürün kodu · font-mono" spec="Geist 12–13px">
               <span className="font-mono text-[13px] tracking-[0.04em]">REF: 01-110V-20010</span>
             </TypeRow>
             <TypeRow label="Sayı · <CountUp>" spec="tabular-nums / −5%">

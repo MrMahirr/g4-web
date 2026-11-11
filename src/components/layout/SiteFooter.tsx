@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
+import { BackToTopLink } from "@/components/layout/BackToTopLink";
 import { Reveal } from "@/components/motion/Reveal";
 import { G4Logo } from "@/components/shared/G4Logo";
 import { Container } from "@/components/ui/Container";
@@ -143,9 +144,9 @@ export function SiteFooter({ company, services }: { company: CompanyInfo; servic
               </Link>
             ))}
           </span>
-          <a href="#top" className="text-ink no-underline hover:text-ember-d">
+          <BackToTopLink className="text-ink no-underline hover:text-ember-d">
             {tr.common.backToTop} ↑
-          </a>
+          </BackToTopLink>
         </Container>
       </div>
     </footer>
