@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import type { ReactNode } from "react";
-import { EASE_CURTAIN } from "@/lib/utils";
+import type { CSSProperties, ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 /** Hero metni sayfa kaydırıldıkça aşağı kayar ve solar (tasarım: heroAway, 0 → 760px). */
 export function HeroAway({ children, className }: { children: ReactNode; className?: string }) {
@@ -25,17 +25,17 @@ type CircleOpenProps = {
   origin?: string;
 };
 
-/** Görsel bir noktadan daireyle açılır (tasarım: .hero-img / circleOpen 1.6s, .3s gecikme). */
+/**
+ * Görsel bir noktadan daireyle açılır (tasarım: .hero-img / circleOpen 1.6s, .3s gecikme).
+ * CSS animasyonu (globals.css → animate-circle-open): kapak görseli JS beklemeden açılır (LCP).
+ */
 export function CircleOpen({ children, className, origin = "70% 60%" }: CircleOpenProps) {
-  const reduceMotion = useReducedMotion();
   return (
-    <motion.div
-      className={className}
-      initial={reduceMotion ? false : { clipPath: `circle(0% at ${origin})` }}
-      animate={{ clipPath: `circle(140% at ${origin})` }}
-      transition={{ duration: 1.6, delay: 0.3, ease: EASE_CURTAIN }}
+    <div
+      className={cn("animate-circle-open motion-reduce:animate-none", className)}
+      style={{ "--circle-origin": origin } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

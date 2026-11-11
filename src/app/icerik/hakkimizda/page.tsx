@@ -35,7 +35,7 @@ export default function AboutPage() {
 
       <Container as="section" className="pt-10">
         <Reveal kind="scale" radius={6} className="overflow-hidden rounded-card">
-          <Picture src={cover?.src} alt={cover?.alt ?? copy.title} curtain sizes="100vw" className="h-[620px] max-row:h-[380px]" />
+          <Picture src={cover?.src} alt={cover?.alt ?? copy.title} curtain eager sizes="100vw" className="h-[620px] max-row:h-[380px]" />
         </Reveal>
       </Container>
 
@@ -75,6 +75,7 @@ export default function AboutPage() {
                 src={image?.src}
                 alt={image?.alt ?? sector.title}
                 curtain
+                curtainMirrored={sector.domain === "medical"}
                 sizes="(max-width: 960px) 100vw, 50vw"
                 className={cn("h-[520px] rounded-btn max-row:h-[360px]", reversed && "order-2 max-stack:order-none")}
               />

@@ -1,18 +1,17 @@
 "use client";
 
-import { motion, useReducedMotion, useTransform } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { useRef, type CSSProperties, type ReactNode } from "react";
-import { EASE_SOFT } from "@/lib/utils";
-import { useCoverProgress } from "./useCoverProgress";
+import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
-/* Kaydırmaya bağlı belirme (tasarım: .sv · .sv-x · .sk · .scale-up)   */
+/* Görününce belirme (tasarım: .sv · .sv-x · .sk · .scale-up)         */
 /* ------------------------------------------------------------------ */
 
 export type ScrollKind = "up" | "left" | "skew" | "scale";
 
 type ScrollPreset = {
-  /** Hareketin bittiği "cover" oranı (tasarımdaki animation-range sonu). */
+  /** Tasarımdaki animation-range sonu; süreye eklenir (uzun aralık = daha yavaş hareket). */
   end: number;
   from: { opacity: number; x: number; y: number; skewY: number; scale: number; radius: number };
 };
@@ -47,30 +46,50 @@ type RevealProps = {
 };
 
 /**
- * Kaydırmaya bağlı belirme: öğe ekrana girerken ilerler, geri kaydırınca geri oynar.
+ * Görününce belirme: öğe ekrana girdiğinde hareketin tamamı kendi kendine bir kez oynar
+ * (kaydırma hızına bağlı değildir, geri kaydırınca geri oynamaz).
  * "Hareketi azalt" tercihinde öğe hareketsiz ve tam görünür çizilir.
  */
 export function Reveal({ children, kind = "up", index = 0, radius = 0, className, style }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
-  const progress = useCoverProgress(ref);
+  const inView = useInView(ref, { once: true, amount: 0.15, margin: "0px 0px -8% 0px" });
   const { end, from } = scrollPreset(kind);
-  const shift = index * 0.05 * end;
-  const range = [shift, end + shift];
 
-  const opacity = useTransform(progress, range, [from.opacity, 1]);
-  const x = useTransform(progress, range, [from.x, 0]);
-  const y = useTransform(progress, range, [from.y, 0]);
-  const skewY = useTransform(progress, range, [from.skewY, 0]);
-  const scale = useTransform(progress, range, [from.scale, 1]);
-  const borderRadius = useTransform(progress, range, [from.radius, radius]);
+  if (reduceMotion) {
+    return (
+      <div ref={ref} className={className} style={style}>
+        {children}
+      </div>
+    );
+  }
 
-  const motionStyle = reduceMotion
-    ? style
-    : { ...style, opacity, x, y, skewY, scale, ...(kind === "scale" ? { borderRadius } : null) };
+  const hidden = {
+    opacity: from.opacity,
+    x: from.x,
+    y: from.y,
+    skewY: from.skewY,
+    scale: from.scale,
+    ...(kind === "scale" ? { borderRadius: from.radius } : null),
+  };
+  const shown = {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    skewY: 0,
+    scale: 1,
+    ...(kind === "scale" ? { borderRadius: radius } : null),
+  };
 
   return (
-    <motion.div ref={ref} className={className} style={motionStyle}>
+    <motion.div
+      ref={ref}
+      className={className}
+      style={style}
+      initial={hidden}
+      animate={inView ? shown : hidden}
+      transition={{ duration: 0.9 + end, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+    >
       {children}
     </motion.div>
   );
@@ -82,20 +101,15 @@ export function Reveal({ children, kind = "up", index = 0, radius = 0, className
 
 export type EnterKind = "fade" | "rise" | "ghost";
 
-function enterPreset(kind: EnterKind) {
-  switch (kind) {
-    case "fade": // fadeIn 1.2s
-      return { initial: { opacity: 0 }, duration: 1.2 };
-    case "rise": // riseIn 1.2s, translateY(40px)
-      return { initial: { opacity: 0, y: 40 }, duration: 1.2 };
-    case "ghost": // ghostIn 1.6s, translateX(12%)
-      return { initial: { opacity: 0, x: "12%" }, duration: 1.6 };
-    default: {
-      const exhaustive: never = kind;
-      return exhaustive;
-    }
-  }
-}
+/**
+ * CSS animasyonu (globals.css → animate-enter-*). motion ile yapıldığında sunucu HTML'i opaklık 0 ile
+ * geliyor ve ekranın üstündeki içerik JS yüklenene kadar görünmüyordu (mobil LCP ~5 sn — plan 8.5).
+ */
+const enterClass: Record<EnterKind, string> = {
+  fade: "animate-enter-fade", // fadeIn 1.2s
+  rise: "animate-enter-rise", // riseIn 1.2s, translateY(40px)
+  ghost: "animate-enter-ghost", // ghostIn 1.6s, translateX(12%)
+};
 
 type EnterProps = {
   children: ReactNode;
@@ -107,19 +121,15 @@ type EnterProps = {
   "aria-hidden"?: boolean;
 };
 
-/** Sayfa yüklenince bir kez oynayan giriş. */
+/** Sayfa yüklenince bir kez oynayan giriş. "Hareketi azalt" tercihinde içerik doğrudan görünür. */
 export function Enter({ children, kind = "fade", delay = 0, className, style, ...rest }: EnterProps) {
-  const { initial, duration } = enterPreset(kind);
   return (
-    <motion.div
-      className={className}
-      style={style}
-      initial={initial}
-      animate={{ opacity: 1, x: 0, y: 0 }}
-      transition={{ duration, ease: EASE_SOFT, delay }}
+    <div
+      className={cn(enterClass[kind], "motion-reduce:animate-none", className)}
+      style={delay ? { ...style, animationDelay: `${delay}s` } : style}
       {...rest}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

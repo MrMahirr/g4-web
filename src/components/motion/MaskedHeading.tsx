@@ -1,8 +1,5 @@
-"use client";
-
-import { motion } from "motion/react";
 import type { ReactNode } from "react";
-import { cn, EASE_SOFT } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 type Props = {
   /** Her öğe bir satır; satırlar sırayla maskeden yükselir. */
@@ -16,7 +13,10 @@ type Props = {
   className?: string;
 };
 
-/** Satır maskeli başlık (tasarım: .ln / lnUp 1.2s): satırlar eğik açıyla alttan yükselir. */
+/**
+ * Satır maskeli başlık (tasarım: .ln / lnUp 1.2s): satırlar eğik açıyla alttan yükselir.
+ * CSS animasyonu (globals.css → animate-line-up): başlık JS beklemeden çizilir (LCP).
+ */
 export function MaskedHeading({ lines, as: Heading = "h1", size = "d1", delay = 0.1, stagger = 0.1, className }: Props) {
   return (
     <Heading
@@ -31,14 +31,12 @@ export function MaskedHeading({ lines, as: Heading = "h1", size = "d1", delay = 
     >
       {lines.map((line, index) => (
         <span key={index} className="-mb-[0.06em] block overflow-hidden pb-[0.06em]">
-          <motion.span
-            className="block"
-            initial={{ y: "105%", skewY: 6 }}
-            animate={{ y: 0, skewY: 0 }}
-            transition={{ duration: 1.2, ease: EASE_SOFT, delay: delay + index * stagger }}
+          <span
+            className="block animate-line-up motion-reduce:animate-none"
+            style={{ animationDelay: `${delay + index * stagger}s` }}
           >
             {line}
-          </motion.span>
+          </span>
         </span>
       ))}
     </Heading>

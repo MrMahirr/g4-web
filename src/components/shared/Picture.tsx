@@ -9,8 +9,10 @@ type Props = {
   alt: string;
   /** contain: beyaz zeminde sığdır (ürün/kategori). cover: alanı doldur (hizmet, haber, hero). */
   fit?: "cover" | "contain";
-  /** Ekrana girerken yarı saydam, sol alta çapraz açılan gradyan perde. */
+  /** Ekrana girerken yarı saydam, sağ üstten sol alta çapraz açılan iki katmanlı gradyan perde. */
   curtain?: boolean;
+  /** Perdeyi yatay aynalar (ters köşeden açılır). */
+  curtainMirrored?: boolean;
   /** Üzerine (veya `group` işaretli üst öğeye) gelince yakınlaşma. */
   zoomOnHover?: boolean;
   /** Ekran üstü (LCP) görsel: tembel yükleme kapatılır. */
@@ -28,6 +30,7 @@ export function Picture({
   alt,
   fit = "cover",
   curtain = false,
+  curtainMirrored = false,
   zoomOnHover = false,
   eager = false,
   sizes = "(max-width: 960px) 100vw, 50vw",
@@ -65,7 +68,7 @@ export function Picture({
 
   return (
     <div className={cn("relative overflow-hidden", fit === "contain" ? "bg-paper" : "bg-sand", className)}>
-      {curtain ? <CurtainFrame>{image}</CurtainFrame> : image}
+      {curtain ? <CurtainFrame mirrored={curtainMirrored}>{image}</CurtainFrame> : image}
     </div>
   );
 }

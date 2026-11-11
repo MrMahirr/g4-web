@@ -50,6 +50,7 @@ export default function NewsPage() {
               alt={leadImage?.alt ?? lead.title}
               placeholderLabel="Haber görseli"
               curtain
+              eager
               zoomOnHover
               sizes="(max-width: 960px) 100vw, 58vw"
               className="h-[520px] rounded-card max-row:h-[340px]"

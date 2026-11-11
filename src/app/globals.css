@@ -54,7 +54,7 @@
   --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-curtain: cubic-bezier(0.76, 0, 0.24, 1);
 
-  /* Sürekli / hover animasyonları (giriş animasyonları motion ile) */
+  /* Sürekli / hover animasyonları (kaydırmaya bağlı girişler motion ile) */
   --animate-arrow-swap: arrow-swap 0.7s both;
   --animate-ul-redraw: ul-redraw 0.8s var(--ease-soft);
   --animate-spin-badge: spin 18s linear infinite;
@@ -63,6 +63,51 @@
   --animate-dot-pulse: dot-pulse 2s ease-in-out infinite;
   --animate-marquee: marquee 32s linear infinite;
   --animate-map-ripple: map-ripple 2.6s var(--ease-soft) infinite;
+  /*
+    Yüklemede giriş (tasarım: .fade · .rise · .ghost · .ln). Kaydırmaya bağlı olanlar motion ile kalır;
+    bunlar CSS'tir çünkü ekranın üstündeki içerik JS yüklenmeden görünmeli (LCP — plan 8.5).
+    Gecikme `animation-delay` ile verilir (tasarımdaki --d).
+    Başlangıç opaklığı 0 değil 0.01: Chrome opaklığı 0 olan öğeyi animasyon bitene kadar LCP saymaz;
+    0.01 gözle ayırt edilmez ama öğe ilk karede çizilmiş sayılır.
+  */
+  --animate-enter-fade: enter-fade 1.2s var(--ease-soft) both;
+  --animate-enter-rise: enter-rise 1.2s var(--ease-soft) both;
+  --animate-enter-ghost: enter-ghost 1.6s var(--ease-soft) both;
+  --animate-line-up: line-up 1.2s var(--ease-soft) both;
+
+  @keyframes enter-fade {
+    from {
+      opacity: 0.01;
+    }
+  }
+  @keyframes enter-rise {
+    from {
+      opacity: 0.01;
+      translate: 0 40px;
+    }
+  }
+  @keyframes enter-ghost {
+    from {
+      opacity: 0.01;
+      translate: 12% 0;
+    }
+  }
+  @keyframes line-up {
+    from {
+      transform: translateY(105%) skewY(6deg);
+    }
+  }
+  /* .hero-img circleOpen 1.6s, .3s gecikme; açılış noktası --circle-origin */
+  --animate-circle-open: circle-open 1.6s var(--ease-curtain) 0.3s both;
+  @keyframes circle-open {
+    from {
+      clip-path: circle(0% at var(--circle-origin, 70% 60%));
+    }
+    to {
+      clip-path: circle(140% at var(--circle-origin, 70% 60%));
+    }
+  }
+
   /* Mega menü: aşağı doğru perde açılımı (tasarım: .mg clip-path .7s) */
   --animate-mega-in: mega-in 0.7s var(--ease-soft) both;
   --animate-mega-out: mega-out 0.45s var(--ease-soft) both;

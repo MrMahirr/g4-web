@@ -18,27 +18,22 @@ import { services } from "@/data/services.data";
  */
 export const images: Record<ImageKey, ImageEntry> = {
   "hero/ana": {
-    src: "/images/hero/ana.webp",
-    alt: "Temiz ve aydınlık bir hastane koridoru",
-    width: 1200,
-    height: 1500,
-    credit: {
-      site: "Unsplash · Tasha Kostyuk",
-      photographer: "Tasha Kostyuk",
-      url: "https://unsplash.com/photos/empty-hospital-corridor-with-benches-and-doors-Pk-KuizxQv8",
-    },
+    src: "/images/hero/anasayfa.webp",
+    alt: "Aydınlık, modern bir medikal teknoloji karşılama salonu",
+    width: 2000,
+    height: 1116,
   },
   "hero/iletisim": {
     src: "/images/hero/iletisim.webp",
     alt: "Aydınlık ve bitkilerle çevrili hastane karşılama alanı",
-    width: 2752,
-    height: 1536,
+    width: 2000,
+    height: 1116,
   },
   "hero/sorular": {
     src: "/images/hero/sorular.webp",
     alt: "Medikal cihaz ve ürünlerin sergilendiği aydınlık showroom",
-    width: 2752,
-    height: 1536,
+    width: 2000,
+    height: 1116,
   },
   "hizmetler/medikal": {
     src: "/images/hizmetler/medikal.webp",

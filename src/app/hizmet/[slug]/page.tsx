@@ -78,7 +78,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
 
       <Container as="section" className="pt-10">
         <Reveal kind="scale" radius={6} className="overflow-hidden rounded-card">
-          <Picture src={image?.src} alt={image?.alt ?? service.title} curtain sizes="100vw" className="h-[560px] max-row:h-[360px]" />
+          <Picture src={image?.src} alt={image?.alt ?? service.title} curtain eager sizes="100vw" className="h-[560px] max-row:h-[360px]" />
         </Reveal>
       </Container>
 
