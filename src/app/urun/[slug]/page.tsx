@@ -15,6 +15,9 @@ import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbLd, productLd } from "@/lib/structured-data";
 
+/** Veride olmayan adres gerçek 404 döner (Cache Components kapalıyken desteklenir). */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return container
     .resolve("CatalogService")

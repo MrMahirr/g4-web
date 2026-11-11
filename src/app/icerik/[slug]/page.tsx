@@ -15,6 +15,9 @@ function isLegalSlug(slug: string): slug is LegalDocument["slug"] {
   return (LEGAL_SLUGS as string[]).includes(slug);
 }
 
+/** Veride olmayan adres gerçek 404 döner (Cache Components kapalıyken desteklenir). */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return LEGAL_SLUGS.map((slug) => ({ slug }));
 }

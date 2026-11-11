@@ -19,11 +19,8 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import type { Crumb } from "@/components/shared/Breadcrumb";
 import { breadcrumbLd } from "@/lib/structured-data";
 
-/**
- * Sayfanın tamamı `slug`'a bağlı; kategoriler `generateStaticParams` ile üretim derlemesinde hazır gelir.
- * Boş bir iskelet göstermek yerine navigasyonun bloklanmasına izin verilir (geçersiz slug'da 404 kodu da korunur).
- */
-export const instant = false;
+/** Veride olmayan adres gerçek 404 döner (Cache Components kapalıyken desteklenir). */
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return container

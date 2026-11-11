@@ -25,6 +25,9 @@ const heroPositions: Record<string, string> = {
   "hizmetler/arac-kiralama": "object-[50%_58%]",
 };
 
+/** Veride olmayan adres gerçek 404 döner (Cache Components kapalıyken desteklenir). */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return container
     .resolve("CatalogService")
