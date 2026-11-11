@@ -26,14 +26,13 @@ export default function ServicesPage() {
     <>
       <PageHero
         crumbs={[{ label: tr.common.home, href: routes.home }, { label: tr.nav.services }]}
-        tag={copy.tag}
         title={[copy.title]}
         description={copy.lead}
         ghost={String(services.length).padStart(2, "0")}
         image={catalog.getImage("hero/hizmetler")}
       />
 
-      <Container as="section" className="pt-[60px] pb-[100px]">
+      <Container as="section" className="pt-lead pb-section">
         {services.map((service, index) => {
           const image = catalog.getImage(service.imageKey);
           return (
@@ -84,7 +83,7 @@ export default function ServicesPage() {
         })}
       </Container>
 
-      <Container as="section" className="pb-[120px]">
+      <Container as="section" className="pb-section">
         <CallBackCard variant="wide" />
       </Container>
     </>

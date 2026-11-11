@@ -7,7 +7,6 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { ListRow } from "@/components/shared/ListRow";
 import { Picture } from "@/components/shared/Picture";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import { container } from "@/core/container";
 import type { ImageEntry } from "@/core/types";
@@ -73,7 +72,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
       />
       <ReadingProgress />
 
-      <section className="relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-[190px] pb-[220px] grain">
+      <section className="relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-hero-top pb-[220px] grain">
         <Container className="flex max-w-[1164px] flex-col gap-[30px]">
           <Enter>
             <Breadcrumb
@@ -82,9 +81,6 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
                 { label: "Haberler", href: routes.news },
               ]}
             />
-          </Enter>
-          <Enter delay={0.1}>
-            <Tag>{copy.tag}</Tag>
           </Enter>
           <MaskedHeading
             size="d2"
@@ -118,7 +114,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
         </Reveal>
       </Container>
 
-      <Container as="section" className="pt-[100px] pb-[130px]">
+      <Container as="section" className="pt-lead pb-section">
         <div className="mx-auto grid max-w-[1100px] grid-cols-[200px_minmax(0,1fr)] items-start gap-[clamp(28px,5vw,80px)] max-[860px]:grid-cols-1">
           <aside className="sticky top-[120px] flex flex-col gap-[18px] font-mono text-xs tracking-[0.06em] uppercase max-[860px]:static max-[860px]:flex-row max-[860px]:flex-wrap max-[860px]:items-center">
             <span className="text-muted">{copy.kicker}</span>

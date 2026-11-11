@@ -55,7 +55,7 @@ export default function CareerPage() {
 
       <Container
         as="section"
-        className="grid grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] items-start gap-[clamp(32px,6vw,96px)] pt-[120px] pb-[130px]"
+        className="grid grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] items-start gap-[clamp(32px,6vw,96px)] py-section"
       >
         <div className="sticky top-[120px] flex flex-col gap-[22px] max-stack:static">
           <Reveal kind="skew">

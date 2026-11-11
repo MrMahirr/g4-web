@@ -4,7 +4,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/shared/PageHero";
 import { Picture } from "@/components/shared/Picture";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import { container } from "@/core/container";
 import { routes } from "@/data/navigation.data";
@@ -33,13 +32,13 @@ export default function AboutPage() {
         image={catalog.getImage("hero/hakkimizda")}
       />
 
-      <Container as="section" className="pt-10">
+      <Container as="section" className="pt-lead">
         <Reveal kind="scale" radius={6} className="overflow-hidden rounded-card">
           <Picture src={cover?.src} alt={cover?.alt ?? copy.title} curtain eager sizes="100vw" className="h-[620px] max-row:h-[380px]" />
         </Reveal>
       </Container>
 
-      <Container as="section" className="grid grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] gap-12 pt-[130px] pb-[110px]">
+      <Container as="section" className="grid grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] gap-12 py-section">
         {copy.intro.map((paragraph, index) => (
           <Reveal key={paragraph} index={index}>
             <p className="text-lead text-pretty text-muted">{paragraph}</p>
@@ -47,9 +46,8 @@ export default function AboutPage() {
         ))}
       </Container>
 
-      <section className="relative overflow-hidden bg-tint py-[140px] grain">
+      <section className="relative overflow-hidden bg-tint py-section grain">
         <Container className="flex flex-col gap-[34px]">
-          <Tag>{copy.vision.tag}</Tag>
           <Reveal>
             <Quote size={56} fill="currentColor" strokeWidth={0} className="text-ember" aria-hidden="true" />
           </Reveal>
@@ -61,7 +59,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <Container as="section" className="pt-[60px] pb-[120px]">
+      <Container as="section" className="py-section">
         {copy.sectors.map((sector, index) => {
           const image = catalog.getImage(sector.imageKey);
           const service = services.find((item) => item.domain === sector.domain);
@@ -69,7 +67,7 @@ export default function AboutPage() {
           return (
             <div
               key={sector.title}
-              className="grid grid-cols-2 items-center gap-[clamp(32px,6vw,96px)] border-t border-line py-[90px] max-stack:grid-cols-1"
+              className="grid grid-cols-2 items-center gap-[clamp(32px,6vw,96px)] border-t border-line py-[clamp(48px,6.25vw,90px)] max-stack:grid-cols-1"
             >
               <Picture
                 src={image?.src}

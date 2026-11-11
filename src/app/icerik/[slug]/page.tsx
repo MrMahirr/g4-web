@@ -42,7 +42,7 @@ export default async function LegalPage({ params }: PageProps<"/icerik/[slug]">)
         title={[document.title]}
         titleClassName="text-[clamp(42px,6vw,96px)]"
       />
-      <Container as="section" className="max-w-[860px] py-[90px]">
+      <Container as="section" className="max-w-[860px] pt-lead pb-section">
         {document.approvalPending ? (
           <p role="note" className="mb-10 rounded-card bg-tint px-6 py-5 font-mono text-xs leading-relaxed tracking-[0.04em] text-ember-d uppercase">
             Taslak metin — hukuk onayı bekleniyor. Nihai metin yayına alınmadan önce bu sayfaya eklenecektir.

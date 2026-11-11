@@ -43,7 +43,6 @@ export const homeCopy = {
   references: {
     title: "Referanslarımız",
     text: "Güvenimizi ve kalitemizi tercih eden firmalarla gerçekleştirdiğimiz projelerden bazılarını burada inceleyebilirsiniz.",
-    allKicker: "Sağlık Kurumları",
-    all: "Tümünü Görüntüle →",
+    all: "Tümünü Görüntüle",
   },
 } as const;

@@ -23,7 +23,7 @@ export default function SearchPage() {
         title={[pageCopy.search.title]}
         description={pageCopy.search.lead}
       />
-      <Container as="section" className="pt-[70px] pb-[130px]">
+      <Container as="section" className="pt-lead pb-section">
         <Suspense fallback={<div className="mx-auto h-24 max-w-[720px]" />}>
           <SearchResults index={index} />
         </Suspense>

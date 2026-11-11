@@ -7,7 +7,6 @@ import { SearchTrigger } from "@/components/catalog/SearchTrigger";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import { container } from "@/core/container";
 import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
@@ -33,7 +32,6 @@ export default function ProductsPage() {
     <>
       <PageHero
         crumbs={[{ label: tr.common.home, href: routes.home }, { label: tr.nav.products }]}
-        tag={homeCopy.categories.tag}
         title={[
           "Ürün",
           <span key="em" className="text-ember">
@@ -47,7 +45,7 @@ export default function ProductsPage() {
         <SearchTrigger label="Ürün adı veya Ref kodu ile ara" />
       </PageHero>
 
-      <Container as="section" aria-label="Ürün grupları" className="py-[90px]">
+      <Container as="section" aria-label="Ürün grupları" className="pt-lead pb-section">
         <div className="grid grid-cols-6 gap-4 max-stack:grid-cols-2 max-[600px]:grid-cols-1">
           {categories.map((category, index) => {
             const image = catalog.getImage(category.imageKey);
@@ -106,14 +104,13 @@ export default function ProductsPage() {
         </div>
       </Container>
 
-      <section className="relative overflow-hidden bg-tint pt-[120px] pb-[130px] grain">
+      <section className="relative overflow-hidden bg-tint py-section grain">
         <Container>
           <FeaturedProductList
             filterable
             rows={catalog.getHomeFeaturedProducts().map((product) => toFeaturedRow(catalog, product))}
             heading={
               <div className="flex flex-col gap-5">
-                <Tag>{homeCopy.featured.tag}</Tag>
                 <h2 className="font-display text-d2">{homeCopy.featured.title}</h2>
               </div>
             }

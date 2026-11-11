@@ -36,11 +36,11 @@ export default function FaqPage() {
         image={catalog.getImage("hero/sorular")}
       />
 
-      <Container as="section" className="max-w-[1100px] py-[110px]">
+      <Container as="section" className="max-w-[1100px] pt-lead pb-section">
         <FaqAccordion items={faq} />
       </Container>
 
-      <Container as="section" className="max-w-[1100px] pb-[120px]">
+      <Container as="section" className="max-w-[1100px] pb-section">
         <CallBackCard variant="plain" />
       </Container>
     </>

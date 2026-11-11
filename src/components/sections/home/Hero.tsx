@@ -4,7 +4,6 @@ import { Enter } from "@/components/motion/Reveal";
 import { Picture } from "@/components/shared/Picture";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import type { ImageEntry } from "@/core/types";
 import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
@@ -20,6 +19,10 @@ export function Hero({ image }: { image: ImageEntry | null }) {
       </div>
       <div
         aria-hidden="true"
+        className="absolute inset-0 -z-10 backdrop-blur-[10px] [mask-image:linear-gradient(to_right,black_30%,transparent_85%)] max-stack:[mask-image:none]"
+      />
+      <div
+        aria-hidden="true"
         className="absolute inset-0 -z-10 bg-linear-to-r from-white/85 via-white/55 via-40% to-white/0 max-stack:from-white/85 max-stack:via-white/70 max-stack:via-60% max-stack:to-white/30"
       />
       <Enter
@@ -31,10 +34,6 @@ export function Hero({ image }: { image: ImageEntry | null }) {
 
       <Container className="grid grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center gap-14 max-stack:grid-cols-1">
         <HeroAway className="flex min-w-0 flex-col items-start gap-[34px]">
-          <Enter delay={0.1}>
-            <Tag>{copy.tag}</Tag>
-          </Enter>
-
           <MaskedHeading
             delay={0.15}
             lines={[
@@ -77,8 +76,8 @@ export function Hero({ image }: { image: ImageEntry | null }) {
           </Enter>
 
           <Enter kind="rise" delay={1} className="flex flex-wrap gap-3">
-            <Button href={routes.products}>{copy.primary}</Button>
-            <Button href={routes.contact} variant="ghost">
+            <Button href={routes.products} className="max-sm:w-full max-sm:justify-between">{copy.primary}</Button>
+            <Button href={routes.contact} variant="ghost" className="max-sm:w-full max-sm:justify-between">
               {copy.secondary}
             </Button>
           </Enter>

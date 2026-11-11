@@ -41,7 +41,7 @@ export default function NewsPage() {
       />
 
       {lead ? (
-        <Container as="section" className="pt-[100px] pb-[60px]">
+        <Container as="section" className="pt-lead pb-section">
           <Link
             href={routes.newsItem(lead.slug)}
             className="group grid grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-end gap-[clamp(28px,4vw,64px)] text-ink no-underline max-stack:grid-cols-1"
@@ -77,7 +77,7 @@ export default function NewsPage() {
       ) : null}
 
       {rest.length > 0 ? (
-        <Container as="section" className="pt-[60px] pb-[130px]">
+        <Container as="section" className="pb-section">
           <div className="border-t border-line">
             {rest.map((item) => (
               <ListRow

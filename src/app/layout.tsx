@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
 import { Toaster } from "sonner";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <SiteHeader data={buildHeaderData()} />
             <main id="icerik">{children}</main>
             <SiteFooter company={catalog.getCompany()} services={catalog.getServices()} />
+            <ScrollToTop />
             <Toaster position="bottom-right" toastOptions={{ className: "font-sans" }} />
           </MotionProvider>
         </StoreProvider>
