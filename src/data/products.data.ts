@@ -180,10 +180,8 @@ export const products: ProductItem[] = seeds.map((seed) => ({
   isFeaturedOnHome: seed.featured,
 }));
 
-/** Eski sitedeki mükerrer ürün URL'leri → kanonik slug (Faz 8'de yönlendirme olarak kullanılır). */
-export const legacyProductSlugs: Record<string, string> = {
-  "dezenfektanlar-180": "dezenfektanlar",
-};
+/** Eski sitedeki mükerrer ürün URL'leri → kanonik slug. Yönlendirme listesiyle tek kaynak (plan 8.3). */
+export { legacyProductSlugs } from "./redirects.data";
 
 /** Anasayfadaki "Öne Çıkan Ürünlerimiz" sırası (tasarım: D4Main). Değiştirmek için bu listeyi düzenleyin. */
 export const homeFeaturedSlugs: string[] = [
