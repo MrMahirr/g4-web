@@ -3,7 +3,6 @@ import { ArrowSwap } from "@/components/ui/ArrowSwap";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import type { ImageEntry, ProductCategory } from "@/core/types";
 import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
@@ -19,9 +18,6 @@ export function Categories({ categories }: Props) {
     <Container as="section" className="flex flex-col gap-12 pt-[140px] pb-[60px]">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div className="flex max-w-[720px] flex-col gap-5">
-          <Reveal>
-            <Tag>{copy.tag}</Tag>
-          </Reveal>
           <Reveal kind="skew">
             <h2 className="font-display text-d2">{copy.title}</h2>
           </Reveal>

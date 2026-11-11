@@ -4,7 +4,6 @@ import { Enter } from "@/components/motion/Reveal";
 import { Picture } from "@/components/shared/Picture";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import type { ImageEntry } from "@/core/types";
 import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
@@ -31,10 +30,6 @@ export function Hero({ image }: { image: ImageEntry | null }) {
 
       <Container className="grid grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center gap-14 max-stack:grid-cols-1">
         <HeroAway className="flex min-w-0 flex-col items-start gap-[34px]">
-          <Enter delay={0.1}>
-            <Tag>{copy.tag}</Tag>
-          </Enter>
-
           <MaskedHeading
             delay={0.15}
             lines={[

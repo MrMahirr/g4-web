@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import { MaskedHeading } from "@/components/motion/MaskedHeading";
 import { Enter } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import type { ImageEntry } from "@/core/types";
 import { cn } from "@/lib/utils";
 import { Breadcrumb, type Crumb } from "./Breadcrumb";
@@ -12,8 +11,6 @@ type Props = {
   crumbs: Crumb[];
   /** Başlık satırları (her öğe ayrı satır, maskeden yükselir). */
   title: ReactNode[];
-  /** Başlığın üstündeki ◆ etiket. */
-  tag?: string;
   description?: ReactNode;
   /** Arkadaki dev kontur yazı (dekoratif). */
   ghost?: string;
@@ -40,7 +37,6 @@ type Props = {
 export function PageHero({
   crumbs,
   title,
-  tag,
   description,
   ghost,
   aside,
@@ -53,7 +49,7 @@ export function PageHero({
   image,
   imagePosition = "object-center",
 }: Props) {
-  const headingDelay = tag ? delay + 0.05 : delay;
+  const headingDelay = delay;
   return (
     <section className={cn("relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-[190px] pb-[90px] grain", className)}>
       {image ? (
@@ -77,11 +73,6 @@ export function PageHero({
           <Enter>
             <Breadcrumb items={crumbs} />
           </Enter>
-          {tag ? (
-            <Enter delay={0.1}>
-              <Tag>{tag}</Tag>
-            </Enter>
-          ) : null}
           {titleMotion === "rise" ? (
             <Enter kind="rise" delay={headingDelay}>
               <h1 className={cn("font-display text-d1 leading-[0.95] font-bold tracking-[-0.05em] text-balance", titleClassName)}>

@@ -4,7 +4,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/shared/PageHero";
 import { Picture } from "@/components/shared/Picture";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import { container } from "@/core/container";
 import { routes } from "@/data/navigation.data";
@@ -49,7 +48,6 @@ export default function AboutPage() {
 
       <section className="relative overflow-hidden bg-tint py-[140px] grain">
         <Container className="flex flex-col gap-[34px]">
-          <Tag>{copy.vision.tag}</Tag>
           <Reveal>
             <Quote size={56} fill="currentColor" strokeWidth={0} className="text-ember" aria-hidden="true" />
           </Reveal>

@@ -8,7 +8,6 @@ import { Enter } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/shared/PageHero";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import { container } from "@/core/container";
 import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
@@ -129,7 +128,6 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
           </Suspense>
         ) : (
           <div className="flex flex-col items-start gap-5 rounded-card bg-white p-[clamp(28px,4vw,56px)]">
-            <Tag>Kurumsal Tedarik</Tag>
             <h2 className="max-w-[720px] font-display text-[clamp(28px,3vw,44px)] leading-[1.1] font-bold tracking-[-0.03em]">
               {tr.product.emptyCategoryTitle}
             </h2>

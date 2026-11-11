@@ -7,7 +7,6 @@ import { CallBackCard } from "@/components/shared/CallBackCard";
 import { PageHero } from "@/components/shared/PageHero";
 import { Picture } from "@/components/shared/Picture";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import { container } from "@/core/container";
 import { routes } from "@/data/navigation.data";
@@ -95,7 +94,6 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
       <Container as="section" className="py-[110px]">
         <div className="grid grid-cols-[minmax(0,4fr)_minmax(0,8fr)] items-start gap-[clamp(32px,6vw,96px)] max-stack:grid-cols-1">
           <aside className="sticky top-[120px] flex flex-col gap-6 max-stack:static">
-            <Tag>Hizmetlerimiz</Tag>
             <nav aria-label="Hizmetlerimiz" className="border-t border-line">
               {services.map((item, index) => {
                 const current = item.slug === slug;
@@ -144,9 +142,6 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
       <Container as="section" className="pb-[120px]">
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] gap-14 rounded-card bg-white p-[clamp(32px,5vw,72px)]">
           <div className="flex flex-col gap-[18px]">
-            <Reveal>
-              <Tag>{service.title}</Tag>
-            </Reveal>
             <Reveal kind="skew">
               <h2 className="font-display text-d2">{pageCopy.services.formTitle}</h2>
             </Reveal>

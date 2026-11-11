@@ -2,7 +2,6 @@ import { CountUp } from "@/components/motion/CountUp";
 import { Reveal } from "@/components/motion/Reveal";
 import { ServiceShowcase, type ShowcaseItem } from "@/components/sections/home/ServiceShowcase";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import type { StatItem } from "@/core/types";
 import { homeCopy } from "@/data/home.data";
@@ -21,9 +20,6 @@ export function Introduction({ services, stats }: Props) {
   return (
     <Container as="section" className="flex flex-col gap-[72px] pt-[120px] pb-[110px]">
       <div className="flex flex-col gap-7">
-        <Reveal>
-          <Tag>{copy.tag}</Tag>
-        </Reveal>
         <Reveal kind="skew">
           <p className="max-w-[1150px] font-display text-[clamp(28px,3.6vw,52px)] leading-[1.18] font-semibold tracking-[-0.03em] text-balance">
             {copy.statement.before} <span className="text-ember">{copy.statement.accent}</span> {copy.statement.after}
@@ -40,8 +36,7 @@ export function Introduction({ services, stats }: Props) {
       </div>
 
       <div className="flex flex-col gap-8">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <Tag>{homeCopy.services.tag}</Tag>
+        <div className="flex flex-wrap items-end justify-end gap-4">
           <UnderlineLink href={routes.services} className="text-ink">
             {homeCopy.services.all}
           </UnderlineLink>

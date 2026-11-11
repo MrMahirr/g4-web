@@ -26,7 +26,6 @@ export default function ServicesPage() {
     <>
       <PageHero
         crumbs={[{ label: tr.common.home, href: routes.home }, { label: tr.nav.services }]}
-        tag={copy.tag}
         title={[copy.title]}
         description={copy.lead}
         ghost={String(services.length).padStart(2, "0")}

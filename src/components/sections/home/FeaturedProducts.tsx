@@ -3,7 +3,6 @@ import { FeaturedProductGrid } from "@/components/catalog/FeaturedProductGrid";
 import { FeaturedProductList, type FeaturedRow } from "@/components/catalog/FeaturedProductList";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
@@ -16,9 +15,6 @@ export function FeaturedProducts({ rows }: { rows: FeaturedRow[] }) {
     <Container as="section" className="flex flex-col gap-6 pt-14 pb-16 row:gap-10 row:pt-[100px] row:pb-[130px]">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div className="flex flex-col gap-3 row:gap-5">
-          <Reveal>
-            <Tag>{copy.tag}</Tag>
-          </Reveal>
           <Reveal kind="skew">
             <h2 className="font-display text-d2">{copy.title}</h2>
           </Reveal>

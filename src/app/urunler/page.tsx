@@ -7,7 +7,6 @@ import { SearchTrigger } from "@/components/catalog/SearchTrigger";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import { container } from "@/core/container";
 import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
@@ -33,7 +32,6 @@ export default function ProductsPage() {
     <>
       <PageHero
         crumbs={[{ label: tr.common.home, href: routes.home }, { label: tr.nav.products }]}
-        tag={homeCopy.categories.tag}
         title={[
           "Ürün",
           <span key="em" className="text-ember">
@@ -113,7 +111,6 @@ export default function ProductsPage() {
             rows={catalog.getHomeFeaturedProducts().map((product) => toFeaturedRow(catalog, product))}
             heading={
               <div className="flex flex-col gap-5">
-                <Tag>{homeCopy.featured.tag}</Tag>
                 <h2 className="font-display text-d2">{homeCopy.featured.title}</h2>
               </div>
             }

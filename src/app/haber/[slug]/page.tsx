@@ -7,7 +7,6 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { ListRow } from "@/components/shared/ListRow";
 import { Picture } from "@/components/shared/Picture";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import { container } from "@/core/container";
 import type { ImageEntry } from "@/core/types";
@@ -82,9 +81,6 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
                 { label: "Haberler", href: routes.news },
               ]}
             />
-          </Enter>
-          <Enter delay={0.1}>
-            <Tag>{copy.tag}</Tag>
           </Enter>
           <MaskedHeading
             size="d2"

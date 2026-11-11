@@ -5,7 +5,6 @@ import { BackToTopLink } from "@/components/layout/BackToTopLink";
 import { Reveal } from "@/components/motion/Reveal";
 import { G4Logo } from "@/components/shared/G4Logo";
 import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
 import type { CompanyInfo, ServiceItem } from "@/core/types";
 import { about } from "@/data/about.data";
 import {
@@ -43,7 +42,6 @@ export function SiteFooter({
         <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6 lg:col-span-1">
           <G4Logo size="footer" className="shrink-0 self-start" />
           <div className="flex min-w-0 flex-col gap-3.5">
-            <Tag>Teklif Formu</Tag>
             <Reveal kind="skew">
               <h2 className="font-display text-[clamp(28px,3.4vw,44px)] leading-[1.05] font-bold tracking-[-0.03em] text-balance">
                 Bizimle Çalışmak{" "}
