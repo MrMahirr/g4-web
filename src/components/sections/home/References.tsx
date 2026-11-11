@@ -1,11 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import type { ImageEntry, ReferenceItem } from "@/core/types";
 import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
+import { ReferenceSlider } from "./ReferenceSlider";
 
 const copy = homeCopy.references;
 
@@ -93,36 +94,35 @@ export function References({ references }: Props) {
         </Reveal>
       </div>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] border-t border-l border-line">
-        {references.map(({ reference, logo, photo }, index) => (
-          <Reveal
-            key={reference.id}
-            index={index % 4}
-            className={referenceCellClass}
-          >
-            <ReferenceVisual reference={reference} logo={logo} photo={photo} />
-            {!logo && photo ? null : (
-              <span className="absolute bottom-2.5 left-3.5 translate-y-1.5 font-mono text-[11px] text-muted opacity-0 transition-[opacity,translate] duration-500 ease-soft group-hover/lg:translate-y-0 group-hover/lg:opacity-100">
-                {reference.sectorLabel}
-              </span>
-            )}
-          </Reveal>
-        ))}
-        <Link
-          href={routes.references}
-          className={cn(
-            referenceCellClass,
-            "flex-col items-start justify-between bg-tint text-ink no-underline",
+      <Reveal>
+        <ReferenceSlider label={copy.title}>
+          {/* Az kurumda şerit görünür alanı doldurmaz ve Embla döngüyü kapatır; liste iki kez dizilir (2. kopya ekran okuyucudan gizli). */}
+          {[0, 1].flatMap((copyIndex) =>
+            references.map(({ reference, logo, photo }) => (
+            <div
+              key={`${copyIndex}-${reference.id}`}
+              aria-hidden={copyIndex === 1 ? true : undefined}
+              className="min-w-0 flex-[0_0_min(300px,80%)]"
+            >
+              <div className={referenceCellClass}>
+                <ReferenceVisual reference={reference} logo={logo} photo={photo} />
+                {!logo && photo ? null : (
+                  <span className="absolute bottom-2.5 left-3.5 translate-y-1.5 font-mono text-[11px] text-muted opacity-0 transition-[opacity,translate] duration-500 ease-soft group-hover/lg:translate-y-0 group-hover/lg:opacity-100">
+                    {reference.sectorLabel}
+                  </span>
+                )}
+              </div>
+            </div>
+            )),
           )}
-        >
-          <span className="font-mono text-xs tracking-[0.04em] text-ember-d uppercase">
-            {copy.allKicker}
-          </span>
-          <span className="font-display text-2xl font-semibold tracking-[-0.02em]">
-            {copy.all}
-          </span>
-        </Link>
-      </div>
+        </ReferenceSlider>
+      </Reveal>
+
+      <Reveal className="flex justify-center">
+        <Button href={routes.references} variant="ghost">
+          {copy.all}
+        </Button>
+      </Reveal>
     </Container>
   );
 }
