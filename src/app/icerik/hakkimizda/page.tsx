@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Quote, Sparkle } from "lucide-react";
+import { Quote } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/shared/PageHero";
 import { Picture } from "@/components/shared/Picture";
@@ -22,7 +22,6 @@ export default function AboutPage() {
   const catalog = container.resolve("CatalogService");
   const cover = catalog.getImage(copy.coverImageKey);
   const services = catalog.getServices();
-  const band = [...copy.band, ...copy.band, ...copy.band, ...copy.band];
 
   return (
     <>
@@ -108,20 +107,6 @@ export default function AboutPage() {
           );
         })}
       </Container>
-
-      <section aria-hidden="true" className="overflow-hidden bg-ember py-6 text-ink">
-        <div className="flex w-max animate-marquee [animation-direction:reverse] motion-reduce:animate-none">
-          {band.map((word, index) => (
-            <span
-              key={`${word}-${index}`}
-              className="inline-flex items-center gap-9 pr-9 font-display text-[clamp(30px,3.6vw,52px)] font-bold tracking-[-0.03em] whitespace-nowrap"
-            >
-              {word}
-              <Sparkle size={20} fill="currentColor" strokeWidth={0} />
-            </span>
-          ))}
-        </div>
-      </section>
     </>
   );
 }

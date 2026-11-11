@@ -30,6 +30,7 @@ export default function ServicesPage() {
         title={[copy.title]}
         description={copy.lead}
         ghost={String(services.length).padStart(2, "0")}
+        image={catalog.getImage("hero/hizmetler")}
       />
 
       <Container as="section" className="pt-[60px] pb-[100px]">

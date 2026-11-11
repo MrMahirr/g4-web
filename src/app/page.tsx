@@ -10,7 +10,11 @@ import { toFeaturedRow } from "@/lib/featured";
 import { pageMetadata, siteDescription, siteTitle } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  ...pageMetadata({ title: siteTitle, description: siteDescription, path: "/" }),
+  ...pageMetadata({
+    title: siteTitle,
+    description: siteDescription,
+    path: "/",
+  }),
   // Anasayfada başlık şablonu ("%s · G4") uygulanmaz.
   title: { absolute: siteTitle },
 };
@@ -18,7 +22,8 @@ export const metadata: Metadata = {
 export default function HomePage() {
   const catalog = container.resolve("CatalogService");
   const services = catalog.getServices();
-  const serviceSlug = (domain: "medical" | "textile") => services.find((service) => service.domain === domain)?.slug ?? "";
+  const serviceSlug = (domain: "medical" | "textile") =>
+    services.find((service) => service.domain === domain)?.slug ?? "";
 
   return (
     <>
@@ -30,16 +35,34 @@ export default function HomePage() {
         textileServiceSlug={serviceSlug("textile")}
       />
       <Services
-        services={catalog.getHomeServices().map((service) => ({ service, image: catalog.getImage(service.imageKey) }))}
+        services={catalog
+          .getHomeServices()
+          .map((service) => ({
+            service,
+            image: catalog.getImage(service.imageKey),
+          }))}
       />
       <Categories
-        categories={catalog.getCategories().map((category) => ({ category, image: catalog.getImage(category.imageKey) }))}
+        categories={catalog
+          .getCategories()
+          .map((category) => ({
+            category,
+            image: catalog.getImage(category.imageKey),
+          }))}
       />
-      <FeaturedProducts rows={catalog.getHomeFeaturedProducts().map((product) => toFeaturedRow(catalog, product))} />
+      <FeaturedProducts
+        rows={catalog
+          .getHomeFeaturedProducts()
+          .map((product) => toFeaturedRow(catalog, product))}
+      />
       <References
         references={catalog
           .getHomeReferences()
-          .map((reference) => ({ reference, logo: catalog.getImage(reference.logoKey) }))}
+          .map((reference) => ({
+            reference,
+            logo: catalog.getImage(reference.logoKey),
+            photo: catalog.getImage(reference.imageKey),
+          }))}
       />
     </>
   );

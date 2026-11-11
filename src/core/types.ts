@@ -75,7 +75,9 @@ export interface ReferenceItem {
   id: string;
   title: string;
   sectorLabel: string;
-  /** Kurum logosu gelene kadar boş; boşken kurum adı tipografik gösterilir. */
+  /** Kurumun sektörünü temsil eden stok fotoğraf (kurumun kendi fotoğrafı değildir). */
+  imageKey?: ImageKey;
+  /** Kurum logosu gelirse doldurulur; doluysa fotoğrafın yerine logo gösterilir. */
   logoKey?: ImageKey;
   isFeaturedOnHome?: boolean;
 }

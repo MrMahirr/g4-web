@@ -39,7 +39,7 @@ export function Introduction({ image, stats, medicalServiceSlug, textileServiceS
           alt={image?.alt ?? ""}
           curtain
           sizes="(max-width: 960px) 100vw, 40vw"
-          className="h-[560px] rounded-btn max-row:h-[380px]"
+          className="aspect-[2000/1493] w-full rounded-btn"
         />
         <div className="flex flex-col gap-[26px] pt-5">
           {copy.paragraphs.map((paragraph) => (

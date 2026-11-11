@@ -35,6 +35,50 @@ export const images: Record<ImageKey, ImageEntry> = {
     width: 2000,
     height: 1116,
   },
+  "hero/referanslar": {
+    src: "/images/hero/referanslar-el-sikisma.webp",
+    alt: "İki iş insanının el sıkışması",
+    width: 2000,
+    height: 1335,
+    credit: {
+      site: "Unsplash · Cytonn Photography",
+      photographer: "Cytonn Photography",
+      url: "https://unsplash.com/photos/two-people-shaking-hands-n95VMLxqM2I",
+    },
+  },
+  "hero/haberler": {
+    src: "/images/hero/haberler-ar-ge-laboratuvar.webp",
+    alt: "Aydınlık, modern bir AR-GE laboratuvarında mikroskop ve test cihazları",
+    width: 2000,
+    height: 1333,
+    credit: {
+      site: "Unsplash · Trnava University in Trnava",
+      photographer: "Trnava University in Trnava",
+      url: "https://unsplash.com/photos/1602052577122-f73b9710adba",
+    },
+  },
+  "hero/kariyer": {
+    src: "/images/hero/kariyer.webp",
+    alt: "Aydınlık, modern bir ofis koridorunda sohbet eden iş arkadaşları",
+    width: 2000,
+    height: 1125,
+    credit: {
+      site: "Unsplash · Vitaly Gariev",
+      photographer: "Vitaly Gariev",
+      url: "https://unsplash.com/photos/6hb3u7YOFFk",
+    },
+  },
+  "hero/hizmetler": {
+    src: "/images/hero/hizmetler-tansiyon.webp",
+    alt: "Mavi önlüklü bir sağlık çalışanı hastanın koluna tansiyon ölçümü yapıyor",
+    width: 2000,
+    height: 1333,
+    credit: {
+      site: "Unsplash · Julia Taubitz",
+      photographer: "Julia Taubitz",
+      url: "https://unsplash.com/photos/vN5s_G5SPkY",
+    },
+  },
   "hero/sorular": {
     src: "/images/hero/sorular.webp",
     alt: "Medikal cihaz ve ürünlerin sergilendiği aydınlık showroom",
@@ -42,15 +86,10 @@ export const images: Record<ImageKey, ImageEntry> = {
     height: 1116,
   },
   "hizmetler/medikal": {
-    src: "/images/hizmetler/medikal.webp",
-    alt: "Hastane odasında yatak ve medikal ekipmanlar",
-    width: 1200,
-    height: 900,
-    credit: {
-      site: "Unsplash · Annie Spratt",
-      photographer: "Annie Spratt",
-      url: "https://unsplash.com/photos/a-hospital-room-with-a-bed-and-medical-equipment-RfanFy_lHp8",
-    },
+    src: "/images/hero/medical.webp",
+    alt: "Hastane odasında paslanmaz tezgâh üzerinde tansiyon aleti, stetoskop, eldiven, serum seti ve hasta monitörü",
+    width: 2000,
+    height: 1493,
   },
   "kategoriler/genel-tibbi-sarf-malzemeler": {
     src: "/images/kategoriler/genel-tibbi-sarf-malzemeler.webp",
@@ -64,15 +103,10 @@ export const images: Record<ImageKey, ImageEntry> = {
     },
   },
   "ana/medikal-perde": {
-    src: "/images/hizmetler/medikal.webp",
-    alt: "Hastane odasında yatak ve medikal ekipmanlar",
-    width: 1200,
-    height: 900,
-    credit: {
-      site: "Unsplash · Annie Spratt",
-      photographer: "Annie Spratt",
-      url: "https://unsplash.com/photos/a-hospital-room-with-a-bed-and-medical-equipment-RfanFy_lHp8",
-    },
+    src: "/images/hero/medical.webp",
+    alt: "Hastane odasında paslanmaz tezgâh üzerinde tansiyon aleti, stetoskop, eldiven, serum seti ve hasta monitörü",
+    width: 2000,
+    height: 1493,
   },
   "hizmetler/insaat": {
     src: "/images/hizmetler/insaat.webp",
@@ -85,15 +119,110 @@ export const images: Record<ImageKey, ImageEntry> = {
       url: "https://unsplash.com/photos/architectural-blueprints-spread-out-on-a-surface-fNxmdlYHRm8",
     },
   },
-  "menu/kurumsal": {
-    src: "/images/menu/kurumsal.webp",
-    alt: "Geometrik cepheli çağdaş cam ofis binası",
-    width: 900,
-    height: 1100,
+  "hizmetler/hastane-tekstili": {
+    src: "/images/hizmetler/hastane-tekstili-carsaf.webp",
+    alt: "Perdeli hastane koğuşunda ön planda mavi hastane çarşafı, arkada yataklar",
+    width: 1800,
+    height: 1200,
     credit: {
-      site: "Unsplash · Edgar",
-      photographer: "Edgar",
-      url: "https://unsplash.com/photos/modern-building-with-geometric-lines-and-glass-XALyj0z5bgw",
+      site: "Unsplash · Levi Meir Clancy",
+      photographer: "Levi Meir Clancy",
+      url: "https://unsplash.com/photos/ZCJHlRcoiH8",
+    },
+  },
+  "referanslar/nba-guven": {
+    src: "/images/referanslar/nba-guven.webp",
+    alt: "Pencereli aydınlık bir bekleme salonunda sıralanmış kırmızı sandalyeler",
+    width: 1500,
+    height: 2000,
+    representative: true,
+    credit: {
+      site: "Unsplash · Adhitya Sibikumar",
+      photographer: "Adhitya Sibikumar",
+      url: "https://unsplash.com/photos/three-red-chairs-in-a-waiting-room-by-window-2d3cHa8RMSY",
+    },
+  },
+  "referanslar/guven-ayranci": {
+    src: "/images/referanslar/guven-ayranci.webp",
+    alt: "Cam cepheli, ağaçlarla çevrili modern bir hastane binası",
+    width: 1360,
+    height: 1334,
+    representative: true,
+    credit: {
+      site: "Unsplash · Acton Crawford",
+      photographer: "Acton Crawford",
+      url: "https://unsplash.com/photos/brown-and-white-concrete-building-near-green-trees-under-blue-sky-during-daytime-8PB_TFEy2XQ",
+    },
+  },
+  "referanslar/ufuk": {
+    src: "/images/referanslar/ufuk.webp",
+    alt: "Aydınlık bir hastane koridoru ve bekleme koltukları",
+    width: 2000,
+    height: 1500,
+    representative: true,
+    credit: {
+      site: "Unsplash · Tasha Kostyuk",
+      photographer: "Tasha Kostyuk",
+      url: "https://unsplash.com/photos/empty-hospital-corridor-with-benches-and-doors-Pk-KuizxQv8",
+    },
+  },
+  "referanslar/g4-spor": {
+    src: "/images/referanslar/g4-spor.webp",
+    alt: "Geniş pencereli, koşu bantlı modern spor salonu",
+    width: 2000,
+    height: 1125,
+    representative: true,
+    credit: {
+      site: "Unsplash · Aalo Lens",
+      photographer: "Aalo Lens",
+      url: "https://unsplash.com/photos/modern-gym-with-treadmills-and-large-windows-uYnHRrm63uo",
+    },
+  },
+  "referanslar/guven-evde-bakim": {
+    src: "/images/referanslar/guven-evde-bakim.webp",
+    alt: "Gülümseyen bir hemşire ve yaşlı hasta",
+    width: 2000,
+    height: 1414,
+    representative: true,
+    credit: {
+      site: "Unsplash · Age Cymru",
+      photographer: "Age Cymru",
+      url: "https://unsplash.com/photos/nurse-smiling-with-elderly-patient-in-room-dMhB7w99ju8",
+    },
+  },
+  "referanslar/g4-spa": {
+    src: "/images/referanslar/g4-spa.webp",
+    alt: "Loş ve sıcak ışıklı, taş bankları olan modern hamam–buhar odası",
+    width: 2000,
+    height: 1334,
+    representative: true,
+    credit: {
+      site: "Unsplash · Dominik Neuner",
+      photographer: "Dominik Neuner",
+      url: "https://unsplash.com/photos/a-modern-steam-room-with-a-candle-and-ambient-lighting-9qYFu1NzpS8",
+    },
+  },
+  "referanslar/electro-bismed": {
+    src: "/images/referanslar/electro-bismed.webp",
+    alt: "Cihaz ve cam malzemelerle dolu aydınlık bir laboratuvar tezgâhı",
+    width: 1333,
+    height: 2000,
+    representative: true,
+    credit: {
+      site: "Unsplash · Mauro Romero",
+      photographer: "Mauro Romero",
+      url: "https://unsplash.com/photos/a-clean-laboratory-bench-with-scientific-equipment-and-glassware-HNtgzXa8dc8",
+    },
+  },
+  "menu/kurumsal": {
+    src: "/images/menu/kurumsal-merdiven.webp",
+    alt: "Cam duvarlı, bitkili ve ışık dolu modern bir merdiven holü",
+    width: 1639,
+    height: 2000,
+    credit: {
+      site: "Unsplash · El S",
+      photographer: "El S",
+      url: "https://unsplash.com/photos/HaS2oee610Y",
     },
   },
   "urunler/bipolar-forceps": {
@@ -161,8 +290,18 @@ export const images: Record<ImageKey, ImageEntry> = {
 };
 
 
-// Hakkımızda kapağı: kurumsal menüdeki lisanslı bina fotoğrafı (aynı Unsplash kaynağı).
-images["kurumsal/hakkimizda-1"] = { ...images["menu/kurumsal"], alt: "Geometrik cepheli çağdaş kurumsal bina" };
+// Hakkımızda kapağı: geometrik cepheli lisanslı bina fotoğrafı (eskiden kurumsal menüde de bu vardı).
+images["kurumsal/hakkimizda-1"] = {
+  src: "/images/menu/kurumsal.webp",
+  alt: "Geometrik cepheli çağdaş kurumsal bina",
+  width: 900,
+  height: 1100,
+  credit: {
+    site: "Unsplash · Edgar",
+    photographer: "Edgar",
+    url: "https://unsplash.com/photos/modern-building-with-geometric-lines-and-glass-XALyj0z5bgw",
+  },
+};
 
 // Mevcut G4 kataloğundaki görseller slug ile eşleştirilir.
 for (const product of products) {

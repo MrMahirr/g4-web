@@ -37,6 +37,7 @@ export default function NewsPage() {
           </span>,
         ]}
         ghost="Haber"
+        image={catalog.getImage("hero/haberler")}
       />
 
       {lead ? (

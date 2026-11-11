@@ -16,7 +16,8 @@ export const metadata: Metadata = pageMetadata({ title: "Kariyer", description: 
 
 /** Kariyer / İK başvurusu (tasarım: D4Kariyer). T.C. kimlik no alanı kaldırıldı (plan Ç10). */
 export default function CareerPage() {
-  const email = container.resolve("CatalogService").getCompany().email;
+  const catalog = container.resolve("CatalogService");
+  const email = catalog.getCompany().email;
 
   return (
     <>
@@ -30,6 +31,7 @@ export default function CareerPage() {
         ]}
         description={copy.lead}
         ghost={copy.ghost}
+        image={catalog.getImage("hero/kariyer")}
         className="pb-[60px]"
         footer={
           <Enter kind="rise" delay={0.7} className="mt-[50px] grid grid-cols-3 border-t border-ink/14 max-[900px]:grid-cols-1">
