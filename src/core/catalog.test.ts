@@ -143,11 +143,10 @@ describe("diğer içerik", () => {
     expect(list[0].paragraphs[0].startsWith(excerpt.slice(0, -1))).toBe(true);
   });
 
-  it("sosyal bağlantılar: Telegram ve Instagram henüz boş, diğerleri https", () => {
+  it("sosyal bağlantılar: hepsi https, Telegram yok", () => {
     const socials = Object.fromEntries(catalog.getCompany().socials.map((social) => [social.channel, social.href]));
-    expect(socials.telegram).toBeNull();
-    expect(socials.instagram).toBeNull();
-    for (const channel of ["whatsapp", "x", "linkedin"]) expect(socials[channel]).toMatch(/^https:\/\//);
+    expect(socials).not.toHaveProperty("telegram");
+    for (const channel of ["whatsapp", "instagram", "x", "linkedin"]) expect(socials[channel]).toMatch(/^https:\/\//);
   });
 
   it("manifestte olmayan görsel için null döner; manifestteki yollar /images altındadır", () => {

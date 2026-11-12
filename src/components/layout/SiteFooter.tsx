@@ -10,7 +10,7 @@ import {
   Phone,
 } from "lucide-react";
 import type { IconType } from "react-icons";
-import { FaInstagram, FaLinkedinIn, FaTelegram, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
+import { FaInstagram, FaLinkedinIn, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { G4Logo } from "@/components/shared/G4Logo";
@@ -30,7 +30,6 @@ const footerLinkClass = cn(
 /** Sosyal kanal → platformun kendi logosu (lucide 1.x marka ikonu içermez; react-icons Font Awesome 6 Brands). */
 const socialIcons: Record<string, IconType> = {
   whatsapp: FaWhatsapp,
-  telegram: FaTelegram,
   instagram: FaInstagram,
   x: FaXTwitter,
   linkedin: FaLinkedinIn,
