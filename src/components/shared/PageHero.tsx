@@ -31,6 +31,8 @@ type Props = {
   image?: ImageEntry | null;
   /** Görselin kadraj konumu (varsayılan "object-center"; ör. "object-top" üst kısmı gösterir). */
   imagePosition?: string;
+  /** true: CalmLink ile kardeş sayfadan gelindiyse yazılar kısa bir belirmeyle gelir (ör. hizmetler arası geçiş). */
+  calmOnSiblingNav?: boolean;
 };
 
 /** İç sayfa başlığı (tasarım: .ph-hero) — sayfa yolu, etiket, maskeli başlık, hayalet dev yazı. */
@@ -48,6 +50,7 @@ export function PageHero({
   footer,
   image,
   imagePosition = "object-center",
+  calmOnSiblingNav = false,
 }: Props) {
   const headingDelay = delay;
   return (
@@ -70,11 +73,11 @@ export function PageHero({
       ) : null}
       <Container className="flex flex-wrap items-end justify-between gap-10">
         <div className="flex max-w-[1100px] min-w-0 flex-col gap-[30px]">
-          <Enter>
+          <Enter calmOnSiblingNav={calmOnSiblingNav}>
             <Breadcrumb items={crumbs} />
           </Enter>
           {titleMotion === "rise" ? (
-            <Enter kind="rise" delay={headingDelay}>
+            <Enter kind="rise" delay={headingDelay} calmOnSiblingNav={calmOnSiblingNav}>
               <h1 className={cn("font-display text-d1 leading-[0.95] font-bold tracking-[-0.05em] text-balance", titleClassName)}>
                 {title}
               </h1>
@@ -83,7 +86,7 @@ export function PageHero({
             <MaskedHeading lines={title} delay={headingDelay} className={titleClassName} />
           )}
           {description ? (
-            <Enter kind="rise" delay={0.5}>
+            <Enter kind="rise" delay={0.5} calmOnSiblingNav={calmOnSiblingNav}>
               <p className="max-w-[640px] text-lead text-pretty text-muted">{description}</p>
             </Enter>
           ) : null}

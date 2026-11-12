@@ -102,6 +102,7 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
                 <Link
                   key={item.slug}
                   href={routes.category(item.slug)}
+                  scroll={false}
                   aria-current={current ? "page" : undefined}
                   className={cn(
                     "relative flex min-h-14 flex-none items-center px-[18px] font-medium whitespace-nowrap text-muted no-underline",

@@ -79,7 +79,7 @@ const addressTextSchema = z.object({
   full: z.string(), street: z.string(), district: z.string(), city: z.string(),
 });
 const socialBaseSchema = z.object({
-  channel: z.enum(["whatsapp", "telegram", "instagram", "x", "linkedin"]),
+  channel: z.enum(["whatsapp", "instagram", "x", "linkedin"]),
   label: z.string(), href: z.string().nullable(),
 });
 const socialTextSchema = z.object({ label: z.string() });

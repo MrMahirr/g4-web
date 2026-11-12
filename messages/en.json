@@ -113,6 +113,12 @@
     "subject": "Subject",
     "message": "Message",
     "optionalMessage": "Your message, if any",
+    "cv": "CV / Résumé",
+    "cvChoose": "Choose file",
+    "cvEmpty": "No file selected",
+    "cvSelected": "{name} · {size} MB",
+    "cvRemove": "Remove selected file",
+    "cvHint": "PDF, DOC or DOCX · up to 5 MB",
     "kvkk": "I have read the privacy notice and consent to the processing of my personal data to respond to my request.",
     "submit": "Send",
     "submitting": "Sending",
@@ -124,7 +130,9 @@
       "email": "Enter a valid email address.",
       "phone": "Enter a valid phone number.",
       "messageShort": "Your message must be at least 10 characters.",
-      "kvkk": "You must provide consent to continue."
+      "kvkk": "You must provide consent to continue.",
+      "cvType": "You can only choose a PDF, DOC or DOCX file.",
+      "cvSize": "The file can be at most 5 MB."
     },
     "kvkkLink": "Privacy Notice (KVKK)",
     "kvkkRest": " — I have read it and consent to the processing of my personal data to respond to my request.",
@@ -249,6 +257,8 @@
       "name": "Full name: {value}",
       "email": "Email: {value}",
       "phone": "Phone: {value}",
+      "cv": "CV: {value} (to be attached to this email)",
+      "attachCv": "Remember to attach your CV ({name}) to the email that opens.",
       "hello": "Hello,",
       "thanks": "Thank you.",
       "opening": "Opening your email application",
@@ -280,13 +290,11 @@
       }
     },
     "news": {
-      "ghost": "News",
       "image": "News image",
       "gallery": "Photo gallery",
       "photo": "{title} — photo {number}"
     },
     "contact": {
-      "ghost": "Hello",
       "mapTitle": "G4 location map: {address}",
       "address": "Address",
       "phone": "Phone",
@@ -406,7 +414,6 @@
       "drift": "NBA Güven · Güven Ayrancı · Ufuk University · Electro BISMED"
     },
     "career": {
-      "ghost": "HR",
       "titleLines": [
         "Human Resources",
         "Form"

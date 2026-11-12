@@ -130,7 +130,7 @@ export interface StatItem {
   label: string;
 }
 
-export type SocialChannel = "whatsapp" | "telegram" | "instagram" | "x" | "linkedin";
+export type SocialChannel = "whatsapp" | "instagram" | "x" | "linkedin";
 
 export interface SocialLink {
   channel: SocialChannel;

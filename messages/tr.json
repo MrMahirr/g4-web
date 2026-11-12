@@ -113,6 +113,12 @@
     "subject": "Konu",
     "message": "Mesajınız",
     "optionalMessage": "Varsa mesajınız",
+    "cv": "CV / Özgeçmiş",
+    "cvChoose": "Dosya seçin",
+    "cvEmpty": "Dosya seçilmedi",
+    "cvSelected": "{name} · {size} MB",
+    "cvRemove": "Seçilen dosyayı kaldır",
+    "cvHint": "PDF, DOC veya DOCX · en fazla 5 MB",
     "kvkk": "KVKK Aydınlatma Metni'ni okudum, kişisel verilerimin talebimin yanıtlanması amacıyla işlenmesini kabul ediyorum.",
     "submit": "Gönder",
     "submitting": "Gönderiliyor",
@@ -124,7 +130,9 @@
       "email": "Geçerli bir e-posta adresi girin.",
       "phone": "Geçerli bir telefon numarası girin.",
       "messageShort": "Mesajınız en az 10 karakter olmalı.",
-      "kvkk": "Devam etmek için onay vermeniz gerekir."
+      "kvkk": "Devam etmek için onay vermeniz gerekir.",
+      "cvType": "Yalnız PDF, DOC veya DOCX dosyası seçebilirsiniz.",
+      "cvSize": "Dosya en fazla 5 MB olabilir."
     },
     "kvkkLink": "KVKK Aydınlatma Metni",
     "kvkkRest": "'ni okudum; kişisel verilerimin talebimin yanıtlanması amacıyla işlenmesini kabul ediyorum.",
@@ -249,6 +257,8 @@
       "name": "Ad Soyad: {value}",
       "email": "E-posta: {value}",
       "phone": "Telefon: {value}",
+      "cv": "CV: {value} (bu e-postaya ek olarak eklenecek)",
+      "attachCv": "CV dosyanızı ({name}) açılan e-postaya eklemeyi unutmayın.",
       "hello": "Merhaba,",
       "thanks": "Teşekkürler.",
       "opening": "E-posta uygulamanız açılıyor",
@@ -280,13 +290,11 @@
       }
     },
     "news": {
-      "ghost": "Haber",
       "image": "Haber görseli",
       "gallery": "Foto galeri",
       "photo": "{title} — fotoğraf {number}"
     },
     "contact": {
-      "ghost": "Merhaba",
       "mapTitle": "G4 konum haritası: {address}",
       "address": "Adres",
       "phone": "Telefon",
@@ -406,7 +414,6 @@
       "drift": "NBA Güven · Güven Ayrancı · Ufuk Üniversitesi · Electro BISMED"
     },
     "career": {
-      "ghost": "İK",
       "titleLines": [
         "İnsan Kaynakları",
         "Formu"

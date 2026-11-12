@@ -1,14 +1,13 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/utils";
 
-/** ◆ işaretli, büyük harfli mono etiket. */
+/** Büyük harfli mono etiket (yalnız yazı, işaretsiz). */
 export function Tag({ className, ...rest }: ComponentPropsWithoutRef<"span">) {
   return (
     <span
       {...rest}
       className={cn(
-        "inline-flex items-center gap-2.5 font-mono text-xs font-medium tracking-[0.04em] text-ember-d uppercase",
-        "before:size-2 before:rotate-45 before:bg-current before:content-['']",
+        "inline-flex items-center font-mono text-xs font-medium tracking-[0.04em] text-ember-d uppercase",
         className,
       )}
     />

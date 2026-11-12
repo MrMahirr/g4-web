@@ -2,6 +2,7 @@
 import { useTranslations } from "next-intl";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/Button";
@@ -9,6 +10,7 @@ import { Field, Textarea, TextInput } from "@/components/ui/Field";
 import { Tag } from "@/components/ui/Tag";
 import { cn } from "@/lib/utils";
 import { createContactSchemas, type LeadValues } from "@/lib/validations/contact";
+import { CvUpload } from "./CvUpload";
 import { KvkkConsent } from "./KvkkConsent";
 
 type Kind = "quote" | "career";
@@ -53,18 +55,25 @@ export function LeadForm({ kind, idPrefix, subject, email, tag, className }: Pro
   const { errors, isSubmitting } = formState;
   const kvkkChecked = useWatch({ control, name: "kvkk" });
   const id = (field: string) => `${idPrefix}-${field}`;
+  // CV yalnız İK formunda. mailto ek dosya taşıyamaz: dosya adı metne yazılır, kullanıcıya eklemesi hatırlatılır.
+  const [cv, setCv] = useState<File | null>(null);
+  const [cvKey, setCvKey] = useState(0);
 
   const onSubmit = (values: LeadValues) => {
     const body = [
       t("i18n.mail.name", { value: values.name }),
       t("i18n.mail.email", { value: values.email }),
       t("i18n.mail.phone", { value: values.phone }),
+      ...(cv ? [t("i18n.mail.cv", { value: cv.name })] : []),
       "",
       values.message,
     ].join("\n");
     window.location.assign(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
-    toast.message(t("i18n.mail.opening"), { description: t("i18n.mail.prepared", { email }) });
+    const description = cv ? t("i18n.mail.attachCv", { name: cv.name }) : t("i18n.mail.prepared", { email });
+    toast.message(t("i18n.mail.opening"), { description, duration: cv ? 10000 : undefined });
     reset();
+    setCv(null);
+    setCvKey((key) => key + 1);
   };
 
   return (
@@ -81,7 +90,12 @@ export function LeadForm({ kind, idPrefix, subject, email, tag, className }: Pro
       <Field id={id("eposta")} label={`${t("form.email")} *`} error={errors.email?.message}>
         <TextInput id={id("eposta")} type="email" autoComplete="email" invalid={Boolean(errors.email)} {...register("email")} />
       </Field>
-      <Field id={id("telefon")} label={`${t("form.phone")} *`} error={errors.phone?.message}>
+      <Field
+        id={id("telefon")}
+        label={`${t("form.phone")} *`}
+        error={errors.phone?.message}
+        className={kind === "career" ? "col-span-full" : undefined}
+      >
         <TextInput id={id("telefon")} type="tel" autoComplete="tel" invalid={Boolean(errors.phone)} {...register("phone")} />
       </Field>
       {kind === "quote" ? (
@@ -97,6 +111,9 @@ export function LeadForm({ kind, idPrefix, subject, email, tag, className }: Pro
       >
         <Textarea id={id("mesaj")} invalid={Boolean(errors.message)} {...register("message")} />
       </Field>
+      {kind === "career" ? (
+        <CvUpload key={cvKey} id={id("cv")} file={cv} onChange={setCv} className="col-span-full" />
+      ) : null}
 
       <KvkkConsent
         id={id("kvkk")}

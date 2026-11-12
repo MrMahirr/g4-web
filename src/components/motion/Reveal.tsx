@@ -1,8 +1,10 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "motion/react";
-import { useRef, type CSSProperties, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { clearCalmNavigation, isCalmNavigation } from "./calmNavigation";
 
 /* ------------------------------------------------------------------ */
 /* Görününce belirme (tasarım: .sv · .sv-x · .sk · .scale-up)         */
@@ -119,10 +121,40 @@ type EnterProps = {
   className?: string;
   style?: CSSProperties;
   "aria-hidden"?: boolean;
+  /** true: CalmLink ile kardeş sayfadan gelindiyse tam giriş yerine kısa, gecikmesiz belirme oynar. */
+  calmOnSiblingNav?: boolean;
 };
 
 /** Sayfa yüklenince bir kez oynayan giriş. "Hareketi azalt" tercihinde içerik doğrudan görünür. */
-export function Enter({ children, kind = "fade", delay = 0, className, style, ...rest }: EnterProps) {
+export function Enter({
+  children,
+  kind = "fade",
+  delay = 0,
+  className,
+  style,
+  calmOnSiblingNav = false,
+  ...rest
+}: EnterProps) {
+  const pathname = usePathname();
+  // İlk render'da bir kez okunur; sunucuda ve ilk yüklemede işaret boş olduğundan hidrasyon farkı oluşmaz.
+  const [calm] = useState(() => calmOnSiblingNav && isCalmNavigation(pathname));
+
+  useEffect(() => {
+    if (calm) clearCalmNavigation(pathname);
+  }, [calm, pathname]);
+
+  if (calm) {
+    return (
+      <div
+        className={cn("animate-enter-fade motion-reduce:animate-none", className)}
+        style={{ ...style, animationDuration: "0.4s" }}
+        {...rest}
+      >
+        {children}
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(enterClass[kind], "motion-reduce:animate-none", className)}

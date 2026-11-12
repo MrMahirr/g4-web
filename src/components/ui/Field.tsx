@@ -11,20 +11,34 @@ type FieldProps = {
   children: ReactNode;
 };
 
-/** Mono etiket + alt çizgili giriş; odaklanınca kor rengi çizgi soldan dolar. */
+/**
+ * Yüzen etiketli, alt çizgili giriş. Alan boşken etiket girişin içinde yer tutucu gibi durur;
+ * odaklanınca veya alan doluyken yumuşakça üste kayıp küçülür. Odakta kor rengi çizgi soldan dolar.
+ * Boşluk tespiti :placeholder-shown ile yapılır (TextInput/Textarea boş yer tutucu " " verir).
+ */
 export function Field({ id, label, error, className, children }: FieldProps) {
   return (
     <div className={cn("flex flex-col gap-2", className)}>
-      <label htmlFor={id} className="font-mono text-xs tracking-[0.06em] text-muted uppercase">
-        {label}
-      </label>
       <div
         className={cn(
-          "relative after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-ember after:content-['']",
+          "group/field relative pt-5",
+          "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-ember after:content-['']",
           "after:transition-transform after:duration-500 after:ease-soft focus-within:after:scale-x-100",
         )}
       >
         {children}
+        <label
+          htmlFor={id}
+          className={cn(
+            "pointer-events-none absolute top-0 left-0 origin-left font-mono text-xs tracking-[0.06em] text-muted uppercase",
+            "transition-[translate,scale,color] duration-500 ease-soft motion-reduce:transition-none",
+            "group-focus-within/field:text-ember-d",
+            "group-has-[:placeholder-shown]/field:group-not-focus-within/field:translate-y-10",
+            "group-has-[:placeholder-shown]/field:group-not-focus-within/field:scale-125",
+          )}
+        >
+          {label}
+        </label>
       </div>
       {error ? (
         <p id={`${id}-hata`} role="alert" className="text-[13px] text-ember-d">
@@ -60,11 +74,13 @@ export function TextInput({
   invalid,
   className,
   type = "text",
+  placeholder = " ",
   ...rest
 }: SharedInputProps & ComponentPropsWithoutRef<"input">) {
   return (
     <input
       type={type}
+      placeholder={placeholder}
       {...rest}
       aria-invalid={invalid || undefined}
       aria-describedby={describedBy(rest.id, invalid)}
@@ -73,9 +89,16 @@ export function TextInput({
   );
 }
 
-export function Textarea({ auto, invalid, className, ...rest }: SharedInputProps & ComponentPropsWithoutRef<"textarea">) {
+export function Textarea({
+  auto,
+  invalid,
+  className,
+  placeholder = " ",
+  ...rest
+}: SharedInputProps & ComponentPropsWithoutRef<"textarea">) {
   return (
     <textarea
+      placeholder={placeholder}
       {...rest}
       aria-invalid={invalid || undefined}
       aria-describedby={describedBy(rest.id, invalid)}
