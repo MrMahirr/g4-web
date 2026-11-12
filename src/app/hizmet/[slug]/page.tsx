@@ -1,6 +1,6 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { CalmLink } from "@/components/motion/CalmLink";
 import { notFound } from "next/navigation";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Reveal } from "@/components/motion/Reveal";
@@ -55,7 +55,6 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
   if (!service) notFound();
 
   const services = catalog.getServices();
-  const position = services.findIndex((item) => item.slug === slug) + 1;
   const image = catalog.getImage(service.imageKey);
   const category = service.relatedCategorySlug ? catalog.getCategoryBySlug(service.relatedCategorySlug) : null;
 
@@ -80,14 +79,14 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
         titleMotion="rise"
         titleClassName="max-w-[1100px] text-[clamp(42px,6vw,96px)] leading-none tracking-[-0.04em]"
         description={copy("services.lead")}
-        ghost={String(position).padStart(2, "0")}
+        calmOnSiblingNav
         image={catalog.getImage(`hero/hizmet-${service.imageKey.split("/")[1]}`)}
         imagePosition={heroPositions[service.imageKey] ?? "object-center"}
       />
 
       <Container as="section" className="pt-lead">
         <Reveal kind="scale" radius={6} className="overflow-hidden rounded-card">
-          <Picture src={image?.src} alt={image?.alt ?? service.title} curtain eager sizes="100vw" className="h-[560px] max-row:h-[360px]" />
+          <Picture src={image?.src} alt={image?.alt ?? service.title} curtain curtainVeil={false} eager sizes="100vw" className="h-[560px] max-row:h-[360px]" />
         </Reveal>
       </Container>
 
@@ -98,7 +97,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
               {services.map((item, index) => {
                 const current = item.slug === slug;
                 return (
-                  <Link
+                  <CalmLink
                     key={item.slug}
                     href={routes.service(item.slug)}
                     aria-current={current ? "page" : undefined}
@@ -110,7 +109,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
                   >
                     <span className="font-mono text-xs font-normal text-muted">{String(index + 1).padStart(2, "0")}</span>
                     {item.title}
-                  </Link>
+                  </CalmLink>
                 );
               })}
             </nav>

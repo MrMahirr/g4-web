@@ -47,7 +47,6 @@ export default async function ContactPage() {
         crumbs={[{ label: t("common.home"), href: routes.home }, { label: t("nav.contact") }]}
         title={[t("nav.contact")]}
         description={t("i18n.meta.contact.description")}
-        ghost={t("i18n.contact.ghost")}
         image={catalog.getImage("hero/iletisim")}
       />
 

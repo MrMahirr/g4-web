@@ -85,9 +85,6 @@ export function SiteHeader({ data }: { data: HeaderData }) {
               <IconButton label={t("search.open")} onClick={search.open}>
                 <Search size={19} aria-hidden="true" />
               </IconButton>
-              <span className="max-nav:hidden">
-                <LanguageToggle />
-              </span>
               <IconButton label={t("quote.open")} onClick={drawer.open}>
                 <ShoppingBag size={18} aria-hidden="true" />
                 {cart.hydrated && cart.count > 0 ? (
@@ -96,13 +93,9 @@ export function SiteHeader({ data }: { data: HeaderData }) {
                   </span>
                 ) : null}
               </IconButton>
-              <a
-                href={`tel:${data.phone.tel}`}
-                className="inline-flex min-h-11 items-center gap-2 font-mono text-[13px] tracking-[0.04em] whitespace-nowrap text-muted no-underline max-[82.5rem]:hidden"
-              >
-                <span className="size-[7px] rounded-full bg-ember" />
-                {data.phone.display}
-              </a>
+              <span className="max-nav:hidden">
+                <LanguageToggle />
+              </span>
               <span className="max-nav:hidden">
                 <Button
                   href={routes.contact}

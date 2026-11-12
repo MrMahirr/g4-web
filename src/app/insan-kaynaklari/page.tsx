@@ -34,7 +34,6 @@ export default async function CareerPage() {
           </span>,
         ]}
         description={copy("career.lead")}
-        ghost={copy("career.ghost")}
         image={catalog.getImage("hero/kariyer")}
         className="pb-[60px]"
         footer={

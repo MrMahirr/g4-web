@@ -36,7 +36,6 @@ export default async function NewsPage() {
             {t("pages.news.titleLines.1")}
           </span>,
         ]}
-        ghost={t("i18n.news.ghost")}
         image={catalog.getImage("hero/haberler")}
       />
 

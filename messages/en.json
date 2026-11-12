@@ -280,13 +280,11 @@
       }
     },
     "news": {
-      "ghost": "News",
       "image": "News image",
       "gallery": "Photo gallery",
       "photo": "{title} — photo {number}"
     },
     "contact": {
-      "ghost": "Hello",
       "mapTitle": "G4 location map: {address}",
       "address": "Address",
       "phone": "Phone",
@@ -406,7 +404,6 @@
       "drift": "NBA Güven · Güven Ayrancı · Ufuk University · Electro BISMED"
     },
     "career": {
-      "ghost": "HR",
       "titleLines": [
         "Human Resources",
         "Form"
