@@ -1,7 +1,7 @@
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import type { ReactNode } from "react";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import type { NavLinkItem } from "@/components/layout/types";
@@ -72,7 +72,7 @@ export function MegaLinks({ links, columns = 1, titleClassName }: {
   return (
     <ul className={cn("m-0 list-none p-0", columns === 2 ? "grid grid-cols-2 content-start gap-x-8" : "flex flex-col")}>
       {links.map((link, index) => (
-        <motion.li
+        <m.li
           key={link.href}
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -92,7 +92,7 @@ export function MegaLinks({ links, columns = 1, titleClassName }: {
               </span>
             </Link>
           </NavigationMenu.Link>
-        </motion.li>
+        </m.li>
       ))}
     </ul>
   );

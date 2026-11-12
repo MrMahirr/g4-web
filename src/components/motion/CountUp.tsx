@@ -1,6 +1,6 @@
 "use client";
 
-import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from "motion/react";
+import { animate, m, useInView, useMotionValue, useReducedMotion, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
 
 type Props = {
@@ -30,9 +30,9 @@ export function CountUp({ value, className, duration = 2 }: Props) {
   return (
     <span ref={ref} className={className}>
       <span className="sr-only">{value}</span>
-      <motion.span aria-hidden="true" className="tabular-nums">
+      <m.span aria-hidden="true" className="tabular-nums">
         {reduceMotion ? value : rounded}
-      </motion.span>
+      </m.span>
     </span>
   );
 }

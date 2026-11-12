@@ -1,6 +1,4 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { HeroAway } from "@/components/motion/HeroMotion";
 import { MaskedHeading } from "@/components/motion/MaskedHeading";
 import { Enter } from "@/components/motion/Reveal";
@@ -11,8 +9,8 @@ import type { ImageEntry } from "@/core/types";
 import { routes } from "@/data/navigation.data";
 
 /** Anasayfa hero (tasarım: .hero2). */
-export function Hero({ image }: { image: ImageEntry | null }) {
-  const t = useTranslations("home.hero");
+export async function Hero({ image }: { image: ImageEntry | null }) {
+  const t = await getTranslations("home.hero");
   const lines = t.raw("lines") as string[];
   const rotating = t.raw("rotating") as string[];
 

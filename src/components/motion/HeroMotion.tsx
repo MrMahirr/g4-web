@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { m, useReducedMotion, useScroll, useTransform } from "motion/react";
 import type { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -12,9 +12,9 @@ export function HeroAway({ children, className }: { children: ReactNode; classNa
   const opacity = useTransform(scrollY, [0, 760], [1, 0.1]);
 
   return (
-    <motion.div className={className} style={reduceMotion ? undefined : { y, opacity }}>
+    <m.div className={className} style={reduceMotion ? undefined : { y, opacity }}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 

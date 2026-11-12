@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Box } from "lucide-react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useTranslations } from "next-intl";
 import type { SearchHit } from "@/lib/catalog";
 import { EASE_SOFT } from "@/lib/utils";
@@ -20,7 +20,7 @@ type Props = {
 export function SearchResultRow({ hit, position, onSelect }: Props) {
   const t = useTranslations("i18n.searchType");
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: EASE_SOFT, delay: Math.min(position, 12) * 0.03 }}
@@ -50,6 +50,6 @@ export function SearchResultRow({ hit, position, onSelect }: Props) {
           className="flex-none text-[#B5C2CC] transition-[translate,color] duration-300 ease-soft group-hover/sr:translate-x-[3px] group-hover/sr:text-ink"
         />
       </Link>
-    </motion.div>
+    </m.div>
   );
 }

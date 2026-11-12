@@ -1,7 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
 
-import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { AnimatePresence, m, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from "motion/react";
 import { ArrowUp } from "lucide-react";
 import { useState } from "react";
 import { EASE_SOFT } from "@/lib/utils";
@@ -25,7 +25,7 @@ export function ScrollToTop() {
   return (
     <AnimatePresence>
       {visible ? (
-        <motion.button
+        <m.button
           type="button"
           aria-label={t("common.backToTop")}
           onClick={() => window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })}
@@ -39,7 +39,7 @@ export function ScrollToTop() {
         >
           <svg viewBox="0 0 48 48" aria-hidden="true" className="absolute inset-0 size-full -rotate-90">
             <circle cx="24" cy="24" r="22" fill="none" strokeWidth="2" className="stroke-ink/10 group-hover:stroke-white/20" />
-            <motion.circle
+            <m.circle
               cx="24"
               cy="24"
               r="22"
@@ -51,7 +51,7 @@ export function ScrollToTop() {
             />
           </svg>
           <ArrowUp size={18} aria-hidden="true" className="transition-transform duration-300 group-hover:-translate-y-0.5" />
-        </motion.button>
+        </m.button>
       ) : null}
     </AnimatePresence>
   );

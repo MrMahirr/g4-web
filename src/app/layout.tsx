@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
-import { Toaster } from "sonner";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { ToastProvider } from "@/components/layout/ToastProvider";
 import { JsonLd } from "@/components/shared/JsonLd";
 import type { HeaderData } from "@/components/layout/types";
 import { MotionProvider } from "@/components/motion/MotionProvider";
@@ -92,7 +92,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <main id="icerik">{children}</main>
       <SiteFooter company={catalog.site.getCompany()} services={catalog.services.getServices()} />
             <ScrollToTop />
-            <Toaster position="bottom-right" toastOptions={{ className: "font-sans" }} />
+            <ToastProvider />
           </MotionProvider>
         </StoreProvider>
         </NextIntlClientProvider>

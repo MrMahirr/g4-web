@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { Picture } from "@/components/shared/Picture";
 import { underlineLinkClass } from "@/components/ui/UnderlineLink";
 import { routes } from "@/data/navigation.data";
@@ -31,7 +31,7 @@ export function ProductGrid({ products, view = "grid", animationKey = "" }: { pr
       )}
     >
       {products.map((product, index) => (
-        <motion.li
+        <m.li
           key={`${animationKey}-${product.slug}`}
           className="relative flex"
           initial={{ opacity: 0, y: 40 }}
@@ -70,7 +70,7 @@ export function ProductGrid({ products, view = "grid", animationKey = "" }: { pr
             name={product.name}
             className={cn("absolute z-[2]", isList ? "top-1/2 right-4 -translate-y-1/2" : "right-4 bottom-4")}
           />
-        </motion.li>
+        </m.li>
       ))}
     </ul>
   );

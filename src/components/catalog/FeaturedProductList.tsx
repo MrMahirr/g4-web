@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useTranslations } from "next-intl";
 import { useState, type ReactNode } from "react";
 import { ListRow } from "@/components/shared/ListRow";
@@ -68,7 +68,7 @@ export function FeaturedProductList({
 
       <ul className="m-0 list-none border-t border-ink/14 p-0">
         {shown.map((row, index) => (
-          <motion.li
+          <m.li
             key={`${selected}-${row.slug}`}
             className="relative"
             initial={filterable ? { opacity: 0, y: 40 } : false}
@@ -85,7 +85,7 @@ export function FeaturedProductList({
               className="border-ink/14 pr-[64px]"
             />
             <AddQuoteButton slug={row.slug} name={row.name} className="absolute top-1/2 right-0 z-[3] -translate-y-1/2" />
-          </motion.li>
+          </m.li>
         ))}
       </ul>
     </div>

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ShoppingBag, Trash2, X } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { toast } from "sonner";
 import { QuantityBox, UnitSegment } from "@/components/catalog/QuantityControls";
 import { Button } from "@/components/ui/Button";
@@ -59,7 +59,7 @@ export function QuoteCartDrawer() {
         {drawer.isOpen ? (
           <Dialog.Portal forceMount>
             <Dialog.Overlay asChild forceMount>
-              <motion.div
+              <m.div
                 className="fixed inset-0 z-[90] bg-ink/30"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -68,7 +68,7 @@ export function QuoteCartDrawer() {
               />
             </Dialog.Overlay>
             <Dialog.Content asChild forceMount aria-describedby={undefined} {...returnFocus}>
-              <motion.div
+              <m.div
                 className="fixed inset-y-0 right-0 z-[95] flex w-full max-w-[520px] flex-col bg-paper shadow-[0_40px_80px_-30px_rgb(30_48_64/0.45)]"
                 initial={reduceMotion ? { opacity: 0 } : { x: "100%" }}
                 animate={reduceMotion ? { opacity: 1 } : { x: 0 }}
@@ -165,7 +165,7 @@ export function QuoteCartDrawer() {
                     </Button>
                   </div>
                 )}
-              </motion.div>
+              </m.div>
             </Dialog.Content>
           </Dialog.Portal>
         ) : null}
