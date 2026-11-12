@@ -1,17 +1,13 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Drift } from "@/components/motion/Drift";
 import { Reveal } from "@/components/motion/Reveal";
-import {
-  ReferenceVisual,
-  referenceCellClass,
-} from "@/components/sections/home/References";
+import { ReferenceCard } from "@/components/sections/references/ReferenceCard";
+import { ReferencesCta } from "@/components/sections/references/ReferencesCta";
 import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/ui/Container";
 import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
-import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -25,7 +21,7 @@ export default async function ReferencesPage() {
   const copy = await getTranslations("pages");
   const catalog = getCatalog(await getLocale());
   const references = catalog.getReferences();
-  const total = String(references.length + 1).padStart(2, "0");
+  const total = references.length;
 
   return (
     <>
@@ -41,56 +37,32 @@ export default async function ReferencesPage() {
         image={catalog.getImage("hero/referanslar")}
       />
 
-      <Container as="section" className="pt-lead pb-section">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] border-t border-l border-line">
+      <Container as="section" className="pt-lead">
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {references.map((reference, index) => {
             const logo = catalog.getImage(reference.logoKey);
             const photo = catalog.getImage(reference.imageKey);
-            const hasPhoto = !logo && Boolean(photo);
             return (
-              <Reveal
-                key={reference.id}
-                index={index % 4}
-                className={cn(referenceCellClass, "h-[280px]")}
-              >
-                <span
-                  className={cn(
-                    "absolute top-3.5 right-4 z-10 font-mono text-xs",
-                    hasPhoto ? "text-white" : "text-ember-d",
-                  )}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <ReferenceVisual
-                  reference={reference}
-                  logo={logo}
-                  photo={photo}
-                />
-                {hasPhoto ? null : (
-                  <span className="absolute bottom-2.5 left-3.5 translate-y-1.5 font-mono text-[11px] text-muted opacity-0 transition-[opacity,translate] duration-500 ease-soft group-hover/lg:translate-y-0 group-hover/lg:opacity-100">
-                    {reference.sectorLabel}
-                  </span>
-                )}
-              </Reveal>
+              <li key={reference.id}>
+                <Reveal index={index % 3} className="h-full">
+                  <ReferenceCard
+                    reference={reference}
+                    logo={logo}
+                    photo={photo}
+                    index={index}
+                    total={total}
+                  />
+                </Reveal>
+              </li>
             );
           })}
-          <Reveal index={3} className="border-r border-b border-line">
-            <Link
-              href={routes.contact}
-              className={cn(
-                referenceCellClass,
-                "h-[280px] flex-col items-start justify-between border-0 bg-ember text-ink no-underline",
-              )}
-            >
-              <span className="font-mono text-xs">
-                {total} / {total}
-              </span>
-              <span className="font-display text-[28px] leading-[1.1] font-bold tracking-[-0.03em]">
-                {copy("references.cta")}
-              </span>
-            </Link>
-          </Reveal>
-        </div>
+        </ul>
+      </Container>
+
+      <Container className="pt-section pb-section">
+        <Reveal>
+          <ReferencesCta />
+        </Reveal>
       </Container>
 
       <section aria-hidden="true" className="overflow-hidden pb-section">
