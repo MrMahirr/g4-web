@@ -47,9 +47,11 @@ type Props = {
   mirrored?: boolean;
   /** false: yarı saydam perde katmanları çizilmez, yalnız kaydırmaya bağlı 1.3x → 1 yakınlaşma kalır. */
   veil?: boolean;
+  /** Yakınlaşmanın (1.3x → 1) bittiği kaydırma ilerlemesi; küçük değer = görsel ekranda daha aşağıdayken biter. */
+  scaleEnd?: number;
 };
 
-export function CurtainFrame({ children, mirrored = false, veil = true }: Props) {
+export function CurtainFrame({ children, mirrored = false, veil = true, scaleEnd = 0.55 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const progress = useSpring(useCoverProgress(ref), SPRING);
@@ -59,7 +61,7 @@ export function CurtainFrame({ children, mirrored = false, veil = true }: Props)
   const backMask = useTransform(back, toMask(BACK_FEATHER));
   const frontVeil = useTransform(front, toVeil(INK, 0.3, 0.68));
   const backVeil = useTransform(back, toVeil(TINT, 0.28, 0.66));
-  const scale = useTransform(progress, [0.04, 0.55], [1.3, 1]);
+  const scale = useTransform(progress, [0.04, scaleEnd], [1.3, 1]);
 
   return (
     <div ref={ref} className="absolute inset-0">

@@ -51,8 +51,8 @@ export default async function NewsPage() {
               placeholderLabel={t("i18n.news.image")}
               curtain
               curtainVeil={false}
+              curtainScaleEnd={0.35}
               eager
-              zoomOnHover
               sizes="(max-width: 960px) 100vw, 58vw"
               className="h-[520px] rounded-card max-row:h-[340px]"
             />

@@ -16,6 +16,8 @@ type Props = {
   curtainMirrored?: boolean;
   /** false: perde katmanı çizilmez, kaydırmaya bağlı yakınlaşma (1.3x → 1) kalır. */
   curtainVeil?: boolean;
+  /** Perde yakınlaşmasının bittiği kaydırma ilerlemesi (varsayılan 0.55); küçük değer daha erken bitirir. */
+  curtainScaleEnd?: number;
   /** Üzerine (veya `group` işaretli üst öğeye) gelince yakınlaşma. */
   zoomOnHover?: boolean;
   /** Ekran üstü (LCP) görsel: tembel yükleme kapatılır. */
@@ -35,6 +37,7 @@ export function Picture({
   curtain = false,
   curtainMirrored = false,
   curtainVeil = true,
+  curtainScaleEnd,
   zoomOnHover = false,
   eager = false,
   sizes = "(max-width: 960px) 100vw, 50vw",
@@ -75,7 +78,7 @@ export function Picture({
   return (
     <div className={cn("relative overflow-hidden", fit === "contain" ? "bg-paper" : "bg-sand", className)}>
       {curtain ? (
-        <CurtainFrame mirrored={curtainMirrored} veil={curtainVeil}>
+        <CurtainFrame mirrored={curtainMirrored} veil={curtainVeil} scaleEnd={curtainScaleEnd}>
           {image}
         </CurtainFrame>
       ) : (
