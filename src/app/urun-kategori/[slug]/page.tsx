@@ -1,9 +1,9 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { CategoryResults, type CategoryProduct } from "@/components/catalog/CategoryResults";
+import { CategoryTabLink } from "@/components/catalog/CategoryTabLink";
 import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { Enter } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/shared/PageHero";
@@ -99,11 +99,10 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
             {categories.map((item) => {
               const current = item.slug === slug;
               return (
-                <Link
+                <CategoryTabLink
                   key={item.slug}
                   href={routes.category(item.slug)}
-                  scroll={false}
-                  aria-current={current ? "page" : undefined}
+                  current={current}
                   className={cn(
                     "relative flex min-h-14 flex-none items-center px-[18px] font-medium whitespace-nowrap text-muted no-underline",
                     "after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:scale-x-0 after:bg-ember after:content-['']",
@@ -112,7 +111,7 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
                   )}
                 >
                   {item.title}
-                </Link>
+                </CategoryTabLink>
               );
             })}
           </nav>
