@@ -51,6 +51,7 @@ export default async function NewsPage() {
               alt={leadImage?.alt ?? lead.title}
               placeholderLabel={t("i18n.news.image")}
               curtain
+              curtainVeil={false}
               eager
               zoomOnHover
               sizes="(max-width: 960px) 100vw, 58vw"
@@ -58,7 +59,7 @@ export default async function NewsPage() {
             />
             <div className="flex flex-col gap-[22px] pb-2.5">
               <Reveal>
-                <span className="font-mono text-[13px] text-ember-d">{formatShortDate(lead.publishedAt, locale)} · 01</span>
+                <span className="font-mono text-[13px] text-ember-d">{formatShortDate(lead.publishedAt, locale)}</span>
               </Reveal>
               <Reveal kind="skew">
                 <h2 className="font-display text-d2 text-[clamp(32px,3.6vw,54px)] transition-colors duration-400 group-hover:text-ember-d">
