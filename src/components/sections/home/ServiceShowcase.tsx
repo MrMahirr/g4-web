@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, type CSSProperties } from "react";
+import { useMediaQuery } from "usehooks-ts";
 import { CurtainFrame } from "@/components/motion/CurtainFrame";
 import { cn } from "@/lib/utils";
 
@@ -29,15 +30,9 @@ type Props = {
 export function ServiceShowcase({ items, interval = 5000 }: Props) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [reduceMotion, setReduceMotion] = useState(false);
-
-  useEffect(() => {
-    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setReduceMotion(query.matches);
-    sync();
-    query.addEventListener("change", sync);
-    return () => query.removeEventListener("change", sync);
-  }, []);
+  const reduceMotion = useMediaQuery("(prefers-reduced-motion: reduce)", {
+    initializeWithValue: false,
+  });
 
   const auto = !paused && !reduceMotion && items.length > 1;
 

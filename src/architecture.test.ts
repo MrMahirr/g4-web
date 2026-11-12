@@ -60,7 +60,25 @@ function expectNoViolations(rule: Rule): void {
   expect(violations, `${rule.directory} bağımlılık ihlalleri:\n${violations.join("\n")}`).toEqual([]);
 }
 
+function oversizedComponents(): string[] {
+  const directories = ["components", "app"];
+  return directories.flatMap((directory) =>
+    sourceFiles(join(sourceRoot, directory))
+      // stil sayfası, tasarım sisteminin tek ekranda başvuru olması nedeniyle bilinçli istisnadır.
+      .filter((file) => relative(sourceRoot, file).replaceAll("\\", "/") !== "app/stil/page.tsx")
+      .filter((file) => file.endsWith(".tsx"))
+      .map((file) => ({ file, lines: readFileSync(file, "utf8").split("\n").length }))
+      .filter(({ lines }) => lines > 200)
+      .map(({ file, lines }) => `${relative(sourceRoot, file)}: ${lines} satır`),
+  );
+}
+
 describe("katman bağımlılıkları", () => {
+  it("bileşenler 200 satırı aşamaz", () => {
+    const violations = oversizedComponents();
+    expect(violations, `200 satırı aşan bileşenler:\n${violations.join("\n")}`).toEqual([]);
+  });
+
   it("core dış katmanları içe aktaramaz", () => {
     expectNoViolations(rules[0]);
   });
