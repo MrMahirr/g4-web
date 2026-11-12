@@ -2,6 +2,8 @@
 
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Check } from "lucide-react";
+import { PiGlobeSimple } from "react-icons/pi";
+import { GB, TR } from "country-flag-icons/react/3x2";
 import { motion, useReducedMotion } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -33,7 +35,20 @@ function useLanguage() {
 /** Dil kodu kısaltması (TR / EN); tam dil adı aria-label ile verilir. */
 const code = (locale: Locale) => locale.toUpperCase();
 
-/** Masaüstü: yalnız dil kodunu gösteren küçük açılır menü. */
+const flags = { tr: TR, en: GB } as const;
+
+/** Açılır menüdeki seçeneklerin bayrağı (dekoratif). */
+function Flag({ locale }: { locale: Locale }) {
+  const Icon = flags[locale];
+  return (
+    <Icon
+      aria-hidden="true"
+      className="h-3.5 w-5 flex-none rounded-[2px] shadow-[0_0_0_1px_rgb(30_48_64/0.12)]"
+    />
+  );
+}
+
+/** Masaüstü: küre ikonlu düğme; açılır menüde dil kodları (seçili dil aria-label'da). */
 export function LanguageToggle() {
   const t = useTranslations();
   const reduceMotion = useReducedMotion();
@@ -43,9 +58,9 @@ export function LanguageToggle() {
     <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger
         aria-label={`${t("language.label")}: ${t(current === "tr" ? "language.turkish" : "language.english")}`}
-        className="inline-flex h-11 cursor-pointer items-center gap-1.5 rounded-full px-2.5 font-mono text-[12px] tracking-[0.06em] text-ink transition-colors duration-300 hover:bg-ink/7 data-[state=open]:bg-ink/7"
+        className="flex size-11 flex-none cursor-pointer items-center justify-center rounded-full text-ink transition-colors duration-300 hover:bg-ink/7 data-[state=open]:bg-ink/7"
       >
-        {code(current)}
+        <PiGlobeSimple size={21} aria-hidden="true" />
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
@@ -65,6 +80,7 @@ export function LanguageToggle() {
                 transition={{ duration: 0.35, ease: EASE_SOFT, delay: 0.04 * index }}
                 className="flex h-10 w-full cursor-pointer items-center gap-3 rounded-btn px-3 text-left text-[14px] font-medium text-ink outline-none data-[highlighted]:bg-ink/7 data-[disabled]:cursor-wait"
               >
+                <Flag locale={option} />
                 <span className="flex-1 font-mono tracking-[0.06em]">{code(option)}</span>
                 {current === option ? <Check size={15} aria-hidden="true" className="text-ember-d" /> : null}
               </motion.button>
