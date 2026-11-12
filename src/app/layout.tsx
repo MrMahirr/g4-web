@@ -22,10 +22,13 @@ const geist = Geist({
   display: "swap",
 });
 
+// Gövde fontu önceden yüklenmez: mobilde LCP görseliyle bant genişliği için yarışmasın (plan 15 · K-P2).
+// İlk karede yedek font görünür; next/font'un adjustFontFallback ayarı kaymayı (CLS) önler.
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "latin-ext"],
   display: "swap",
+  preload: false,
 });
 
 export async function generateMetadata(): Promise<Metadata> {
