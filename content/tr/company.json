@@ -1,0 +1,45 @@
+{
+  "company": {
+    "address": {
+      "full": "Remzi Oğuz Arık Mahallesi Paris Caddesi Paris Apartmanı No 64/5 Çankaya/Ankara",
+      "street": "Paris Caddesi No 64/5",
+      "district": "Çankaya",
+      "city": "Ankara"
+    },
+    "socials": [
+      {
+        "label": "WhatsApp"
+      },
+      {
+        "label": "Telegram"
+      },
+      {
+        "label": "Instagram"
+      },
+      {
+        "label": "X"
+      },
+      {
+        "label": "LinkedIn"
+      }
+    ],
+    "stats": [
+      {
+        "kicker": "Memnuniyet Oranı",
+        "label": "Mutlu Müşteri"
+      },
+      {
+        "kicker": "Tamamlanan Siparişler",
+        "label": "Sipariş"
+      },
+      {
+        "kicker": "Ürün Çeşidi",
+        "label": "Ürün"
+      },
+      {
+        "kicker": "Satılan Paketler",
+        "label": "Paket Satışı"
+      }
+    ]
+  }
+}

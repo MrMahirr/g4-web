@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -8,10 +9,8 @@ import { PageHero } from "@/components/shared/PageHero";
 import { Picture } from "@/components/shared/Picture";
 import { Container } from "@/components/ui/Container";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
-import { pageCopy } from "@/data/pages.data";
-import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
 import { splitSentences } from "@/lib/text";
 import { pageMetadata } from "@/lib/seo";
@@ -28,15 +27,14 @@ const heroPositions: Record<string, string> = {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return container
-    .resolve("CatalogService")
+  return getCatalog("tr")
     .getServices()
     .map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/hizmet/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const catalog = container.resolve("CatalogService");
+  const catalog = getCatalog(await getLocale());
   const service = catalog.getServiceBySlug(slug);
   if (!service) return {};
   return pageMetadata({
@@ -49,8 +47,10 @@ export async function generateMetadata({ params }: PageProps<"/hizmet/[slug]">):
 
 /** Hizmet detay (tasarım: D4HizmetDetay) — kapak, yapışkan hizmet listesi, gövde, teklif formu. */
 export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]">) {
+  const t = await getTranslations();
+  const copy = await getTranslations("pages");
   const { slug } = await params;
-  const catalog = container.resolve("CatalogService");
+  const catalog = getCatalog(await getLocale());
   const service = catalog.getServiceBySlug(slug);
   if (!service) notFound();
 
@@ -65,8 +65,8 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
 
   const path = routes.service(service.slug);
   const crumbs: Crumb[] = [
-    { label: tr.common.home, href: routes.home },
-    { label: tr.nav.services, href: routes.services },
+    { label: t("common.home"), href: routes.home },
+    { label: t("nav.services"), href: routes.services },
     { label: service.title },
   ];
 
@@ -79,7 +79,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
         title={[service.title]}
         titleMotion="rise"
         titleClassName="max-w-[1100px] text-[clamp(42px,6vw,96px)] leading-none tracking-[-0.04em]"
-        description={pageCopy.services.lead}
+        description={copy("services.lead")}
         ghost={String(position).padStart(2, "0")}
         image={catalog.getImage(`hero/hizmet-${service.imageKey.split("/")[1]}`)}
         imagePosition={heroPositions[service.imageKey] ?? "object-center"}
@@ -94,7 +94,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
       <Container as="section" className="py-section">
         <div className="grid grid-cols-[minmax(0,4fr)_minmax(0,8fr)] items-start gap-[clamp(32px,6vw,96px)] max-stack:grid-cols-1">
           <aside className="sticky top-[120px] flex flex-col gap-6 max-stack:static">
-            <nav aria-label="Hizmetlerimiz" className="border-t border-line">
+            <nav aria-label={t("footer.services")} className="border-t border-line">
               {services.map((item, index) => {
                 const current = item.slug === slug;
                 return (
@@ -131,7 +131,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
             {category ? (
               <Reveal>
                 <UnderlineLink href={routes.category(category.slug)} className="self-start text-ember-d">
-                  {category.title} ürünlerini gör ({category.productCount})
+                  {t("i18n.viewCategoryProducts", { category: category.title, count: category.productCount })}
                 </UnderlineLink>
               </Reveal>
             ) : null}
@@ -143,10 +143,10 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] gap-14 rounded-card bg-white p-[clamp(32px,5vw,72px)]">
           <div className="flex flex-col gap-[18px]">
             <Reveal kind="skew">
-              <h2 className="font-display text-d2">{pageCopy.services.formTitle}</h2>
+              <h2 className="font-display text-d2">{copy("services.formTitle")}</h2>
             </Reveal>
             <Reveal>
-              <p className="leading-[1.75] text-muted">{pageCopy.services.formText}</p>
+              <p className="leading-[1.75] text-muted">{copy("services.formText")}</p>
             </Reveal>
           </div>
           <Reveal>

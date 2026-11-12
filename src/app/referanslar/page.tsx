@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Drift } from "@/components/motion/Drift";
@@ -8,24 +9,21 @@ import {
 } from "@/components/sections/home/References";
 import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/ui/Container";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
-import { pageCopy } from "@/data/pages.data";
-import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 
-const copy = pageCopy.references;
-
-export const metadata: Metadata = pageMetadata({
-  title: copy.title,
-  description: copy.lead,
-  path: routes.references,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("pages");
+  return pageMetadata({ title: t("references.title"), description: t("references.lead"), path: routes.references });
+}
 
 /** Referanslar (tasarım: D4Referanslar) — numaralı büyük ızgara + kayan dev isimler. */
-export default function ReferencesPage() {
-  const catalog = container.resolve("CatalogService");
+export default async function ReferencesPage() {
+  const t = await getTranslations();
+  const copy = await getTranslations("pages");
+  const catalog = getCatalog(await getLocale());
   const references = catalog.getReferences();
   const total = String(references.length + 1).padStart(2, "0");
 
@@ -33,12 +31,12 @@ export default function ReferencesPage() {
     <>
       <PageHero
         crumbs={[
-          { label: tr.common.home, href: routes.home },
-          { label: tr.nav.corporate },
-          { label: copy.title },
+          { label: t("common.home"), href: routes.home },
+          { label: t("nav.corporate") },
+          { label: copy("references.title") },
         ]}
-        title={[copy.title]}
-        description={copy.lead}
+        title={[copy("references.title")]}
+        description={copy("references.lead")}
         ghost={String(references.length).padStart(2, "0")}
         image={catalog.getImage("hero/referanslar")}
       />
@@ -88,7 +86,7 @@ export default function ReferencesPage() {
                 {total} / {total}
               </span>
               <span className="font-display text-[28px] leading-[1.1] font-bold tracking-[-0.03em]">
-                {copy.cta}
+                {copy("references.cta")}
               </span>
             </Link>
           </Reveal>
@@ -98,7 +96,7 @@ export default function ReferencesPage() {
       <section aria-hidden="true" className="overflow-hidden pb-section">
         <Drift>
           <div className="font-display text-[clamp(90px,13vw,200px)] leading-none font-extrabold tracking-[-0.06em] whitespace-nowrap text-transparent [-webkit-text-stroke:1.5px_var(--color-line)] select-none">
-            {copy.drift}
+            {copy("references.drift")}
           </div>
         </Drift>
       </section>

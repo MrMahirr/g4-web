@@ -1,4 +1,5 @@
 "use client";
+import { useLocale, useTranslations } from "next-intl";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
@@ -6,8 +7,7 @@ import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useRef, type FormEvent, type KeyboardEvent } from "react";
-import { popularSearches, routes } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
+import { routes } from "@/data/navigation.data";
 import { useCatalogSummary } from "@/hooks/useCatalogSummary";
 import { useOverlay } from "@/hooks/useOverlay";
 import { useReturnFocus } from "@/hooks/useReturnFocus";
@@ -23,7 +23,9 @@ const FILTERS: SearchFilter[] = ["all", "urun", "grup", "hizmet"];
 const MAX_RESULTS = 8;
 
 /** Tam ekran site içi arama (tasarım: D4Header .so). Ctrl/⌘ + K ile de açılır. */
-export function SearchOverlay({ categories }: { categories: NavLinkItem[] }) {
+export function SearchOverlay({ categories }: { categories: readonly NavLinkItem[] }) {
+  const t = useTranslations();
+  const locale = useLocale();
   // Dizin katman ilk açıldığında /api/katalog-ozet'ten gelir (plan 8.5).
   const { isOpen } = useOverlay("search");
   const summary = useCatalogSummary(isOpen);
@@ -72,14 +74,14 @@ export function SearchOverlay({ categories }: { categories: NavLinkItem[] }) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
               >
-                <Dialog.Title className="sr-only">{tr.search.open}</Dialog.Title>
+                <Dialog.Title className="sr-only">{t("search.open")}</Dialog.Title>
                 <Dialog.Close
                   className={cn(
                     "fixed top-6 right-6 flex min-h-10 cursor-pointer items-center gap-2.5 rounded-full py-0 pr-1.5 pl-3.5",
                     "text-[13px] tracking-[0.06em] text-muted transition-colors duration-200 hover:bg-ink/6 hover:text-ink",
                   )}
                 >
-                  {tr.common.close.toLocaleUpperCase("tr-TR")}
+                  {t("common.close").toLocaleUpperCase(locale)}
                   <i aria-hidden="true" className="flex size-7 items-center justify-center rounded-full border border-line text-base not-italic">
                     ×
                   </i>
@@ -98,14 +100,14 @@ export function SearchOverlay({ categories }: { categories: NavLinkItem[] }) {
                   >
                     <Search size={22} strokeWidth={1.8} className="flex-none text-faint" aria-hidden="true" />
                     <label htmlFor="site-arama" className="sr-only">
-                      {tr.search.open}
+                      {t("search.open")}
                     </label>
                     <input
                       ref={inputRef}
                       id="site-arama"
                       type="search"
                       autoComplete="off"
-                      placeholder={tr.search.placeholder}
+                      placeholder={t("search.placeholder")}
                       value={search.query}
                       onChange={(event) => search.setQuery(event.target.value)}
                       className={cn(
@@ -119,7 +121,7 @@ export function SearchOverlay({ categories }: { categories: NavLinkItem[] }) {
                         onClick={() => search.setQuery("")}
                         className="min-h-9 flex-none cursor-pointer px-1 text-[13px] text-faint hover:text-ink"
                       >
-                        {tr.search.clear}
+                        {t("search.clear")}
                       </button>
                     ) : null}
                     <span aria-hidden="true" className="flex-none rounded-btn border border-line px-[7px] py-[3px] font-mono text-[11px] text-faint">
@@ -129,7 +131,7 @@ export function SearchOverlay({ categories }: { categories: NavLinkItem[] }) {
 
                   {hasQuery ? (
                     <div className="flex flex-col gap-[18px]">
-                      <div role="group" aria-label={tr.search.filterLabel} className="flex flex-wrap gap-[22px]">
+                      <div role="group" aria-label={t("search.filterLabel")} className="flex flex-wrap gap-[22px]">
                         {FILTERS.map((filter) => (
                           <button
                             key={filter}
@@ -142,7 +144,7 @@ export function SearchOverlay({ categories }: { categories: NavLinkItem[] }) {
                               "after:transition-transform after:duration-400 after:ease-soft aria-pressed:after:scale-x-100",
                             )}
                           >
-                            {tr.search.filters[filter]}
+                            {t(`search.filters.${filter}`)}
                             <sup className="ml-[3px] text-[10px] text-faint">{search.counts[filter]}</sup>
                           </button>
                         ))}
@@ -158,21 +160,21 @@ export function SearchOverlay({ categories }: { categories: NavLinkItem[] }) {
                             onClick={close}
                             className="mt-3 self-start font-mono text-xs tracking-[0.06em] text-ember-d uppercase no-underline hover:underline"
                           >
-                            Tüm sonuçlar ({search.results.length}) →
+                            {t("i18n.allResults", { count: search.results.length })}
                           </Link>
                         ) : null}
                         {loading ? (
                           <p role="status" className="py-[18px] text-[15px] leading-[1.6] text-muted">
-                            {tr.search.loading}
+                            {t("search.loading")}
                           </p>
                         ) : null}
                         {!loading && shown.length === 0 ? (
                           <p className="py-[18px] text-[15px] leading-[1.6] text-muted">
-                            “{search.query}” {tr.search.noResultsBefore}{" "}
+                            “{search.query}” {t("search.noResultsBefore")}{" "}
                             <Link href={routes.contact} onClick={close} className="font-semibold text-ink">
-                              {tr.search.noResultsLink}
+                              {t("search.noResultsLink")}
                             </Link>
-                            {tr.search.noResultsAfter}
+                            {t("search.noResultsAfter")}
                           </p>
                         ) : null}
                       </div>
@@ -185,9 +187,9 @@ export function SearchOverlay({ categories }: { categories: NavLinkItem[] }) {
                       transition={{ duration: 0.5, ease: EASE_SOFT, delay: 0.1 }}
                     >
                       <div className="flex flex-col gap-3">
-                        <span className="text-xs tracking-[0.08em] text-faint uppercase">{tr.search.popular}</span>
+                        <span className="text-xs tracking-[0.08em] text-faint uppercase">{t("search.popular")}</span>
                         <div className="flex flex-wrap items-baseline gap-x-[18px] gap-y-1.5">
-                          {popularSearches.map((term) => (
+                          {(t.raw("navLinks.popularSearches") as string[]).map((term) => (
                             <button
                               key={term}
                               type="button"
@@ -200,7 +202,7 @@ export function SearchOverlay({ categories }: { categories: NavLinkItem[] }) {
                         </div>
                       </div>
                       <div className="flex flex-col gap-3">
-                        <span className="text-xs tracking-[0.08em] text-faint uppercase">{tr.search.groups}</span>
+                        <span className="text-xs tracking-[0.08em] text-faint uppercase">{t("search.groups")}</span>
                         <div className="flex flex-wrap items-baseline gap-x-[18px] gap-y-1.5">
                           {categories.map((category) => (
                             <Link

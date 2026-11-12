@@ -1,0 +1,695 @@
+{
+  "hero/ana": {
+    "src": "/images/hero/anasayfa.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hero/hakkimizda": {
+    "src": "/images/hero/hakkimizda-stetoskop.webp",
+    "width": 2000,
+    "height": 1276,
+    "credit": {
+      "site": "Pexels · Negative Space",
+      "photographer": "Negative Space",
+      "url": "https://www.pexels.com/photo/48604/"
+    }
+  },
+  "hero/hakkimizda-salon": {
+    "src": "/images/hero/hakkimizda.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hero/iletisim": {
+    "src": "/images/hero/iletisim.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hero/referanslar": {
+    "src": "/images/hero/referanslar-el-sikisma.webp",
+    "width": 2000,
+    "height": 1335,
+    "credit": {
+      "site": "Unsplash · Cytonn Photography",
+      "photographer": "Cytonn Photography",
+      "url": "https://unsplash.com/photos/two-people-shaking-hands-n95VMLxqM2I"
+    }
+  },
+  "hero/haberler": {
+    "src": "/images/hero/haberler-ar-ge-laboratuvar.webp",
+    "width": 2000,
+    "height": 1333,
+    "credit": {
+      "site": "Unsplash · Trnava University in Trnava",
+      "photographer": "Trnava University in Trnava",
+      "url": "https://unsplash.com/photos/1602052577122-f73b9710adba"
+    }
+  },
+  "hero/kariyer": {
+    "src": "/images/hero/kariyer.webp",
+    "width": 2000,
+    "height": 1125,
+    "credit": {
+      "site": "Unsplash · Vitaly Gariev",
+      "photographer": "Vitaly Gariev",
+      "url": "https://unsplash.com/photos/6hb3u7YOFFk"
+    }
+  },
+  "hero/hizmetler": {
+    "src": "/images/hero/hizmetler-tansiyon.webp",
+    "width": 2000,
+    "height": 1333,
+    "credit": {
+      "site": "Unsplash · Julia Taubitz",
+      "photographer": "Julia Taubitz",
+      "url": "https://unsplash.com/photos/vN5s_G5SPkY"
+    }
+  },
+  "hero/hizmet-insaat": {
+    "src": "/images/hero/hizmetler-insaat-iskele.webp",
+    "width": 1648,
+    "height": 2000,
+    "credit": {
+      "site": "Unsplash · Tolu Olubode",
+      "photographer": "Tolu Olubode",
+      "url": "https://unsplash.com/photos/PlBsJ5MybGc"
+    }
+  },
+  "hero/hizmet-arac-kiralama": {
+    "src": "/images/hero/hizmetler-arac-kiralama.webp",
+    "width": 1333,
+    "height": 2000,
+    "credit": {
+      "site": "Unsplash · clement proust",
+      "photographer": "clement proust",
+      "url": "https://unsplash.com/photos/ms0G5L_wN4U"
+    }
+  },
+  "hero/hizmet-hastane-tekstili": {
+    "src": "/images/hero/hizmetler-hastane-tekstili.webp",
+    "width": 2000,
+    "height": 1251,
+    "credit": {
+      "site": "Unsplash · Adhy Savala",
+      "photographer": "Adhy Savala",
+      "url": "https://unsplash.com/photos/zbpgmGe27p8"
+    }
+  },
+  "hero/hizmet-medikal": {
+    "src": "/images/hero/hizmetler-ameliyathane.webp",
+    "width": 2000,
+    "height": 1333,
+    "credit": {
+      "site": "Unsplash · Marcel Scholte",
+      "photographer": "Marcel Scholte",
+      "url": "https://unsplash.com/photos/LPurJnihmQI"
+    }
+  },
+  "hero/urunler": {
+    "src": "/images/hero/urunler.webp",
+    "width": 2000,
+    "height": 1333,
+    "credit": {
+      "site": "Unsplash · César Badilla Miranda",
+      "photographer": "César Badilla Miranda",
+      "url": "https://unsplash.com/photos/Z6sbbTdPJTY"
+    }
+  },
+  "hero/kategori-bipolar-forceps": {
+    "src": "/images/hero/bipolar-forceps.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hero/kategori-gida-takviyesi-vitaminler": {
+    "src": "/images/hero/gidda-takviye.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hero/kategori-hastane-tekstili": {
+    "src": "/images/hero/hastane-tekstil.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hero/kategori-kozmetik-urunler": {
+    "src": "/images/hero/kozmetik.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hero/kategori-temizlik-hijyen-grubu": {
+    "src": "/images/hero/temizlik-hijyen.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hero/kategori-tibbi-cihazlar": {
+    "src": "/images/hero/tibbi-cigazlar.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hero/kategori-genel-tibbi-sarf-malzemeler": {
+    "src": "/images/hero/tibbi-sarf.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hero/sorular": {
+    "src": "/images/hero/sorular.webp",
+    "width": 2000,
+    "height": 1116
+  },
+  "hizmetler/medikal": {
+    "src": "/images/hero/medical.webp",
+    "width": 2000,
+    "height": 1493
+  },
+  "ana/medikal-perde": {
+    "src": "/images/hero/medical.webp",
+    "width": 2000,
+    "height": 1493
+  },
+  "hizmetler/insaat": {
+    "src": "/images/hizmetler/insaat.webp",
+    "width": 1200,
+    "height": 900,
+    "credit": {
+      "site": "Unsplash · Marina Zvada",
+      "photographer": "Marina Zvada",
+      "url": "https://unsplash.com/photos/architectural-blueprints-spread-out-on-a-surface-fNxmdlYHRm8"
+    }
+  },
+  "hizmetler/hastane-tekstili": {
+    "src": "/images/hizmetler/hastane-tekstili-carsaf.webp",
+    "width": 1800,
+    "height": 1200,
+    "credit": {
+      "site": "Unsplash · Levi Meir Clancy",
+      "photographer": "Levi Meir Clancy",
+      "url": "https://unsplash.com/photos/ZCJHlRcoiH8"
+    }
+  },
+  "referanslar/nba-guven": {
+    "src": "/images/referanslar/nba-guven.webp",
+    "width": 1500,
+    "height": 2000,
+    "representative": true,
+    "credit": {
+      "site": "Unsplash · Adhitya Sibikumar",
+      "photographer": "Adhitya Sibikumar",
+      "url": "https://unsplash.com/photos/three-red-chairs-in-a-waiting-room-by-window-2d3cHa8RMSY"
+    }
+  },
+  "referanslar/guven-ayranci": {
+    "src": "/images/referanslar/guven-ayranci.webp",
+    "width": 1360,
+    "height": 1334,
+    "representative": true,
+    "credit": {
+      "site": "Unsplash · Acton Crawford",
+      "photographer": "Acton Crawford",
+      "url": "https://unsplash.com/photos/brown-and-white-concrete-building-near-green-trees-under-blue-sky-during-daytime-8PB_TFEy2XQ"
+    }
+  },
+  "referanslar/ufuk": {
+    "src": "/images/referanslar/ufuk.webp",
+    "width": 2000,
+    "height": 1500,
+    "representative": true,
+    "credit": {
+      "site": "Unsplash · Tasha Kostyuk",
+      "photographer": "Tasha Kostyuk",
+      "url": "https://unsplash.com/photos/empty-hospital-corridor-with-benches-and-doors-Pk-KuizxQv8"
+    }
+  },
+  "referanslar/g4-spor": {
+    "src": "/images/referanslar/g4-spor.webp",
+    "width": 2000,
+    "height": 1125,
+    "representative": true,
+    "credit": {
+      "site": "Unsplash · Aalo Lens",
+      "photographer": "Aalo Lens",
+      "url": "https://unsplash.com/photos/modern-gym-with-treadmills-and-large-windows-uYnHRrm63uo"
+    }
+  },
+  "referanslar/guven-evde-bakim": {
+    "src": "/images/referanslar/guven-evde-bakim.webp",
+    "width": 2000,
+    "height": 1414,
+    "representative": true,
+    "credit": {
+      "site": "Unsplash · Age Cymru",
+      "photographer": "Age Cymru",
+      "url": "https://unsplash.com/photos/nurse-smiling-with-elderly-patient-in-room-dMhB7w99ju8"
+    }
+  },
+  "referanslar/g4-spa": {
+    "src": "/images/referanslar/g4-spa.webp",
+    "width": 2000,
+    "height": 1334,
+    "representative": true,
+    "credit": {
+      "site": "Unsplash · Dominik Neuner",
+      "photographer": "Dominik Neuner",
+      "url": "https://unsplash.com/photos/a-modern-steam-room-with-a-candle-and-ambient-lighting-9qYFu1NzpS8"
+    }
+  },
+  "referanslar/electro-bismed": {
+    "src": "/images/referanslar/electro-bismed.webp",
+    "width": 1333,
+    "height": 2000,
+    "representative": true,
+    "credit": {
+      "site": "Unsplash · Mauro Romero",
+      "photographer": "Mauro Romero",
+      "url": "https://unsplash.com/photos/a-clean-laboratory-bench-with-scientific-equipment-and-glassware-HNtgzXa8dc8"
+    }
+  },
+  "menu/kurumsal": {
+    "src": "/images/menu/kurumsal-merdiven.webp",
+    "width": 1639,
+    "height": 2000,
+    "credit": {
+      "site": "Unsplash · El S",
+      "photographer": "El S",
+      "url": "https://unsplash.com/photos/HaS2oee610Y"
+    }
+  },
+  "urunler/bipolar-forceps": {
+    "src": "/images/urunler/bipolar-forceps.webp",
+    "width": 1000,
+    "height": 1000,
+    "representative": true,
+    "credit": {
+      "site": "Unsplash · Jonathan Borba",
+      "photographer": "Jonathan Borba",
+      "url": "https://unsplash.com/photos/a-pile-of-surgical-scissors-on-a-blue-cloth-ucnh3ldFKcE"
+    }
+  },
+  "hizmetler/arac-kiralama": {
+    "src": "/images/hizmetler/arac-kiralama.webp",
+    "width": 1200,
+    "height": 900,
+    "credit": {
+      "site": "Unsplash · Andreas Rasmussen",
+      "photographer": "Andreas Rasmussen",
+      "url": "https://unsplash.com/photos/parked-black-vehicle-during-daytime-MBW3F1jEhh0"
+    }
+  },
+  "menu/hizmetler": {
+    "src": "/images/menu/hizmetler.webp",
+    "width": 900,
+    "height": 1100,
+    "credit": {
+      "site": "Unsplash · Ritu Chauhan",
+      "photographer": "Ritu Chauhan",
+      "url": "https://unsplash.com/photos/surgeons-in-blue-scrubs-operate-on-a-patient-with-monitors-displaying-medical-data-P9w9U_VyshQ"
+    }
+  },
+  "kurumsal/hakkimizda-1": {
+    "src": "/images/menu/kurumsal.webp",
+    "width": 900,
+    "height": 1100,
+    "credit": {
+      "site": "Unsplash · Edgar",
+      "photographer": "Edgar",
+      "url": "https://unsplash.com/photos/modern-building-with-geometric-lines-and-glass-XALyj0z5bgw"
+    }
+  },
+  "urunler/20-cm-bayonet-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-110v-20010": {
+    "src": "/images/g4-products/20-cm-bayonet-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-110v-20010.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/20-cm-bayonet-bipolar-forseps-1-0-mm-uc-ve-kablolu-valleylab-fisli-ref-01-110v-20010-1-0-mm-yapismaz": {
+    "src": "/images/g4-products/20-cm-bayonet-bipolar-forseps-1-0-mm-uc-ve-kablolu-valleylab-fisli-ref-01-110v-20010-1-0-mm-yapismaz.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/12-cm-adson-bipolar-penset-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010": {
+    "src": "/images/g4-products/12-cm-adson-bipolar-penset-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/12-cm-adson-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010-tirtikli": {
+    "src": "/images/g4-products/12-cm-adson-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010-tirtikli.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/15-cm-duz-bipolar-forseps-1-0-mm-acili-uc-ve-kablo-valleylab-fisli-ref-01-052v-15010": {
+    "src": "/images/g4-products/15-cm-duz-bipolar-forseps-1-0-mm-acili-uc-ve-kablo-valleylab-fisli-ref-01-052v-15010.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/alci-alti-pamuklari": {
+    "src": "/images/g4-products/alci-alti-pamuklari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/alcili-sargi": {
+    "src": "/images/g4-products/alcili-sargi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/ambu-setleri": {
+    "src": "/images/g4-products/ambu-setleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/anestezi-solunum-devreleri": {
+    "src": "/images/g4-products/anestezi-solunum-devreleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/asi-siringalari": {
+    "src": "/images/g4-products/asi-siringalari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/aspirasyon-sondalari": {
+    "src": "/images/g4-products/aspirasyon-sondalari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/bandaj-cesitleri": {
+    "src": "/images/g4-products/bandaj-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/beslenme-siringasi": {
+    "src": "/images/g4-products/beslenme-siringasi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/bisturi-ucu-cesitleri": {
+    "src": "/images/g4-products/bisturi-ucu-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/cerrahi-sutur-cesitleri": {
+    "src": "/images/g4-products/cerrahi-sutur-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/defibrilator-pedi": {
+    "src": "/images/g4-products/defibrilator-pedi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/dental-siringalar": {
+    "src": "/images/g4-products/dental-siringalar.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/dezenfektanlar": {
+    "src": "/images/g4-products/dezenfektanlar.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/eeg-elektrodu": {
+    "src": "/images/g4-products/eeg-elektrodu.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/ekg-elektrodu": {
+    "src": "/images/g4-products/ekg-elektrodu.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/ekg-kagidi": {
+    "src": "/images/g4-products/ekg-kagidi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/eldiven-cesitleri": {
+    "src": "/images/g4-products/eldiven-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/elektrokoter-uclari": {
+    "src": "/images/g4-products/elektrokoter-uclari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/endotrakeal-entubasyon-tupleri": {
+    "src": "/images/g4-products/endotrakeal-entubasyon-tupleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/enteral-beslenme-sondalari": {
+    "src": "/images/g4-products/enteral-beslenme-sondalari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/flaster-cesitleri": {
+    "src": "/images/g4-products/flaster-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/foley-sonda-cesitleri": {
+    "src": "/images/g4-products/foley-sonda-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/hasta-alt-bezleri": {
+    "src": "/images/g4-products/hasta-alt-bezleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/idrar-torbasi-cesitleri": {
+    "src": "/images/g4-products/idrar-torbasi-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/igneler": {
+    "src": "/images/g4-products/igneler.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/iki-parcali-siringalar": {
+    "src": "/images/g4-products/iki-parcali-siringalar.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/insulin-siringalari": {
+    "src": "/images/g4-products/insulin-siringalari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/jel-cesitleri": {
+    "src": "/images/g4-products/jel-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/kan-alma-setleri": {
+    "src": "/images/g4-products/kan-alma-setleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/kan-gazi-siringasi": {
+    "src": "/images/g4-products/kan-gazi-siringasi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/kilitli-siringalar-luer-lock-siringalar": {
+    "src": "/images/g4-products/kilitli-siringalar-luer-lock-siringalar.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/mezoterapi-igneleri": {
+    "src": "/images/g4-products/mezoterapi-igneleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/nazogastrik-sonda-cesitleri": {
+    "src": "/images/g4-products/nazogastrik-sonda-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/nebulizator-maskeleri": {
+    "src": "/images/g4-products/nebulizator-maskeleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/nst-kagidi": {
+    "src": "/images/g4-products/nst-kagidi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/numune-tupleri": {
+    "src": "/images/g4-products/numune-tupleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/oksijen-maskesi": {
+    "src": "/images/g4-products/oksijen-maskesi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/oral-airway": {
+    "src": "/images/g4-products/oral-airway.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/pipet-uclari": {
+    "src": "/images/g4-products/pipet-uclari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/santrifuj-tupleri": {
+    "src": "/images/g4-products/santrifuj-tupleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/serum-setleri": {
+    "src": "/images/g4-products/serum-setleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/sterilizasyon-rulosu": {
+    "src": "/images/g4-products/sterilizasyon-rulosu.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/trakeostomi-kanulu": {
+    "src": "/images/g4-products/trakeostomi-kanulu.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/uc-parcali-siringalar": {
+    "src": "/images/g4-products/uc-parcali-siringalar.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/veteriner-siringalari": {
+    "src": "/images/g4-products/veteriner-siringalari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/disposable-ortu-setleri": {
+    "src": "/images/g4-products/disposable-ortu-setleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/hastane-kiyafetleri": {
+    "src": "/images/g4-products/hastane-kiyafetleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/hastane-tekstili": {
+    "src": "/images/g4-products/hastane-tekstili.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/onluk-cesitleri": {
+    "src": "/images/g4-products/onluk-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/el-hijyeni-urunleri": {
+    "src": "/images/g4-products/el-hijyeni-urunleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/genel-temizlik-malzemeleri": {
+    "src": "/images/g4-products/genel-temizlik-malzemeleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/hijyen-ekipmanlari-ve-dispenserler": {
+    "src": "/images/g4-products/hijyen-ekipmanlari-ve-dispenserler.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/tibbi-alet-dezenfektanlari": {
+    "src": "/images/g4-products/tibbi-alet-dezenfektanlari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/tibbi-atik-yonetim-urunleri": {
+    "src": "/images/g4-products/tibbi-atik-yonetim-urunleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/yuzey-dezenfektalari": {
+    "src": "/images/g4-products/yuzey-dezenfektalari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/aspirator-cihazi": {
+    "src": "/images/g4-products/aspirator-cihazi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/boy-olcer-tarti-cesitleri": {
+    "src": "/images/g4-products/boy-olcer-tarti-cesitleri.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/ekg-cihazi": {
+    "src": "/images/g4-products/ekg-cihazi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/hasta-basi-monitoru": {
+    "src": "/images/g4-products/hasta-basi-monitoru.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/holter-cihazi": {
+    "src": "/images/g4-products/holter-cihazi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/infuzyon-pompasi": {
+    "src": "/images/g4-products/infuzyon-pompasi.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/koter-cihazlari": {
+    "src": "/images/g4-products/koter-cihazlari.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "urunler/pulse-oksimetre": {
+    "src": "/images/g4-products/pulse-oksimetre.webp",
+    "width": 1000,
+    "height": 1000
+  },
+  "haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik": {
+    "src": "/images/haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik.webp",
+    "width": 1920,
+    "height": 840,
+    "credit": {
+      "site": "Güven Hastanesi",
+      "photographer": "Güven Hastanesi",
+      "url": "https://www.guven.com.tr/bizden-haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik"
+    }
+  },
+  "haberler/peryon-networking-bulusmasinda-longevity-yi-prof-dr-pelin-aribal-ayral-dan-dinledik": {
+    "src": "/images/haberler/peryon-networking-bulusmasinda-longevity-yi-prof-dr-pelin-aribal-ayral-dan-dinledik.webp",
+    "width": 1920,
+    "height": 840,
+    "credit": {
+      "site": "Güven Hastanesi",
+      "photographer": "Güven Hastanesi",
+      "url": "https://www.guven.com.tr/bizden-haberler/peryon-networking-bulusmasinda-longevity-yi-prof-dr-pelin-aribal-ayral-dan-dinledik"
+    }
+  },
+  "haberler/peryon-ilk-networking-bulusmasi-guven-de": {
+    "src": "/images/haberler/peryon-ilk-networking-bulusmasi-guven-de.webp",
+    "width": 1920,
+    "height": 840,
+    "credit": {
+      "site": "Güven Hastanesi",
+      "photographer": "Güven Hastanesi",
+      "url": "https://www.guven.com.tr/bizden-haberler/peryon-ilk-networking-bulusmasi-guven-de"
+    }
+  },
+  "haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik-gunu": {
+    "src": "/images/haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik-gunu.webp",
+    "width": 1920,
+    "height": 1080,
+    "credit": {
+      "site": "Güven Hastanesi",
+      "photographer": "Güven Hastanesi",
+      "url": "https://www.guven.com.tr/bizden-haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik-gunu"
+    }
+  }
+}

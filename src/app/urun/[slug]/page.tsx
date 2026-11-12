@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FeaturedProductList } from "@/components/catalog/FeaturedProductList";
@@ -6,10 +7,9 @@ import { Enter } from "@/components/motion/Reveal";
 import { Breadcrumb, type Crumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/ui/Container";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import type { ImageEntry } from "@/core/types";
 import { routes } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
 import { toFeaturedRow } from "@/lib/featured";
 import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -19,15 +19,14 @@ import { breadcrumbLd, productLd } from "@/lib/structured-data";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return container
-    .resolve("CatalogService")
+  return getCatalog("tr")
     .getProducts()
     .map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/urun/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const catalog = container.resolve("CatalogService");
+  const catalog = getCatalog(await getLocale());
   const product = catalog.getProductBySlug(slug);
   if (!product) return {};
   return pageMetadata({
@@ -40,8 +39,9 @@ export async function generateMetadata({ params }: PageProps<"/urun/[slug]">): P
 
 /** Ürün detay sayfası (tasarım: D4UrunDetay). */
 export default async function ProductPage({ params }: PageProps<"/urun/[slug]">) {
+  const t = await getTranslations();
   const { slug } = await params;
-  const catalog = container.resolve("CatalogService");
+  const catalog = getCatalog(await getLocale());
   const product = catalog.getProductBySlug(slug);
   if (!product) notFound();
 
@@ -52,8 +52,8 @@ export default async function ProductPage({ params }: PageProps<"/urun/[slug]">)
   const related = catalog.getRelatedProducts(slug).map((item) => toFeaturedRow(catalog, item));
   const path = routes.product(product.slug);
   const crumbs: Crumb[] = [
-    { label: tr.common.home, href: routes.home },
-    { label: tr.nav.products, href: routes.products },
+    { label: t("common.home"), href: routes.home },
+    { label: t("nav.products"), href: routes.products },
     ...(category ? [{ label: category.title, href: routes.category(category.slug) }] : []),
     { label: product.code ?? product.name },
   ];
@@ -98,7 +98,7 @@ export default async function ProductPage({ params }: PageProps<"/urun/[slug]">)
                     {category.title}
                   </h2>
                   <UnderlineLink href={routes.category(category.slug)} className="text-ink">
-                    {tr.common.showAll}
+                    {t("common.showAll")}
                   </UnderlineLink>
                 </>
               }

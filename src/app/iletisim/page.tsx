@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
@@ -6,18 +7,16 @@ import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Tag } from "@/components/ui/Tag";
 import { underlineLinkClass } from "@/components/ui/UnderlineLink";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
 import { ContactForm } from "./ContactForm";
 import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: "İletişim",
-  description: "Profesyonel ekibimiz size en kısa sürede dönüş yapacaktır.",
-  path: routes.contact,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+  return pageMetadata({ title: t("nav.contact"), description: t("i18n.meta.contact.description"), path: routes.contact });
+}
 
 const infoTextClass = "font-display text-[20px] leading-[1.35] font-semibold tracking-[-0.02em] break-words";
 
@@ -31,8 +30,10 @@ function InfoCell({ index, tag, children }: { index: number; tag: string; childr
 }
 
 /** İletişim sayfası (tasarım: D4Iletisim). */
-export default function ContactPage() {
-  const catalog = container.resolve("CatalogService");
+export default async function ContactPage() {
+  const t = await getTranslations();
+  const locale = await getLocale();
+  const catalog = getCatalog(locale);
   const company = catalog.getCompany();
   const products = catalog.getProducts().map((product) => ({
     slug: product.slug,
@@ -43,10 +44,10 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        crumbs={[{ label: tr.common.home, href: routes.home }, { label: tr.nav.contact }]}
-        title={[tr.nav.contact]}
-        description="Profesyonel ekibimiz size en kısa sürede dönüş yapacaktır."
-        ghost="Merhaba"
+        crumbs={[{ label: t("common.home"), href: routes.home }, { label: t("nav.contact") }]}
+        title={[t("nav.contact")]}
+        description={t("i18n.meta.contact.description")}
+        ghost={t("i18n.contact.ghost")}
         image={catalog.getImage("hero/iletisim")}
       />
 
@@ -62,7 +63,9 @@ export default function ContactPage() {
             <Reveal index={1} className="relative flex min-h-[320px] flex-1 overflow-hidden rounded-card bg-tint-2 lg:min-h-0">
               <iframe
                 src={company.address.mapsEmbedUrl}
-                title={`G4 konum haritası: ${company.address.street} ${company.address.district}/${company.address.city}`}
+                title={t("i18n.contact.mapTitle", {
+                  address: `${company.address.street} ${company.address.district}/${company.address.city}`,
+                })}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
@@ -74,27 +77,27 @@ export default function ContactPage() {
                 rel="noreferrer"
                 className="absolute right-4 bottom-4 rounded-tag bg-white px-3 py-2.5 font-mono text-xs text-ink no-underline shadow-md"
               >
-                {tr.common.viewOnMap.toLocaleUpperCase("tr-TR")} ↗
+                {t("common.viewOnMap").toLocaleUpperCase(locale)} ↗
               </a>
             </Reveal>
 
             <div className="border-t border-line">
-              <InfoCell index={2} tag="Adres">
+              <InfoCell index={2} tag={t("i18n.contact.address")}>
                 <p className={infoTextClass}>{company.address.full}</p>
                 <a href={company.address.mapsUrl} target="_blank" rel="noreferrer" className={cn(underlineLinkClass, "self-start text-ember-d")}>
-                  {tr.common.viewOnMap}
+                  {t("common.viewOnMap")}
                 </a>
               </InfoCell>
-              <InfoCell index={3} tag="Telefon">
+              <InfoCell index={3} tag={t("i18n.contact.phone")}>
                 <p className={infoTextClass}>{company.phone.display}</p>
                 <a href={`tel:${company.phone.tel}`} className={cn(underlineLinkClass, "self-start text-ember-d")}>
-                  {tr.common.callNow}
+                  {t("common.callNow")}
                 </a>
               </InfoCell>
-              <InfoCell index={4} tag="E-posta">
+              <InfoCell index={4} tag={t("i18n.contact.email")}>
                 <p className={infoTextClass}>{company.email}</p>
                 <a href={`mailto:${company.email}`} className={cn(underlineLinkClass, "self-start text-ember-d")}>
-                  {tr.common.sendEmail}
+                  {t("common.sendEmail")}
                 </a>
               </InfoCell>
             </div>

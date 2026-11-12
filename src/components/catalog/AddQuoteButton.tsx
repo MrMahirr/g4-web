@@ -1,10 +1,10 @@
-﻿"use client";
+"use client";
+import { useTranslations } from "next-intl";
 
 import { Check, Plus } from "lucide-react";
 import { toast } from "sonner";
 import { useOverlay } from "@/hooks/useOverlay";
 import { useQuoteCart } from "@/hooks/useQuoteCart";
-import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -15,6 +15,7 @@ type Props = {
 
 /** Ürünü 1 adet olarak teklif listesine ekleyen küçük kare düğme (liste satırları ve kartlar). */
 export function AddQuoteButton({ slug, name, className }: Props) {
+  const t = useTranslations();
   const cart = useQuoteCart();
   const drawer = useOverlay("quoteCart");
   const inList = cart.hydrated && cart.has(slug);
@@ -22,12 +23,12 @@ export function AddQuoteButton({ slug, name, className }: Props) {
   return (
     <button
       type="button"
-      aria-label={inList ? `${name} — ${tr.product.inQuote}` : `${name} — ${tr.product.addToQuote}`}
+      aria-label={inList ? `${name} — ${t("product.inQuote")}` : `${name} — ${t("product.addToQuote")}`}
       aria-pressed={inList}
       onClick={() => {
         if (inList) return drawer.open();
         cart.upsert({ productSlug: slug, qty: 1, unit: "Adet" });
-        toast.success(tr.quote.added, { description: name });
+        toast.success(t("quote.added"), { description: name });
       }}
       className={cn(
         "grid size-11 cursor-pointer place-items-center rounded-btn border border-line bg-paper text-ink transition-colors duration-300",

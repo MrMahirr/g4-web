@@ -1,0 +1,23 @@
+{
+  "cat-sarf": {
+    "title": "Genel Tıbbi Sarf Malzemeler"
+  },
+  "cat-tekstil": {
+    "title": "Hastane Tekstili"
+  },
+  "cat-hijyen": {
+    "title": "Temizlik/Hijyen Grubu"
+  },
+  "cat-cihaz": {
+    "title": "Tıbbi Cihazlar"
+  },
+  "cat-takviye": {
+    "title": "Gıda Takviyesi/Vitaminler"
+  },
+  "cat-kozmetik": {
+    "title": "Kozmetik Ürünler"
+  },
+  "cat-bipolar": {
+    "title": "Bipolar Forceps"
+  }
+}

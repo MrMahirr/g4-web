@@ -18,7 +18,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
                   className={cn(
                     "group grid w-full cursor-pointer grid-cols-[64px_minmax(0,1fr)_48px] items-center gap-4 py-[30px] text-left",
                     "font-display text-[clamp(19px,1.8vw,24px)] font-semibold tracking-[-0.02em] text-ink",
-                    "max-[700px]:grid-cols-[40px_minmax(0,1fr)_48px]",
+                    "max-[43.75rem]:grid-cols-[40px_minmax(0,1fr)_48px]",
                   )}
                 >
                   <span className="font-mono text-[13px] font-normal text-ember-d">{String(index + 1).padStart(2, "0")}</span>
@@ -37,7 +37,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               </h2>
             </Accordion.Header>
             <Accordion.Content className="data-[state=open]:animate-faq-in motion-reduce:animate-none">
-              <p className="pr-16 pb-8 pl-20 text-lead text-pretty text-muted max-[700px]:pr-0 max-[700px]:pl-14">{item.answer}</p>
+              <p className="pr-16 pb-8 pl-20 text-lead text-pretty text-muted max-[43.75rem]:pr-0 max-[43.75rem]:pl-14">{item.answer}</p>
             </Accordion.Content>
           </Accordion.Item>
         </Reveal>

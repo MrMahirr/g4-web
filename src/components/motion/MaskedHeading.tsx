@@ -30,7 +30,13 @@ export function MaskedHeading({ lines, as: Heading = "h1", size = "d1", delay = 
       )}
     >
       {lines.map((line, index) => (
-        <span key={index} className="-mb-[0.06em] block overflow-hidden pb-[0.06em]">
+        // Maske yalnız dikeyde kırpar (overflow-y: clip, x görünür): negatif harf aralığında son harf kutudan
+        // sağa taşar, yatay kırpma onu keserdi. Üst/alt pay satır kutusundan (leading 0.95) taşan Türkçe
+        // işaretler için (İ noktası, Ç/Ş çengeli, ğ/ç kuyruğu); negatif margin satır aralığını korur.
+        <span
+          key={index}
+          className="-mt-[0.16em] -mb-[0.22em] block overflow-x-visible overflow-y-clip pt-[0.16em] pb-[0.22em]"
+        >
           <span
             className="block animate-line-up motion-reduce:animate-none"
             style={{ animationDelay: `${delay + index * stagger}s` }}

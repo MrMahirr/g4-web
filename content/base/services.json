@@ -1,0 +1,29 @@
+{
+  "svc-insaat": {
+    "id": "svc-insaat",
+    "slug": "g4-yatirim-ve-insaat-faaliyetleri",
+    "imageKey": "hizmetler/insaat",
+    "domain": "construction"
+  },
+  "svc-arac": {
+    "id": "svc-arac",
+    "slug": "arac-kiralama-hizmetleri",
+    "imageKey": "hizmetler/arac-kiralama",
+    "domain": "fleet"
+  },
+  "svc-tekstil": {
+    "id": "svc-tekstil",
+    "slug": "g4-hastane-tekstili",
+    "imageKey": "hizmetler/hastane-tekstili",
+    "domain": "textile",
+    "relatedCategorySlug": "hastane-tekstili",
+    "isFeaturedOnHome": true
+  },
+  "svc-medikal": {
+    "id": "svc-medikal",
+    "slug": "g4-medikal-faaliyetler",
+    "imageKey": "hizmetler/medikal",
+    "domain": "medical",
+    "isFeaturedOnHome": true
+  }
+}

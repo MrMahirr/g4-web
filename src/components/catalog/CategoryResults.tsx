@@ -1,10 +1,10 @@
-﻿"use client";
+"use client";
+import { useLocale, useTranslations } from "next-intl";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { LayoutGrid, List, Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { ProductItem, ProductSort, SarfSubGroup } from "@/core/types";
-import { tr } from "@/dictionaries/tr";
 import { filterProducts } from "@/lib/catalog";
 import { cn } from "@/lib/utils";
 import { ProductGrid, type ProductCard, type ProductView } from "./ProductGrid";
@@ -50,6 +50,8 @@ const viewButtonClass = cn(
  * Alt grup, arama ve sıralama URL'de tutulur (?grup=&q=&sirala=), görünüm yalnız bu oturumda.
  */
 export function CategoryResults({ products, subGroups }: Props) {
+  const t = useTranslations();
+  const locale = useLocale();
   const params = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -69,17 +71,17 @@ export function CategoryResults({ products, subGroups }: Props) {
     router.replace(search ? `${pathname}?${search}` : pathname, { scroll: false });
   };
 
-  const countLabel = tr.product.countSuffix.toLocaleUpperCase("tr-TR");
+  const countLabel = t("product.countSuffix").toLocaleUpperCase(locale);
   const hasSidebar = subGroups.length > 0;
 
   return (
     <div className={cn("grid gap-12", hasSidebar && "grid-cols-[240px_1fr] max-stack:grid-cols-1")}>
       {hasSidebar ? (
-        <aside className="self-start min-[961px]:sticky min-[961px]:top-28">
-          <h2 className="mb-2 border-b-2 border-ink pb-3 font-mono text-xs tracking-[0.12em] uppercase">Alt Gruplar</h2>
-          <div role="group" aria-label="Alt gruplar" className="flex flex-col max-stack:flex-row max-stack:flex-wrap max-stack:gap-2">
+        <aside className="self-start min-[60.0625rem]:sticky min-[60.0625rem]:top-28">
+          <h2 className="mb-2 border-b-2 border-ink pb-3 font-mono text-xs tracking-[0.12em] uppercase">{t("i18n.catalog.subGroups")}</h2>
+          <div role="group" aria-label={t("i18n.catalog.subGroupsLabel")} className="flex flex-col max-stack:flex-row max-stack:flex-wrap max-stack:gap-2">
             <button type="button" aria-pressed={!group} onClick={() => update("grup", "")} className={indexClass}>
-              <span>{tr.product.allSubGroups}</span>
+              <span>{t("product.allSubGroups")}</span>
               <span className="font-mono text-xs text-muted">{products.length}</span>
             </button>
             {subGroups.map((item) => (
@@ -101,18 +103,18 @@ export function CategoryResults({ products, subGroups }: Props) {
           <div className="flex flex-wrap items-center gap-3">
             <label className="flex min-h-12 items-center gap-2.5 border-b-[1.5px] border-line pr-1 transition-colors focus-within:border-ember">
               <Search size={17} className="text-faint" aria-hidden="true" />
-              <span className="sr-only">{tr.product.searchInCategory}</span>
+              <span className="sr-only">{t("product.searchInCategory")}</span>
               <input
                 type="search"
                 value={query}
-                placeholder={tr.product.searchInCategory}
+                placeholder={t("product.searchInCategory")}
                 onChange={(event) => update("q", event.target.value)}
                 className="w-[200px] min-w-0 bg-transparent text-[15px] text-ink outline-none placeholder:text-faint focus-visible:outline-none"
               />
             </label>
 
             <label className="flex min-h-12 items-center">
-              <span className="sr-only">Sıralama</span>
+              <span className="sr-only">{t("i18n.catalog.sort")}</span>
               <select
                 value={sort}
                 onChange={(event) => update("sirala", event.target.value)}
@@ -120,17 +122,17 @@ export function CategoryResults({ products, subGroups }: Props) {
               >
                 {SORTS.map((option) => (
                   <option key={option} value={option}>
-                    {tr.product.sort[option]}
+                    {t(`product.sort.${option}`)}
                   </option>
                 ))}
               </select>
             </label>
 
-            <div role="group" aria-label="Görünüm" className="flex gap-1.5">
-              <button type="button" aria-label="Izgara görünümü" aria-pressed={view === "grid"} onClick={() => setView("grid")} className={viewButtonClass}>
+            <div role="group" aria-label={t("i18n.catalog.view")} className="flex gap-1.5">
+              <button type="button" aria-label={t("i18n.catalog.grid")} aria-pressed={view === "grid"} onClick={() => setView("grid")} className={viewButtonClass}>
                 <LayoutGrid size={18} aria-hidden="true" />
               </button>
-              <button type="button" aria-label="Liste görünümü" aria-pressed={view === "list"} onClick={() => setView("list")} className={viewButtonClass}>
+              <button type="button" aria-label={t("i18n.catalog.list")} aria-pressed={view === "list"} onClick={() => setView("list")} className={viewButtonClass}>
                 <List size={18} aria-hidden="true" />
               </button>
             </div>
@@ -140,7 +142,7 @@ export function CategoryResults({ products, subGroups }: Props) {
         {filtered.length > 0 ? (
           <ProductGrid products={filtered.map(toCard)} view={view} animationKey={`${group ?? ""}-${sort}-${view}`} />
         ) : (
-          <p className="py-6 text-lead text-muted">Aramanızla eşleşen ürün bulunamadı.</p>
+          <p className="py-6 text-lead text-muted">{t("i18n.catalog.noResults")}</p>
         )}
       </div>
     </div>

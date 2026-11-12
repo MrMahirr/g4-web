@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Picture } from "@/components/shared/Picture";
 import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
@@ -7,8 +8,9 @@ import type { FeaturedRow } from "./FeaturedProductList";
 
 /** Mobil ürün ızgarası: 2 sütun, kare görselli kompakt kartlar; teklif düğmesi görselin köşesinde. */
 export function FeaturedProductGrid({ rows, className }: { rows: FeaturedRow[]; className?: string }) {
+  const t = useTranslations();
   return (
-    <ul aria-label="Öne çıkan ürünler" className={cn("m-0 grid list-none grid-cols-2 gap-3 p-0", className)}>
+    <ul aria-label={t("i18n.catalog.featured")} className={cn("m-0 grid list-none grid-cols-2 gap-3 p-0", className)}>
       {rows.map((row) => (
         <li key={row.slug} className="relative min-w-0">
           <Link
@@ -24,7 +26,7 @@ export function FeaturedProductGrid({ rows, className }: { rows: FeaturedRow[]; 
             />
             <span className="flex flex-1 flex-col gap-1 p-3">
               <span className="truncate font-mono text-[11px] tracking-[0.04em] text-ember-d">
-                {row.code ? `REF: ${row.code}` : "G4 ÜRÜNLERİ"}
+                {row.code ? `REF: ${row.code}` : t("i18n.catalog.productsFallback")}
               </span>
               <strong className="line-clamp-2 font-display text-[15px] leading-snug font-semibold tracking-[-0.01em] text-pretty">
                 {row.name}

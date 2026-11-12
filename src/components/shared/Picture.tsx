@@ -1,9 +1,10 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { CurtainFrame } from "@/components/motion/CurtainFrame";
 import { cn } from "@/lib/utils";
 
 type Props = {
-  /** Yerel görsel yolu (public/ altı). Boşsa "Görsel alanı" şablonu çizilir. */
+  /** Yerel görsel yolu (public/ altı). Boşsa yer tutucu şablon çizilir (etiket: common.imagePlaceholder). */
   src?: string | null;
   /** Dekoratif görsellerde boş string verilir. */
   alt: string;
@@ -13,6 +14,8 @@ type Props = {
   curtain?: boolean;
   /** Perdeyi yatay aynalar (ters köşeden açılır). */
   curtainMirrored?: boolean;
+  /** false: perde katmanı çizilmez, kaydırmaya bağlı yakınlaşma (1.3x → 1) kalır. */
+  curtainVeil?: boolean;
   /** Üzerine (veya `group` işaretli üst öğeye) gelince yakınlaşma. */
   zoomOnHover?: boolean;
   /** Ekran üstü (LCP) görsel: tembel yükleme kapatılır. */
@@ -31,12 +34,15 @@ export function Picture({
   fit = "cover",
   curtain = false,
   curtainMirrored = false,
+  curtainVeil = true,
   zoomOnHover = false,
   eager = false,
   sizes = "(max-width: 960px) 100vw, 50vw",
-  placeholderLabel = "Görsel alanı",
+  placeholderLabel,
   className,
 }: Props) {
+  // Sunucu ve istemci bileşenlerinde çalışır (async değil); varsayılan etiket aktif dilden gelir.
+  const t = useTranslations("common");
   if (!src) {
     return (
       <div
@@ -46,7 +52,7 @@ export function Picture({
           className,
         )}
       >
-        {placeholderLabel}
+        {placeholderLabel ?? t("imagePlaceholder")}
       </div>
     );
   }
@@ -68,7 +74,13 @@ export function Picture({
 
   return (
     <div className={cn("relative overflow-hidden", fit === "contain" ? "bg-paper" : "bg-sand", className)}>
-      {curtain ? <CurtainFrame mirrored={curtainMirrored}>{image}</CurtainFrame> : image}
+      {curtain ? (
+        <CurtainFrame mirrored={curtainMirrored} veil={curtainVeil}>
+          {image}
+        </CurtainFrame>
+      ) : (
+        image
+      )}
     </div>
   );
 }

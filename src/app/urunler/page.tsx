@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { ArrowSwap } from "@/components/ui/ArrowSwap";
 import Image from "next/image";
@@ -7,46 +8,46 @@ import { SearchTrigger } from "@/components/catalog/SearchTrigger";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/ui/Container";
-import { container } from "@/core/container";
-import { homeCopy } from "@/data/home.data";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
 import { toFeaturedRow } from "@/lib/featured";
 import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Ürün Grupları",
-  description: homeCopy.categories.text,
-  path: routes.products,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("home");
+  return pageMetadata({ title: t("categories.title"), description: t("categories.text"), path: routes.products });
+}
 
 /** Ürün grupları (tasarım: D4Urunler). */
-export default function ProductsPage() {
-  const catalog = container.resolve("CatalogService");
+export default async function ProductsPage() {
+  const t = await getTranslations();
+  const home = await getTranslations("home");
+  const locale = await getLocale();
+  const catalog = getCatalog(locale);
   const categories = catalog.getCategories();
   const total = String(categories.length).padStart(2, "0");
-  const productVariety = catalog.getCompany().stats.find((stat) => stat.label === "Ürün")?.value;
+  const productVariety = catalog.getCompany().stats.find((stat) => stat.id === "products")?.value;
 
   return (
     <>
       <PageHero
-        crumbs={[{ label: tr.common.home, href: routes.home }, { label: tr.nav.products }]}
+        crumbs={[{ label: t("common.home"), href: routes.home }, { label: t("nav.products") }]}
         title={[
-          "Ürün",
+          t("i18n.productsHeading.before"),
           <span key="em" className="text-ember">
-            Grupları
+            {t("i18n.productsHeading.accent")}
           </span>,
         ]}
-        description={homeCopy.categories.text}
+        description={home("categories.text")}
         image={catalog.getImage("hero/urunler")}
         ghost={productVariety ? String(productVariety) : undefined}
       >
-        <SearchTrigger label="Ürün adı veya Ref kodu ile ara" />
+        <SearchTrigger label={t("i18n.catalog.searchProduct")} />
       </PageHero>
 
-      <Container as="section" aria-label="Ürün grupları" className="pt-lead pb-section">
-        <div className="grid grid-cols-6 gap-4 max-stack:grid-cols-2 max-[600px]:grid-cols-1">
+      <Container as="section" aria-label={home("categories.title")} className="pt-lead pb-section">
+        <div className="grid grid-cols-6 gap-4 max-stack:grid-cols-2 max-[37.5rem]:grid-cols-1">
           {categories.map((category, index) => {
             const image = catalog.getImage(category.imageKey);
             const wide = index < 2;
@@ -69,7 +70,7 @@ export default function ProductsPage() {
                       {String(index + 1).padStart(2, "0")} / {total}
                     </span>
                     <span>
-                      {category.productCount} {tr.product.countSuffix.toLocaleUpperCase("tr-TR")}
+                      {category.productCount} {t("product.countSuffix").toLocaleUpperCase(locale)}
                     </span>
                   </span>
                   <span className="absolute inset-[60px_30px_90px] -z-10">
@@ -111,7 +112,7 @@ export default function ProductsPage() {
             rows={catalog.getHomeFeaturedProducts().map((product) => toFeaturedRow(catalog, product))}
             heading={
               <div className="flex flex-col gap-5">
-                <h2 className="font-display text-d2">{homeCopy.featured.title}</h2>
+                <h2 className="font-display text-d2">{home("featured.title")}</h2>
               </div>
             }
           />

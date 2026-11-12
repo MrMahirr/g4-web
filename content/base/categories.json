@@ -1,0 +1,44 @@
+{
+  "cat-sarf": {
+    "id": "cat-sarf",
+    "slug": "genel-tibbi-sarf-malzemeler",
+    "imageKey": "hero/kategori-genel-tibbi-sarf-malzemeler",
+    "domain": "medical"
+  },
+  "cat-tekstil": {
+    "id": "cat-tekstil",
+    "slug": "hastane-tekstili",
+    "imageKey": "hero/kategori-hastane-tekstili",
+    "domain": "textile"
+  },
+  "cat-hijyen": {
+    "id": "cat-hijyen",
+    "slug": "temizlik-hijyen-grubu",
+    "imageKey": "hero/kategori-temizlik-hijyen-grubu",
+    "domain": "medical"
+  },
+  "cat-cihaz": {
+    "id": "cat-cihaz",
+    "slug": "tibbi-cihazlar",
+    "imageKey": "hero/kategori-tibbi-cihazlar",
+    "domain": "medical"
+  },
+  "cat-takviye": {
+    "id": "cat-takviye",
+    "slug": "gida-takviyesi-vitaminler",
+    "imageKey": "hero/kategori-gida-takviyesi-vitaminler",
+    "domain": "medical"
+  },
+  "cat-kozmetik": {
+    "id": "cat-kozmetik",
+    "slug": "kozmetik-urunler",
+    "imageKey": "hero/kategori-kozmetik-urunler",
+    "domain": "medical"
+  },
+  "cat-bipolar": {
+    "id": "cat-bipolar",
+    "slug": "bipolar-forceps",
+    "imageKey": "hero/kategori-bipolar-forceps",
+    "domain": "medical"
+  }
+}

@@ -1,14 +1,15 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { container } from "@/core/container";
-import { sarfSubGroups } from "@/data/categories.data";
-import { images } from "@/data/images.manifest";
+import { container, getCatalog } from "@/core/container";
+import { sarfSubGroups } from "@/content/constants";
 import { routes, sectionForPath } from "@/data/navigation.data";
-import { homeFeaturedSlugs, legacyProductSlugs, products } from "@/data/products.data";
+import { legacyProductSlugs } from "@/data/redirects.data";
 import { countByType, filterProducts, searchEntries, trLower } from "@/lib/catalog";
 
-const catalog = container.resolve("CatalogService");
+const catalog = getCatalog("tr");
+const products = catalog.getProducts();
+const homeFeaturedSlugs = catalog.getHomeFeaturedProducts().map((product) => product.slug);
 
 describe("ürün verisi", () => {
   it("68 tekil ürün içerir ve slug'lar benzersizdir", () => {
@@ -152,13 +153,13 @@ describe("diğer içerik", () => {
   it("manifestte olmayan görsel için null döner; manifestteki yollar /images altındadır", () => {
     expect(catalog.getImage("urunler/yok")).toBeNull();
     expect(catalog.getImage(undefined)).toBeNull();
-    for (const entry of Object.values(images)) expect(entry.src.startsWith("/images/")).toBe(true);
+    for (const product of products) expect(catalog.getImage(product.imageKey)?.src.startsWith("/images/")).toBe(true);
   });
 
   it("manifestteki her görsel .webp ve public/ içinde var (orijinal gorsel-arsivi/ → npm run images)", () => {
-    const missing = Object.entries(images)
-      .filter(([, entry]) => !entry.src.endsWith(".webp") || !existsSync(join(process.cwd(), "public", entry.src)))
-      .map(([key, entry]) => `${key} → ${entry.src}`);
+    const missing = products.map((product) => [product.imageKey, catalog.getImage(product.imageKey)] as const)
+      .filter(([, entry]) => !entry || !entry.src.endsWith(".webp") || !existsSync(join(process.cwd(), "public", entry.src)))
+      .map(([key, entry]) => `${key} → ${entry?.src ?? "missing"}`);
     expect(missing).toEqual([]);
   });
 });

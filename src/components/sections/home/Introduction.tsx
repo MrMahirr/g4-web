@@ -4,11 +4,9 @@ import { ServiceShowcase, type ShowcaseItem } from "@/components/sections/home/S
 import { Container } from "@/components/ui/Container";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import type { StatItem } from "@/core/types";
-import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
-
-const copy = homeCopy.intro;
+import { useTranslations } from "next-intl";
 
 type Props = {
   services: ShowcaseItem[];
@@ -17,18 +15,20 @@ type Props = {
 
 /** "G4 Medikal" tanıtımı + hizmetler tek bölümde: büyük cümle, hizmet vitrini (hover'da görsel değişir), sayaçlar. */
 export function Introduction({ services, stats }: Props) {
+  const t = useTranslations();
+  const paragraphs = t.raw("home.intro.paragraphs") as string[];
   return (
     <Container as="section" className="flex flex-col gap-[clamp(40px,5vw,72px)] pt-section pb-section">
       <div className="flex flex-col gap-7">
         <Reveal kind="skew">
           <p className="max-w-[1150px] font-display text-[clamp(28px,3.6vw,52px)] leading-[1.18] font-semibold tracking-[-0.03em] text-balance">
-            {copy.statement.before} <span className="text-ember">{copy.statement.accent}</span> {copy.statement.after}
+            {t("home.intro.statement.before")} <span className="text-ember">{t("home.intro.statement.accent")}</span> {t("home.intro.statement.after")}
           </p>
         </Reveal>
       </div>
 
       <div className="grid grid-cols-2 gap-[clamp(24px,5vw,80px)] max-stack:grid-cols-1">
-        {copy.paragraphs.map((paragraph) => (
+        {paragraphs.map((paragraph) => (
           <Reveal key={paragraph}>
             <p className="text-pretty text-muted">{paragraph}</p>
           </Reveal>
@@ -38,7 +38,7 @@ export function Introduction({ services, stats }: Props) {
       <div className="flex flex-col gap-8">
         <div className="flex flex-wrap items-end justify-end gap-4">
           <UnderlineLink href={routes.services} className="text-ink">
-            {homeCopy.services.all}
+            {t("home.services.all")}
           </UnderlineLink>
         </div>
         <ServiceShowcase items={services} />

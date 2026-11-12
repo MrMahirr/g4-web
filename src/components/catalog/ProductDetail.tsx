@@ -1,4 +1,5 @@
-﻿"use client";
+"use client";
+import { useLocale, useTranslations } from "next-intl";
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -12,7 +13,6 @@ import { Tag } from "@/components/ui/Tag";
 import { UnderlineLink, underlineLinkClass } from "@/components/ui/UnderlineLink";
 import type { ImageEntry, InquiryType, QuoteUnit } from "@/core/types";
 import { routes } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
 import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
 import { useInquiry } from "@/hooks/useInquiry";
 import { useQuoteCart } from "@/hooks/useQuoteCart";
@@ -30,6 +30,8 @@ type Props = {
 
 /** Ürün detay gövdesi (tasarım: D4UrunDetay .pdx) — yapışkan galeri + talep kutusu. */
 export function ProductDetail({ product, category, images, whatsappUrl }: Props) {
+  const t = useTranslations();
+  const locale = useLocale();
   const router = useRouter();
   const cart = useQuoteCart();
   const inquiry = useInquiry();
@@ -64,7 +66,7 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
 
   const addToList = () => {
     cart.upsert({ productSlug: product.slug, qty, unit });
-    toast.success(inList ? tr.quote.updated : tr.quote.added, { description: `${product.name} · ${qty} ${unit}` });
+    toast.success(inList ? t("quote.updated") : t("quote.added"), { description: `${product.name} · ${qty} ${unit}` });
   };
 
   const share = async () => {
@@ -77,7 +79,7 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
       }
       return;
     }
-    if (await clipboard.copy(url)) toast.success("Bağlantı kopyalandı");
+    if (await clipboard.copy(url)) toast.success(t("i18n.productDetail.linkCopied"));
   };
 
   return (
@@ -95,7 +97,7 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
               <button
                 key={image.src}
                 type="button"
-                aria-label={`Görsel ${index + 1}`}
+                aria-label={t("i18n.productDetail.image", { index: index + 1 })}
                 aria-pressed={index === active}
                 onClick={() => setActive(index)}
                 className={cn(
@@ -116,7 +118,7 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
           className="relative aspect-square cursor-zoom-in overflow-hidden rounded-card bg-white disabled:cursor-default"
         >
           {/* Ad görünen içerikten gelir: görselin alt metni + bu metin (+ "Temsili görsel" etiketi). */}
-          {current ? <span className="sr-only">Görseli büyüt</span> : null}
+          {current ? <span className="sr-only">{t("i18n.productDetail.zoom")}</span> : null}
           <AnimatePresence initial={false}>
             {current ? (
               <motion.span
@@ -139,7 +141,7 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
               </motion.span>
             ) : (
               <span className="absolute inset-0 flex items-center justify-center bg-checker font-mono text-xs tracking-[0.06em] text-muted uppercase">
-                {tr.common.imagePlaceholder}
+                {t("common.imagePlaceholder")}
               </span>
             )}
           </AnimatePresence>
@@ -154,7 +156,7 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
           ) : null}
           {current?.representative ? (
             <span className="absolute bottom-4 left-4 rounded-tag bg-white/90 px-2.5 py-1.5 font-mono text-[11px] tracking-[0.04em] text-muted uppercase">
-              {tr.common.representativeImage}
+              {t("common.representativeImage")}
             </span>
           ) : null}
         </button>
@@ -165,14 +167,14 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
         {product.code ? (
           <Enter kind="rise" delay={0.1} className="flex flex-wrap items-center gap-3">
             <Tag>
-              {tr.product.code} {product.code}
+              {t("product.code")} {product.code}
             </Tag>
             <button
               type="button"
               onClick={() => product.code && clipboard.copy(product.code)}
               className="min-h-8 cursor-pointer rounded-tag border border-line px-2 font-mono text-[11px] tracking-[0.06em] text-muted uppercase transition-colors hover:border-ink hover:text-ink"
             >
-              {clipboard.copied ? tr.common.copied : tr.common.copy}
+              {clipboard.copied ? t("common.copied") : t("common.copy")}
             </button>
           </Enter>
         ) : null}
@@ -191,55 +193,54 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
           <div className="flex flex-wrap gap-5">
             <div className="flex flex-col gap-2">
               <label htmlFor="urun-miktar" className="font-mono text-xs tracking-[0.06em] text-muted uppercase">
-                {tr.product.qty}
+                {t("product.qty")}
               </label>
               <QuantityBox id="urun-miktar" value={qty} onChange={setQty} />
             </div>
             <div className="flex flex-col gap-2">
-              <span className="font-mono text-xs tracking-[0.06em] text-muted uppercase">{tr.product.unit}</span>
+              <span className="font-mono text-xs tracking-[0.06em] text-muted uppercase">{t("product.unit")}</span>
               <UnitSegment value={unit} onChange={setUnit} />
             </div>
           </div>
           <div className="flex flex-wrap gap-2.5">
-            <Button onClick={() => request("siparis")}>{tr.product.order}</Button>
+            <Button onClick={() => request("siparis")}>{t("product.order")}</Button>
             <Button variant="ghost" arrow="none" onClick={() => request("bilgi")}>
-              {tr.common.requestInfo}
+              {t("common.requestInfo")}
             </Button>
             <Button variant="ghost" arrow="none" onClick={addToList} aria-pressed={inList}>
-              {inList ? `${tr.product.inQuote} ✓` : tr.product.addToQuote}
+              {inList ? `${t("product.inQuote")} ✓` : t("product.addToQuote")}
             </Button>
           </div>
           <p className="font-mono text-xs leading-[1.6] tracking-[0.04em] text-muted uppercase">
-            → {tr.product.order}: iletişim formu açılır, ürün + kod +{" "}
+            {t("i18n.productDetail.orderHintBefore")}{" "}
             <strong className="text-ember-d">
-              {qty} {unit.toLocaleUpperCase("tr-TR")}
-            </strong>{" "}
-            otomatik yazılır.
+              {qty} {unit.toLocaleUpperCase(locale)}
+            </strong>{" "}{t("i18n.productDetail.orderHintAfter")}
           </p>
         </Enter>
 
         <Enter kind="rise" delay={0.45} className="flex flex-wrap gap-[18px]">
           <button type="button" onClick={() => request("soru")} className={cn(underlineLinkClass, "cursor-pointer text-ink")}>
-            {tr.product.ask}
+            {t("product.ask")}
           </button>
           <button type="button" onClick={share} className={cn(underlineLinkClass, "cursor-pointer text-ink")}>
-            {tr.product.share}
+            {t("product.share")}
           </button>
           <UnderlineLink href={category ? routes.category(category.slug) : routes.products} className="text-ember-d">
-            {tr.common.back}
+            {t("common.back")}
           </UnderlineLink>
         </Enter>
 
         <Enter kind="rise" delay={0.55}>
           <dl className="m-0 border-t border-line">
             {[
-              { key: tr.product.description, value: product.description },
-              { key: tr.product.supply, value: tr.product.supplyText },
+              { key: t("product.description"), value: product.description },
+              { key: t("product.supply"), value: t("product.supplyText") },
               {
-                key: tr.product.support,
+                key: t("product.support"),
                 value: (
                   <>
-                    {tr.product.supportText}{" "}
+                    {t("product.supportText")}{" "}
                     <a href={whatsappUrl} target="_blank" rel="noreferrer" className="font-semibold text-ember-d">
                       WhatsApp
                     </a>

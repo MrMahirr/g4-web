@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { company } from "@/data/company.data";
 
 /**
  * Sitenin canlı adresi. Yayında `NEXT_PUBLIC_SITE_URL` ile değiştirilebilir (ör. önizleme ortamı).
@@ -7,9 +6,8 @@ import { company } from "@/data/company.data";
  */
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://g4.com.tr").replace(/\/+$/, "");
 
-export const siteTitle = company.legalName;
-export const siteDescription =
-  "Hastaneler, klinikler ve sağlık kuruluşları için medikal ürünler, hastane tekstili ve tıbbi cihazlar.";
+export const siteTitle = "G4";
+// Site açıklaması dile bağlıdır: messages → i18n.siteDescription (layout ve anasayfa generateMetadata).
 
 /** Sitedeki bir yolu tam adrese çevirir: "/urunler" → "https://g4.com.tr/urunler". */
 export function absoluteUrl(path: string): string {
@@ -38,12 +36,12 @@ export function pageMetadata({ title, description, path, image, type = "website"
   const images = image
     ? [{ url: image.src, alt: image.alt ?? title, width: image.width, height: image.height }]
     : [defaultShareImage];
-  const shareTitle = title === siteTitle ? title : `${title} · ${company.shortName}`;
+  const shareTitle = title === siteTitle ? title : `${title} · G4`;
   return {
     title,
     description,
     alternates: { canonical: path },
-    openGraph: { type, locale: "tr_TR", siteName: company.shortName, url: path, title: shareTitle, description, images },
+    openGraph: { type, locale: "tr_TR", siteName: "G4", url: path, title: shareTitle, description, images },
     twitter: { card: "summary_large_image", title: shareTitle, description, images },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
   };

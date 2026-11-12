@@ -1,8 +1,7 @@
 import type { BreadcrumbList, FAQPage, NewsArticle, Organization, Product, Service, Thing, WithContext } from "schema-dts";
 import type { Crumb } from "@/components/shared/Breadcrumb";
 import type { CompanyInfo, FaqItem, ImageEntry, NewsItem, ProductItem, ServiceItem } from "@/core/types";
-import { company as companyData } from "@/data/company.data";
-import { absoluteUrl, siteDescription, siteUrl } from "@/lib/seo";
+import { absoluteUrl, siteUrl } from "@/lib/seo";
 
 /** Şemalar arası bağlantı kimlikleri (ör. haberin yayıncısı = kuruluş). */
 export const schemaIds = {
@@ -14,7 +13,7 @@ export const schemaIds = {
 const organizationRef: Organization = {
   "@type": "Organization",
   "@id": schemaIds.organization,
-  name: companyData.legalName,
+  name: "G4",
   url: absoluteUrl("/"),
 };
 
@@ -23,7 +22,7 @@ const organizationRef: Organization = {
  * `sameAs` bilinçli olarak yok: footer'daki X/LinkedIn hesapları şimdilik Güven Hastanesi'ne ait (plan: K6),
  * G4'ün kendi hesapları gelince eklenir.
  */
-export function siteGraph(company: CompanyInfo): { "@context": "https://schema.org"; "@graph": Thing[] } {
+export function siteGraph(company: CompanyInfo, description: string): { "@context": "https://schema.org"; "@graph": Thing[] } {
   const address = {
     "@type": "PostalAddress",
     streetAddress: company.address.street,
@@ -42,7 +41,7 @@ export function siteGraph(company: CompanyInfo): { "@context": "https://schema.o
         alternateName: company.shortName,
         url: absoluteUrl("/"),
         logo: absoluteUrl("/logo/g4-logo.png"),
-        description: siteDescription,
+        description,
         email: company.email,
         telephone: company.phone.tel,
         address,

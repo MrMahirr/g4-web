@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
-import { company } from "@/data/company.data";
-import { homeCopy } from "@/data/home.data";
+import { getTranslations } from "next-intl/server";
 import { ogLogoSrc } from "@/lib/og-logo";
 
 /*
@@ -9,7 +8,7 @@ import { ogLogoSrc } from "@/lib/og-logo";
   Yazı tipi next/og'un gömülü Geist'i — sitenin yazı tipiyle aynı, Türkçe karakterleri içerir.
 */
 
-export const alt = `${company.legalName} — ${homeCopy.hero.tag}`;
+export const alt = "G4";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -20,7 +19,8 @@ const TINT = "#eaf3f8";
 const LINE = "#d3e0e8";
 
 export default async function OpengraphImage() {
-  const [line1, line2, line3] = homeCopy.hero.lines;
+  const t = await getTranslations({ locale: "tr", namespace: "home" });
+  const [line1, line2, line3] = t.raw("hero.lines") as string[];
 
   return new ImageResponse(
     <div
@@ -42,7 +42,7 @@ export default async function OpengraphImage() {
           <img src={ogLogoSrc} alt="" height={56} style={{ objectFit: "contain" }} />
         </div>
         <div style={{ display: "flex", fontSize: 22, letterSpacing: 2, color: MUTED }}>
-          {homeCopy.hero.tag.toLocaleUpperCase("tr")}
+          {t("hero.tag").toLocaleUpperCase("tr")}
         </div>
       </div>
 
@@ -62,7 +62,7 @@ export default async function OpengraphImage() {
           color: MUTED,
         }}
       >
-        <span>{company.legalName}</span>
+        <span>G4</span>
         <span>g4.com.tr</span>
       </div>
     </div>,

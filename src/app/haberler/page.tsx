@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
@@ -6,37 +7,36 @@ import { PageHero } from "@/components/shared/PageHero";
 import { Picture } from "@/components/shared/Picture";
 import { Container } from "@/components/ui/Container";
 import { underlineLinkClass } from "@/components/ui/UnderlineLink";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
-import { pageCopy } from "@/data/pages.data";
-import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
 import { formatShortDate, splitSentences } from "@/lib/text";
 import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Haberler",
-  description: "G4 kurumsal haberleri ve duyuruları.",
-  path: routes.news,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("i18n.meta.news");
+  return pageMetadata({ title: t("title"), description: t("description"), path: routes.news });
+}
 
 /** Haberler (tasarım: D4Haberler) — en yeni haber büyük, diğerleri tarih sütunlu satır. */
-export default function NewsPage() {
-  const catalog = container.resolve("CatalogService");
+export default async function NewsPage() {
+  const t = await getTranslations();
+  const locale = await getLocale();
+  const catalog = getCatalog(locale);
   const [lead, ...rest] = catalog.getNews();
   const leadImage = lead ? catalog.getImage(lead.imageKey) : null;
 
   return (
     <>
       <PageHero
-        crumbs={[{ label: tr.common.home, href: routes.home }, { label: tr.nav.corporate }, { label: "Haberler" }]}
+        crumbs={[{ label: t("common.home"), href: routes.home }, { label: t("nav.corporate") }, { label: t("i18n.meta.news.title") }]}
         title={[
-          pageCopy.news.titleLines[0],
+          t("pages.news.titleLines.0"),
           <span key="em" className="text-ember">
-            {pageCopy.news.titleLines[1]}
+            {t("pages.news.titleLines.1")}
           </span>,
         ]}
-        ghost="Haber"
+        ghost={t("i18n.news.ghost")}
         image={catalog.getImage("hero/haberler")}
       />
 
@@ -49,7 +49,7 @@ export default function NewsPage() {
             <Picture
               src={leadImage?.src}
               alt={leadImage?.alt ?? lead.title}
-              placeholderLabel="Haber görseli"
+              placeholderLabel={t("i18n.news.image")}
               curtain
               eager
               zoomOnHover
@@ -58,7 +58,7 @@ export default function NewsPage() {
             />
             <div className="flex flex-col gap-[22px] pb-2.5">
               <Reveal>
-                <span className="font-mono text-[13px] text-ember-d">{formatShortDate(lead.publishedAt)} · 01</span>
+                <span className="font-mono text-[13px] text-ember-d">{formatShortDate(lead.publishedAt, locale)} · 01</span>
               </Reveal>
               <Reveal kind="skew">
                 <h2 className="font-display text-d2 text-[clamp(32px,3.6vw,54px)] transition-colors duration-400 group-hover:text-ember-d">
@@ -69,7 +69,7 @@ export default function NewsPage() {
                 <p className="leading-[1.75] text-pretty text-muted">{splitSentences(lead.paragraphs[0] ?? "")[0]}</p>
               </Reveal>
               <Reveal>
-                <span className={cn(underlineLinkClass, "self-start")}>{tr.common.readMore}</span>
+                <span className={cn(underlineLinkClass, "self-start")}>{t("common.readMore")}</span>
               </Reveal>
             </div>
           </Link>
@@ -83,7 +83,7 @@ export default function NewsPage() {
               <ListRow
                 key={item.slug}
                 href={routes.newsItem(item.slug)}
-                index={formatShortDate(item.publishedAt)}
+                index={formatShortDate(item.publishedAt, locale)}
                 title={item.title}
                 description={catalog.getNewsExcerpt(item, 90)}
                 previewSrc={catalog.getImage(item.imageKey)?.src ?? null}

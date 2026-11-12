@@ -1,8 +1,8 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { Minus, Plus } from "lucide-react";
 import { QUOTE_UNITS, type QuoteUnit } from "@/core/types";
-import { tr } from "@/dictionaries/tr";
 import { MAX_QTY } from "@/store/slices/quoteCartSlice";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +17,7 @@ type QtyProps = {
 
 /** Miktar kutusu (tasarım: .qbox) — eksi · sayı · artı. */
 export function QuantityBox({ id, value, onChange, size = "md", label }: QtyProps) {
+  const t = useTranslations();
   const clamp = (next: number) => Math.min(MAX_QTY, Math.max(1, Number.isFinite(next) ? Math.round(next) : 1));
   const height = size === "md" ? "h-14" : "h-11";
   const button = cn(
@@ -26,7 +27,7 @@ export function QuantityBox({ id, value, onChange, size = "md", label }: QtyProp
 
   return (
     <div className={cn("flex items-stretch overflow-hidden rounded-btn border border-ink", height)}>
-      <button type="button" aria-label={tr.product.decrease} onClick={() => onChange(clamp(value - 1))} className={button}>
+      <button type="button" aria-label={t("product.decrease")} onClick={() => onChange(clamp(value - 1))} className={button}>
         <Minus size={18} strokeWidth={2.2} aria-hidden="true" />
       </button>
       <input
@@ -45,7 +46,7 @@ export function QuantityBox({ id, value, onChange, size = "md", label }: QtyProp
           size === "md" ? "w-[72px] text-xl" : "w-14 text-base",
         )}
       />
-      <button type="button" aria-label={tr.product.increase} onClick={() => onChange(clamp(value + 1))} className={button}>
+      <button type="button" aria-label={t("product.increase")} onClick={() => onChange(clamp(value + 1))} className={button}>
         <Plus size={18} strokeWidth={2.2} aria-hidden="true" />
       </button>
     </div>
@@ -60,10 +61,11 @@ type UnitProps = {
 
 /** Birim seçici (tasarım: .seg) — Adet / Kutu / Koli. */
 export function UnitSegment({ value, onChange, size = "md" }: UnitProps) {
+  const t = useTranslations();
   return (
     <div
       role="group"
-      aria-label={tr.product.unit}
+      aria-label={t("product.unit")}
       className={cn("flex overflow-hidden rounded-btn border border-ink", size === "md" ? "h-14" : "h-11")}
     >
       {QUOTE_UNITS.map((unit) => (

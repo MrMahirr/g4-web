@@ -1,0 +1,35 @@
+{
+  "ref-nba-guven": {
+    "id": "ref-nba-guven",
+    "imageKey": "referanslar/nba-guven",
+    "isFeaturedOnHome": true
+  },
+  "ref-guven-ayranci": {
+    "id": "ref-guven-ayranci",
+    "imageKey": "referanslar/guven-ayranci",
+    "isFeaturedOnHome": true
+  },
+  "ref-ufuk": {
+    "id": "ref-ufuk",
+    "imageKey": "referanslar/ufuk",
+    "isFeaturedOnHome": true
+  },
+  "ref-g4-spor": {
+    "id": "ref-g4-spor",
+    "imageKey": "referanslar/g4-spor"
+  },
+  "ref-guven-evde-bakim": {
+    "id": "ref-guven-evde-bakim",
+    "imageKey": "referanslar/guven-evde-bakim",
+    "isFeaturedOnHome": true
+  },
+  "ref-g4-spa": {
+    "id": "ref-g4-spa",
+    "imageKey": "referanslar/g4-spa"
+  },
+  "ref-electro-bismed": {
+    "id": "ref-electro-bismed",
+    "imageKey": "referanslar/electro-bismed",
+    "isFeaturedOnHome": true
+  }
+}

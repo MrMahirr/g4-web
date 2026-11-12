@@ -1,0 +1,23 @@
+{
+  "cat-sarf": {
+    "title": "General Medical Consumables"
+  },
+  "cat-tekstil": {
+    "title": "Hospital Textiles"
+  },
+  "cat-hijyen": {
+    "title": "Cleaning/Hygiene Group"
+  },
+  "cat-cihaz": {
+    "title": "Medical Devices"
+  },
+  "cat-takviye": {
+    "title": "Food Supplements/Vitamins"
+  },
+  "cat-kozmetik": {
+    "title": "Cosmetic Products"
+  },
+  "cat-bipolar": {
+    "title": "Bipolar Forceps"
+  }
+}

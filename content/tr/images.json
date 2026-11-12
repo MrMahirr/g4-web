@@ -1,0 +1,329 @@
+{
+  "hero/ana": {
+    "alt": "Aydınlık, modern bir medikal teknoloji karşılama salonu"
+  },
+  "hero/hakkimizda": {
+    "alt": "Beyaz bir masada mavi stetoskop ve dizüstü bilgisayar"
+  },
+  "hero/hakkimizda-salon": {
+    "alt": "Ahşap ve beton detaylı, “Güven” yazılı aydınlık G4 medikal mağaza salonu"
+  },
+  "hero/iletisim": {
+    "alt": "Aydınlık ve bitkilerle çevrili hastane karşılama alanı"
+  },
+  "hero/referanslar": {
+    "alt": "İki iş insanının el sıkışması"
+  },
+  "hero/haberler": {
+    "alt": "Aydınlık, modern bir AR-GE laboratuvarında mikroskop ve test cihazları"
+  },
+  "hero/kariyer": {
+    "alt": "Aydınlık, modern bir ofis koridorunda sohbet eden iş arkadaşları"
+  },
+  "hero/hizmetler": {
+    "alt": "Mavi önlüklü bir sağlık çalışanı hastanın koluna tansiyon ölçümü yapıyor"
+  },
+  "hero/hizmet-insaat": {
+    "alt": "Mavi gökyüzü altında kalıp ve iskele destekleriyle yükselen betonarme çok katlı yapı"
+  },
+  "hero/hizmet-arac-kiralama": {
+    "alt": "Kızıl kayalıklar arasında kıvrılan yolda ilerleyen gri SUV"
+  },
+  "hero/hizmet-hastane-tekstili": {
+    "alt": "Beyaz çarşaflı, mavi örtülü ve pembe paravanlı sıralı hastane yatakları"
+  },
+  "hero/hizmet-medikal": {
+    "alt": "Ameliyat masası, tavan lambaları ve monitörlerle donatılmış aydınlık ameliyathane"
+  },
+  "hero/urunler": {
+    "alt": "Mavi steril örtü üzerinde dizili cerrahi pensler, neşter ve gazlı bez"
+  },
+  "hero/kategori-bipolar-forceps": {
+    "alt": "Mavi steril örtü üzerinde dizili bipolar forsepsler, penset uçları ve bağlantı kabloları"
+  },
+  "hero/kategori-gida-takviyesi-vitaminler": {
+    "alt": "Mutfak tezgâhında vitamin ve takviye şişeleri, kapsüller, portakal ve bitki çayları"
+  },
+  "hero/kategori-hastane-tekstili": {
+    "alt": "Paslanmaz tezgâhta düzenli katlanmış hastane çarşafları, hasta önlükleri ve steril örtüler"
+  },
+  "hero/kategori-kozmetik-urunler": {
+    "alt": "Mermer yüzeyde far paleti, fondöten, ruj, makyaj fırçaları ve ayna"
+  },
+  "hero/kategori-temizlik-hijyen-grubu": {
+    "alt": "Temizlik arabası, dezenfektan şişeleri, mendiller, eldiven ve maske kutuları"
+  },
+  "hero/kategori-tibbi-cihazlar": {
+    "alt": "Hasta monitörleri, defibrilatörler ve biyomedikal cihazların sergilendiği aydınlık showroom"
+  },
+  "hero/kategori-genel-tibbi-sarf-malzemeler": {
+    "alt": "Tezgâhta nitril eldiven, cerrahi maske, gazlı bez, şırınga ve steril paketler"
+  },
+  "hero/sorular": {
+    "alt": "Medikal cihaz ve ürünlerin sergilendiği aydınlık showroom"
+  },
+  "hizmetler/medikal": {
+    "alt": "Hastane odasında paslanmaz tezgâh üzerinde tansiyon aleti, stetoskop, eldiven, serum seti ve hasta monitörü"
+  },
+  "ana/medikal-perde": {
+    "alt": "Hastane odasında paslanmaz tezgâh üzerinde tansiyon aleti, stetoskop, eldiven, serum seti ve hasta monitörü"
+  },
+  "hizmetler/insaat": {
+    "alt": "Masa üzerinde mimari ve inşaat planları"
+  },
+  "hizmetler/hastane-tekstili": {
+    "alt": "Perdeli hastane koğuşunda ön planda mavi hastane çarşafı, arkada yataklar"
+  },
+  "referanslar/nba-guven": {
+    "alt": "Pencereli aydınlık bir bekleme salonunda sıralanmış kırmızı sandalyeler"
+  },
+  "referanslar/guven-ayranci": {
+    "alt": "Cam cepheli, ağaçlarla çevrili modern bir hastane binası"
+  },
+  "referanslar/ufuk": {
+    "alt": "Aydınlık bir hastane koridoru ve bekleme koltukları"
+  },
+  "referanslar/g4-spor": {
+    "alt": "Geniş pencereli, koşu bantlı modern spor salonu"
+  },
+  "referanslar/guven-evde-bakim": {
+    "alt": "Gülümseyen bir hemşire ve yaşlı hasta"
+  },
+  "referanslar/g4-spa": {
+    "alt": "Loş ve sıcak ışıklı, taş bankları olan modern hamam–buhar odası"
+  },
+  "referanslar/electro-bismed": {
+    "alt": "Cihaz ve cam malzemelerle dolu aydınlık bir laboratuvar tezgâhı"
+  },
+  "menu/kurumsal": {
+    "alt": "Cam duvarlı, bitkili ve ışık dolu modern bir merdiven holü"
+  },
+  "urunler/bipolar-forceps": {
+    "alt": "Mavi steril örtü üzerinde cerrahi makas ve aletler"
+  },
+  "hizmetler/arac-kiralama": {
+    "alt": "Yağmurlu havada park edilmiş koyu renkli otomobil"
+  },
+  "menu/hizmetler": {
+    "alt": "Mavi ameliyat kıyafetli cerrahlar ameliyathanede çalışıyor"
+  },
+  "kurumsal/hakkimizda-1": {
+    "alt": "Geometrik cepheli çağdaş kurumsal bina"
+  },
+  "urunler/20-cm-bayonet-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-110v-20010": {
+    "alt": "20 cm Bayonet Bipolar Forseps, 1,0 mm Uç, Kablolu - Valleylab Fişli"
+  },
+  "urunler/20-cm-bayonet-bipolar-forseps-1-0-mm-uc-ve-kablolu-valleylab-fisli-ref-01-110v-20010-1-0-mm-yapismaz": {
+    "alt": "20 cm Bayonet Bipolar Forseps, 1,0 mm Uç ve Kablolu - Valleylab Fişli, 1,0 mm Yapışmaz"
+  },
+  "urunler/12-cm-adson-bipolar-penset-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010": {
+    "alt": "12 cm Adson Bipolar Penset, 1,0 mm Uç, Kablolu - Valleylab Fişli"
+  },
+  "urunler/12-cm-adson-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010-tirtikli": {
+    "alt": "12 cm Adson Bipolar Forseps, 1,0 mm Uç, Kablolu - Valleylab Fişli, Tırtıklı"
+  },
+  "urunler/15-cm-duz-bipolar-forseps-1-0-mm-acili-uc-ve-kablo-valleylab-fisli-ref-01-052v-15010": {
+    "alt": "15 cm Düz Bipolar Forseps, 1,0 mm Açılı Uç ve Kablo - Valleylab Fişli"
+  },
+  "urunler/alci-alti-pamuklari": {
+    "alt": "Alçı Altı Pamukları"
+  },
+  "urunler/alcili-sargi": {
+    "alt": "Alçılı Sargı"
+  },
+  "urunler/ambu-setleri": {
+    "alt": "Ambu Setleri"
+  },
+  "urunler/anestezi-solunum-devreleri": {
+    "alt": "Anestezi Solunum Devreleri"
+  },
+  "urunler/asi-siringalari": {
+    "alt": "Aşı Şırıngaları"
+  },
+  "urunler/aspirasyon-sondalari": {
+    "alt": "Aspirasyon Sondaları"
+  },
+  "urunler/bandaj-cesitleri": {
+    "alt": "Bandaj Çeşitleri"
+  },
+  "urunler/beslenme-siringasi": {
+    "alt": "Beslenme Şırıngası"
+  },
+  "urunler/bisturi-ucu-cesitleri": {
+    "alt": "Bistüri Ucu Çeşitleri"
+  },
+  "urunler/cerrahi-sutur-cesitleri": {
+    "alt": "Cerrahi Sütur Çeşitleri"
+  },
+  "urunler/defibrilator-pedi": {
+    "alt": "Defibrilatör Pedi"
+  },
+  "urunler/dental-siringalar": {
+    "alt": "Dental Şırıngalar"
+  },
+  "urunler/dezenfektanlar": {
+    "alt": "Dezenfektanlar"
+  },
+  "urunler/eeg-elektrodu": {
+    "alt": "EEG Elektrodu"
+  },
+  "urunler/ekg-elektrodu": {
+    "alt": "EKG Elektrodu"
+  },
+  "urunler/ekg-kagidi": {
+    "alt": "EKG Kağıdı"
+  },
+  "urunler/eldiven-cesitleri": {
+    "alt": "Eldiven Çeşitleri"
+  },
+  "urunler/elektrokoter-uclari": {
+    "alt": "Elektrokoter Uçları"
+  },
+  "urunler/endotrakeal-entubasyon-tupleri": {
+    "alt": "Endotrakeal Entübasyon Tüpleri"
+  },
+  "urunler/enteral-beslenme-sondalari": {
+    "alt": "Enteral Beslenme Sondaları"
+  },
+  "urunler/flaster-cesitleri": {
+    "alt": "Flaster Çeşitleri"
+  },
+  "urunler/foley-sonda-cesitleri": {
+    "alt": "Foley Sonda Çeşitleri"
+  },
+  "urunler/hasta-alt-bezleri": {
+    "alt": "Hasta Alt Bezleri"
+  },
+  "urunler/idrar-torbasi-cesitleri": {
+    "alt": "İdrar Torbası Çeşitleri"
+  },
+  "urunler/igneler": {
+    "alt": "İğneler"
+  },
+  "urunler/iki-parcali-siringalar": {
+    "alt": "İki Parçalı Şırıngalar"
+  },
+  "urunler/insulin-siringalari": {
+    "alt": "İnsülin Şırıngaları"
+  },
+  "urunler/jel-cesitleri": {
+    "alt": "Jel Çeşitleri"
+  },
+  "urunler/kan-alma-setleri": {
+    "alt": "Kan Alma Setleri"
+  },
+  "urunler/kan-gazi-siringasi": {
+    "alt": "Kan Gazı Şırıngası"
+  },
+  "urunler/kilitli-siringalar-luer-lock-siringalar": {
+    "alt": "Kilitli Şırıngalar (Luer Lock) Şırıngalar"
+  },
+  "urunler/mezoterapi-igneleri": {
+    "alt": "Mezoterapi İğneleri"
+  },
+  "urunler/nazogastrik-sonda-cesitleri": {
+    "alt": "Nazogastrik Sonda Çeşitleri"
+  },
+  "urunler/nebulizator-maskeleri": {
+    "alt": "Nebülizatör Maskeleri"
+  },
+  "urunler/nst-kagidi": {
+    "alt": "NST Kağıdı"
+  },
+  "urunler/numune-tupleri": {
+    "alt": "Numune Tüpleri"
+  },
+  "urunler/oksijen-maskesi": {
+    "alt": "Oksijen Maskesi"
+  },
+  "urunler/oral-airway": {
+    "alt": "Oral Airway"
+  },
+  "urunler/pipet-uclari": {
+    "alt": "Pipet Uçları"
+  },
+  "urunler/santrifuj-tupleri": {
+    "alt": "Santrifüj Tüpleri"
+  },
+  "urunler/serum-setleri": {
+    "alt": "Serum Setleri"
+  },
+  "urunler/sterilizasyon-rulosu": {
+    "alt": "Sterilizasyon Rulosu"
+  },
+  "urunler/trakeostomi-kanulu": {
+    "alt": "Trakeostomi Kanülü"
+  },
+  "urunler/uc-parcali-siringalar": {
+    "alt": "Üç Parçalı Şırıngalar"
+  },
+  "urunler/veteriner-siringalari": {
+    "alt": "Veteriner Şırıngaları"
+  },
+  "urunler/disposable-ortu-setleri": {
+    "alt": "Disposable Örtü Setleri"
+  },
+  "urunler/hastane-kiyafetleri": {
+    "alt": "Hastane Kıyafetleri"
+  },
+  "urunler/hastane-tekstili": {
+    "alt": "Hastane Tekstili"
+  },
+  "urunler/onluk-cesitleri": {
+    "alt": "Önlük Çeşitleri"
+  },
+  "urunler/el-hijyeni-urunleri": {
+    "alt": "El Hijyeni Ürünleri"
+  },
+  "urunler/genel-temizlik-malzemeleri": {
+    "alt": "Genel Temizlik Malzemeleri"
+  },
+  "urunler/hijyen-ekipmanlari-ve-dispenserler": {
+    "alt": "Hijyen Ekipmanları ve Dispenserler"
+  },
+  "urunler/tibbi-alet-dezenfektanlari": {
+    "alt": "Tıbbi Alet Dezenfektanları"
+  },
+  "urunler/tibbi-atik-yonetim-urunleri": {
+    "alt": "Tıbbi Atık Yönetim Ürünleri"
+  },
+  "urunler/yuzey-dezenfektalari": {
+    "alt": "Yüzey Dezenfektanları"
+  },
+  "urunler/aspirator-cihazi": {
+    "alt": "Aspiratör Cihazı"
+  },
+  "urunler/boy-olcer-tarti-cesitleri": {
+    "alt": "Boy Ölçer / Tartı Çeşitleri"
+  },
+  "urunler/ekg-cihazi": {
+    "alt": "EKG Cihazı"
+  },
+  "urunler/hasta-basi-monitoru": {
+    "alt": "Hasta Başı Monitörü"
+  },
+  "urunler/holter-cihazi": {
+    "alt": "Holter Cihazı"
+  },
+  "urunler/infuzyon-pompasi": {
+    "alt": "İnfüzyon Pompası"
+  },
+  "urunler/koter-cihazlari": {
+    "alt": "Koter Cihazları"
+  },
+  "urunler/pulse-oksimetre": {
+    "alt": "Pulse Oksimetre"
+  },
+  "haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik": {
+    "alt": "Güven Gebe Okulu’nda Doğuma ve Ebeveynliğe Hazırlık"
+  },
+  "haberler/peryon-networking-bulusmasinda-longevity-yi-prof-dr-pelin-aribal-ayral-dan-dinledik": {
+    "alt": "PERYÖN Networking Buluşmasında Longevity’yi Prof. Dr. Pelin Arıbal Ayral’dan Dinledik"
+  },
+  "haberler/peryon-ilk-networking-bulusmasi-guven-de": {
+    "alt": "PERYÖN İlk Networking Buluşması Güven’de"
+  },
+  "haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik-gunu": {
+    "alt": "Güven Gebe Okulu’nda Doğuma ve Ebeveynliğe Hazırlık Günü"
+  }
+}
