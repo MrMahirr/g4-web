@@ -28,16 +28,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Hukuk onayı bekleyen yasal metinler "noindex" olduğu için haritaya eklenmez.
   const legalPages = (["cerez-politikasi", "kvkk-aydinlatma-metni"] as const)
-    .map((slug) => catalog.getLegalDocument(slug))
+    .map((slug) => catalog.site.getLegalDocument(slug))
     .filter((document) => document && !document.approvalPending)
     .map((document) => entry(`/icerik/${document!.slug}`, 0.2, "yearly"));
 
   return [
     ...staticPages,
-    ...catalog.getCategories().map((category) => entry(routes.category(category.slug), 0.8, "weekly")),
-    ...catalog.getProducts().map((product) => entry(routes.product(product.slug), 0.7)),
-    ...catalog.getServices().map((service) => entry(routes.service(service.slug), 0.7)),
-    ...catalog.getNews().map((item) => ({
+    ...catalog.products.getCategories().map((category) => entry(routes.category(category.slug), 0.8, "weekly")),
+    ...catalog.products.getProducts().map((product) => entry(routes.product(product.slug), 0.7)),
+    ...catalog.services.getServices().map((service) => entry(routes.service(service.slug), 0.7)),
+    ...catalog.news.getNews().map((item) => ({
       ...entry(routes.newsItem(item.slug), 0.4, "yearly"),
       lastModified: item.publishedAt,
     })),

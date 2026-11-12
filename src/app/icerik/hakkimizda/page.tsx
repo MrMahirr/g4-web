@@ -24,8 +24,8 @@ export default async function AboutPage() {
   const intro = copy.raw("about.intro") as string[];
   const sectors = copy.raw("about.sectors") as { title: string; lead: string; paragraphs: string[] }[];
   const catalog = getCatalog(await getLocale());
-  const cover = catalog.getImage(pageMeta.about.coverImageKey);
-  const services = catalog.getServices();
+  const cover = catalog.images.getImage(pageMeta.about.coverImageKey);
+  const services = catalog.services.getServices();
 
   return (
     <>
@@ -34,7 +34,7 @@ export default async function AboutPage() {
         title={[copy("about.title")]}
         description={copy("about.lead")}
         ghost="G4"
-        image={catalog.getImage("hero/hakkimizda")}
+        image={catalog.images.getImage("hero/hakkimizda")}
       />
 
       <Container as="section" className="pt-lead">
@@ -75,7 +75,7 @@ export default async function AboutPage() {
       <Container as="section" className="py-section">
         {sectors.map((sector, index) => {
           const meta = pageMeta.about.sectors[index];
-          const image = catalog.getImage(meta.imageKey);
+          const image = catalog.images.getImage(meta.imageKey);
           const service = services.find((item) => item.domain === meta.domain);
           const reversed = index % 2 === 1;
           return (

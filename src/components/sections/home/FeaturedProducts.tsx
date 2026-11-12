@@ -1,11 +1,12 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { FeaturedProductGrid } from "@/components/catalog/FeaturedProductGrid";
-import { FeaturedProductList, type FeaturedRow } from "@/components/catalog/FeaturedProductList";
+import { FeaturedProductList } from "@/components/catalog/FeaturedProductList";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import { routes } from "@/data/navigation.data";
+import type { FeaturedRow } from "@/types/catalog-view";
 
 /** Öne çıkan ürünler — masaüstü: liste satırları (tasarım D4Main 5); mobil: 2 sütun görselli ürün ızgarası. */
 export function FeaturedProducts({ rows }: { rows: FeaturedRow[] }) {

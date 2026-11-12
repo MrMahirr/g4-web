@@ -20,7 +20,7 @@ export default async function ReferencesPage() {
   const t = await getTranslations();
   const copy = await getTranslations("pages");
   const catalog = getCatalog(await getLocale());
-  const references = catalog.getReferences();
+  const references = catalog.references.getReferences();
   const total = references.length;
 
   return (
@@ -34,14 +34,14 @@ export default async function ReferencesPage() {
         title={[copy("references.title")]}
         description={copy("references.lead")}
         ghost={String(references.length).padStart(2, "0")}
-        image={catalog.getImage("hero/referanslar")}
+        image={catalog.images.getImage("hero/referanslar")}
       />
 
       <Container as="section" className="pt-lead">
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {references.map((reference, index) => {
-            const logo = catalog.getImage(reference.logoKey);
-            const photo = catalog.getImage(reference.imageKey);
+            const logo = catalog.images.getImage(reference.logoKey);
+            const photo = catalog.images.getImage(reference.imageKey);
             return (
               <li key={reference.id}>
                 <Reveal index={index % 3} className="h-full">

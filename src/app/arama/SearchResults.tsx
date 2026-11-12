@@ -6,7 +6,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { SearchResultRow } from "@/components/layout/SearchResultRow";
-import type { SearchEntryWithImage } from "@/components/layout/types";
+import type { SearchEntryWithImage } from "@/types/catalog-view";
 import { routes } from "@/data/navigation.data";
 import { countByType, searchEntries, type SearchFilter } from "@/lib/catalog";
 import { cn } from "@/lib/utils";

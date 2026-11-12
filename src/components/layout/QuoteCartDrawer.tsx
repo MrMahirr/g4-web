@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ShoppingBag, Trash2, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { toast } from "sonner";
 import { QuantityBox, UnitSegment } from "@/components/catalog/QuantityControls";
 import { Button } from "@/components/ui/Button";
 import { routes } from "@/data/navigation.data";
@@ -16,7 +17,7 @@ import { useQuoteCart } from "@/hooks/useQuoteCart";
 import { EASE_SOFT } from "@/lib/utils";
 import { useCatalogSummary } from "@/hooks/useCatalogSummary";
 import { useReturnFocus } from "@/hooks/useReturnFocus";
-import type { QuoteProductInfo } from "./types";
+import type { QuoteProductInfo } from "@/types/catalog-view";
 
 const NO_PRODUCTS: QuoteProductInfo[] = [];
 
@@ -43,6 +44,14 @@ export function QuoteCartDrawer() {
   };
 
   const returnFocus = useReturnFocus();
+  const removeLine = (productSlug: string) => {
+    cart.remove(productSlug);
+    toast.message(t("quote.removed"));
+  };
+  const clearCart = () => {
+    cart.clear();
+    toast.message(t("quote.cleared"));
+  };
 
   return (
     <Dialog.Root open={drawer.isOpen} onOpenChange={drawer.setOpen}>
@@ -108,7 +117,7 @@ export function QuoteCartDrawer() {
                               <button
                                 type="button"
                                 aria-label={`${name} — ${t("quote.remove")}`}
-                                onClick={() => cart.remove(line.productSlug)}
+                                onClick={() => removeLine(line.productSlug)}
                                 className="grid size-10 cursor-pointer place-items-center rounded-btn text-muted transition-colors hover:bg-tint hover:text-ember-d"
                               >
                                 <Trash2 size={17} aria-hidden="true" />
@@ -138,7 +147,7 @@ export function QuoteCartDrawer() {
                       </Button>
                       <button
                         type="button"
-                        onClick={cart.clear}
+                        onClick={clearCart}
                         className="self-start font-mono text-xs tracking-[0.06em] text-muted uppercase underline-offset-4 hover:text-ember-d hover:underline"
                       >
                         {t("quote.clear")}

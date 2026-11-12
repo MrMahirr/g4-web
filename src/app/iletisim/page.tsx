@@ -34,8 +34,8 @@ export default async function ContactPage() {
   const t = await getTranslations();
   const locale = await getLocale();
   const catalog = getCatalog(locale);
-  const company = catalog.getCompany();
-  const products = catalog.getProducts().map((product) => ({
+  const company = catalog.site.getCompany();
+  const products = catalog.products.getProducts().map((product) => ({
     slug: product.slug,
     name: product.name,
     code: product.code,
@@ -47,7 +47,7 @@ export default async function ContactPage() {
         crumbs={[{ label: t("common.home"), href: routes.home }, { label: t("nav.contact") }]}
         title={[t("nav.contact")]}
         description={t("i18n.meta.contact.description")}
-        image={catalog.getImage("hero/iletisim")}
+        image={catalog.images.getImage("hero/iletisim")}
       />
 
       <Container as="section" className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 pt-lead pb-section">

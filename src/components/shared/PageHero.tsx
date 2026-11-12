@@ -5,7 +5,8 @@ import { Enter } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import type { ImageEntry } from "@/core/types";
 import { cn } from "@/lib/utils";
-import { Breadcrumb, type Crumb } from "./Breadcrumb";
+import { Breadcrumb } from "./Breadcrumb";
+import type { Crumb } from "@/types/navigation";
 
 type Props = {
   crumbs: Crumb[];

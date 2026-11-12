@@ -14,9 +14,9 @@ import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
 import { splitSentences } from "@/lib/text";
 import { pageMetadata } from "@/lib/seo";
-import type { Crumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbLd, serviceLd } from "@/lib/structured-data";
+import type { Crumb } from "@/types/navigation";
 
 /** Dikey fotoğrafların geniş kapakta hangi bölgesinin görüneceği (varsayılan: orta). */
 const heroPositions: Record<string, string> = {
@@ -28,20 +28,20 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getCatalog("tr")
-    .getServices()
+    .services.getServices()
     .map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/hizmet/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const catalog = getCatalog(await getLocale());
-  const service = catalog.getServiceBySlug(slug);
+  const service = catalog.services.getServiceBySlug(slug);
   if (!service) return {};
   return pageMetadata({
     title: service.title,
     description: service.shortDescription,
     path: routes.service(service.slug),
-    image: catalog.getImage(service.imageKey),
+    image: catalog.images.getImage(service.imageKey),
   });
 }
 
@@ -51,12 +51,12 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
   const copy = await getTranslations("pages");
   const { slug } = await params;
   const catalog = getCatalog(await getLocale());
-  const service = catalog.getServiceBySlug(slug);
+  const service = catalog.services.getServiceBySlug(slug);
   if (!service) notFound();
 
-  const services = catalog.getServices();
-  const image = catalog.getImage(service.imageKey);
-  const category = service.relatedCategorySlug ? catalog.getCategoryBySlug(service.relatedCategorySlug) : null;
+  const services = catalog.services.getServices();
+  const image = catalog.images.getImage(service.imageKey);
+  const category = service.relatedCategorySlug ? catalog.products.getCategoryBySlug(service.relatedCategorySlug) : null;
 
   // Tasarımdaki gibi ilk cümle büyük giriş, kalanlar düz paragraf.
   const [lead, ...restOfFirst] = splitSentences(service.paragraphs[0] ?? "");
@@ -80,7 +80,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
         titleClassName="max-w-[1100px] text-[clamp(42px,6vw,96px)] leading-none tracking-[-0.04em]"
         description={copy("services.lead")}
         calmOnSiblingNav
-        image={catalog.getImage(`hero/hizmet-${service.imageKey.split("/")[1]}`)}
+        image={catalog.images.getImage(`hero/hizmet-${service.imageKey.split("/")[1]}`)}
         imagePosition={heroPositions[service.imageKey] ?? "object-center"}
       />
 
@@ -113,7 +113,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
                 );
               })}
             </nav>
-            <CallBackCard variant="sidebar" />
+            <CallBackCard phone={catalog.site.getCompany().phone} variant="sidebar" />
           </aside>
 
           <div className="flex flex-col gap-[26px]">
@@ -149,7 +149,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
             </Reveal>
           </div>
           <Reveal>
-            <LeadForm kind="quote" idPrefix="teklif" subject={service.title} email={catalog.getCompany().email} />
+            <LeadForm kind="quote" idPrefix="teklif" subject={service.title} email={catalog.site.getCompany().email} />
           </Reveal>
         </div>
       </Container>

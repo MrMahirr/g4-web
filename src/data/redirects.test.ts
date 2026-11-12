@@ -18,10 +18,10 @@ const livePaths = new Set<string>([
   routes.contact,
   routes.cookies,
   routes.kvkk,
-  ...catalog.getProducts().map((item) => routes.product(item.slug)),
-  ...catalog.getCategories().map((item) => routes.category(item.slug)),
-  ...catalog.getServices().map((item) => routes.service(item.slug)),
-  ...catalog.getNews().map((item) => routes.newsItem(item.slug)),
+  ...catalog.products.getProducts().map((item) => routes.product(item.slug)),
+  ...catalog.products.getCategories().map((item) => routes.category(item.slug)),
+  ...catalog.services.getServices().map((item) => routes.service(item.slug)),
+  ...catalog.news.getNews().map((item) => routes.newsItem(item.slug)),
 ]);
 
 describe("eski adres yönlendirmeleri (plan 8.3)", () => {
@@ -44,8 +44,8 @@ describe("eski adres yönlendirmeleri (plan 8.3)", () => {
 
   it("eski hizmet slug'ları yeni hizmete işaret eder", () => {
     for (const [legacy, current] of Object.entries(legacyServiceSlugs)) {
-      expect(catalog.getServiceBySlug(legacy)).toBeNull();
-      expect(catalog.getServiceBySlug(current)).not.toBeNull();
+      expect(catalog.services.getServiceBySlug(legacy)).toBeNull();
+      expect(catalog.services.getServiceBySlug(current)).not.toBeNull();
     }
   });
 });

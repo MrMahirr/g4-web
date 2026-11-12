@@ -14,15 +14,15 @@ import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/shared/JsonLd";
-import type { Crumb } from "@/components/shared/Breadcrumb";
 import { breadcrumbLd } from "@/lib/structured-data";
+import type { Crumb } from "@/types/navigation";
 
 /** Veride olmayan adres gerçek 404 döner (Cache Components kapalıyken desteklenir). */
 export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getCatalog("tr")
-    .getCategories()
+    .products.getCategories()
     .map(({ slug }) => ({ slug }));
 }
 
@@ -30,13 +30,13 @@ export async function generateMetadata({ params }: PageProps<"/urun-kategori/[sl
   const t = await getTranslations("home");
   const { slug } = await params;
   const catalog = getCatalog(await getLocale());
-  const category = catalog.getCategoryBySlug(slug);
+  const category = catalog.products.getCategoryBySlug(slug);
   if (!category) return {};
   return pageMetadata({
     title: category.title,
     description: t("categories.text"),
     path: routes.category(category.slug),
-    image: catalog.getImage(category.imageKey),
+    image: catalog.images.getImage(category.imageKey),
   });
 }
 
@@ -58,19 +58,19 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
   const home = await getTranslations("home");
   const { slug } = await params;
   const catalog = getCatalog(await getLocale());
-  const category = catalog.getCategoryBySlug(slug);
+  const category = catalog.products.getCategoryBySlug(slug);
   if (!category) notFound();
 
-  const categories = catalog.getCategories();
+  const categories = catalog.products.getCategories();
   const position = categories.findIndex((item) => item.slug === slug) + 1;
-  const products: CategoryProduct[] = catalog.getProducts({ categorySlug: slug }).map((product) => ({
+  const products: CategoryProduct[] = catalog.products.getProducts({ categorySlug: slug }).map((product) => ({
     slug: product.slug,
     title: product.title,
     name: product.name,
     code: product.code,
     categorySlugs: product.categorySlugs,
     subGroup: product.subGroup,
-    imageSrc: catalog.getImage(product.imageKey)?.src ?? null,
+    imageSrc: catalog.images.getImage(product.imageKey)?.src ?? null,
   }));
 
   const crumbs: Crumb[] = [
@@ -87,7 +87,7 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
         title={splitTitle(category.title)}
         description={home("categories.text")}
         ghost={String(position).padStart(2, "0")}
-        image={catalog.getImage(`hero/kategori-${slug}`)}
+        image={catalog.images.getImage(`hero/kategori-${slug}`)}
       />
 
       <Container as="section" className="flex flex-col gap-9 pt-lead pb-section">
@@ -125,7 +125,7 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
               />
             }
           >
-            <CategoryResults products={products} subGroups={catalog.getSubGroups(slug)} />
+            <CategoryResults products={products} subGroups={catalog.products.getSubGroups(slug)} />
           </Suspense>
         ) : (
           <div className="flex flex-col items-start gap-5 rounded-card bg-white p-[clamp(28px,4vw,56px)]">

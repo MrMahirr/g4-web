@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { QUOTE_UNITS, type QuoteLine, type QuoteUnit } from "@/core/types";
+import { MAX_QTY, QUOTE_UNITS, type QuoteLine, type QuoteUnit } from "@/core/types";
 
 /** Çoklu ürün teklif listesi. Tarayıcıda localStorage'da saklanır (bkz. store/persistence.ts). */
 export interface QuoteCartState {
@@ -9,8 +9,6 @@ export interface QuoteCartState {
 }
 
 const initialState: QuoteCartState = { lines: [], hydrated: false };
-
-export const MAX_QTY = 99_999;
 
 function clampQty(qty: number): number {
   if (!Number.isFinite(qty)) return 1;

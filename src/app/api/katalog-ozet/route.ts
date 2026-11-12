@@ -1,5 +1,6 @@
-import type { CatalogSummary } from "@/components/layout/types";
 import { getCatalog } from "@/core/container";
+import { buildSearchIndex, getSearchIndexLabels } from "@/lib/search-index";
+import type { CatalogSummary } from "@/types/catalog-view";
 import { getLocale } from "next-intl/server";
 
 /*
@@ -9,11 +10,12 @@ import { getLocale } from "next-intl/server";
 */
 export async function GET() {
   const catalog = getCatalog(await getLocale());
-  const imageSrc = (key: string | undefined) => catalog.getImage(key)?.src;
+  const imageSrc = (key: string | undefined) => catalog.images.getImage(key)?.src;
 
   const summary: CatalogSummary = {
-    searchIndex: catalog.getSearchIndex().map((entry) => ({ ...entry, imageSrc: imageSrc(entry.imageKey) })),
-    quoteProducts: catalog.getProducts().map((product) => ({
+    searchIndex: buildSearchIndex(catalog, await getSearchIndexLabels())
+      .map((entry) => ({ ...entry, imageSrc: imageSrc(entry.imageKey) })),
+    quoteProducts: catalog.products.getProducts().map((product) => ({
       slug: product.slug,
       name: product.name,
       code: product.code,

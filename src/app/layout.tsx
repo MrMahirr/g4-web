@@ -55,16 +55,19 @@ export async function generateMetadata(): Promise<Metadata> {
 /** Header'ın ihtiyaç duyduğu veriyi sunucuda hazırlar; istemciye yalnız gereken alanlar gider. */
 function buildHeaderData(locale: "tr" | "en"): HeaderData {
   const catalog = getCatalog(locale);
-  const company = catalog.getCompany();
-  const imageSrc = (key: string | undefined) => catalog.getImage(key)?.src;
+  const company = catalog.site.getCompany();
+  const imageSrc = (key: string | undefined) => catalog.images.getImage(key)?.src;
 
   return {
     phone: company.phone,
     email: company.email,
     corporateLinks,
-    serviceLinks: catalog.getServices().map((service) => ({ label: service.title, href: routes.service(service.slug) })),
+    serviceLinks: catalog.services.getServices().map((service) => ({
+      label: service.title,
+      href: routes.service(service.slug),
+    })),
     categoryLinks: catalog
-      .getCategories()
+      .products.getCategories()
       .map((category) => ({ label: category.title, href: routes.category(category.slug) })),
     menuImages: { kurumsal: imageSrc("menu/kurumsal"), hizmetler: imageSrc("menu/hizmetler") },
   };
@@ -78,13 +81,13 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang={locale} className={`${geist.variable} ${inter.variable}`}>
       <body>
-        <JsonLd data={siteGraph(catalog.getCompany(), description)} />
+      <JsonLd data={siteGraph(catalog.site.getCompany(), description)} />
         <NextIntlClientProvider>
         <StoreProvider>
           <MotionProvider>
             <SiteHeader data={buildHeaderData(locale)} />
             <main id="icerik">{children}</main>
-            <SiteFooter company={catalog.getCompany()} services={catalog.getServices()} />
+      <SiteFooter company={catalog.site.getCompany()} services={catalog.services.getServices()} />
             <ScrollToTop />
             <Toaster position="bottom-right" toastOptions={{ className: "font-sans" }} />
           </MotionProvider>

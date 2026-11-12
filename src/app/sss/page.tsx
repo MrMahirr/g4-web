@@ -21,7 +21,7 @@ export default async function FaqPage() {
   const t = await getTranslations();
   const copy = await getTranslations("pages");
   const catalog = getCatalog(await getLocale());
-  const faq = catalog.getFaq();
+  const faq = catalog.site.getFaq();
 
   return (
     <>
@@ -36,7 +36,7 @@ export default async function FaqPage() {
         ]}
         description={copy("faq.lead")}
         ghost="?"
-        image={catalog.getImage("hero/sorular")}
+        image={catalog.images.getImage("hero/sorular")}
       />
 
       <Container as="section" className="max-w-[1100px] pt-lead pb-section">
@@ -44,7 +44,7 @@ export default async function FaqPage() {
       </Container>
 
       <Container as="section" className="max-w-[1100px] pb-section">
-        <CallBackCard variant="plain" />
+        <CallBackCard phone={catalog.site.getCompany().phone} variant="plain" />
       </Container>
     </>
   );

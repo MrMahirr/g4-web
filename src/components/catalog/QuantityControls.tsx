@@ -2,8 +2,7 @@
 import { useTranslations } from "next-intl";
 
 import { Minus, Plus } from "lucide-react";
-import { QUOTE_UNITS, type QuoteUnit } from "@/core/types";
-import { MAX_QTY } from "@/store/slices/quoteCartSlice";
+import { MAX_QTY, QUOTE_UNITS, type QuoteUnit } from "@/core/types";
 import { cn } from "@/lib/utils";
 
 type QtyProps = {

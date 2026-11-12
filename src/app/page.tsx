@@ -29,10 +29,10 @@ const showcaseOrder = ["medical", "textile", "construction", "fleet"];
 export default async function HomePage() {
   const catalog = getCatalog(await getLocale());
   const showcase = catalog
-    .getServices()
+    .services.getServices()
     .toSorted((a, b) => showcaseOrder.indexOf(a.domain) - showcaseOrder.indexOf(b.domain))
     .map((service) => {
-    const image = catalog.getImage(service.imageKey);
+  const image = catalog.images.getImage(service.imageKey);
     return {
       slug: service.slug,
       href: routes.service(service.slug),
@@ -44,28 +44,28 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero image={catalog.getImage("hero/ana")} />
-      <Introduction services={showcase} stats={catalog.getCompany().stats} />
+      <Hero image={catalog.images.getImage("hero/ana")} />
+      <Introduction services={showcase} stats={catalog.site.getCompany().stats} />
       <Categories
         categories={catalog
-          .getCategories()
+          .products.getCategories()
           .map((category) => ({
             category,
-            image: catalog.getImage(category.imageKey),
+        image: catalog.images.getImage(category.imageKey),
           }))}
       />
       <FeaturedProducts
         rows={catalog
-          .getHomeFeaturedProducts()
+          .products.getHomeFeaturedProducts()
           .map((product) => toFeaturedRow(catalog, product))}
       />
       <References
         references={catalog
-          .getHomeReferences()
+          .references.getHomeReferences()
           .map((reference) => ({
             reference,
-            logo: catalog.getImage(reference.logoKey),
-            photo: catalog.getImage(reference.imageKey),
+        logo: catalog.images.getImage(reference.logoKey),
+        photo: catalog.images.getImage(reference.imageKey),
           }))}
       />
     </>

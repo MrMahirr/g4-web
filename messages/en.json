@@ -84,7 +84,8 @@
     "remove": "Remove from list",
     "added": "Added to quote list",
     "updated": "Quote list updated",
-    "removed": "Removed from quote list"
+    "removed": "Removed from quote list",
+    "cleared": "Quote list cleared"
   },
   "inquiry": {
     "labels": {
@@ -130,6 +131,7 @@
       "email": "Enter a valid email address.",
       "phone": "Enter a valid phone number.",
       "messageShort": "Your message must be at least 10 characters.",
+      "productRequired": "A product must be selected.",
       "kvkk": "You must provide consent to continue.",
       "cvType": "You can only choose a PDF, DOC or DOCX file.",
       "cvSize": "The file can be at most 5 MB."
@@ -269,6 +271,7 @@
       "productFallback": "G4 Products",
       "productGroup": "Product group · {number}",
       "service": "Service · {number}",
+      "productRef": "Ref: {code}",
       "product": "Product"
     },
     "subGroups": {

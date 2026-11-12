@@ -204,6 +204,7 @@ export interface SearchEntry {
 /* ---------- Teklif listesi ve talep ---------- */
 
 export const QUOTE_UNITS = ["Adet", "Kutu", "Koli"] as const;
+export const MAX_QTY = 99_999;
 export type QuoteUnit = (typeof QUOTE_UNITS)[number];
 
 export interface QuoteLine {
@@ -213,6 +214,11 @@ export interface QuoteLine {
 }
 
 export type InquiryType = "siparis" | "bilgi" | "soru";
+
+export interface InquiryRequest {
+  type: InquiryType | null;
+  product: QuoteLine | null;
+}
 
 /** Ürün sayfasından iletişim formuna taşınan tek ürün talebi. */
 export interface InquiryDraft {

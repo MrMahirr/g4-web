@@ -7,16 +7,7 @@ import { ListRow } from "@/components/shared/ListRow";
 import { routes } from "@/data/navigation.data";
 import { cn, EASE_SOFT } from "@/lib/utils";
 import { AddQuoteButton } from "./AddQuoteButton";
-
-export type FeaturedRow = {
-  slug: string;
-  name: string;
-  code?: string;
-  /** Önizleme görseli; yoksa "Görsel alanı" şablonu. */
-  imageSrc: string | null;
-  /** Filtre grubu (ana kategori adı). */
-  group: string;
-};
+import type { FeaturedRow } from "@/types/catalog-view";
 
 type Props = {
   rows: FeaturedRow[];

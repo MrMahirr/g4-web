@@ -8,11 +8,11 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { ListRow } from "@/components/shared/ListRow";
 import { Picture } from "@/components/shared/Picture";
 import { Container } from "@/components/ui/Container";
-import { UnderlineLink } from "@/components/ui/UnderlineLink";
+import { NewsArticleSidebar } from "@/components/sections/news/NewsArticleSidebar";
 import { getCatalog } from "@/core/container";
 import type { ImageEntry } from "@/core/types";
 import { routes } from "@/data/navigation.data";
-import { articleBlocks, formatShortDate, splitInTwo } from "@/lib/text";
+import { articleBlocks, excerpt, splitInTwo } from "@/lib/text";
 import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbLd, newsArticleLd } from "@/lib/structured-data";
@@ -22,7 +22,7 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getCatalog("tr")
-    .getNews()
+    .news.getNews()
     .map(({ slug }) => ({ slug }));
 }
 
@@ -30,13 +30,13 @@ export async function generateMetadata({ params }: PageProps<"/haber/[slug]">): 
   const { slug } = await params;
   const locale = await getLocale();
   const catalog = getCatalog(locale);
-  const item = catalog.getNewsBySlug(slug);
+  const item = catalog.news.getNewsBySlug(slug);
   if (!item) return {};
   return pageMetadata({
     title: item.title,
-    description: catalog.getNewsExcerpt(item),
+    description: excerpt(item.paragraphs[0] ?? ""),
     path: routes.newsItem(item.slug),
-    image: catalog.getImage(item.imageKey),
+    image: catalog.images.getImage(item.imageKey),
     type: "article",
   });
 }
@@ -48,22 +48,24 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
   const { slug } = await params;
   const locale = await getLocale();
   const catalog = getCatalog(locale);
-  const item = catalog.getNewsBySlug(slug);
+  const item = catalog.news.getNewsBySlug(slug);
   if (!item) notFound();
 
-  const all = catalog.getNews();
+  const all = catalog.news.getNews();
   const next = all[(all.findIndex((entry) => entry.slug === slug) + 1) % all.length];
-  const cover = catalog.getImage(item.imageKey);
-  const gallery = item.galleryKeys.map((key) => catalog.getImage(key));
+  const cover = catalog.images.getImage(item.imageKey);
+  const gallery = item.galleryKeys.map((key) => catalog.images.getImage(key));
   const blocks = articleBlocks(item.paragraphs, gallery.length);
-  const socials = catalog.getCompany().socials.filter((social) => social.href && ["linkedin", "x", "whatsapp"].includes(social.channel));
+  const socials = catalog.site.getCompany().socials.filter(
+    (social) => social.href && ["linkedin", "x", "whatsapp"].includes(social.channel),
+  );
   const [firstLine, secondLine] = splitInTwo(item.title);
 
   const path = routes.newsItem(item.slug);
 
   return (
     <>
-      <JsonLd data={newsArticleLd(item, path, catalog.getNewsExcerpt(item), cover)} />
+      <JsonLd data={newsArticleLd(item, path, excerpt(item.paragraphs[0] ?? ""), cover)} />
       <JsonLd
         data={breadcrumbLd(
           [{ label: t("common.home"), href: routes.home }, { label: copy("news.titleLines.1"), href: routes.news }, { label: item.title }],
@@ -116,22 +118,14 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
 
       <Container as="section" className="pt-lead pb-section">
         <div className="mx-auto grid max-w-[1100px] grid-cols-[200px_minmax(0,1fr)] items-start gap-[clamp(28px,5vw,80px)] max-[53.75rem]:grid-cols-1">
-          <aside className="sticky top-[120px] flex flex-col gap-[18px] font-mono text-xs tracking-[0.06em] uppercase max-[53.75rem]:static max-[53.75rem]:flex-row max-[53.75rem]:flex-wrap max-[53.75rem]:items-center">
-            <span className="text-muted">{copy("news.kicker")}</span>
-            <span className="text-ember-d">{copy("news.source")}</span>
-            <time dateTime={item.publishedAt} className="text-muted">
-              {formatShortDate(item.publishedAt, locale)}
-            </time>
-            <hr className="m-0 h-px w-full border-0 bg-line max-[53.75rem]:hidden" />
-            <span className="text-muted">{copy("news.share")}</span>
-            <div className="flex flex-col gap-0.5 font-sans tracking-normal normal-case max-[53.75rem]:flex-row max-[53.75rem]:gap-4">
-              {socials.map((social) => (
-                <UnderlineLink key={social.channel} href={social.href ?? "#"} target="_blank" rel="noreferrer" className="min-h-9 self-start text-sm">
-                  {social.label}
-                </UnderlineLink>
-              ))}
-            </div>
-          </aside>
+          <NewsArticleSidebar
+            publishedAt={item.publishedAt}
+            locale={locale}
+            socials={socials}
+            kicker={copy("news.kicker")}
+            source={copy("news.source")}
+            share={copy("news.share")}
+          />
 
           <article className="flex flex-col gap-7">
             {blocks.map((block, index) => {

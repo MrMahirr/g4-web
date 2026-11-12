@@ -21,7 +21,7 @@ export default async function CareerPage() {
   const titleLines = copy.raw("career.titleLines") as string[];
   const steps = copy.raw("career.steps") as string[];
   const catalog = getCatalog(await getLocale());
-  const email = catalog.getCompany().email;
+  const email = catalog.site.getCompany().email;
 
   return (
     <>
@@ -34,7 +34,7 @@ export default async function CareerPage() {
           </span>,
         ]}
         description={copy("career.lead")}
-        image={catalog.getImage("hero/kariyer")}
+        image={catalog.images.getImage("hero/kariyer")}
         className="pb-[60px]"
         footer={
           <Enter kind="rise" delay={0.7} className="mt-[50px] grid grid-cols-3 border-t border-ink/14 max-[56.25rem]:grid-cols-1">

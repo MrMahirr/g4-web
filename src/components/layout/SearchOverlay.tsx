@@ -6,16 +6,19 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useRef, type FormEvent, type KeyboardEvent } from "react";
+import { useRef, type FormEvent } from "react";
 import { routes } from "@/data/navigation.data";
 import { useCatalogSummary } from "@/hooks/useCatalogSummary";
 import { useOverlay } from "@/hooks/useOverlay";
+import { useListKeyboardNav } from "@/hooks/useListKeyboardNav";
 import { useReturnFocus } from "@/hooks/useReturnFocus";
 import { useSearchOverlay } from "@/hooks/useSearchOverlay";
 import type { SearchFilter } from "@/lib/catalog";
-import { cn, EASE_SOFT } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { SearchResultRow } from "./SearchResultRow";
-import type { NavLinkItem, SearchEntryWithImage } from "./types";
+import { SearchSuggestions } from "./SearchSuggestions";
+import type { NavLinkItem } from "./types";
+import type { SearchEntryWithImage } from "@/types/catalog-view";
 
 const NO_ENTRIES: SearchEntryWithImage[] = [];
 
@@ -32,7 +35,7 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
   const search = useSearchOverlay(summary?.searchIndex ?? NO_ENTRIES);
   const loading = summary === null;
   const router = useRouter();
-  const resultsRef = useRef<HTMLDivElement>(null);
+  const { containerRef: resultsRef, onKeyDown } = useListKeyboardNav<HTMLDivElement>("a[data-result]");
   const inputRef = useRef<HTMLInputElement>(null);
   const hasQuery = search.query.trim().length > 0;
   const shown = search.results.slice(0, MAX_RESULTS);
@@ -46,17 +49,6 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
     const first = shown[0];
     close();
     router.push(first ? first.entry.href : `${routes.search}?q=${encodeURIComponent(query)}`);
-  };
-
-  /** Ok tuşlarıyla sonuçlar arasında gezinme. */
-  const onKeyDown = (event: KeyboardEvent) => {
-    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
-    const links = Array.from(resultsRef.current?.querySelectorAll<HTMLAnchorElement>("a[data-result]") ?? []);
-    if (!links.length) return;
-    event.preventDefault();
-    const current = links.indexOf(document.activeElement as HTMLAnchorElement);
-    const step = event.key === "ArrowDown" ? 1 : -1;
-    links[(current + step + links.length) % links.length]?.focus();
   };
 
   const returnFocus = useReturnFocus(inputRef);
@@ -180,43 +172,7 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
                       </div>
                     </div>
                   ) : (
-                    <motion.div
-                      className="flex flex-col gap-7"
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, ease: EASE_SOFT, delay: 0.1 }}
-                    >
-                      <div className="flex flex-col gap-3">
-                        <span className="text-xs tracking-[0.08em] text-faint uppercase">{t("search.popular")}</span>
-                        <div className="flex flex-wrap items-baseline gap-x-[18px] gap-y-1.5">
-                          {(t.raw("navLinks.popularSearches") as string[]).map((term) => (
-                            <button
-                              key={term}
-                              type="button"
-                              onClick={() => search.setQuery(term)}
-                              className="cursor-pointer border-b border-transparent py-1 text-[15px] text-ink transition-colors duration-200 hover:border-ink"
-                            >
-                              {term}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="flex flex-col gap-3">
-                        <span className="text-xs tracking-[0.08em] text-faint uppercase">{t("search.groups")}</span>
-                        <div className="flex flex-wrap items-baseline gap-x-[18px] gap-y-1.5">
-                          {categories.map((category) => (
-                            <Link
-                              key={category.href}
-                              href={category.href}
-                              onClick={close}
-                              className="border-b border-transparent py-1 text-[15px] text-ink no-underline transition-colors duration-200 hover:border-ink"
-                            >
-                              {category.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
+                    <SearchSuggestions categories={categories} onSelect={close} onQuery={search.setQuery} />
                   )}
                 </div>
               </motion.div>
