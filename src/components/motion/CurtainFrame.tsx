@@ -45,9 +45,11 @@ type Props = {
   children: ReactNode;
   /** Yatay aynalama: perde (−,+) köşesinden (sol üst) (+,−) köşesine (sağ alt) doğru açılır. */
   mirrored?: boolean;
+  /** false: yarı saydam perde katmanları çizilmez, yalnız kaydırmaya bağlı 1.3x → 1 yakınlaşma kalır. */
+  veil?: boolean;
 };
 
-export function CurtainFrame({ children, mirrored = false }: Props) {
+export function CurtainFrame({ children, mirrored = false, veil = true }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const progress = useSpring(useCoverProgress(ref), SPRING);
@@ -64,7 +66,7 @@ export function CurtainFrame({ children, mirrored = false }: Props) {
       <motion.div className="absolute inset-0" style={reduceMotion ? undefined : { scale }}>
         {children}
       </motion.div>
-      {reduceMotion ? null : (
+      {reduceMotion || !veil ? null : (
         <div aria-hidden="true" className={cn("absolute inset-0 z-[4]", mirrored && "-scale-x-100")}>
           <motion.span
             aria-hidden="true"

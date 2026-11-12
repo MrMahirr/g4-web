@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
 import { legacyRedirects, legacyServiceSlugs } from "@/data/redirects.data";
 
-const catalog = container.resolve("CatalogService");
+const catalog = getCatalog("tr");
 
 /** Sitedeki tüm gerçek sayfa yolları. */
 const livePaths = new Set<string>([

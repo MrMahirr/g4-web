@@ -1,12 +1,13 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { G4Logo } from "@/components/shared/G4Logo";
+import { LanguageList } from "@/components/layout/LanguageToggle";
 import { routes } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
 import { useOverlay } from "@/hooks/useOverlay";
 import { EASE_CURTAIN, EASE_SOFT } from "@/lib/utils";
 import { useReturnFocus } from "@/hooks/useReturnFocus";
@@ -17,15 +18,16 @@ const ORIGIN = "calc(100% - 50px) 50px";
 
 /** Mobil menü (≤1080px) — köşeden daireyle açılan tam ekran panel. */
 export function MobileNav({ data }: { data: HeaderData }) {
+  const t = useTranslations();
   const menu = useOverlay("mobileNav");
   const reduceMotion = useReducedMotion();
 
-  const groups: { label: string; href: string; children?: NavLinkItem[] }[] = [
-    { label: tr.common.home, href: routes.home },
-    { label: tr.nav.corporate, href: routes.about, children: data.corporateLinks },
-    { label: tr.nav.services, href: routes.services, children: data.serviceLinks },
-    { label: tr.nav.products, href: routes.products, children: data.categoryLinks },
-    { label: tr.nav.contact, href: routes.contact },
+  const groups: { label: string; href: string; children?: readonly NavLinkItem[] }[] = [
+    { label: t("common.home"), href: routes.home },
+    { label: t("nav.corporate"), href: routes.about, children: data.corporateLinks.map((link) => ({ href: link.href, label: t(`navLinks.corporate.${link.key}`) })) },
+    { label: t("nav.services"), href: routes.services, children: data.serviceLinks },
+    { label: t("nav.products"), href: routes.products, children: data.categoryLinks },
+    { label: t("nav.contact"), href: routes.contact },
   ];
 
   const returnFocus = useReturnFocus();
@@ -43,21 +45,23 @@ export function MobileNav({ data }: { data: HeaderData }) {
                 exit={reduceMotion ? { opacity: 0 } : { clipPath: `circle(0px at ${ORIGIN})` }}
                 transition={{ duration: 0.8, ease: EASE_CURTAIN }}
               >
-                <Dialog.Title className="sr-only">{tr.nav.main}</Dialog.Title>
+                <Dialog.Title className="sr-only">{t("nav.main")}</Dialog.Title>
 
                 <div className="fixed inset-x-4 top-4 flex h-[72px] items-center justify-between pr-2 pl-3.5">
-                  <Link href={routes.home} onClick={menu.close} aria-label="G4 — Ana Sayfa">
+                  <Link href={routes.home} onClick={menu.close} aria-label={t("i18n.logoHome")}>
                     <G4Logo />
                   </Link>
-                  <Dialog.Close
-                    aria-label={tr.nav.closeMenu}
-                    className="grid size-[52px] cursor-pointer place-items-center rounded-btn bg-ember text-white"
-                  >
-                    <X size={22} aria-hidden="true" />
-                  </Dialog.Close>
+                  <div className="flex items-center gap-2">
+                    <Dialog.Close
+                      aria-label={t("nav.closeMenu")}
+                      className="grid size-[52px] cursor-pointer place-items-center rounded-btn bg-ember text-white"
+                    >
+                      <X size={22} aria-hidden="true" />
+                    </Dialog.Close>
+                  </div>
                 </div>
 
-                <nav aria-label={tr.nav.main}>
+                <nav aria-label={t("nav.main")}>
                   {groups.map((group, index) => (
                     <motion.div
                       key={group.href}
@@ -99,6 +103,8 @@ export function MobileNav({ data }: { data: HeaderData }) {
                     {data.email}
                   </a>
                 </p>
+
+                <LanguageList />
               </motion.div>
             </Dialog.Content>
           </Dialog.Portal>

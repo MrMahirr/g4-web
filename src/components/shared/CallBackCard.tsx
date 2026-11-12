@@ -1,8 +1,8 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
-import { container } from "@/core/container";
-import { about } from "@/data/about.data";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
 
@@ -14,9 +14,12 @@ type Variant = "wide" | "plain" | "sidebar";
  * - plain: küçük metin + düğme yan yana (tasarım: D4SSS)
  * - sidebar: dikey, telefonlu (tasarım: D4HizmetDetay kenar çubuğu)
  */
-export function CallBackCard({ variant = "wide", className }: { variant?: Variant; className?: string }) {
-  const phone = container.resolve("CatalogService").getCompany().phone;
-  const { title, text, button } = about.callBack;
+export async function CallBackCard({ variant = "wide", className }: { variant?: Variant; className?: string }) {
+  const t = await getTranslations("about");
+  const phone = getCatalog(await getLocale()).getCompany().phone;
+  const title = t("callBack.title");
+  const text = t("callBack.text");
+  const button = t("callBack.button");
 
   switch (variant) {
     case "sidebar":

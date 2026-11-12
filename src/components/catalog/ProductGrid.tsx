@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import { Picture } from "@/components/shared/Picture";
 import { underlineLinkClass } from "@/components/ui/UnderlineLink";
@@ -19,6 +20,7 @@ export type ProductView = "grid" | "list";
 
 /** Ürün kartları (tasarım: D4UrunKategori .pc) — ızgara veya liste; yüklenince sırayla yükselir (70ms). */
 export function ProductGrid({ products, view = "grid", animationKey = "" }: { products: ProductCard[]; view?: ProductView; animationKey?: string }) {
+  const t = useTranslations();
   const isList = view === "list";
 
   return (
@@ -42,10 +44,10 @@ export function ProductGrid({ products, view = "grid", animationKey = "" }: { pr
               "group flex w-full overflow-hidden rounded-card bg-white text-ink no-underline",
               "transition-[translate,box-shadow] duration-[600ms] ease-soft hover:-translate-y-2 hover:shadow-[0_30px_60px_-30px_rgb(30_48_64/0.4)]",
               "focus-visible:-translate-y-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0",
-              isList ? "flex-row items-center max-[600px]:flex-col max-[600px]:items-stretch" : "flex-col",
+              isList ? "flex-row items-center max-[37.5rem]:flex-col max-[37.5rem]:items-stretch" : "flex-col",
             )}
           >
-            <div className={cn("relative flex-none", isList ? "aspect-square w-40 max-[600px]:w-auto" : "aspect-[4/3]")}>
+            <div className={cn("relative flex-none", isList ? "aspect-square w-40 max-[37.5rem]:w-auto" : "aspect-[4/3]")}>
               <Picture
                 src={product.imageSrc}
                 alt={product.name}
@@ -55,12 +57,12 @@ export function ProductGrid({ products, view = "grid", animationKey = "" }: { pr
                 className="!absolute inset-0 border-0"
               />
             </div>
-            <div className={cn("flex flex-1 flex-col gap-3 p-[22px]", isList ? "border-l border-sand max-[600px]:border-t max-[600px]:border-l-0" : "border-t border-sand")}>
+            <div className={cn("flex flex-1 flex-col gap-3 p-[22px]", isList ? "border-l border-sand max-[37.5rem]:border-t max-[37.5rem]:border-l-0" : "border-t border-sand")}>
               <span className="font-mono text-xs tracking-[0.04em] text-ember-d">
-                {product.code ? `REF: ${product.code}` : "G4 ÜRÜNLERİ"}
+                {product.code ? `REF: ${product.code}` : t("i18n.catalog.productsFallback")}
               </span>
               <strong className="pr-10 font-display text-lg leading-[1.35] font-semibold tracking-[-0.015em]">{product.name}</strong>
-              <span className={cn(underlineLinkClass, "min-h-9 self-start text-sm")}>İncele</span>
+              <span className={cn(underlineLinkClass, "min-h-9 self-start text-sm")}>{t("i18n.catalog.browse")}</span>
             </div>
           </Link>
           <AddQuoteButton

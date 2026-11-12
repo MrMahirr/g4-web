@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -8,10 +9,8 @@ import { Enter } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/shared/PageHero";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { container } from "@/core/container";
-import { homeCopy } from "@/data/home.data";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -22,20 +21,20 @@ import { breadcrumbLd } from "@/lib/structured-data";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return container
-    .resolve("CatalogService")
+  return getCatalog("tr")
     .getCategories()
     .map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/urun-kategori/[slug]">): Promise<Metadata> {
+  const t = await getTranslations("home");
   const { slug } = await params;
-  const catalog = container.resolve("CatalogService");
+  const catalog = getCatalog(await getLocale());
   const category = catalog.getCategoryBySlug(slug);
   if (!category) return {};
   return pageMetadata({
     title: category.title,
-    description: homeCopy.categories.text,
+    description: t("categories.text"),
     path: routes.category(category.slug),
     image: catalog.getImage(category.imageKey),
   });
@@ -55,8 +54,10 @@ function splitTitle(title: string) {
 
 /** Ürün kategori sayfası (tasarım: D4UrunKategori). */
 export default async function CategoryPage({ params }: PageProps<"/urun-kategori/[slug]">) {
+  const t = await getTranslations();
+  const home = await getTranslations("home");
   const { slug } = await params;
-  const catalog = container.resolve("CatalogService");
+  const catalog = getCatalog(await getLocale());
   const category = catalog.getCategoryBySlug(slug);
   if (!category) notFound();
 
@@ -73,8 +74,8 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
   }));
 
   const crumbs: Crumb[] = [
-    { label: tr.common.home, href: routes.home },
-    { label: tr.nav.products, href: routes.products },
+    { label: t("common.home"), href: routes.home },
+    { label: t("nav.products"), href: routes.products },
     { label: category.title },
   ];
 
@@ -84,7 +85,7 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
       <PageHero
         crumbs={crumbs}
         title={splitTitle(category.title)}
-        description={homeCopy.categories.text}
+        description={home("categories.text")}
         ghost={String(position).padStart(2, "0")}
         image={catalog.getImage(`hero/kategori-${slug}`)}
       />
@@ -92,7 +93,7 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
       <Container as="section" className="flex flex-col gap-9 pt-lead pb-section">
         <Enter>
           <nav
-            aria-label="Ürün grupları"
+            aria-label={home("categories.title")}
             className="flex gap-1.5 overflow-x-auto border-b border-line [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {categories.map((item) => {
@@ -129,10 +130,10 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
         ) : (
           <div className="flex flex-col items-start gap-5 rounded-card bg-white p-[clamp(28px,4vw,56px)]">
             <h2 className="max-w-[720px] font-display text-[clamp(28px,3vw,44px)] leading-[1.1] font-bold tracking-[-0.03em]">
-              {tr.product.emptyCategoryTitle}
+              {t("product.emptyCategoryTitle")}
             </h2>
-            <p className="max-w-[620px] text-lead text-muted">{tr.product.emptyCategoryText}</p>
-            <Button href={routes.contactForm}>{tr.common.requestInfo}</Button>
+            <p className="max-w-[620px] text-lead text-muted">{t("product.emptyCategoryText")}</p>
+            <Button href={routes.contactForm}>{t("common.requestInfo")}</Button>
           </div>
         )}
       </Container>

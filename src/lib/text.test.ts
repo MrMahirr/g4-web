@@ -16,8 +16,12 @@ describe("metin yardımcıları", () => {
   });
 
   it("tarihi tasarımdaki mono biçimde yazar (İstanbul saati)", () => {
-    expect(formatShortDate("2020-02-18T14:05:00+03:00")).toBe("18 ŞUB 2020");
-    expect(formatShortDate("2020-12-31T23:30:00+03:00")).toBe("31 ARA 2020");
+    expect(formatShortDate("2020-02-18T14:05:00+03:00", "tr")).toBe("18 ŞUB 2020");
+    expect(formatShortDate("2020-12-31T23:30:00+03:00", "tr")).toBe("31 ARA 2020");
+  });
+
+  it("İngilizcede ay adını İngilizce ve Türkçe büyük harf kuralı olmadan yazar", () => {
+    expect(formatShortDate("2020-02-18T14:05:00+03:00", "en")).toBe("18 FEB 2020");
   });
 
   it("haber gövdesi: giriş + paragraflar + görseller + alıntı", () => {

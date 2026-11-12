@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useState, type ReactNode } from "react";
 import { ListRow } from "@/components/shared/ListRow";
 import { routes } from "@/data/navigation.data";
@@ -30,8 +31,6 @@ type Props = {
   className?: string;
 };
 
-const ALL = "Tümü";
-
 /** Ürün liste satırları (tasarım: .rowl). Filtre değişince satırlar sırayla yükselir (riseIn .7s, 60ms). */
 export function FeaturedProductList({
   rows,
@@ -41,13 +40,15 @@ export function FeaturedProductList({
   titleClassName,
   className,
 }: Props) {
-  const groups = [ALL, ...Array.from(new Set(rows.map((row) => row.group)))];
-  const [selected, setSelected] = useState(ALL);
-  const shown = selected === ALL ? rows : rows.filter((row) => row.group === selected);
+  const t = useTranslations();
+  const all = t("product.allSubGroups");
+  const groups = [all, ...Array.from(new Set(rows.map((row) => row.group)))];
+  const [selected, setSelected] = useState(all);
+  const shown = selected === all ? rows : rows.filter((row) => row.group === selected);
   const showFilters = filterable && groups.length > 2;
 
   const filters = showFilters ? (
-    <div role="group" aria-label="Ürün filtresi" className="flex flex-wrap gap-2">
+    <div role="group" aria-label={t("i18n.catalog.filter")} className="flex flex-wrap gap-2">
       {groups.map((group) => (
         <button
           key={group}
@@ -87,7 +88,7 @@ export function FeaturedProductList({
               href={routes.product(row.slug)}
               index={String(index + 1).padStart(2, "0")}
               title={row.name}
-              meta={row.code ? `REF: ${row.code}` : "G4 ÜRÜNLERİ"}
+              meta={row.code ? `REF: ${row.code}` : t("i18n.catalog.productsFallback")}
               previewSrc={preview ? row.imageSrc : undefined}
               titleClassName={titleClassName}
               className="border-ink/14 pr-[64px]"

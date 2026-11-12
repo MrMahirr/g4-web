@@ -3,12 +3,10 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import type { ImageEntry, ReferenceItem } from "@/core/types";
-import { homeCopy } from "@/data/home.data";
 import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import { ReferenceSlider } from "./ReferenceSlider";
-
-const copy = homeCopy.references;
 
 /** Hücre: üzerine gelince beyaz zemin merkezden daireyle dolar (tasarım: .lg). */
 export const referenceCellClass = cn(
@@ -83,19 +81,20 @@ export function ReferenceVisual({
 
 /** Referans ızgarası (tasarım: D4Main 6. bölüm). */
 export function References({ references }: Props) {
+  const t = useTranslations();
   return (
     <Container as="section" className="flex flex-col gap-10 pb-section">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <Reveal kind="skew">
-          <h2 className="font-display text-d2">{copy.title}</h2>
+          <h2 className="font-display text-d2">{t("home.references.title")}</h2>
         </Reveal>
         <Reveal className="max-w-[440px]">
-          <p className="leading-[1.75] text-pretty text-muted">{copy.text}</p>
+          <p className="leading-[1.75] text-pretty text-muted">{t("home.references.text")}</p>
         </Reveal>
       </div>
 
       <Reveal>
-        <ReferenceSlider label={copy.title}>
+        <ReferenceSlider label={t("home.references.title")}>
           {/* Az kurumda şerit görünür alanı doldurmaz ve Embla döngüyü kapatır; liste iki kez dizilir (2. kopya ekran okuyucudan gizli). */}
           {[0, 1].flatMap((copyIndex) =>
             references.map(({ reference, logo, photo }) => (
@@ -120,7 +119,7 @@ export function References({ references }: Props) {
 
       <Reveal className="flex justify-center">
         <Button href={routes.references} variant="ghost">
-          {copy.all}
+          {t("home.references.all")}
         </Button>
       </Reveal>
     </Container>

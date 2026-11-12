@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Image from "next/image";
@@ -8,11 +9,10 @@ import { Menu, Search, ShoppingBag } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useEffect, type ReactNode } from "react";
 import { G4Logo } from "@/components/shared/G4Logo";
+import { LanguageToggle } from "@/components/layout/LanguageToggle";
 import { Button } from "@/components/ui/Button";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
-import { Tag } from "@/components/ui/Tag";
-import { megaMenuCopy, routes, sectionForPath, type NavSection } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
+import { routes, sectionForPath, type NavSection } from "@/data/navigation.data";
 import { useOverlay } from "@/hooks/useOverlay";
 import { preloadCatalogSummary } from "@/hooks/useCatalogSummary";
 import { useQuoteCart } from "@/hooks/useQuoteCart";
@@ -27,6 +27,7 @@ import type { HeaderData, NavLinkItem } from "./types";
  * Kaydırınca daralır (hdShrink, 0 → 200px), altında okuma ilerleme çizgisi dolar (.bar-prog).
  */
 export function SiteHeader({ data }: { data: HeaderData }) {
+  const t = useTranslations();
   const pathname = usePathname();
   const active = sectionForPath(pathname);
   const reduceMotion = useReducedMotion();
@@ -58,7 +59,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
         href="#icerik"
         className="sr-only rounded-btn bg-ink px-4 py-3 text-white focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100]"
       >
-        {tr.common.skipToContent}
+        {t("common.skipToContent")}
       </a>
 
       <header id="top" className="pointer-events-none fixed inset-x-0 top-4 z-[80]">
@@ -74,17 +75,20 @@ export function SiteHeader({ data }: { data: HeaderData }) {
               "backdrop-blur-[18px] backdrop-saturate-[1.4]",
             )}
           >
-            <Link href={routes.home} aria-label="G4 — Ana Sayfa" className="flex flex-none items-center">
+            <Link href={routes.home} aria-label={t("i18n.logoHome")} className="flex flex-none items-center">
               <G4Logo />
             </Link>
 
             <DesktopNav active={active} data={data} />
 
             <div className="flex flex-none items-center gap-3.5">
-              <IconButton label={tr.search.open} onClick={search.open}>
+              <IconButton label={t("search.open")} onClick={search.open}>
                 <Search size={19} aria-hidden="true" />
               </IconButton>
-              <IconButton label={tr.quote.open} onClick={drawer.open}>
+              <span className="max-nav:hidden">
+                <LanguageToggle />
+              </span>
+              <IconButton label={t("quote.open")} onClick={drawer.open}>
                 <ShoppingBag size={18} aria-hidden="true" />
                 {cart.hydrated && cart.count > 0 ? (
                   <span className="absolute -top-0.5 -right-0.5 grid size-5 place-items-center rounded-full bg-ember-d font-mono text-[10px] text-white">
@@ -94,7 +98,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
               </IconButton>
               <a
                 href={`tel:${data.phone.tel}`}
-                className="inline-flex min-h-11 items-center gap-2 font-mono text-[13px] tracking-[0.04em] whitespace-nowrap text-muted no-underline max-[1320px]:hidden"
+                className="inline-flex min-h-11 items-center gap-2 font-mono text-[13px] tracking-[0.04em] whitespace-nowrap text-muted no-underline max-[82.5rem]:hidden"
               >
                 <span className="size-[7px] rounded-full bg-ember" />
                 {data.phone.display}
@@ -104,14 +108,14 @@ export function SiteHeader({ data }: { data: HeaderData }) {
                   href={routes.contact}
                   size="sm"
                   arrow="up-right"
-                  className="max-[1180px]:[&>span:last-child]:hidden [&>span:first-child]:px-[clamp(12px,1.2vw,18px)] [&>span:first-child]:text-[clamp(13px,1vw,15px)]"
+                  className="max-[73.75rem]:[&>span:last-child]:hidden [&>span:first-child]:px-[clamp(12px,1.2vw,18px)] [&>span:first-child]:text-[clamp(13px,1vw,15px)]"
                 >
-                  {tr.common.requestInfo}
+                  {t("common.requestInfo")}
                 </Button>
               </span>
               <button
                 type="button"
-                aria-label={tr.nav.openMenu}
+                aria-label={t("nav.openMenu")}
                 onClick={mobile.open}
                 className="hidden size-[52px] cursor-pointer place-items-center rounded-btn bg-ember text-white max-nav:grid"
               >
@@ -174,9 +178,10 @@ function PlusMinus() {
 }
 
 function DesktopNav({ active, data }: { active: NavSection | null; data: HeaderData }) {
+  const t = useTranslations();
   return (
     <NavigationMenu.Root
-      aria-label={tr.nav.main}
+      aria-label={t("nav.main")}
       delayDuration={60}
       className="h-full min-w-0 max-nav:hidden [&>div:first-child]:h-full"
     >
@@ -184,33 +189,31 @@ function DesktopNav({ active, data }: { active: NavSection | null; data: HeaderD
         <NavigationMenu.Item className="flex h-full items-center">
           <NavigationMenu.Link asChild active={active === "anasayfa"}>
             <Link href={routes.home} className={navLinkClass} data-active={active === "anasayfa"}>
-              {tr.common.home}
+              {t("common.home")}
             </Link>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
 
-        <MegaItem label={tr.nav.corporate} isActive={active === "kurumsal"}>
+        <MegaItem label={t("nav.corporate")} isActive={active === "kurumsal"}>
           <MegaLayout
             intro={
               <div className="flex flex-col gap-3.5">
-                <Tag className="text-ember-d">{megaMenuCopy.kurumsal.tag}</Tag>
-                <p className="text-[15px] leading-[1.75] text-muted">{megaMenuCopy.kurumsal.text}</p>
+                <p className="text-[15px] leading-[1.75] text-muted">{t("mega.corporate.text")}</p>
               </div>
             }
-            links={<MegaLinks links={data.corporateLinks} />}
+            links={<MegaLinks links={data.corporateLinks.map((link) => ({ href: link.href, label: t(`navLinks.corporate.${link.key}`) }))} />}
             image={data.menuImages.kurumsal}
           />
         </MegaItem>
 
-        <MegaItem label={tr.nav.services} isActive={active === "hizmetler"}>
+        <MegaItem label={t("nav.services")} isActive={active === "hizmetler"}>
           <MegaLayout
             intro={
               <>
                 <div className="flex flex-col gap-3.5">
-                  <Tag className="text-ember-d">{megaMenuCopy.hizmetler.tag}</Tag>
-                  <p className="text-[15px] leading-[1.75] text-muted">{megaMenuCopy.hizmetler.text}</p>
+                  <p className="text-[15px] leading-[1.75] text-muted">{t("mega.services.text")}</p>
                 </div>
-                <MegaOverviewLink href={routes.services}>{megaMenuCopy.hizmetler.allLabel}</MegaOverviewLink>
+                <MegaOverviewLink href={routes.services}>{t("mega.services.allLabel")}</MegaOverviewLink>
               </>
             }
             links={<MegaLinks links={data.serviceLinks} />}
@@ -218,17 +221,16 @@ function DesktopNav({ active, data }: { active: NavSection | null; data: HeaderD
           />
         </MegaItem>
 
-        <MegaItem label={tr.nav.products} isActive={active === "urunler"}>
+        <MegaItem label={t("nav.products")} isActive={active === "urunler"}>
           <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,2.3fr)] gap-9">
             <div className="flex flex-col justify-between gap-3.5">
               <div className="flex flex-col gap-3.5">
-                <Tag className="text-ember-d">{megaMenuCopy.urunler.tag}</Tag>
                 <strong className="font-display text-[30px] font-bold tracking-[-0.03em]">
-                  {megaMenuCopy.urunler.title}
+                  {t("mega.products.title")}
                 </strong>
-                <p className="text-[15px] leading-[1.75] text-muted">{megaMenuCopy.urunler.text}</p>
+                <p className="text-[15px] leading-[1.75] text-muted">{t("mega.products.text")}</p>
               </div>
-              <MegaOverviewLink href={routes.products}>{megaMenuCopy.urunler.allLabel}</MegaOverviewLink>
+              <MegaOverviewLink href={routes.products}>{t("mega.products.allLabel")}</MegaOverviewLink>
             </div>
             <MegaLinks links={data.categoryLinks} columns={2} titleClassName="text-[19px]" />
           </div>
@@ -237,7 +239,7 @@ function DesktopNav({ active, data }: { active: NavSection | null; data: HeaderD
         <NavigationMenu.Item className="flex h-full items-center">
           <NavigationMenu.Link asChild active={active === "iletisim"}>
             <Link href={routes.contact} className={navLinkClass} data-active={active === "iletisim"}>
-              {tr.nav.contact}
+              {t("nav.contact")}
             </Link>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
@@ -295,7 +297,7 @@ function MegaLinks({
   columns = 1,
   titleClassName,
 }: {
-  links: NavLinkItem[];
+  links: readonly NavLinkItem[];
   columns?: 1 | 2;
   titleClassName?: string;
 }) {

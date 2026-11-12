@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Box } from "lucide-react";
 import { motion } from "motion/react";
-import { searchTypeLabel, type SearchHit } from "@/lib/catalog";
+import { useTranslations } from "next-intl";
+import type { SearchHit } from "@/lib/catalog";
 import { EASE_SOFT } from "@/lib/utils";
 import type { SearchEntryWithImage } from "./types";
 
@@ -17,6 +18,7 @@ type Props = {
 
 /** Arama sonucu satırı (tasarım: .srow2) — arama katmanı ve /arama sayfası ortak. */
 export function SearchResultRow({ hit, position, onSelect }: Props) {
+  const t = useTranslations("i18n.searchType");
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}
@@ -41,7 +43,7 @@ export function SearchResultRow({ hit, position, onSelect }: Props) {
           </span>
           <span className="text-[13px] text-faint">{hit.entry.meta}</span>
         </span>
-        <span className="flex-none text-xs text-faint">{searchTypeLabel(hit.entry.type)}</span>
+        <span className="flex-none text-xs text-faint">{t(hit.entry.type)}</span>
         <ArrowRight
           size={16}
           aria-hidden="true"

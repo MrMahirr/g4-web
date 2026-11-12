@@ -1,29 +1,33 @@
 import type { Metadata } from "next";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Categories } from "@/components/sections/home/Categories";
 import { FeaturedProducts } from "@/components/sections/home/FeaturedProducts";
 import { Hero } from "@/components/sections/home/Hero";
 import { Introduction } from "@/components/sections/home/Introduction";
 import { References } from "@/components/sections/home/References";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
 import { toFeaturedRow } from "@/lib/featured";
-import { pageMetadata, siteDescription, siteTitle } from "@/lib/seo";
+import { pageMetadata, siteTitle } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  ...pageMetadata({
-    title: siteTitle,
-    description: siteDescription,
-    path: "/",
-  }),
-  // Anasayfada başlık şablonu ("%s · G4") uygulanmaz.
-  title: { absolute: siteTitle },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("i18n");
+  return {
+    ...pageMetadata({
+      title: siteTitle,
+      description: t("siteDescription"),
+      path: "/",
+    }),
+    // Anasayfada başlık şablonu ("%s · G4") uygulanmaz.
+    title: { absolute: siteTitle },
+  };
+}
 
 /** Vitrin sırası: medikal ile açılır, diğer hizmetler arkasından gelir. */
 const showcaseOrder = ["medical", "textile", "construction", "fleet"];
 
-export default function HomePage() {
-  const catalog = container.resolve("CatalogService");
+export default async function HomePage() {
+  const catalog = getCatalog(await getLocale());
   const showcase = catalog
     .getServices()
     .toSorted((a, b) => showcaseOrder.indexOf(a.domain) - showcaseOrder.indexOf(b.domain))

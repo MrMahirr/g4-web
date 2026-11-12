@@ -1,14 +1,14 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/Button";
 import { Field, Textarea, TextInput } from "@/components/ui/Field";
 import { Tag } from "@/components/ui/Tag";
-import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
-import { careerSchema, quoteRequestSchema, type LeadValues } from "@/lib/validations/contact";
+import { createContactSchemas, type LeadValues } from "@/lib/validations/contact";
 import { KvkkConsent } from "./KvkkConsent";
 
 type Kind = "quote" | "career";
@@ -26,12 +26,13 @@ type Props = {
   className?: string;
 };
 
-function schemaFor(kind: Kind) {
+function schemaFor(kind: Kind, t: ReturnType<typeof useTranslations>) {
+  const schemas = createContactSchemas(t);
   switch (kind) {
     case "quote":
-      return quoteRequestSchema;
+      return schemas.quoteRequestSchema;
     case "career":
-      return careerSchema;
+      return schemas.careerSchema;
     default: {
       const exhaustive: never = kind;
       return exhaustive;
@@ -44,17 +45,25 @@ function schemaFor(kind: Kind) {
  * Gönderim: e-posta sağlayıcısı bilgisi gelene kadar (plan K7) e-posta uygulaması açılır.
  */
 export function LeadForm({ kind, idPrefix, subject, email, tag, className }: Props) {
-  const { register, handleSubmit, formState, reset } = useForm<LeadValues>({
-    resolver: zodResolver(schemaFor(kind)),
+  const t = useTranslations();
+  const { register, handleSubmit, formState, reset, control, setValue } = useForm<LeadValues>({
+    resolver: zodResolver(schemaFor(kind, t)),
     defaultValues: { name: "", email: "", phone: "", message: "", kvkk: false },
   });
   const { errors, isSubmitting } = formState;
+  const kvkkChecked = useWatch({ control, name: "kvkk" });
   const id = (field: string) => `${idPrefix}-${field}`;
 
   const onSubmit = (values: LeadValues) => {
-    const body = [`Ad Soyad: ${values.name}`, `E-posta: ${values.email}`, `Telefon: ${values.phone}`, "", values.message].join("\n");
+    const body = [
+      t("i18n.mail.name", { value: values.name }),
+      t("i18n.mail.email", { value: values.email }),
+      t("i18n.mail.phone", { value: values.phone }),
+      "",
+      values.message,
+    ].join("\n");
     window.location.assign(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
-    toast.message("E-posta uygulamanız açılıyor", { description: `Mesajınız ${email} adresine hazırlandı.` });
+    toast.message(t("i18n.mail.opening"), { description: t("i18n.mail.prepared", { email }) });
     reset();
   };
 
@@ -66,34 +75,39 @@ export function LeadForm({ kind, idPrefix, subject, email, tag, className }: Pro
     >
       {tag ? <Tag className="col-span-full">{tag}</Tag> : null}
 
-      <Field id={id("ad")} label={`${tr.form.name} *`} error={errors.name?.message}>
+      <Field id={id("ad")} label={`${t("form.name")} *`} error={errors.name?.message}>
         <TextInput id={id("ad")} autoComplete="name" invalid={Boolean(errors.name)} {...register("name")} />
       </Field>
-      <Field id={id("eposta")} label={`${tr.form.email} *`} error={errors.email?.message}>
+      <Field id={id("eposta")} label={`${t("form.email")} *`} error={errors.email?.message}>
         <TextInput id={id("eposta")} type="email" autoComplete="email" invalid={Boolean(errors.email)} {...register("email")} />
       </Field>
-      <Field id={id("telefon")} label={`${tr.form.phone} *`} error={errors.phone?.message}>
+      <Field id={id("telefon")} label={`${t("form.phone")} *`} error={errors.phone?.message}>
         <TextInput id={id("telefon")} type="tel" autoComplete="tel" invalid={Boolean(errors.phone)} {...register("phone")} />
       </Field>
       {kind === "quote" ? (
-        <Field id={id("konu")} label={`${tr.form.subject} *`}>
+        <Field id={id("konu")} label={`${t("form.subject")} *`}>
           <TextInput id={id("konu")} value={subject} readOnly auto />
         </Field>
       ) : null}
       <Field
         id={id("mesaj")}
-        label={kind === "quote" ? `${tr.form.message} *` : tr.form.optionalMessage}
+        label={kind === "quote" ? `${t("form.message")} *` : t("form.optionalMessage")}
         error={errors.message?.message}
         className="col-span-full"
       >
         <Textarea id={id("mesaj")} invalid={Boolean(errors.message)} {...register("message")} />
       </Field>
 
-      <KvkkConsent id={id("kvkk")} error={errors.kvkk?.message} registration={register("kvkk")} />
+      <KvkkConsent
+        id={id("kvkk")}
+        error={errors.kvkk?.message}
+        checked={kvkkChecked}
+        onChange={(value) => setValue("kvkk", value, { shouldValidate: true })}
+      />
 
       <div className="col-span-full">
         <Button type="submit" disabled={isSubmitting}>
-          {tr.form.submit}
+          {t("form.submit")}
         </Button>
       </div>
     </form>

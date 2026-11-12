@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { ArrowSwap } from "@/components/ui/ArrowSwap";
 import Link from "next/link";
@@ -6,28 +7,29 @@ import { CallBackCard } from "@/components/shared/CallBackCard";
 import { PageHero } from "@/components/shared/PageHero";
 import { Picture } from "@/components/shared/Picture";
 import { Container } from "@/components/ui/Container";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
-import { pageCopy } from "@/data/pages.data";
-import { tr } from "@/dictionaries/tr";
 import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 
-const copy = pageCopy.services;
-
-export const metadata: Metadata = pageMetadata({ title: copy.title, description: copy.lead, path: routes.services });
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("pages");
+  return pageMetadata({ title: t("services.title"), description: t("services.lead"), path: routes.services });
+}
 
 /** Hizmetler (tasarım: D4Hizmetler) — her hizmet büyük başlıklı satır. */
-export default function ServicesPage() {
-  const catalog = container.resolve("CatalogService");
+export default async function ServicesPage() {
+  const t = await getTranslations();
+  const copy = await getTranslations("pages");
+  const catalog = getCatalog(await getLocale());
   const services = catalog.getServices();
 
   return (
     <>
       <PageHero
-        crumbs={[{ label: tr.common.home, href: routes.home }, { label: tr.nav.services }]}
-        title={[copy.title]}
-        description={copy.lead}
+        crumbs={[{ label: t("common.home"), href: routes.home }, { label: t("nav.services") }]}
+        title={[copy("services.title")]}
+        description={copy("services.lead")}
         ghost={String(services.length).padStart(2, "0")}
         image={catalog.getImage("hero/hizmetler")}
       />
@@ -60,7 +62,7 @@ export default function ServicesPage() {
                 </Reveal>
                 <Reveal>
                   <span className="mt-2 inline-flex items-center gap-2.5 font-semibold">
-                    {tr.common.readMore}
+                    {t("common.readMore")}
                     <span
                       aria-hidden="true"
                       className="relative flex size-[46px] items-center justify-center overflow-hidden rounded-full bg-ink text-white transition-colors duration-500 ease-soft group-hover:bg-ember"

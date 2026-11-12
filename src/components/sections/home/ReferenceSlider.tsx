@@ -3,6 +3,7 @@
 import AutoScroll from "embla-carousel-auto-scroll";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useReducedMotion } from "motion/react";
 import { useCallback, type ReactNode } from "react";
 
@@ -12,6 +13,7 @@ import { useCallback, type ReactNode } from "react";
  * Hareket azaltma tercihi açıksa otomatik akış kapalı kalır, kullanıcı yine kaydırabilir.
  */
 export function ReferenceSlider({ label, children }: { label: string; children: ReactNode }) {
+  const t = useTranslations("i18n.carousel");
   const reduceMotion = useReducedMotion();
   const [viewportRef, emblaApi] = useEmblaCarousel({ loop: true, watchDrag: false, align: "start" }, [
     AutoScroll({
@@ -52,10 +54,10 @@ export function ReferenceSlider({ label, children }: { label: string; children: 
       >
         <div className="flex">{children}</div>
       </div>
-      <button type="button" aria-label="Önceki" onClick={() => step("prev")} className={`${arrowClass} left-3`}>
+      <button type="button" aria-label={t("previous")} onClick={() => step("prev")} className={`${arrowClass} left-3`}>
         <ChevronLeft size={22} aria-hidden="true" />
       </button>
-      <button type="button" aria-label="Sonraki" onClick={() => step("next")} className={`${arrowClass} right-3`}>
+      <button type="button" aria-label={t("next")} onClick={() => step("next")} className={`${arrowClass} right-3`}>
         <ChevronRight size={22} aria-hidden="true" />
       </button>
     </div>

@@ -1,4 +1,5 @@
-﻿"use client";
+"use client";
+import { useLocale, useTranslations } from "next-intl";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -6,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { ShoppingBag } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useMemo } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import type { QuoteProductInfo } from "@/components/layout/types";
 import { KvkkConsent } from "@/components/forms/KvkkConsent";
@@ -16,11 +17,10 @@ import { Field, Textarea, TextInput } from "@/components/ui/Field";
 import { Tag } from "@/components/ui/Tag";
 import type { InquiryType, QuoteLine } from "@/core/types";
 import { routes } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
 import { useInquiry } from "@/hooks/useInquiry";
 import { useQuoteCart } from "@/hooks/useQuoteCart";
 import { EASE_SOFT } from "@/lib/utils";
-import { contactSchema, type ContactValues } from "@/lib/validations/contact";
+import { createContactSchemas, type ContactValues } from "@/lib/validations/contact";
 
 type Props = {
   email: string;
@@ -36,6 +36,8 @@ const noteActionClass =
  * Gönderim: e-posta sağlayıcısı bilgisi gelene kadar (plan K7) kullanıcının e-posta uygulaması açılır.
  */
 export function ContactForm({ email, products }: Props) {
+  const t = useTranslations();
+  const locale = useLocale();
   const params = useSearchParams();
   const reduceMotion = useReducedMotion();
   const { inquiry, clear: clearInquiry } = useInquiry();
@@ -68,19 +70,29 @@ export function ContactForm({ email, products }: Props) {
     if (!described.length) return null;
 
     const single = lines.length === 1 ? bySlug.get(lines[0].productSlug) : undefined;
-    const suffix = single ? ` – ${single.code ?? single.name}` : lines.length > 1 ? ` – ${lines.length} ürün` : "";
+    const count = `${lines.length} ${t("product.countSuffix")}`;
+    const suffix = single ? ` – ${single.code ?? single.name}` : lines.length > 1 ? ` – ${count}` : "";
     return {
-      subject: `${tr.inquiry.subjects[type]}${suffix}`,
-      message: ["Merhaba,", "", tr.inquiry.intros[type], "", ...described, "", "Teşekkürler."].join("\n"),
+      subject: `${t(`inquiry.subjects.${type}`)}${suffix}`,
+      message: [
+        t("i18n.mail.hello"),
+        "",
+        t(`inquiry.intros.${type}`),
+        "",
+        ...described,
+        "",
+        t("i18n.mail.thanks"),
+      ].join("\n"),
     };
-  }, [type, lines, bySlug, legacyProduct]);
+  }, [type, lines, bySlug, legacyProduct, t]);
 
   const form = useForm<ContactValues>({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(createContactSchemas(t).contactSchema),
     defaultValues: { name: "", email: "", phone: "", subject: "", message: "", kvkk: false },
   });
-  const { register, handleSubmit, setValue, getFieldState, formState } = form;
+  const { register, handleSubmit, setValue, getFieldState, formState, control } = form;
   const { errors, isSubmitting } = formState;
+  const kvkkChecked = useWatch({ control, name: "kvkk" });
 
   // Talep değişince (ürün eklendi/kaldırıldı) kullanıcı elle değiştirmediyse Konu ve Mesaj'ı yeniden yaz.
   useEffect(() => {
@@ -99,14 +111,14 @@ export function ContactForm({ email, products }: Props) {
 
   const onSubmit = (values: ContactValues) => {
     const body = [
-      `Ad Soyad: ${values.name}`,
-      `E-posta: ${values.email}`,
-      `Telefon: ${values.phone}`,
+      t("i18n.mail.name", { value: values.name }),
+      t("i18n.mail.email", { value: values.email }),
+      t("i18n.mail.phone", { value: values.phone }),
       "",
       values.message,
     ].join("\n");
     window.location.assign(`mailto:${email}?subject=${encodeURIComponent(values.subject)}&body=${encodeURIComponent(body)}`);
-    toast.message("E-posta uygulamanız açılıyor", { description: `Mesajınız ${email} adresine hazırlandı.` });
+    toast.message(t("i18n.mail.opening"), { description: t("i18n.mail.prepared", { email }) });
   };
 
   const auto = Boolean(draft);
@@ -120,8 +132,8 @@ export function ContactForm({ email, products }: Props) {
         className="grid h-full scroll-mt-28 grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] content-start gap-x-6 gap-y-[30px] rounded-card bg-white p-[clamp(28px,4vw,56px)]"
       >
         <div className="col-span-full flex flex-col gap-3.5">
-          <Tag>{tr.common.requestInfo}</Tag>
-          <h2 className="font-display text-[clamp(32px,3.4vw,52px)] leading-none font-bold tracking-[-0.04em]">İletişim Formu</h2>
+          <Tag>{t("common.requestInfo")}</Tag>
+          <h2 className="font-display text-[clamp(32px,3.4vw,52px)] leading-none font-bold tracking-[-0.04em]">{t("nav.contact")}</h2>
         </div>
 
         {type && (lines.length > 0 || legacyProduct) ? (
@@ -136,7 +148,7 @@ export function ContactForm({ email, products }: Props) {
             </span>
             <div className="flex min-w-0 flex-col gap-3">
               <span className="font-mono text-[11px] tracking-[0.08em] text-ember-d uppercase">
-                {tr.inquiry.labels[type]} · {tr.inquiry.addedToForm}
+                {t(`inquiry.labels.${type}`)} · {t("inquiry.addedToForm")}
               </span>
               {lines.length > 0 ? (
                 <ul className="m-0 flex list-none flex-col gap-3 p-0">
@@ -147,20 +159,22 @@ export function ContactForm({ email, products }: Props) {
                         <span className="flex min-w-0 flex-col gap-1">
                           <strong className="text-[15px] leading-[1.4]">{product?.name ?? line.productSlug}</strong>
                           <span className="font-mono text-xs tracking-[0.04em] text-muted">
-                            {product?.code ? `REF: ${product.code}` : "G4 ÜRÜNLERİ"}
-                            {type === "siparis" ? ` · MİKTAR: ${line.qty} ${line.unit.toLocaleUpperCase("tr-TR")}` : ""}
+                            {product?.code ? `REF: ${product.code}` : t("i18n.catalog.productsFallback")}
+                            {type === "siparis"
+                              ? ` · ${t("product.qty").toLocaleUpperCase(locale)}: ${line.qty} ${line.unit.toLocaleUpperCase(locale)}`
+                              : ""}
                           </span>
                         </span>
                         <span className="flex gap-2">
                           <Link href={routes.product(line.productSlug)} className={`${noteActionClass} bg-white text-ink`}>
-                            {tr.inquiry.edit}
+                            {t("inquiry.edit")}
                           </Link>
                           <button
                             type="button"
                             onClick={() => removeLine(line.productSlug)}
                             className={`${noteActionClass} border border-ink/30 bg-transparent text-ink`}
                           >
-                            {tr.inquiry.removeFromForm}
+                            {t("inquiry.removeFromForm")}
                           </button>
                         </span>
                       </li>
@@ -174,29 +188,34 @@ export function ContactForm({ email, products }: Props) {
           </motion.div>
         ) : null}
 
-        <Field id="iletisim-ad" label={`${tr.form.name}*`} error={errors.name?.message}>
+        <Field id="iletisim-ad" label={`${t("form.name")}*`} error={errors.name?.message}>
           <TextInput id="iletisim-ad" autoComplete="name" invalid={Boolean(errors.name)} {...register("name")} />
         </Field>
-        <Field id="iletisim-eposta" label={`${tr.form.email}*`} error={errors.email?.message}>
+        <Field id="iletisim-eposta" label={`${t("form.email")}*`} error={errors.email?.message}>
           <TextInput id="iletisim-eposta" type="email" autoComplete="email" invalid={Boolean(errors.email)} {...register("email")} />
         </Field>
-        <Field id="iletisim-telefon" label={`${tr.form.phone}*`} error={errors.phone?.message}>
+        <Field id="iletisim-telefon" label={`${t("form.phone")}*`} error={errors.phone?.message}>
           <TextInput id="iletisim-telefon" type="tel" autoComplete="tel" invalid={Boolean(errors.phone)} {...register("phone")} />
         </Field>
-        <Field id="iletisim-konu" label={`${tr.form.subject}*`} error={errors.subject?.message}>
+        <Field id="iletisim-konu" label={`${t("form.subject")}*`} error={errors.subject?.message}>
           <TextInput id="iletisim-konu" auto={auto} invalid={Boolean(errors.subject)} {...register("subject")} />
         </Field>
-        <Field id="iletisim-mesaj" label={`${tr.form.message}*`} error={errors.message?.message} className="col-span-full">
+        <Field id="iletisim-mesaj" label={`${t("form.message")}*`} error={errors.message?.message} className="col-span-full">
           <Textarea id="iletisim-mesaj" auto={auto} invalid={Boolean(errors.message)} className="min-h-[210px]" {...register("message")} />
         </Field>
 
-        <KvkkConsent id="iletisim-kvkk" error={errors.kvkk?.message} registration={register("kvkk")} />
+        <KvkkConsent
+          id="iletisim-kvkk"
+          error={errors.kvkk?.message}
+          checked={kvkkChecked}
+          onChange={(value) => setValue("kvkk", value, { shouldValidate: true })}
+        />
 
         <div className="col-span-full flex flex-wrap items-center gap-5">
           <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? tr.form.submitting : tr.form.submit}
+            {isSubmitting ? t("form.submitting") : t("form.submit")}
           </Button>
-          <span className="font-mono text-xs tracking-[0.04em] text-muted">Gönder: e-posta uygulamanız açılır.</span>
+          <span className="font-mono text-xs tracking-[0.04em] text-muted">{t("i18n.mail.sendHint")}</span>
         </div>
       </form>
     </Reveal>

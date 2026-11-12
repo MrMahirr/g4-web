@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
@@ -8,9 +9,7 @@ import { ShoppingBag, Trash2, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { QuantityBox, UnitSegment } from "@/components/catalog/QuantityControls";
 import { Button } from "@/components/ui/Button";
-import { Tag } from "@/components/ui/Tag";
 import { routes } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
 import { useInquiry } from "@/hooks/useInquiry";
 import { useOverlay } from "@/hooks/useOverlay";
 import { useQuoteCart } from "@/hooks/useQuoteCart";
@@ -26,6 +25,7 @@ const NO_PRODUCTS: QuoteProductInfo[] = [];
  * sağdan kayan beyaz panel, liste satırı, miktar kutusu ve birim seçici.
  */
 export function QuoteCartDrawer() {
+  const t = useTranslations();
   const drawer = useOverlay("quoteCart");
   // Ürün adları/görselleri çekmece ilk açıldığında /api/katalog-ozet'ten gelir (plan 8.5);
   // gelene kadar satırda slug görünür.
@@ -67,14 +67,11 @@ export function QuoteCartDrawer() {
                 transition={{ duration: 0.6, ease: EASE_SOFT }}
               >
                 <div className="flex items-center justify-between gap-4 border-b border-line px-7 py-6">
-                  <div className="flex flex-col gap-2">
-                    <Tag>{tr.nav.products}</Tag>
-                    <Dialog.Title className="font-display text-[30px] leading-none font-bold tracking-[-0.03em]">
-                      {tr.quote.title}
-                    </Dialog.Title>
-                  </div>
+                  <Dialog.Title className="font-display text-[30px] leading-none font-bold tracking-[-0.03em]">
+                    {t("quote.title")}
+                  </Dialog.Title>
                   <Dialog.Close
-                    aria-label={tr.common.close}
+                    aria-label={t("common.close")}
                     className="grid size-11 cursor-pointer place-items-center rounded-full border border-line text-ink transition-colors hover:bg-ink/6"
                   >
                     <X size={18} aria-hidden="true" />
@@ -110,7 +107,7 @@ export function QuoteCartDrawer() {
                               </span>
                               <button
                                 type="button"
-                                aria-label={`${name} — ${tr.quote.remove}`}
+                                aria-label={`${name} — ${t("quote.remove")}`}
                                 onClick={() => cart.remove(line.productSlug)}
                                 className="grid size-10 cursor-pointer place-items-center rounded-btn text-muted transition-colors hover:bg-tint hover:text-ember-d"
                               >
@@ -120,7 +117,7 @@ export function QuoteCartDrawer() {
                             <div className="flex flex-wrap gap-3 pl-[72px] max-row:pl-0">
                               <QuantityBox
                                 id={`teklif-adet-${line.productSlug}`}
-                                label={`${name} — ${tr.product.qty}`}
+                                label={`${name} — ${t("product.qty")}`}
                                 size="sm"
                                 value={line.qty}
                                 onChange={(qty) => cart.setQty(line.productSlug, qty)}
@@ -137,14 +134,14 @@ export function QuoteCartDrawer() {
                     </ul>
                     <div className="flex flex-col gap-4 border-t border-line px-7 py-6">
                       <Button onClick={requestQuote} className="w-full justify-between">
-                        {tr.quote.request}
+                        {t("quote.request")}
                       </Button>
                       <button
                         type="button"
                         onClick={cart.clear}
                         className="self-start font-mono text-xs tracking-[0.06em] text-muted uppercase underline-offset-4 hover:text-ember-d hover:underline"
                       >
-                        {tr.quote.clear}
+                        {t("quote.clear")}
                       </button>
                     </div>
                   </>
@@ -153,9 +150,9 @@ export function QuoteCartDrawer() {
                     <span className="grid size-[52px] place-items-center rounded-full bg-ember text-white">
                       <ShoppingBag size={22} aria-hidden="true" />
                     </span>
-                    <p className="max-w-[360px] text-lead text-muted">{tr.quote.empty}</p>
+                    <p className="max-w-[360px] text-lead text-muted">{t("quote.empty")}</p>
                     <Button href={routes.products} onClick={drawer.close}>
-                      {tr.common.seeProducts}
+                      {t("common.seeProducts")}
                     </Button>
                   </div>
                 )}

@@ -1,5 +1,6 @@
 import type { CatalogSummary } from "@/components/layout/types";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
+import { getLocale } from "next-intl/server";
 
 /*
   Arama katmanı ve teklif çekmecesinin verisi (plan 8.5). Önceden kök layout'ta her sayfanın
@@ -7,7 +8,7 @@ import { container } from "@/core/container";
   Çalışma zamanı verisi kullanmadığı için derlemede statik JSON olarak üretilir.
 */
 export async function GET() {
-  const catalog = container.resolve("CatalogService");
+  const catalog = getCatalog(await getLocale());
   const imageSrc = (key: string | undefined) => catalog.getImage(key)?.src;
 
   const summary: CatalogSummary = {

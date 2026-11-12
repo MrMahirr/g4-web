@@ -1,0 +1,30 @@
+{
+  "news-gebe-okulu": {
+    "id": "news-gebe-okulu",
+    "slug": "guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik",
+    "publishedAt": "2026-10-26T11:00:00+03:00",
+    "imageKey": "haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik",
+    "galleryKeys": []
+  },
+  "news-peryon-longevity": {
+    "id": "news-peryon-longevity",
+    "slug": "peryon-networking-bulusmasinda-longevity-yi-prof-dr-pelin-aribal-ayral-dan-dinledik",
+    "publishedAt": "2026-10-26T10:00:00+03:00",
+    "imageKey": "haberler/peryon-networking-bulusmasinda-longevity-yi-prof-dr-pelin-aribal-ayral-dan-dinledik",
+    "galleryKeys": []
+  },
+  "news-peryon-davet": {
+    "id": "news-peryon-davet",
+    "slug": "peryon-ilk-networking-bulusmasi-guven-de",
+    "publishedAt": "2026-10-19T10:00:00+03:00",
+    "imageKey": "haberler/peryon-ilk-networking-bulusmasi-guven-de",
+    "galleryKeys": []
+  },
+  "news-gebe-okulu-davet": {
+    "id": "news-gebe-okulu-davet",
+    "slug": "guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik-gunu",
+    "publishedAt": "2026-10-08T10:00:00+03:00",
+    "imageKey": "haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik-gunu",
+    "galleryKeys": []
+  }
+}

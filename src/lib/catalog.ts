@@ -79,20 +79,6 @@ export function countByType(hits: SearchHit<SearchEntry>[]): Record<SearchFilter
   return counts;
 }
 
-export function searchTypeLabel(type: SearchEntryType): string {
-  switch (type) {
-    case "urun":
-      return "Ürün";
-    case "grup":
-      return "Ürün grubu";
-    case "hizmet":
-      return "Hizmet";
-    default: {
-      const exhaustive: never = type;
-      return exhaustive;
-    }
-  }
-}
 
 /** "01", "02"… */
 export function pad2(value: number): string {

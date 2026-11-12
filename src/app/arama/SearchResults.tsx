@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -7,7 +8,6 @@ import { useMemo, useState } from "react";
 import { SearchResultRow } from "@/components/layout/SearchResultRow";
 import type { SearchEntryWithImage } from "@/components/layout/types";
 import { routes } from "@/data/navigation.data";
-import { tr } from "@/dictionaries/tr";
 import { countByType, searchEntries, type SearchFilter } from "@/lib/catalog";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +15,7 @@ const FILTERS: SearchFilter[] = ["all", "urun", "grup", "hizmet"];
 
 /** /arama?q= tam sayfa sonuçlar — arama katmanının sayfa hali (sorgu URL'de). */
 export function SearchResults({ index }: { index: SearchEntryWithImage[] }) {
+  const t = useTranslations();
   const params = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -47,13 +48,13 @@ export function SearchResults({ index }: { index: SearchEntryWithImage[] }) {
       >
         <Search size={22} strokeWidth={1.8} className="flex-none text-faint" aria-hidden="true" />
         <label htmlFor="arama-sayfa" className="sr-only">
-          {tr.search.open}
+          {t("search.open")}
         </label>
         <input
           id="arama-sayfa"
           type="search"
           autoComplete="off"
-          placeholder={tr.search.placeholder}
+          placeholder={t("search.placeholder")}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           className="min-h-14 min-w-0 flex-1 bg-transparent font-display text-[clamp(26px,3.4vw,40px)] tracking-[-0.03em] text-ink outline-none placeholder:text-[#9AAAB6] focus-visible:outline-none [&::-webkit-search-cancel-button]:hidden"
@@ -62,7 +63,7 @@ export function SearchResults({ index }: { index: SearchEntryWithImage[] }) {
 
       {query.trim() ? (
         <div className="flex flex-col gap-[18px]">
-          <div role="group" aria-label={tr.search.filterLabel} className="flex flex-wrap gap-[22px]">
+          <div role="group" aria-label={t("search.filterLabel")} className="flex flex-wrap gap-[22px]">
             {FILTERS.map((item) => (
               <button
                 key={item}
@@ -75,7 +76,7 @@ export function SearchResults({ index }: { index: SearchEntryWithImage[] }) {
                   "after:transition-transform after:duration-400 after:ease-soft aria-pressed:after:scale-x-100",
                 )}
               >
-                {tr.search.filters[item]}
+                {t(`search.filters.${item}`)}
                 <sup className="ml-[3px] text-[10px] text-faint">{counts[item]}</sup>
               </button>
             ))}
@@ -86,11 +87,11 @@ export function SearchResults({ index }: { index: SearchEntryWithImage[] }) {
             ))}
             {shown.length === 0 ? (
               <p className="py-[18px] text-[15px] leading-[1.6] text-muted">
-                “{query}” {tr.search.noResultsBefore}{" "}
+                “{query}” {t("search.noResultsBefore")}{" "}
                 <Link href={routes.contact} className="font-semibold text-ink">
-                  {tr.search.noResultsLink}
+                  {t("search.noResultsLink")}
                 </Link>
-                {tr.search.noResultsAfter}
+                {t("search.noResultsAfter")}
               </p>
             ) : null}
           </div>

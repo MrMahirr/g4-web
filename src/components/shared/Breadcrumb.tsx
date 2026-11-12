@@ -1,13 +1,15 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Fragment } from "react";
 
 export type Crumb = { label: string; href?: string };
 
 /** Sayfa yolu. Son öğe geçerli sayfadır ve bağlantı değildir. */
 export function Breadcrumb({ items }: { items: Crumb[] }) {
+  const t = useTranslations();
   return (
     <nav
-      aria-label="Sayfa yolu"
+      aria-label={t("i18n.breadcrumb")}
       className="flex flex-wrap gap-3 font-mono text-xs tracking-[0.06em] text-muted uppercase"
     >
       {items.map((item, index) => {

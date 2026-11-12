@@ -1,0 +1,618 @@
+{
+  "records": {
+    "prd-20-cm-bayonet-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-110v-20010": {
+      "id": "prd-20-cm-bayonet-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-110v-20010",
+      "slug": "20-cm-bayonet-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-110v-20010",
+      "code": "01-110V-20010",
+      "categorySlugs": [
+        "bipolar-forceps"
+      ],
+      "imageKey": "urunler/20-cm-bayonet-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-110v-20010",
+      "isFeaturedOnHome": true,
+      "descriptionKey": "contact"
+    },
+    "prd-20-cm-bayonet-bipolar-forseps-1-0-mm-uc-ve-kablolu-valleylab-fisli-ref-01-110v-20010-1-0-mm-yapismaz": {
+      "id": "prd-20-cm-bayonet-bipolar-forseps-1-0-mm-uc-ve-kablolu-valleylab-fisli-ref-01-110v-20010-1-0-mm-yapismaz",
+      "slug": "20-cm-bayonet-bipolar-forseps-1-0-mm-uc-ve-kablolu-valleylab-fisli-ref-01-110v-20010-1-0-mm-yapismaz",
+      "code": "01-110V-20010",
+      "categorySlugs": [
+        "bipolar-forceps"
+      ],
+      "imageKey": "urunler/20-cm-bayonet-bipolar-forseps-1-0-mm-uc-ve-kablolu-valleylab-fisli-ref-01-110v-20010-1-0-mm-yapismaz",
+      "isFeaturedOnHome": true
+    },
+    "prd-12-cm-adson-bipolar-penset-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010": {
+      "id": "prd-12-cm-adson-bipolar-penset-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010",
+      "slug": "12-cm-adson-bipolar-penset-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010",
+      "code": "01-040V-12010",
+      "categorySlugs": [
+        "bipolar-forceps"
+      ],
+      "imageKey": "urunler/12-cm-adson-bipolar-penset-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010",
+      "isFeaturedOnHome": true
+    },
+    "prd-12-cm-adson-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010-tirtikli": {
+      "id": "prd-12-cm-adson-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010-tirtikli",
+      "slug": "12-cm-adson-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010-tirtikli",
+      "code": "01-040V-12010",
+      "categorySlugs": [
+        "bipolar-forceps"
+      ],
+      "imageKey": "urunler/12-cm-adson-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010-tirtikli",
+      "isFeaturedOnHome": true
+    },
+    "prd-15-cm-duz-bipolar-forseps-1-0-mm-acili-uc-ve-kablo-valleylab-fisli-ref-01-052v-15010": {
+      "id": "prd-15-cm-duz-bipolar-forseps-1-0-mm-acili-uc-ve-kablo-valleylab-fisli-ref-01-052v-15010",
+      "slug": "15-cm-duz-bipolar-forseps-1-0-mm-acili-uc-ve-kablo-valleylab-fisli-ref-01-052v-15010",
+      "code": "01-052V-15010",
+      "categorySlugs": [
+        "bipolar-forceps"
+      ],
+      "imageKey": "urunler/15-cm-duz-bipolar-forseps-1-0-mm-acili-uc-ve-kablo-valleylab-fisli-ref-01-052v-15010",
+      "isFeaturedOnHome": true
+    },
+    "prd-alci-alti-pamuklari": {
+      "id": "prd-alci-alti-pamuklari",
+      "slug": "alci-alti-pamuklari",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "cerrahi-pansuman",
+      "imageKey": "urunler/alci-alti-pamuklari",
+      "isFeaturedOnHome": true
+    },
+    "prd-alcili-sargi": {
+      "id": "prd-alcili-sargi",
+      "slug": "alcili-sargi",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "cerrahi-pansuman",
+      "imageKey": "urunler/alcili-sargi"
+    },
+    "prd-ambu-setleri": {
+      "id": "prd-ambu-setleri",
+      "slug": "ambu-setleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "solunum-anestezi",
+      "imageKey": "urunler/ambu-setleri",
+      "isFeaturedOnHome": true
+    },
+    "prd-anestezi-solunum-devreleri": {
+      "id": "prd-anestezi-solunum-devreleri",
+      "slug": "anestezi-solunum-devreleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "solunum-anestezi",
+      "imageKey": "urunler/anestezi-solunum-devreleri"
+    },
+    "prd-asi-siringalari": {
+      "id": "prd-asi-siringalari",
+      "slug": "asi-siringalari",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/asi-siringalari"
+    },
+    "prd-aspirasyon-sondalari": {
+      "id": "prd-aspirasyon-sondalari",
+      "slug": "aspirasyon-sondalari",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "sonda-kateter",
+      "imageKey": "urunler/aspirasyon-sondalari"
+    },
+    "prd-bandaj-cesitleri": {
+      "id": "prd-bandaj-cesitleri",
+      "slug": "bandaj-cesitleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "cerrahi-pansuman",
+      "imageKey": "urunler/bandaj-cesitleri"
+    },
+    "prd-beslenme-siringasi": {
+      "id": "prd-beslenme-siringasi",
+      "slug": "beslenme-siringasi",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/beslenme-siringasi"
+    },
+    "prd-bisturi-ucu-cesitleri": {
+      "id": "prd-bisturi-ucu-cesitleri",
+      "slug": "bisturi-ucu-cesitleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "cerrahi-pansuman",
+      "imageKey": "urunler/bisturi-ucu-cesitleri"
+    },
+    "prd-cerrahi-sutur-cesitleri": {
+      "id": "prd-cerrahi-sutur-cesitleri",
+      "slug": "cerrahi-sutur-cesitleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "cerrahi-pansuman",
+      "imageKey": "urunler/cerrahi-sutur-cesitleri",
+      "isFeaturedOnHome": true
+    },
+    "prd-defibrilator-pedi": {
+      "id": "prd-defibrilator-pedi",
+      "slug": "defibrilator-pedi",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "kardiyoloji-kagit",
+      "imageKey": "urunler/defibrilator-pedi"
+    },
+    "prd-dental-siringalar": {
+      "id": "prd-dental-siringalar",
+      "slug": "dental-siringalar",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/dental-siringalar"
+    },
+    "prd-dezenfektanlar": {
+      "id": "prd-dezenfektanlar",
+      "slug": "dezenfektanlar",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler",
+        "temizlik-hijyen-grubu"
+      ],
+      "subGroup": "koruyucu-diger",
+      "imageKey": "urunler/dezenfektanlar"
+    },
+    "prd-eeg-elektrodu": {
+      "id": "prd-eeg-elektrodu",
+      "slug": "eeg-elektrodu",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "kardiyoloji-kagit",
+      "imageKey": "urunler/eeg-elektrodu"
+    },
+    "prd-ekg-elektrodu": {
+      "id": "prd-ekg-elektrodu",
+      "slug": "ekg-elektrodu",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "kardiyoloji-kagit",
+      "imageKey": "urunler/ekg-elektrodu"
+    },
+    "prd-ekg-kagidi": {
+      "id": "prd-ekg-kagidi",
+      "slug": "ekg-kagidi",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "kardiyoloji-kagit",
+      "imageKey": "urunler/ekg-kagidi"
+    },
+    "prd-eldiven-cesitleri": {
+      "id": "prd-eldiven-cesitleri",
+      "slug": "eldiven-cesitleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "koruyucu-diger",
+      "imageKey": "urunler/eldiven-cesitleri"
+    },
+    "prd-elektrokoter-uclari": {
+      "id": "prd-elektrokoter-uclari",
+      "slug": "elektrokoter-uclari",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "cerrahi-pansuman",
+      "imageKey": "urunler/elektrokoter-uclari"
+    },
+    "prd-endotrakeal-entubasyon-tupleri": {
+      "id": "prd-endotrakeal-entubasyon-tupleri",
+      "slug": "endotrakeal-entubasyon-tupleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "solunum-anestezi",
+      "imageKey": "urunler/endotrakeal-entubasyon-tupleri"
+    },
+    "prd-enteral-beslenme-sondalari": {
+      "id": "prd-enteral-beslenme-sondalari",
+      "slug": "enteral-beslenme-sondalari",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "sonda-kateter",
+      "imageKey": "urunler/enteral-beslenme-sondalari"
+    },
+    "prd-flaster-cesitleri": {
+      "id": "prd-flaster-cesitleri",
+      "slug": "flaster-cesitleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "cerrahi-pansuman",
+      "imageKey": "urunler/flaster-cesitleri"
+    },
+    "prd-foley-sonda-cesitleri": {
+      "id": "prd-foley-sonda-cesitleri",
+      "slug": "foley-sonda-cesitleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "sonda-kateter",
+      "imageKey": "urunler/foley-sonda-cesitleri"
+    },
+    "prd-hasta-alt-bezleri": {
+      "id": "prd-hasta-alt-bezleri",
+      "slug": "hasta-alt-bezleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "koruyucu-diger",
+      "imageKey": "urunler/hasta-alt-bezleri"
+    },
+    "prd-idrar-torbasi-cesitleri": {
+      "id": "prd-idrar-torbasi-cesitleri",
+      "slug": "idrar-torbasi-cesitleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "sonda-kateter",
+      "imageKey": "urunler/idrar-torbasi-cesitleri"
+    },
+    "prd-igneler": {
+      "id": "prd-igneler",
+      "slug": "igneler",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/igneler"
+    },
+    "prd-iki-parcali-siringalar": {
+      "id": "prd-iki-parcali-siringalar",
+      "slug": "iki-parcali-siringalar",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/iki-parcali-siringalar"
+    },
+    "prd-insulin-siringalari": {
+      "id": "prd-insulin-siringalari",
+      "slug": "insulin-siringalari",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/insulin-siringalari"
+    },
+    "prd-jel-cesitleri": {
+      "id": "prd-jel-cesitleri",
+      "slug": "jel-cesitleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "koruyucu-diger",
+      "imageKey": "urunler/jel-cesitleri"
+    },
+    "prd-kan-alma-setleri": {
+      "id": "prd-kan-alma-setleri",
+      "slug": "kan-alma-setleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "koruyucu-diger",
+      "imageKey": "urunler/kan-alma-setleri"
+    },
+    "prd-kan-gazi-siringasi": {
+      "id": "prd-kan-gazi-siringasi",
+      "slug": "kan-gazi-siringasi",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/kan-gazi-siringasi"
+    },
+    "prd-kilitli-siringalar-luer-lock-siringalar": {
+      "id": "prd-kilitli-siringalar-luer-lock-siringalar",
+      "slug": "kilitli-siringalar-luer-lock-siringalar",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/kilitli-siringalar-luer-lock-siringalar"
+    },
+    "prd-mezoterapi-igneleri": {
+      "id": "prd-mezoterapi-igneleri",
+      "slug": "mezoterapi-igneleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/mezoterapi-igneleri"
+    },
+    "prd-nazogastrik-sonda-cesitleri": {
+      "id": "prd-nazogastrik-sonda-cesitleri",
+      "slug": "nazogastrik-sonda-cesitleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "sonda-kateter",
+      "imageKey": "urunler/nazogastrik-sonda-cesitleri"
+    },
+    "prd-nebulizator-maskeleri": {
+      "id": "prd-nebulizator-maskeleri",
+      "slug": "nebulizator-maskeleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "solunum-anestezi",
+      "imageKey": "urunler/nebulizator-maskeleri"
+    },
+    "prd-nst-kagidi": {
+      "id": "prd-nst-kagidi",
+      "slug": "nst-kagidi",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "kardiyoloji-kagit",
+      "imageKey": "urunler/nst-kagidi"
+    },
+    "prd-numune-tupleri": {
+      "id": "prd-numune-tupleri",
+      "slug": "numune-tupleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "laboratuvar-tup",
+      "imageKey": "urunler/numune-tupleri"
+    },
+    "prd-oksijen-maskesi": {
+      "id": "prd-oksijen-maskesi",
+      "slug": "oksijen-maskesi",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "solunum-anestezi",
+      "imageKey": "urunler/oksijen-maskesi"
+    },
+    "prd-oral-airway": {
+      "id": "prd-oral-airway",
+      "slug": "oral-airway",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "solunum-anestezi",
+      "imageKey": "urunler/oral-airway"
+    },
+    "prd-pipet-uclari": {
+      "id": "prd-pipet-uclari",
+      "slug": "pipet-uclari",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "laboratuvar-tup",
+      "imageKey": "urunler/pipet-uclari"
+    },
+    "prd-santrifuj-tupleri": {
+      "id": "prd-santrifuj-tupleri",
+      "slug": "santrifuj-tupleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "laboratuvar-tup",
+      "imageKey": "urunler/santrifuj-tupleri"
+    },
+    "prd-serum-setleri": {
+      "id": "prd-serum-setleri",
+      "slug": "serum-setleri",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "koruyucu-diger",
+      "imageKey": "urunler/serum-setleri"
+    },
+    "prd-sterilizasyon-rulosu": {
+      "id": "prd-sterilizasyon-rulosu",
+      "slug": "sterilizasyon-rulosu",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "koruyucu-diger",
+      "imageKey": "urunler/sterilizasyon-rulosu"
+    },
+    "prd-trakeostomi-kanulu": {
+      "id": "prd-trakeostomi-kanulu",
+      "slug": "trakeostomi-kanulu",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "solunum-anestezi",
+      "imageKey": "urunler/trakeostomi-kanulu"
+    },
+    "prd-uc-parcali-siringalar": {
+      "id": "prd-uc-parcali-siringalar",
+      "slug": "uc-parcali-siringalar",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/uc-parcali-siringalar"
+    },
+    "prd-veteriner-siringalari": {
+      "id": "prd-veteriner-siringalari",
+      "slug": "veteriner-siringalari",
+      "categorySlugs": [
+        "genel-tibbi-sarf-malzemeler"
+      ],
+      "subGroup": "siringa-igne",
+      "imageKey": "urunler/veteriner-siringalari"
+    },
+    "prd-disposable-ortu-setleri": {
+      "id": "prd-disposable-ortu-setleri",
+      "slug": "disposable-ortu-setleri",
+      "categorySlugs": [
+        "hastane-tekstili"
+      ],
+      "imageKey": "urunler/disposable-ortu-setleri"
+    },
+    "prd-hastane-kiyafetleri": {
+      "id": "prd-hastane-kiyafetleri",
+      "slug": "hastane-kiyafetleri",
+      "categorySlugs": [
+        "hastane-tekstili"
+      ],
+      "imageKey": "urunler/hastane-kiyafetleri"
+    },
+    "prd-hastane-tekstili": {
+      "id": "prd-hastane-tekstili",
+      "slug": "hastane-tekstili",
+      "categorySlugs": [
+        "hastane-tekstili"
+      ],
+      "imageKey": "urunler/hastane-tekstili"
+    },
+    "prd-onluk-cesitleri": {
+      "id": "prd-onluk-cesitleri",
+      "slug": "onluk-cesitleri",
+      "categorySlugs": [
+        "hastane-tekstili"
+      ],
+      "imageKey": "urunler/onluk-cesitleri"
+    },
+    "prd-el-hijyeni-urunleri": {
+      "id": "prd-el-hijyeni-urunleri",
+      "slug": "el-hijyeni-urunleri",
+      "categorySlugs": [
+        "temizlik-hijyen-grubu"
+      ],
+      "imageKey": "urunler/el-hijyeni-urunleri"
+    },
+    "prd-genel-temizlik-malzemeleri": {
+      "id": "prd-genel-temizlik-malzemeleri",
+      "slug": "genel-temizlik-malzemeleri",
+      "categorySlugs": [
+        "temizlik-hijyen-grubu"
+      ],
+      "imageKey": "urunler/genel-temizlik-malzemeleri"
+    },
+    "prd-hijyen-ekipmanlari-ve-dispenserler": {
+      "id": "prd-hijyen-ekipmanlari-ve-dispenserler",
+      "slug": "hijyen-ekipmanlari-ve-dispenserler",
+      "categorySlugs": [
+        "temizlik-hijyen-grubu"
+      ],
+      "imageKey": "urunler/hijyen-ekipmanlari-ve-dispenserler"
+    },
+    "prd-tibbi-alet-dezenfektanlari": {
+      "id": "prd-tibbi-alet-dezenfektanlari",
+      "slug": "tibbi-alet-dezenfektanlari",
+      "categorySlugs": [
+        "temizlik-hijyen-grubu"
+      ],
+      "imageKey": "urunler/tibbi-alet-dezenfektanlari"
+    },
+    "prd-tibbi-atik-yonetim-urunleri": {
+      "id": "prd-tibbi-atik-yonetim-urunleri",
+      "slug": "tibbi-atik-yonetim-urunleri",
+      "categorySlugs": [
+        "temizlik-hijyen-grubu"
+      ],
+      "imageKey": "urunler/tibbi-atik-yonetim-urunleri"
+    },
+    "prd-yuzey-dezenfektalari": {
+      "id": "prd-yuzey-dezenfektalari",
+      "slug": "yuzey-dezenfektalari",
+      "categorySlugs": [
+        "temizlik-hijyen-grubu"
+      ],
+      "imageKey": "urunler/yuzey-dezenfektalari"
+    },
+    "prd-aspirator-cihazi": {
+      "id": "prd-aspirator-cihazi",
+      "slug": "aspirator-cihazi",
+      "categorySlugs": [
+        "tibbi-cihazlar"
+      ],
+      "imageKey": "urunler/aspirator-cihazi"
+    },
+    "prd-boy-olcer-tarti-cesitleri": {
+      "id": "prd-boy-olcer-tarti-cesitleri",
+      "slug": "boy-olcer-tarti-cesitleri",
+      "categorySlugs": [
+        "tibbi-cihazlar"
+      ],
+      "imageKey": "urunler/boy-olcer-tarti-cesitleri"
+    },
+    "prd-ekg-cihazi": {
+      "id": "prd-ekg-cihazi",
+      "slug": "ekg-cihazi",
+      "categorySlugs": [
+        "tibbi-cihazlar"
+      ],
+      "imageKey": "urunler/ekg-cihazi"
+    },
+    "prd-hasta-basi-monitoru": {
+      "id": "prd-hasta-basi-monitoru",
+      "slug": "hasta-basi-monitoru",
+      "categorySlugs": [
+        "tibbi-cihazlar"
+      ],
+      "imageKey": "urunler/hasta-basi-monitoru"
+    },
+    "prd-holter-cihazi": {
+      "id": "prd-holter-cihazi",
+      "slug": "holter-cihazi",
+      "categorySlugs": [
+        "tibbi-cihazlar"
+      ],
+      "imageKey": "urunler/holter-cihazi"
+    },
+    "prd-infuzyon-pompasi": {
+      "id": "prd-infuzyon-pompasi",
+      "slug": "infuzyon-pompasi",
+      "categorySlugs": [
+        "tibbi-cihazlar"
+      ],
+      "imageKey": "urunler/infuzyon-pompasi"
+    },
+    "prd-koter-cihazlari": {
+      "id": "prd-koter-cihazlari",
+      "slug": "koter-cihazlari",
+      "categorySlugs": [
+        "tibbi-cihazlar"
+      ],
+      "imageKey": "urunler/koter-cihazlari"
+    },
+    "prd-pulse-oksimetre": {
+      "id": "prd-pulse-oksimetre",
+      "slug": "pulse-oksimetre",
+      "categorySlugs": [
+        "tibbi-cihazlar"
+      ],
+      "imageKey": "urunler/pulse-oksimetre"
+    }
+  },
+  "homeFeaturedSlugs": [
+    "20-cm-bayonet-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-110v-20010",
+    "20-cm-bayonet-bipolar-forseps-1-0-mm-uc-ve-kablolu-valleylab-fisli-ref-01-110v-20010-1-0-mm-yapismaz",
+    "12-cm-adson-bipolar-penset-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010",
+    "12-cm-adson-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010-tirtikli",
+    "15-cm-duz-bipolar-forseps-1-0-mm-acili-uc-ve-kablo-valleylab-fisli-ref-01-052v-15010",
+    "cerrahi-sutur-cesitleri",
+    "ambu-setleri",
+    "alci-alti-pamuklari"
+  ]
+}

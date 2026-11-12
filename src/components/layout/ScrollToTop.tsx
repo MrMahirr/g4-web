@@ -1,10 +1,10 @@
 "use client";
+import { useTranslations } from "next-intl";
 
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from "motion/react";
 import { ArrowUp } from "lucide-react";
 import { useState } from "react";
 import { EASE_SOFT } from "@/lib/utils";
-import { tr } from "@/dictionaries/tr";
 
 /** Sayfa yeterince kaydırılınca belirir. */
 const SHOW_AFTER = 480;
@@ -14,6 +14,7 @@ const SHOW_AFTER = 480;
  * sayfa ilerlemesini gösterir, tıklayınca sayfa yumuşakça en üste kayar.
  */
 export function ScrollToTop() {
+  const t = useTranslations();
   const reduceMotion = useReducedMotion();
   const { scrollY, scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, mass: 0.4 });
@@ -26,7 +27,7 @@ export function ScrollToTop() {
       {visible ? (
         <motion.button
           type="button"
-          aria-label={tr.common.backToTop}
+          aria-label={t("common.backToTop")}
           onClick={() => window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })}
           initial={reduceMotion ? false : { opacity: 0, y: 16, scale: 0.85 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}

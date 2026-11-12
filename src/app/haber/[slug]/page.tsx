@@ -1,3 +1,4 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MaskedHeading } from "@/components/motion/MaskedHeading";
@@ -8,31 +9,27 @@ import { ListRow } from "@/components/shared/ListRow";
 import { Picture } from "@/components/shared/Picture";
 import { Container } from "@/components/ui/Container";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import type { ImageEntry } from "@/core/types";
 import { routes } from "@/data/navigation.data";
-import { pageCopy } from "@/data/pages.data";
-import { tr } from "@/dictionaries/tr";
 import { articleBlocks, formatShortDate, splitInTwo } from "@/lib/text";
 import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbLd, newsArticleLd } from "@/lib/structured-data";
 
-const copy = pageCopy.news;
-
 /** Veride olmayan adres gerçek 404 döner (Cache Components kapalıyken desteklenir). */
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return container
-    .resolve("CatalogService")
+  return getCatalog("tr")
     .getNews()
     .map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/haber/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const catalog = container.resolve("CatalogService");
+  const locale = await getLocale();
+  const catalog = getCatalog(locale);
   const item = catalog.getNewsBySlug(slug);
   if (!item) return {};
   return pageMetadata({
@@ -46,8 +43,11 @@ export async function generateMetadata({ params }: PageProps<"/haber/[slug]">): 
 
 /** Haber detay (tasarım: D4HaberDetay) — okuma çubuğu, taşan kapak, yapışkan yan bilgi, gövde, sonraki haber. */
 export default async function NewsArticlePage({ params }: PageProps<"/haber/[slug]">) {
+  const t = await getTranslations();
+  const copy = await getTranslations("pages");
   const { slug } = await params;
-  const catalog = container.resolve("CatalogService");
+  const locale = await getLocale();
+  const catalog = getCatalog(locale);
   const item = catalog.getNewsBySlug(slug);
   if (!item) notFound();
 
@@ -66,7 +66,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
       <JsonLd data={newsArticleLd(item, path, catalog.getNewsExcerpt(item), cover)} />
       <JsonLd
         data={breadcrumbLd(
-          [{ label: tr.common.home, href: routes.home }, { label: "Haberler", href: routes.news }, { label: item.title }],
+          [{ label: t("common.home"), href: routes.home }, { label: copy("news.titleLines.1"), href: routes.news }, { label: item.title }],
           path,
         )}
       />
@@ -77,8 +77,8 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
           <Enter>
             <Breadcrumb
               items={[
-                { label: tr.common.home, href: routes.home },
-                { label: "Haberler", href: routes.news },
+                { label: t("common.home"), href: routes.home },
+                { label: copy("news.titleLines.1"), href: routes.news },
               ]}
             />
           </Enter>
@@ -105,7 +105,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
           <Picture
             src={cover?.src}
             alt={cover?.alt ?? item.title}
-            placeholderLabel="Haber görseli"
+            placeholderLabel={t("common.imagePlaceholder")}
             curtain
             eager
             sizes="100vw"
@@ -115,16 +115,16 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
       </Container>
 
       <Container as="section" className="pt-lead pb-section">
-        <div className="mx-auto grid max-w-[1100px] grid-cols-[200px_minmax(0,1fr)] items-start gap-[clamp(28px,5vw,80px)] max-[860px]:grid-cols-1">
-          <aside className="sticky top-[120px] flex flex-col gap-[18px] font-mono text-xs tracking-[0.06em] uppercase max-[860px]:static max-[860px]:flex-row max-[860px]:flex-wrap max-[860px]:items-center">
-            <span className="text-muted">{copy.kicker}</span>
-            <span className="text-ember-d">{copy.source}</span>
+        <div className="mx-auto grid max-w-[1100px] grid-cols-[200px_minmax(0,1fr)] items-start gap-[clamp(28px,5vw,80px)] max-[53.75rem]:grid-cols-1">
+          <aside className="sticky top-[120px] flex flex-col gap-[18px] font-mono text-xs tracking-[0.06em] uppercase max-[53.75rem]:static max-[53.75rem]:flex-row max-[53.75rem]:flex-wrap max-[53.75rem]:items-center">
+            <span className="text-muted">{copy("news.kicker")}</span>
+            <span className="text-ember-d">{copy("news.source")}</span>
             <time dateTime={item.publishedAt} className="text-muted">
-              {formatShortDate(item.publishedAt)}
+              {formatShortDate(item.publishedAt, locale)}
             </time>
-            <hr className="m-0 h-px w-full border-0 bg-line max-[860px]:hidden" />
-            <span className="text-muted">{copy.share}</span>
-            <div className="flex flex-col gap-0.5 font-sans tracking-normal normal-case max-[860px]:flex-row max-[860px]:gap-4">
+            <hr className="m-0 h-px w-full border-0 bg-line max-[53.75rem]:hidden" />
+            <span className="text-muted">{copy("news.share")}</span>
+            <div className="flex flex-col gap-0.5 font-sans tracking-normal normal-case max-[53.75rem]:flex-row max-[53.75rem]:gap-4">
               {socials.map((social) => (
                 <UnderlineLink key={social.channel} href={social.href ?? "#"} target="_blank" rel="noreferrer" className="min-h-9 self-start text-sm">
                   {social.label}
@@ -164,8 +164,8 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
                     <figure key={index} className="my-4">
                       <Picture
                         src={image?.src}
-                        alt={image?.alt ?? `${item.title} — fotoğraf ${block.index + 1}`}
-                        placeholderLabel="Foto galeri"
+                        alt={image?.alt ?? t("i18n.news.photo", { title: item.title, number: block.index + 1 })}
+                        placeholderLabel={t("i18n.news.gallery")}
                         curtain
                         sizes="(max-width: 860px) 100vw, 860px"
                         className="h-[440px] rounded-card max-row:h-[280px]"
@@ -184,7 +184,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
               <div className="mt-5 border-t border-line">
                 <ListRow
                   href={routes.newsItem(next.slug)}
-                  index={copy.next.toLocaleUpperCase("tr-TR")}
+            index={copy("news.next").toLocaleUpperCase(locale)}
                   title={next.title}
                   titleClassName="text-2xl"
                   className="grid-cols-[120px_minmax(0,1fr)_auto]"

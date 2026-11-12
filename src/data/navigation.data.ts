@@ -1,4 +1,3 @@
-import type { NavLink } from "@/core/types";
 
 /** Sabit sayfa yolları — bileşenler yolu elle yazmaz, buradan alır. */
 export const routes = {
@@ -25,54 +24,43 @@ export const routes = {
 export type NavSection = "anasayfa" | "kurumsal" | "hizmetler" | "urunler" | "iletisim";
 
 /** Kurumsal mega menüsü ve mobil menüdeki alt bağlantılar. */
-export const corporateLinks: NavLink[] = [
-  { label: "Hakkımızda", href: routes.about },
-  { label: "Referanslarımız", href: routes.references },
-  { label: "Kariyer", href: routes.career },
-  { label: "Sıkça Sorulan Sorular", href: routes.faq },
-  { label: "Güncel Haberler", href: routes.news },
-];
+export const corporateLinks = [
+  { key: "about", href: routes.about },
+  { key: "references", href: routes.references },
+  { key: "career", href: routes.career },
+  { key: "faq", href: routes.faq },
+  { key: "news", href: routes.news },
+] as const satisfies readonly { key: "about" | "references" | "career" | "faq" | "news"; href: string }[];
 
 /** Mega menülerin sol sütun metinleri (tasarım: D4Header). */
-export const megaMenuCopy = {
+export const megaMenu = {
   kurumsal: {
-    tag: "01 · Kurumsal",
-    text: "Yenilikçi vizyonumuz ve kurumsal yaklaşımımızla sizlere daha yakından tanıtmak istiyoruz.",
     imageKey: "menu/kurumsal",
   },
   hizmetler: {
-    tag: "02 · Profesyonel Çözümler",
-    text: "Kaliteli, güvenilir ve yenilikçi hizmet anlayışımızla sektörümüzde fark yaratıyoruz.",
-    allLabel: "Tüm Hizmetler",
     imageKey: "menu/hizmetler",
   },
   urunler: {
-    tag: "03 · Siz Seçin, Biz Sunalım",
-    title: "Ürün Grupları",
-    text: "Zengin ürün yelpazemizle farklı sektör ve ihtiyaçlara hitap ediyor, yüksek kalite standartlarıyla fark yaratıyoruz.",
-    allLabel: "Tüm Ürünler",
   },
 } as const;
 
 /** Footer "Kurumsal" sütunu (tasarım: D4Footer). */
-export const footerCorporateLinks: NavLink[] = [
-  { label: "Hakkımızda", href: routes.about },
-  { label: "Ürünlerimiz", href: routes.products },
-  { label: "Hizmetlerimiz", href: routes.services },
-  { label: "Referanslarımız", href: routes.references },
-  { label: "İnsan Kaynakları", href: routes.career },
-  { label: "Sıkça Sorulan Sorular", href: routes.faq },
-  { label: "İletişim", href: routes.contact },
-];
+export const footerCorporateLinks = [
+  { key: "about", href: routes.about },
+  { key: "products", href: routes.products },
+  { key: "services", href: routes.services },
+  { key: "references", href: routes.references },
+  { key: "career", href: routes.career },
+  { key: "faq", href: routes.faq },
+  { key: "contact", href: routes.contact },
+] as const satisfies readonly { key: "about" | "products" | "services" | "references" | "career" | "faq" | "contact"; href: string }[];
 
 /** Footer yasal bağlantılar (tasarımda yoktu, eklendi). */
-export const footerLegalLinks: NavLink[] = [
-  { label: "Çerez Politikası", href: routes.cookies },
-  { label: "KVKK Aydınlatma Metni", href: routes.kvkk },
-];
+export const footerLegalLinks = [
+  { key: "cookies", href: routes.cookies },
+  { key: "kvkk", href: routes.kvkk },
+] as const satisfies readonly { key: "cookies" | "kvkk"; href: string }[];
 
-/** Arama katmanındaki "Sık arananlar". */
-export const popularSearches = ["Bipolar", "Forseps", "Sütur", "Ambu", "Hastane Tekstili", "01-040V"];
 
 /** Yol → aktif menü bölümü. */
 export function sectionForPath(pathname: string): NavSection | null {

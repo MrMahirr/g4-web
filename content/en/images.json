@@ -1,0 +1,329 @@
+{
+  "hero/ana": {
+    "alt": "Bright, modern medical technology showroom"
+  },
+  "hero/hakkimizda": {
+    "alt": "Blue stethoscope and laptop on a white desk"
+  },
+  "hero/hakkimizda-salon": {
+    "alt": "Bright G4 medical store showroom with wood and concrete details and the word “Güven” on the wall"
+  },
+  "hero/iletisim": {
+    "alt": "Bright hospital reception area surrounded by plants"
+  },
+  "hero/referanslar": {
+    "alt": "Two business people shaking hands"
+  },
+  "hero/haberler": {
+    "alt": "Microscope and testing equipment in a bright, modern R&D laboratory"
+  },
+  "hero/kariyer": {
+    "alt": "Colleagues chatting in a bright, modern office corridor"
+  },
+  "hero/hizmetler": {
+    "alt": "Healthcare worker in blue scrubs measuring a patient’s blood pressure"
+  },
+  "hero/hizmet-insaat": {
+    "alt": "Multi-story reinforced concrete building rising under a blue sky with formwork and scaffolding supports"
+  },
+  "hero/hizmet-arac-kiralama": {
+    "alt": "Gray SUV driving along a winding road between red rock formations"
+  },
+  "hero/hizmet-hastane-tekstili": {
+    "alt": "Row of hospital beds with white sheets, blue covers and pink privacy screens"
+  },
+  "hero/hizmet-medikal": {
+    "alt": "Bright operating room equipped with an operating table, ceiling lights and monitors"
+  },
+  "hero/urunler": {
+    "alt": "Surgical forceps, scalpel and gauze arranged on a blue sterile drape"
+  },
+  "hero/kategori-bipolar-forceps": {
+    "alt": "Bipolar forceps, forceps tips and connecting cables arranged on a blue sterile drape"
+  },
+  "hero/kategori-gida-takviyesi-vitaminler": {
+    "alt": "Vitamin and supplement bottles, capsules, oranges and herbal teas on a kitchen counter"
+  },
+  "hero/kategori-hastane-tekstili": {
+    "alt": "Neatly folded hospital sheets, patient gowns and sterile drapes on a stainless steel counter"
+  },
+  "hero/kategori-kozmetik-urunler": {
+    "alt": "Eyeshadow palette, foundation, lipstick, makeup brushes and mirror on a marble surface"
+  },
+  "hero/kategori-temizlik-hijyen-grubu": {
+    "alt": "Cleaning cart, disinfectant bottles, wipes, and boxes of gloves and masks"
+  },
+  "hero/kategori-tibbi-cihazlar": {
+    "alt": "Bright showroom displaying patient monitors, defibrillators and biomedical devices"
+  },
+  "hero/kategori-genel-tibbi-sarf-malzemeler": {
+    "alt": "Nitrile gloves, surgical masks, gauze, syringes and sterile packs on a counter"
+  },
+  "hero/sorular": {
+    "alt": "Bright showroom displaying medical devices and products"
+  },
+  "hizmetler/medikal": {
+    "alt": "Blood pressure monitor, stethoscope, gloves, IV set and patient monitor on a stainless steel counter in a hospital room"
+  },
+  "ana/medikal-perde": {
+    "alt": "Blood pressure monitor, stethoscope, gloves, IV set and patient monitor on a stainless steel counter in a hospital room"
+  },
+  "hizmetler/insaat": {
+    "alt": "Architectural and construction plans on a table"
+  },
+  "hizmetler/hastane-tekstili": {
+    "alt": "Hospital ward with curtains, a blue hospital sheet in the foreground and beds behind"
+  },
+  "referanslar/nba-guven": {
+    "alt": "Red chairs lined up in a bright waiting room with windows"
+  },
+  "referanslar/guven-ayranci": {
+    "alt": "Modern hospital building with a glass facade surrounded by trees"
+  },
+  "referanslar/ufuk": {
+    "alt": "Bright hospital corridor with waiting seats"
+  },
+  "referanslar/g4-spor": {
+    "alt": "Modern gym with large windows and treadmills"
+  },
+  "referanslar/guven-evde-bakim": {
+    "alt": "Smiling nurse with an elderly patient"
+  },
+  "referanslar/g4-spa": {
+    "alt": "Modern hammam–steam room with dim, warm lighting and stone benches"
+  },
+  "referanslar/electro-bismed": {
+    "alt": "Bright laboratory bench full of instruments and glassware"
+  },
+  "menu/kurumsal": {
+    "alt": "Modern stairwell lobby with glass walls, plants and plenty of light"
+  },
+  "urunler/bipolar-forceps": {
+    "alt": "Surgical scissors and instruments on a blue sterile drape"
+  },
+  "hizmetler/arac-kiralama": {
+    "alt": "Dark-colored car parked in rainy weather"
+  },
+  "menu/hizmetler": {
+    "alt": "Surgeons in blue scrubs working in an operating room"
+  },
+  "kurumsal/hakkimizda-1": {
+    "alt": "Contemporary corporate building with a geometric facade"
+  },
+  "urunler/20-cm-bayonet-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-110v-20010": {
+    "alt": "20 cm Bayonet Bipolar Forceps, 1.0 mm Tip, Corded - Valleylab Plug"
+  },
+  "urunler/20-cm-bayonet-bipolar-forseps-1-0-mm-uc-ve-kablolu-valleylab-fisli-ref-01-110v-20010-1-0-mm-yapismaz": {
+    "alt": "20 cm Bayonet Bipolar Forceps, 1.0 mm Tip and Corded - Valleylab Plug, 1.0 mm Non-Stick"
+  },
+  "urunler/12-cm-adson-bipolar-penset-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010": {
+    "alt": "12 cm Adson Bipolar Forceps, 1.0 mm Tip, Corded - Valleylab Plug"
+  },
+  "urunler/12-cm-adson-bipolar-forseps-1-0-mm-uc-kablolu-valleylab-fisli-ref-01-040v-12010-tirtikli": {
+    "alt": "12 cm Adson Bipolar Forceps, 1.0 mm Tip, Corded - Valleylab Plug, Serrated"
+  },
+  "urunler/15-cm-duz-bipolar-forseps-1-0-mm-acili-uc-ve-kablo-valleylab-fisli-ref-01-052v-15010": {
+    "alt": "15 cm Straight Bipolar Forceps, 1.0 mm Angled Tip and Cable - Valleylab Plug"
+  },
+  "urunler/alci-alti-pamuklari": {
+    "alt": "Cast Padding (Under-Cast Cotton)"
+  },
+  "urunler/alcili-sargi": {
+    "alt": "Plaster Bandage"
+  },
+  "urunler/ambu-setleri": {
+    "alt": "Resuscitator Bag (Ambu) Sets"
+  },
+  "urunler/anestezi-solunum-devreleri": {
+    "alt": "Anesthesia Breathing Circuits"
+  },
+  "urunler/asi-siringalari": {
+    "alt": "Vaccine Syringes"
+  },
+  "urunler/aspirasyon-sondalari": {
+    "alt": "Suction Catheters"
+  },
+  "urunler/bandaj-cesitleri": {
+    "alt": "Bandages"
+  },
+  "urunler/beslenme-siringasi": {
+    "alt": "Feeding Syringe"
+  },
+  "urunler/bisturi-ucu-cesitleri": {
+    "alt": "Scalpel Blades"
+  },
+  "urunler/cerrahi-sutur-cesitleri": {
+    "alt": "Surgical Sutures"
+  },
+  "urunler/defibrilator-pedi": {
+    "alt": "Defibrillator Pads"
+  },
+  "urunler/dental-siringalar": {
+    "alt": "Dental Syringes"
+  },
+  "urunler/dezenfektanlar": {
+    "alt": "Disinfectants"
+  },
+  "urunler/eeg-elektrodu": {
+    "alt": "EEG Electrodes"
+  },
+  "urunler/ekg-elektrodu": {
+    "alt": "ECG Electrodes"
+  },
+  "urunler/ekg-kagidi": {
+    "alt": "ECG Paper"
+  },
+  "urunler/eldiven-cesitleri": {
+    "alt": "Gloves"
+  },
+  "urunler/elektrokoter-uclari": {
+    "alt": "Electrosurgical Pencil Tips"
+  },
+  "urunler/endotrakeal-entubasyon-tupleri": {
+    "alt": "Endotracheal Intubation Tubes"
+  },
+  "urunler/enteral-beslenme-sondalari": {
+    "alt": "Enteral Feeding Tubes"
+  },
+  "urunler/flaster-cesitleri": {
+    "alt": "Medical Tapes"
+  },
+  "urunler/foley-sonda-cesitleri": {
+    "alt": "Foley Catheters"
+  },
+  "urunler/hasta-alt-bezleri": {
+    "alt": "Adult Incontinence Briefs"
+  },
+  "urunler/idrar-torbasi-cesitleri": {
+    "alt": "Urine Collection Bags"
+  },
+  "urunler/igneler": {
+    "alt": "Needles"
+  },
+  "urunler/iki-parcali-siringalar": {
+    "alt": "Two-Piece Syringes"
+  },
+  "urunler/insulin-siringalari": {
+    "alt": "Insulin Syringes"
+  },
+  "urunler/jel-cesitleri": {
+    "alt": "Gels"
+  },
+  "urunler/kan-alma-setleri": {
+    "alt": "Blood Collection Sets"
+  },
+  "urunler/kan-gazi-siringasi": {
+    "alt": "Blood Gas Syringe"
+  },
+  "urunler/kilitli-siringalar-luer-lock-siringalar": {
+    "alt": "Luer Lock Syringes"
+  },
+  "urunler/mezoterapi-igneleri": {
+    "alt": "Mesotherapy Needles"
+  },
+  "urunler/nazogastrik-sonda-cesitleri": {
+    "alt": "Nasogastric Tubes"
+  },
+  "urunler/nebulizator-maskeleri": {
+    "alt": "Nebulizer Masks"
+  },
+  "urunler/nst-kagidi": {
+    "alt": "NST (Non-Stress Test) Paper"
+  },
+  "urunler/numune-tupleri": {
+    "alt": "Specimen Tubes"
+  },
+  "urunler/oksijen-maskesi": {
+    "alt": "Oxygen Mask"
+  },
+  "urunler/oral-airway": {
+    "alt": "Oral Airway"
+  },
+  "urunler/pipet-uclari": {
+    "alt": "Pipette Tips"
+  },
+  "urunler/santrifuj-tupleri": {
+    "alt": "Centrifuge Tubes"
+  },
+  "urunler/serum-setleri": {
+    "alt": "IV Infusion Sets"
+  },
+  "urunler/sterilizasyon-rulosu": {
+    "alt": "Sterilization Reel"
+  },
+  "urunler/trakeostomi-kanulu": {
+    "alt": "Tracheostomy Cannula"
+  },
+  "urunler/uc-parcali-siringalar": {
+    "alt": "Three-Piece Syringes"
+  },
+  "urunler/veteriner-siringalari": {
+    "alt": "Veterinary Syringes"
+  },
+  "urunler/disposable-ortu-setleri": {
+    "alt": "Disposable Drape Sets"
+  },
+  "urunler/hastane-kiyafetleri": {
+    "alt": "Hospital Apparel"
+  },
+  "urunler/hastane-tekstili": {
+    "alt": "Hospital Textiles"
+  },
+  "urunler/onluk-cesitleri": {
+    "alt": "Gowns"
+  },
+  "urunler/el-hijyeni-urunleri": {
+    "alt": "Hand Hygiene Products"
+  },
+  "urunler/genel-temizlik-malzemeleri": {
+    "alt": "General Cleaning Supplies"
+  },
+  "urunler/hijyen-ekipmanlari-ve-dispenserler": {
+    "alt": "Hygiene Equipment and Dispensers"
+  },
+  "urunler/tibbi-alet-dezenfektanlari": {
+    "alt": "Medical Instrument Disinfectants"
+  },
+  "urunler/tibbi-atik-yonetim-urunleri": {
+    "alt": "Medical Waste Management Products"
+  },
+  "urunler/yuzey-dezenfektalari": {
+    "alt": "Surface Disinfectants"
+  },
+  "urunler/aspirator-cihazi": {
+    "alt": "Suction Unit (Aspirator)"
+  },
+  "urunler/boy-olcer-tarti-cesitleri": {
+    "alt": "Height Rods / Scales"
+  },
+  "urunler/ekg-cihazi": {
+    "alt": "ECG Machine"
+  },
+  "urunler/hasta-basi-monitoru": {
+    "alt": "Patient Monitor"
+  },
+  "urunler/holter-cihazi": {
+    "alt": "Holter Monitor"
+  },
+  "urunler/infuzyon-pompasi": {
+    "alt": "Infusion Pump"
+  },
+  "urunler/koter-cihazlari": {
+    "alt": "Electrosurgical Units (Cautery Devices)"
+  },
+  "urunler/pulse-oksimetre": {
+    "alt": "Pulse Oximeter"
+  },
+  "haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik": {
+    "alt": "Preparing for Birth and Parenthood at Güven Pregnancy School"
+  },
+  "haberler/peryon-networking-bulusmasinda-longevity-yi-prof-dr-pelin-aribal-ayral-dan-dinledik": {
+    "alt": "We Heard About Longevity from Prof. Dr. Pelin Arıbal Ayral at the PERYÖN Networking Meeting"
+  },
+  "haberler/peryon-ilk-networking-bulusmasi-guven-de": {
+    "alt": "PERYÖN’s First Networking Meeting at Güven"
+  },
+  "haberler/guven-gebe-okulu-nda-doguma-ve-ebeveynlige-hazirlik-gunu": {
+    "alt": "Birth and Parenthood Preparation Day at Güven Pregnancy School"
+  }
+}

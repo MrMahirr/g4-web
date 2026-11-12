@@ -1,5 +1,17 @@
 /** Sitedeki tüm içerik tipleri. Veri dosyaları (src/data) ve servis arayüzleri bunları kullanır. */
 
+import type {
+  CompanyInfoSchema,
+  FaqItemSchema,
+  ImageEntrySchema,
+  LegalDocumentSchema,
+  NewsItemSchema,
+  ProductCategorySchema,
+  ProductItemSchema,
+  ReferenceItemSchema,
+  ServiceItemSchema,
+} from "@/content/schema";
+
 export type ServiceDomain = "medical" | "construction" | "textile" | "fleet";
 
 /** Görsel manifestindeki anahtar ("urunler/foley-sonda-cesitleri"). Dosya yoksa bileşen şablon çizer. */
@@ -109,6 +121,8 @@ export interface LegalDocument {
 }
 
 export interface StatItem {
+  /** Dile bağlı olmayan kimlik — kod sayaçları etikete göre değil buna göre bulur. */
+  id: "customers" | "orders" | "products" | "packages";
   value: number;
   /** Üstteki mono satır ("Memnuniyet Oranı"). */
   kicker: string;
@@ -135,6 +149,25 @@ export interface CompanyInfo {
   socials: SocialLink[];
   stats: StatItem[];
 }
+
+type IsMutuallyAssignable<Left, Right> = Left extends Right
+  ? Right extends Left
+    ? true
+    : false
+  : false;
+type Assert<T extends true> = T;
+
+export type ServiceItemMatchesSchema = Assert<IsMutuallyAssignable<ServiceItem, ServiceItemSchema>>;
+export type ProductCategoryMatchesSchema = Assert<
+  IsMutuallyAssignable<ProductCategory, ProductCategorySchema>
+>;
+export type ProductItemMatchesSchema = Assert<IsMutuallyAssignable<ProductItem, ProductItemSchema>>;
+export type ReferenceItemMatchesSchema = Assert<IsMutuallyAssignable<ReferenceItem, ReferenceItemSchema>>;
+export type NewsItemMatchesSchema = Assert<IsMutuallyAssignable<NewsItem, NewsItemSchema>>;
+export type FaqItemMatchesSchema = Assert<IsMutuallyAssignable<FaqItem, FaqItemSchema>>;
+export type LegalDocumentMatchesSchema = Assert<IsMutuallyAssignable<LegalDocument, LegalDocumentSchema>>;
+export type CompanyInfoMatchesSchema = Assert<IsMutuallyAssignable<CompanyInfo, CompanyInfoSchema>>;
+export type ImageEntryMatchesSchema = Assert<IsMutuallyAssignable<ImageEntry, ImageEntrySchema>>;
 
 export interface NavLink {
   label: string;

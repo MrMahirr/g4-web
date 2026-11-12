@@ -16,16 +16,18 @@ export function splitInTwo(title: string): [string, string] | [string] {
   return [words.slice(0, half).join(" "), words.slice(half).join(" ")];
 }
 
-const dateFormat = new Intl.DateTimeFormat("tr-TR", {
-  day: "2-digit",
-  month: "short",
-  year: "numeric",
-  timeZone: "Europe/Istanbul",
-});
+const intlLocales = { tr: "tr-TR", en: "en-GB" } as const;
 
-/** "18 ŞUB 2020" (tasarımdaki mono tarih biçimi). */
-export function formatShortDate(iso: string): string {
-  return dateFormat.format(new Date(iso)).replace(".", "").toLocaleUpperCase("tr-TR");
+const dateFormats = Object.fromEntries(
+  Object.entries(intlLocales).map(([locale, tag]) => [
+    locale,
+    new Intl.DateTimeFormat(tag, { day: "2-digit", month: "short", year: "numeric", timeZone: "Europe/Istanbul" }),
+  ]),
+) as Record<keyof typeof intlLocales, Intl.DateTimeFormat>;
+
+/** "18 ŞUB 2020" / "18 FEB 2020" (tasarımdaki mono tarih biçimi). */
+export function formatShortDate(iso: string, locale: keyof typeof intlLocales): string {
+  return dateFormats[locale].format(new Date(iso)).replace(".", "").toLocaleUpperCase(intlLocales[locale]);
 }
 
 /** Haber/hizmet gövdesi için blok listesi: ilk cümle giriş, ilk paragraftan sonra görseller, sonraki paragraflarda ikinci cümle alıntı. */

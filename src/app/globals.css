@@ -100,7 +100,8 @@
   }
   @keyframes line-up {
     from {
-      transform: translateY(105%) skewY(6deg);
+      /* +0.3em: MaskedHeading maskesinin alt payı (0.22em) kadar daha aşağıdan başlar, ilk karede görünmez. */
+      transform: translateY(calc(105% + 0.3em)) skewY(6deg);
     }
   }
   /* .hero-img circleOpen 1.6s, .3s gecikme; açılış noktası --circle-origin */
@@ -210,17 +211,24 @@
       transform-origin: left;
     }
   }
+  /*
+    3 kelime × 3 sn yuva (9 sn döngü, gecikme index × 3 sn). Çıkış %33'te (2.97 sn) biter, sonraki kelime
+    3.0 sn'de girer: iki kelime aynı anda kutuda olmaz. Kelime sayısı değişirse süre ve yüzdeler de değişmeli.
+  */
   @keyframes rot-word {
     0% {
       transform: translateY(100%);
+      opacity: 0;
     }
     5%,
-    30% {
+    28% {
       transform: none;
+      opacity: 1;
     }
-    35%,
+    33%,
     100% {
       transform: translateY(-100%);
+      opacity: 0;
     }
   }
   @keyframes dot-pulse {

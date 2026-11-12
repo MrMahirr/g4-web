@@ -1,22 +1,17 @@
-import type { ICatalogRepository } from "@/core/interfaces/ICatalogRepository";
 import type { ICatalogService } from "@/core/interfaces/ICatalogService";
 import type { IInquiryService } from "@/core/interfaces/IInquiryService";
-import { StaticCatalogRepository } from "@/core/repositories/StaticCatalogRepository";
+import { JsonCatalogRepository } from "@/core/repositories/JsonCatalogRepository";
 import { CatalogService } from "@/core/services/CatalogService";
 import { InquiryService } from "@/core/services/InquiryService";
+import type { Locale } from "@/i18n/request";
+import tr from "../../messages/tr.json";
+import en from "../../messages/en.json";
 
 /**
- * Küçük IoC kabı. Sayfalar ve bileşenler somut sınıfları değil bu anahtarları kullanır:
- *
- *   const catalog = container.resolve("CatalogService");
- *
- * Veri kaynağı değişirse yalnız aşağıdaki "CatalogRepository" kaydı değişir.
- * Yalnız sunucu tarafında kullanılır (tüm içeriği içe aktarır); istemci bileşenlerine
- * veri prop olarak geçilir.
+ * Küçük IoC kabı yalnızca dil bağımsız servisler içindir. Yerelleştirilmiş kataloglar
+ * `getCatalog(locale)` ile alınır; bu sayede istek dili kayıtlı örneğe karışmaz.
  */
 interface ServiceMap {
-  CatalogRepository: ICatalogRepository;
-  CatalogService: ICatalogService;
   InquiryService: IInquiryService;
 }
 
@@ -26,14 +21,14 @@ class Container {
   private readonly factories = new Map<keyof ServiceMap, Factory<keyof ServiceMap>>();
   private readonly instances = new Map<keyof ServiceMap, ServiceMap[keyof ServiceMap]>();
 
-  /** Kayıt (aynı anahtarla yeniden çağrılırsa öncekinin yerini alır — testlerde sahte kaynak için). */
+  /** Kayıt ekler; aynı anahtardaki eski kaydı testler için değiştirir. */
   register<K extends keyof ServiceMap>(key: K, factory: Factory<K>): this {
     this.factories.set(key, factory);
     this.instances.delete(key);
     return this;
   }
 
-  /** Tekil örnek döndürür; ilk çağrıda oluşturur. */
+  /** İlk çağrıda oluşturulan tekil örneği döndürür. */
   resolve<K extends keyof ServiceMap>(key: K): ServiceMap[K] {
     const existing = this.instances.get(key);
     if (existing) return existing as ServiceMap[K];
@@ -47,9 +42,19 @@ class Container {
   }
 }
 
-export const container = new Container()
-  .register("CatalogRepository", () => new StaticCatalogRepository())
-  .register("CatalogService", (c) => new CatalogService(c.resolve("CatalogRepository")))
-  .register("InquiryService", () => new InquiryService());
+export const container = new Container().register("InquiryService", () => new InquiryService());
 
 export type { Container };
+
+const catalogs = new Map<Locale, ICatalogService>();
+
+/** İstenen yerel ayar için tekil katalog servisini döndürür. */
+export function getCatalog(locale: Locale): ICatalogService {
+  const existing = catalogs.get(locale);
+  if (existing) return existing;
+
+  const messages = locale === "tr" ? tr : en;
+  const catalog = new CatalogService(new JsonCatalogRepository(locale), messages.i18n);
+  catalogs.set(locale, catalog);
+  return catalog;
+}

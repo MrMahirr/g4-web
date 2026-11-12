@@ -1,0 +1,30 @@
+{
+  "ref-nba-guven": {
+    "title": "NBA Güven Tıp Merkezi",
+    "sectorLabel": "Medical Center"
+  },
+  "ref-guven-ayranci": {
+    "title": "Güven Ayrancı Sağlık Grubu",
+    "sectorLabel": "Healthcare Group"
+  },
+  "ref-ufuk": {
+    "title": "Ufuk Üniversitesi - Dr. Rıdvan Ege Hastanesi",
+    "sectorLabel": "University Hospital"
+  },
+  "ref-g4-spor": {
+    "title": "G4 Sağlıklı Spor Kompleksi",
+    "sectorLabel": "Sports & Wellness"
+  },
+  "ref-guven-evde-bakim": {
+    "title": "Özel Güven Evde Bakım Sağlık Hizmetleri",
+    "sectorLabel": "Home Care"
+  },
+  "ref-g4-spa": {
+    "title": "G4 SPA, Güzellik Ve Estetik Merkezi",
+    "sectorLabel": "Beauty & Aesthetics"
+  },
+  "ref-electro-bismed": {
+    "title": "Electro BISMED INSTRUMENTS",
+    "sectorLabel": "Medical Manufacturer"
+  }
+}

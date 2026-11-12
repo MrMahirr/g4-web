@@ -1,0 +1,479 @@
+{
+  "common": {
+    "home": "Ana Sayfa",
+    "readMore": "Devamını Oku",
+    "showAll": "Tümünü Göster",
+    "viewAll": "Tümünü Görüntüle",
+    "requestInfo": "Bilgi Talep Et",
+    "seeProducts": "Ürünleri Gör",
+    "back": "Geri",
+    "backToTop": "Başa dön",
+    "skipToContent": "İçeriğe geç",
+    "imagePlaceholder": "Görsel alanı",
+    "representativeImage": "Temsili görsel",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı",
+    "close": "Kapat",
+    "callNow": "Hemen ara",
+    "sendEmail": "E-posta gönder",
+    "viewOnMap": "Haritada görüntüle",
+    "rights": "Tüm hakları saklıdır"
+  },
+  "nav": {
+    "main": "Ana menü",
+    "corporate": "Kurumsal",
+    "services": "Hizmetler",
+    "products": "Ürünler",
+    "contact": "İletişim",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat"
+  },
+  "search": {
+    "open": "Sitede ara",
+    "close": "Aramayı kapat",
+    "placeholder": "Ne arıyorsunuz?",
+    "clear": "Temizle",
+    "popular": "Sık arananlar",
+    "groups": "Ürün grupları",
+    "filterLabel": "Arama filtresi",
+    "filters": {
+      "all": "Tümü",
+      "urun": "Ürünler",
+      "grup": "Ürün Grupları",
+      "hizmet": "Hizmetler"
+    },
+    "noResultsBefore": "için sonuç yok.",
+    "noResultsLink": "Bize yazın",
+    "noResultsAfter": ", sizin için tedarik edelim.",
+    "loading": "Aranıyor…"
+  },
+  "product": {
+    "code": "Ürün Kodu",
+    "ref": "REF",
+    "qty": "Miktar",
+    "unit": "Birim",
+    "decrease": "Miktarı azalt",
+    "increase": "Miktarı artır",
+    "order": "Sipariş Ver",
+    "addToQuote": "Teklif Listesine Ekle",
+    "inQuote": "Listede",
+    "ask": "Soru Sor",
+    "share": "Paylaş",
+    "description": "Açıklama",
+    "supply": "Tedarik",
+    "support": "Destek",
+    "supplyText": "Hastane, klinik ve sağlık kuruluşlarına toplu ve periyodik sevkiyat; teknik şartnameye uygun tedarik.",
+    "supportText": "Ürün ve teknik şartname sorularınız için satınalma ekibimize ulaşın.",
+    "emptyCategoryTitle": "Kurumsal Toptan Tedarik & Özel Sipariş",
+    "emptyCategoryText": "Bu ürün grubundaki güncel stok ve katalog listemiz için satınalma ekibimizle iletişime geçin.",
+    "sort": {
+      "default": "Varsayılan",
+      "az": "A'dan Z'ye",
+      "za": "Z'den A'ya"
+    },
+    "allSubGroups": "Tümü",
+    "searchInCategory": "Bu grupta ara",
+    "countSuffix": "ürün"
+  },
+  "quote": {
+    "title": "Teklif Listesi",
+    "open": "Teklif listesini aç",
+    "empty": "Teklif listeniz boş. Ürün sayfalarından ürün ekleyebilirsiniz.",
+    "request": "Teklif İste",
+    "clear": "Listeyi temizle",
+    "remove": "Listeden çıkar",
+    "added": "Teklif listesine eklendi",
+    "updated": "Teklif listesi güncellendi",
+    "removed": "Listeden çıkarıldı"
+  },
+  "inquiry": {
+    "labels": {
+      "siparis": "Sipariş",
+      "bilgi": "Bilgi talebi",
+      "soru": "Soru"
+    },
+    "addedToForm": "Forma eklendi",
+    "subjects": {
+      "siparis": "Sipariş Talebi",
+      "bilgi": "Bilgi Talebi",
+      "soru": "Ürün Hakkında Soru"
+    },
+    "intros": {
+      "siparis": "Aşağıdaki ürünler için sipariş vermek istiyorum:",
+      "bilgi": "Aşağıdaki ürün hakkında bilgi almak istiyorum:",
+      "soru": "Aşağıdaki ürün hakkında bir sorum var:"
+    },
+    "edit": "Düzenle",
+    "removeFromForm": "Kaldır"
+  },
+  "form": {
+    "name": "Adınız / Soyadınız",
+    "email": "E-posta adresiniz",
+    "phone": "Telefon numaranız",
+    "subject": "Konu",
+    "message": "Mesajınız",
+    "optionalMessage": "Varsa mesajınız",
+    "kvkk": "KVKK Aydınlatma Metni'ni okudum, kişisel verilerimin talebimin yanıtlanması amacıyla işlenmesini kabul ediyorum.",
+    "submit": "Gönder",
+    "submitting": "Gönderiliyor",
+    "success": "Mesajınız alındı. En kısa sürede dönüş yapacağız.",
+    "failure": "Mesajınız gönderilemedi. Lütfen telefon veya WhatsApp ile ulaşın.",
+    "errors": {
+      "required": "Bu alan zorunludur.",
+      "nameShort": "Adınızı ve soyadınızı yazın.",
+      "email": "Geçerli bir e-posta adresi girin.",
+      "phone": "Geçerli bir telefon numarası girin.",
+      "messageShort": "Mesajınız en az 10 karakter olmalı.",
+      "kvkk": "Devam etmek için onay vermeniz gerekir."
+    },
+    "kvkkLink": "KVKK Aydınlatma Metni",
+    "kvkkRest": "'ni okudum; kişisel verilerimin talebimin yanıtlanması amacıyla işlenmesini kabul ediyorum.",
+    "kvkkFull": "Metnin tamamını ayrı sayfada aç",
+    "kvkkConfirm": "Okudum, onaylıyorum"
+  },
+  "mega": {
+    "corporate": {
+      "tag": "01 · Kurumsal",
+      "text": "Yenilikçi vizyonumuz ve kurumsal yaklaşımımızla sizlere daha yakından tanıtmak istiyoruz."
+    },
+    "services": {
+      "tag": "02 · Profesyonel Çözümler",
+      "text": "Kaliteli, güvenilir ve yenilikçi hizmet anlayışımızla sektörümüzde fark yaratıyoruz.",
+      "allLabel": "Tüm Hizmetler"
+    },
+    "products": {
+      "tag": "03 · Siz Seçin, Biz Sunalım",
+      "title": "Ürün Grupları",
+      "text": "Zengin ürün yelpazemizle farklı sektör ve ihtiyaçlara hitap ediyor, yüksek kalite standartlarıyla fark yaratıyoruz.",
+      "allLabel": "Tüm Ürünler"
+    }
+  },
+  "navLinks": {
+    "corporate": {
+      "about": "Hakkımızda",
+      "references": "Referanslarımız",
+      "career": "Kariyer",
+      "faq": "Sıkça Sorulan Sorular",
+      "news": "Güncel Haberler"
+    },
+    "footerCorporate": {
+      "about": "Hakkımızda",
+      "products": "Ürünlerimiz",
+      "services": "Hizmetlerimiz",
+      "references": "Referanslarımız",
+      "career": "İnsan Kaynakları",
+      "faq": "Sıkça Sorulan Sorular",
+      "contact": "İletişim"
+    },
+    "footerLegal": {
+      "cookies": "Çerez Politikası",
+      "kvkk": "KVKK Aydınlatma Metni"
+    },
+    "popularSearches": [
+      "Bipolar",
+      "Forseps",
+      "Sütür",
+      "Ambu",
+      "Hastane Tekstili",
+      "01-040V"
+    ]
+  },
+  "footer": {
+    "ctaBefore": "Bizimle Çalışmak",
+    "ctaAccent": "İster misiniz?",
+    "links": "Site içi bağlantılar",
+    "corporate": "Kurumsal",
+    "services": "Hizmetlerimiz",
+    "contact": "İletişim",
+    "trust": "Güven",
+    "comingSoon": "Bağlantı yakında",
+    "ring": "G4 · YATIRIM · İNŞAAT · MEDİKAL · DIŞ TİCARET · TEKNOLOJİ ·",
+    "copyright": "© 2026 G4 · {rights}"
+  },
+  "i18n": {
+    "siteDescription": "Hastaneler, klinikler ve sağlık kuruluşları için medikal ürünler, hastane tekstili ve tıbbi cihazlar.",
+    "logoHome": "G4 — Ana Sayfa",
+    "productsHeading": {
+      "before": "Ürün",
+      "accent": "Grupları"
+    },
+    "breadcrumb": "Sayfa yolu",
+    "legalDraft": "Taslak metin — hukuk onayı bekleniyor. Nihai metin yayına alınmadan önce bu sayfaya eklenecektir.",
+    "viewCategoryProducts": "{category} ürünlerini gör ({count})",
+    "allResults": "Tüm sonuçlar ({count}) →",
+    "error": {
+      "eyebrow": "Bir sorun oluştu",
+      "title": "Sayfa şu anda yüklenemiyor.",
+      "text": "Biraz sonra yeniden deneyebilirsiniz.",
+      "retry": "Yeniden Dene"
+    },
+    "notFound": {
+      "eyebrow": "Sayfa bulunamadı",
+      "title": "Aradığınız sayfa burada yok.",
+      "text": "Adres değişmiş olabilir. Ürün gruplarımıza göz atabilir veya ana sayfaya dönebilirsiniz.",
+      "popular": "Popüler ürün grupları"
+    },
+    "catalog": {
+      "subGroups": "Alt Gruplar",
+      "subGroupsLabel": "Alt gruplar",
+      "sort": "Sıralama",
+      "view": "Görünüm",
+      "grid": "Izgara görünümü",
+      "list": "Liste görünümü",
+      "noResults": "Aramanızla eşleşen ürün bulunamadı.",
+      "filter": "Ürün filtresi",
+      "browse": "İncele",
+      "featured": "Öne çıkan ürünler",
+      "productsFallback": "G4 ÜRÜNLERİ",
+      "searchProduct": "Ürün adı veya Ref kodu ile ara"
+    },
+    "productDetail": {
+      "image": "Görsel {index}",
+      "zoom": "Görseli büyüt",
+      "orderHintBefore": "Sipariş: iletişim formu açılır, ürün + kod +",
+      "orderHintAfter": "otomatik yazılır.",
+      "linkCopied": "Bağlantı kopyalandı"
+    },
+    "lightbox": {
+      "close": "Kapat",
+      "next": "Sonraki",
+      "previous": "Önceki",
+      "zoomIn": "Yakınlaştır",
+      "zoomOut": "Uzaklaştır"
+    },
+    "carousel": {
+      "previous": "Önceki",
+      "next": "Sonraki"
+    },
+    "mail": {
+      "name": "Ad Soyad: {value}",
+      "email": "E-posta: {value}",
+      "phone": "Telefon: {value}",
+      "hello": "Merhaba,",
+      "thanks": "Teşekkürler.",
+      "opening": "E-posta uygulamanız açılıyor",
+      "prepared": "Mesajınız {email} adresine hazırlandı.",
+      "sendHint": "Gönder: e-posta uygulamanız açılır."
+    },
+    "searchIndex": {
+      "productFallback": "G4 Ürünleri",
+      "productGroup": "Ürün grubu · {number}",
+      "service": "Hizmet · {number}",
+      "product": "Ürün"
+    },
+    "subGroups": {
+      "siringa-igne": "Şırınga & İğne",
+      "sonda-kateter": "Sonda & Kateter",
+      "solunum-anestezi": "Solunum & Anestezi",
+      "cerrahi-pansuman": "Cerrahi & Pansuman",
+      "kardiyoloji-kagit": "Kardiyoloji & Kağıt",
+      "laboratuvar-tup": "Laboratuvar & Tüp",
+      "koruyucu-diger": "Koruyucu & Diğer"
+    },
+    "meta": {
+      "news": {
+        "title": "Haberler",
+        "description": "G4 kurumsal haberleri ve duyuruları."
+      },
+      "contact": {
+        "description": "Profesyonel ekibimiz size en kısa sürede dönüş yapacaktır."
+      }
+    },
+    "news": {
+      "ghost": "Haber",
+      "image": "Haber görseli",
+      "gallery": "Foto galeri",
+      "photo": "{title} — fotoğraf {number}"
+    },
+    "contact": {
+      "ghost": "Merhaba",
+      "mapTitle": "G4 konum haritası: {address}",
+      "address": "Adres",
+      "phone": "Telefon",
+      "email": "E-posta"
+    },
+    "searchType": {
+      "urun": "Ürün",
+      "grup": "Ürün grubu",
+      "hizmet": "Hizmet"
+    }
+  },
+  "home": {
+    "hero": {
+      "tag": "Medikal Ürünler · Hastane Tekstili · Tıbbi Cihazlar",
+      "lines": [
+        "Sağlık İçin",
+        "Güvenilir",
+        "Çözümler"
+      ],
+      "rotating": [
+        "Genel Tıbbi Sarf Malzemeler",
+        "Tıbbi Cihazlar",
+        "Bipolar Forceps"
+      ],
+      "text": "Hastaneler, klinikler ve sağlık kuruluşları için ihtiyaç duyduğunuz ürün ve çözümleri tek çatı altında sunuyoruz.",
+      "primary": "Ürünleri Gör",
+      "secondary": "Bilgi Talep Et",
+      "imageLabel": "G4 MEDİKAL",
+      "badgeRing": "G4 MEDİKAL · HASTANE · KLİNİK · LABORATUVAR · "
+    },
+    "intro": {
+      "tag": "G4 Medikal",
+      "statement": {
+        "before": "G4 olarak sağlık sektörünün ihtiyaç duyduğu",
+        "accent": "ürün, ekipman ve profesyonel çözümleri",
+        "after": "tek çatı altında sunuyoruz."
+      },
+      "paragraphs": [
+        "Hastaneler, tıp merkezleri, klinikler, poliklinikler, laboratuvarlar ve sağlık kuruluşlarının ihtiyaçlarına yönelik geniş ürün yelpazemizle hizmet vermekteyiz.",
+        "Uzman kadromuz ve güçlü tedarik ağımız sayesinde ürün temin süreçlerini hızlı, güvenilir ve etkin bir şekilde yönetiyor; müşterilerimizin operasyonel verimliliğine katkı sağlıyoruz."
+      ]
+    },
+    "services": {
+      "tag": "Profesyonel Çözümler",
+      "title": "Medikal Hizmetlerimiz",
+      "all": "Tüm Hizmetler",
+      "readMore": "Devamını Oku",
+      "closing": "Kaliteli, güvenilir ve yenilikçi hizmet anlayışımızla sektörümüzde fark yaratıyoruz."
+    },
+    "categories": {
+      "tag": "Siz Seçin, Biz Sunalım",
+      "title": "Ürün Grupları",
+      "text": "Zengin ürün yelpazemizle farklı sektör ve ihtiyaçlara hitap ediyor, yüksek kalite standartlarıyla fark yaratıyoruz."
+    },
+    "featured": {
+      "tag": "Ürünler",
+      "title": "Öne Çıkan Ürünler",
+      "all": "Tümünü Göster"
+    },
+    "references": {
+      "title": "Referanslarımız",
+      "text": "Güvenimizi ve kalitemizi tercih eden firmalarla gerçekleştirdiğimiz projelerden bazılarını burada inceleyebilirsiniz.",
+      "all": "Tümünü Görüntüle"
+    }
+  },
+  "pages": {
+    "about": {
+      "title": "Hakkımızda",
+      "lead": "Yenilikçi vizyonumuz ve kurumsal yaklaşımımızla sizlere daha yakından tanıtmak istiyoruz.",
+      "intro": [
+        "Kalite, güven ve sürdürülebilir başarı anlayışıyla hareket eden şirketimiz; modern iş modeli, profesyonel yaklaşımı ve gelişime açık vizyonuyla sektörde fark yaratmayı hedeflemektedir.",
+        "Geleceğe değer katan projelerimiz ve müşteri memnuniyetini esas alan hizmet anlayışımızla büyümeye ve üretmeye devam ediyoruz."
+      ],
+      "vision": {
+        "tag": "Vizyonumuz",
+        "before": "G4 olarak vizyonumuz; yatırım, inşaat ve medikal alanlarında yenilikçi projeler geliştirerek güvenilirliği, kalite anlayışı ve profesyonel hizmet yapısıyla",
+        "accent": "sektörüne yön veren güçlü bir marka",
+        "after": "olmaktır."
+      },
+      "sectors": [
+        {
+          "title": "Yatırım ve İnşaat",
+          "lead": "Yatırım ve inşaat alanında; güçlü altyapılar oluşturan, geleceğe değer katan ve modern yaşam ihtiyaçlarına uygun projeler geliştiren şirketimiz, güvenilirlik ve kaliteyi her zaman ön planda tutmaktadır.",
+          "paragraphs": [
+            "Estetik, dayanıklılık ve fonksiyonelliği bir araya getiren projelerimizle sürdürülebilir yapılar inşa ederek sektörde güçlü bir konum elde etmeyi amaçlıyoruz."
+          ]
+        },
+        {
+          "title": "Medikal",
+          "lead": "Medikal sektöründe ise insan sağlığını merkeze alan hizmet anlayışımızla; kaliteli medikal ürün tedariği, sağlık çözümleri ve yenilikçi teknolojiler konusunda profesyonel hizmet sunmaktayız.",
+          "paragraphs": [
+            "Sağlık sektöründeki gelişmeleri yakından takip ederek modern, güvenilir ve yüksek standartlara sahip çözümleri müşterilerimizle buluşturuyoruz.",
+            "Güven odaklı yaklaşımımız sayesinde medikal alanda uzun vadeli iş birlikleri kurmayı ve güçlü bir marka değeri oluşturmayı hedefliyoruz."
+          ]
+        }
+      ],
+      "band": [
+        "Kalite",
+        "Güven",
+        "Sürdürülebilir Başarı"
+      ]
+    },
+    "services": {
+      "tag": "Profesyonel Çözümler",
+      "title": "Hizmetlerimiz",
+      "lead": "Kaliteli, güvenilir ve yenilikçi hizmet anlayışımızla sektörümüzde fark yaratıyoruz.",
+      "formTitle": "Teklif Formu",
+      "formText": "Profesyonel ekibimiz size en kısa sürede dönüş yapacaktır."
+    },
+    "references": {
+      "title": "Referanslar",
+      "lead": "Güvenimizi ve kalitemizi tercih eden firmalarla gerçekleştirdiğimiz projelerden bazılarını burada inceleyebilirsiniz.",
+      "cta": "Bizimle Çalışmak İster misiniz?",
+      "ctaEyebrow": "Yeni iş birlikleri",
+      "ctaText": "Kurumunuzun ihtiyaçlarını dinleyelim; doğru ürün ve hizmetle yanınızda olalım.",
+      "ctaButton": "İletişime Geçin",
+      "drift": "NBA Güven · Güven Ayrancı · Ufuk Üniversitesi · Electro BISMED"
+    },
+    "career": {
+      "ghost": "İK",
+      "titleLines": [
+        "İnsan Kaynakları",
+        "Formu"
+      ],
+      "lead": "Kariyerine yön verecek, ilham veren bir ekipte yer almak ister misin? Aramıza katıl, geleceği birlikte inşa edelim.",
+      "steps": [
+        "Güncel açık pozisyonlar ya da genel iş başvurusu için İK formunu doldurup tarafımıza iletiniz.",
+        "Formdaki tüm alanları eksiksiz olarak doldurun.",
+        "Başvuru değerlendirme komitesi başvuruları değerlendirecek ve olumlu değerlendirilen adaylar mülakat için randevulu olarak G4 tarafından çağırılacaktır."
+      ],
+      "asideTitle": {
+        "before": "Bizimle Çalışmak",
+        "accent": "İster misiniz?"
+      },
+      "asideLead": "İşimize geniş bir bakış açısıyla yaklaşıp hayal ederiz, farklı çözüm yolları ve yeni fikirlerle yaklaşımda bulunuruz.",
+      "asideText": "Sizler için de ne yapabileceğimizi bilmek isteriz, bizimle iletişime geçip tanışmaya ne dersiniz?",
+      "formTag": "İK Başvuru Formu",
+      "subject": "İK Başvurusu"
+    },
+    "faq": {
+      "titleLines": [
+        "Sık Sorulan",
+        "Sorular"
+      ],
+      "lead": "Sıkça gelen soruların hızlı ve net yanıtları; aradığınızı bulamazsanız bize ulaşın."
+    },
+    "news": {
+      "titleLines": [
+        "Güncel",
+        "Haberler"
+      ],
+      "tag": "Güncel Haberler",
+      "next": "Sonraki",
+      "share": "Paylaş",
+      "kicker": "Haber",
+      "source": "G4 · Kurumsal"
+    },
+    "search": {
+      "title": "Arama",
+      "lead": "Ürün adı, Ref kodu, ürün grubu veya hizmet adıyla arayın."
+    }
+  },
+  "about": {
+    "summary": "G4; yatırım, inşaat, medikal, teknoloji ve dış ticaret alanlarında faaliyet gösteren yenilikçi ve güçlü bir kuruluştur.",
+    "vision": [
+      "G4; yatırım, inşaat, medikal, teknoloji ve dış ticaret alanlarında faaliyet gösteren yenilikçi ve güçlü bir kuruluştur. Kalite, güven ve sürdürülebilir başarı anlayışıyla hareket eden şirketimiz; modern iş modeli, profesyonel yaklaşımı ve gelişime açık vizyonuyla sektörde fark yaratmayı hedeflemektedir.",
+      "G4 olarak vizyonumuz; yatırım, inşaat ve medikal alanlarında yenilikçi projeler geliştirerek güvenilirliği, kalite anlayışı ve profesyonel hizmet yapısıyla sektörüne yön veren güçlü bir marka olmaktır. Geleceğe değer katan projelerimiz ve müşteri memnuniyetini esas alan hizmet anlayışımızla büyümeye ve üretmeye devam ediyoruz."
+    ],
+    "construction": [
+      "Yatırım ve inşaat alanında; güçlü altyapılar oluşturan, geleceğe değer katan ve modern yaşam ihtiyaçlarına uygun projeler geliştiren şirketimiz, güvenilirlik ve kaliteyi her zaman ön planda tutmaktadır. Estetik, dayanıklılık ve fonksiyonelliği bir araya getiren projelerimizle sürdürülebilir yapılar inşa ederek sektörde güçlü bir konum elde etmeyi amaçlıyoruz."
+    ],
+    "medical": [
+      "Medikal sektöründe ise insan sağlığını merkeze alan hizmet anlayışımızla; kaliteli medikal ürün tedariği, sağlık çözümleri ve yenilikçi teknolojiler konusunda profesyonel hizmet sunmaktayız. Sağlık sektöründeki gelişmeleri yakından takip ederek modern, güvenilir ve yüksek standartlara sahip çözümleri müşterilerimizle buluşturuyoruz. Güven odaklı yaklaşımımız sayesinde medikal alanda uzun vadeli iş birlikleri kurmayı ve güçlü bir marka değeri oluşturmayı hedefliyoruz."
+    ],
+    "callToAction": {
+      "title": "Bizimle Çalışmak İster misiniz?",
+      "text": "İşimize geniş bir bakış açısıyla yaklaşıp hayal ederiz, farklı çözüm yolları ve yeni fikirlerle yaklaşımda bulunuruz. Sizler için de ne yapabileceğimizi bilmek isteriz, bizimle iletişime geçip tanışmaya ne dersiniz?"
+    },
+    "callBack": {
+      "title": "Sizi Arayalım",
+      "text": "Bizimle iletişim kurmak ve detaylı bilgi almak için iletişime geç butonuna tıklayınız.",
+      "button": "İletişime Geç"
+    }
+  },
+  "language": {
+    "label": "Dil seçimi",
+    "turkish": "Türkçe",
+    "english": "İngilizce"
+  }
+}

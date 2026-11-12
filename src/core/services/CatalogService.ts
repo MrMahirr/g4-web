@@ -8,13 +8,25 @@ import type {
   ProductQuery,
   SearchEntry,
 } from "@/core/types";
-import { SARF_CATEGORY_SLUG, sarfSubGroups } from "@/data/categories.data";
+import { SARF_CATEGORY_SLUG, sarfSubGroups } from "@/content/constants";
 import { routes } from "@/data/navigation.data";
 import { filterProducts, pad2, trLower } from "@/lib/catalog";
 
+type CatalogLabels = {
+  searchIndex: {
+    productFallback: string;
+    productGroup: string;
+    service: string;
+  };
+  subGroups: Record<string, string>;
+};
+
 /** İçerik sorguları. Veri kaynağını bilmez; yalnız ICatalogRepository ile konuşur. */
 export class CatalogService implements ICatalogService {
-  constructor(private readonly repository: ICatalogRepository) {}
+  constructor(
+    private readonly repository: ICatalogRepository,
+    private readonly labels: CatalogLabels,
+  ) {}
 
   getCompany() {
     return this.repository.getCompany();
@@ -53,6 +65,7 @@ export class CatalogService implements ICatalogService {
     const inCategory = this.getProducts({ categorySlug });
     return sarfSubGroups.map((group) => ({
       ...group,
+      title: this.labels.subGroups[group.slug],
       productCount: inCategory.filter((product) => product.subGroup === group.slug).length,
     }));
   }
@@ -132,7 +145,7 @@ export class CatalogService implements ICatalogService {
     const productEntries: SearchEntry[] = this.repository.getProducts().map((product) => ({
       type: "urun",
       name: product.name,
-      meta: product.code ? `Ref: ${product.code}` : "G4 Ürünleri",
+      meta: product.code ? `Ref: ${product.code}` : this.labels.searchIndex.productFallback,
       href: routes.product(product.slug),
       imageKey: product.imageKey,
       haystack: trLower(`${product.title} ${product.code ?? ""}`),
@@ -141,7 +154,7 @@ export class CatalogService implements ICatalogService {
     const categoryEntries: SearchEntry[] = this.repository.getCategories().map((category, index) => ({
       type: "grup",
       name: category.title,
-      meta: `Ürün grubu · ${pad2(index + 1)}`,
+      meta: this.labels.searchIndex.productGroup.replace("{number}", pad2(index + 1)),
       href: routes.category(category.slug),
       imageKey: category.imageKey,
       haystack: trLower(category.title),
@@ -150,7 +163,7 @@ export class CatalogService implements ICatalogService {
     const serviceEntries: SearchEntry[] = this.repository.getServices().map((service, index) => ({
       type: "hizmet",
       name: service.title,
-      meta: `Hizmet · ${pad2(index + 1)}`,
+      meta: this.labels.searchIndex.service.replace("{number}", pad2(index + 1)),
       href: routes.service(service.slug),
       haystack: trLower(`${service.title} ${service.shortDescription}`),
     }));

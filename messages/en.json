@@ -1,0 +1,479 @@
+{
+  "common": {
+    "home": "Home",
+    "readMore": "Read more",
+    "showAll": "Show all",
+    "viewAll": "View all",
+    "requestInfo": "Request information",
+    "seeProducts": "View products",
+    "back": "Back",
+    "backToTop": "Back to top",
+    "skipToContent": "Skip to content",
+    "imagePlaceholder": "Image area",
+    "representativeImage": "Representative image",
+    "copy": "Copy",
+    "copied": "Copied",
+    "close": "Close",
+    "callNow": "Call now",
+    "sendEmail": "Send email",
+    "viewOnMap": "View on map",
+    "rights": "All rights reserved"
+  },
+  "nav": {
+    "main": "Main navigation",
+    "corporate": "Corporate",
+    "services": "Services",
+    "products": "Products",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "search": {
+    "open": "Search the site",
+    "close": "Close search",
+    "placeholder": "What are you looking for?",
+    "clear": "Clear",
+    "popular": "Popular searches",
+    "groups": "Product groups",
+    "filterLabel": "Search filter",
+    "filters": {
+      "all": "All",
+      "urun": "Products",
+      "grup": "Product groups",
+      "hizmet": "Services"
+    },
+    "noResultsBefore": "has no results.",
+    "noResultsLink": "Contact us",
+    "noResultsAfter": "and we will source it for you.",
+    "loading": "Searching…"
+  },
+  "product": {
+    "code": "Product code",
+    "ref": "REF",
+    "qty": "Quantity",
+    "unit": "Unit",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "order": "Order",
+    "addToQuote": "Add to quote list",
+    "inQuote": "In list",
+    "ask": "Ask a question",
+    "share": "Share",
+    "description": "Description",
+    "supply": "Supply",
+    "support": "Support",
+    "supplyText": "Bulk and scheduled delivery to hospitals, clinics and healthcare institutions; procurement aligned with technical specifications.",
+    "supportText": "Contact our procurement team for product and technical specification questions.",
+    "emptyCategoryTitle": "Corporate Wholesale Supply & Special Orders",
+    "emptyCategoryText": "Contact our procurement team for the current stock and catalogue list for this product group.",
+    "sort": {
+      "default": "Default",
+      "az": "A to Z",
+      "za": "Z to A"
+    },
+    "allSubGroups": "All",
+    "searchInCategory": "Search this group",
+    "countSuffix": "products"
+  },
+  "quote": {
+    "title": "Quote list",
+    "open": "Open quote list",
+    "empty": "Your quote list is empty. You can add products from their pages.",
+    "request": "Request a quote",
+    "clear": "Clear list",
+    "remove": "Remove from list",
+    "added": "Added to quote list",
+    "updated": "Quote list updated",
+    "removed": "Removed from quote list"
+  },
+  "inquiry": {
+    "labels": {
+      "siparis": "Order",
+      "bilgi": "Information request",
+      "soru": "Question"
+    },
+    "addedToForm": "Added to form",
+    "subjects": {
+      "siparis": "Order request",
+      "bilgi": "Information request",
+      "soru": "Question about a product"
+    },
+    "intros": {
+      "siparis": "I would like to place an order for the following products:",
+      "bilgi": "I would like information about the following product:",
+      "soru": "I have a question about the following product:"
+    },
+    "edit": "Edit",
+    "removeFromForm": "Remove"
+  },
+  "form": {
+    "name": "Full name",
+    "email": "Email address",
+    "phone": "Phone number",
+    "subject": "Subject",
+    "message": "Message",
+    "optionalMessage": "Your message, if any",
+    "kvkk": "I have read the privacy notice and consent to the processing of my personal data to respond to my request.",
+    "submit": "Send",
+    "submitting": "Sending",
+    "success": "We received your message. We will get back to you shortly.",
+    "failure": "Your message could not be sent. Please reach us by phone or WhatsApp.",
+    "errors": {
+      "required": "This field is required.",
+      "nameShort": "Please enter your first and last name.",
+      "email": "Enter a valid email address.",
+      "phone": "Enter a valid phone number.",
+      "messageShort": "Your message must be at least 10 characters.",
+      "kvkk": "You must provide consent to continue."
+    },
+    "kvkkLink": "Privacy Notice (KVKK)",
+    "kvkkRest": " — I have read it and consent to the processing of my personal data to respond to my request.",
+    "kvkkFull": "Open the full text in a separate page",
+    "kvkkConfirm": "I have read it and agree"
+  },
+  "mega": {
+    "corporate": {
+      "tag": "01 · Corporate",
+      "text": "We would like to introduce ourselves more closely through our innovative vision and corporate approach."
+    },
+    "services": {
+      "tag": "02 · Professional solutions",
+      "text": "We make a difference in our sector with a quality, reliable and innovative approach to service.",
+      "allLabel": "All services"
+    },
+    "products": {
+      "tag": "03 · You choose, we deliver",
+      "title": "Product groups",
+      "text": "With our diverse product range, we meet the needs of different industries while making a difference through high quality standards.",
+      "allLabel": "All products"
+    }
+  },
+  "navLinks": {
+    "corporate": {
+      "about": "About us",
+      "references": "Our references",
+      "career": "Careers",
+      "faq": "Frequently asked questions",
+      "news": "Latest news"
+    },
+    "footerCorporate": {
+      "about": "About us",
+      "products": "Our products",
+      "services": "Our services",
+      "references": "Our references",
+      "career": "Human resources",
+      "faq": "Frequently asked questions",
+      "contact": "Contact"
+    },
+    "footerLegal": {
+      "cookies": "Cookie policy",
+      "kvkk": "Privacy notice"
+    },
+    "popularSearches": [
+      "Bipolar",
+      "Forseps",
+      "Sütür",
+      "Ambu",
+      "Hastane Tekstili",
+      "01-040V"
+    ]
+  },
+  "footer": {
+    "ctaBefore": "Would you like to",
+    "ctaAccent": "work with us?",
+    "links": "Site links",
+    "corporate": "Corporate",
+    "services": "Our services",
+    "contact": "Contact",
+    "trust": "Trust",
+    "comingSoon": "Link coming soon",
+    "ring": "G4 · INVESTMENT · CONSTRUCTION · MEDICAL · FOREIGN TRADE · TECHNOLOGY ·",
+    "copyright": "© 2026 G4 · {rights}"
+  },
+  "i18n": {
+    "siteDescription": "Medical products, hospital textiles and medical devices for hospitals, clinics and healthcare institutions.",
+    "logoHome": "G4 — Home",
+    "productsHeading": {
+      "before": "Product",
+      "accent": "Groups"
+    },
+    "breadcrumb": "Breadcrumb",
+    "legalDraft": "Draft text — awaiting legal approval. It will be added here before this page is published.",
+    "viewCategoryProducts": "View {category} products ({count})",
+    "allResults": "All results ({count}) →",
+    "error": {
+      "eyebrow": "Something went wrong",
+      "title": "This page cannot be loaded right now.",
+      "text": "Please try again shortly.",
+      "retry": "Try again"
+    },
+    "notFound": {
+      "eyebrow": "Page not found",
+      "title": "The page you are looking for is not here.",
+      "text": "The address may have changed. Browse our product groups or return to the home page.",
+      "popular": "Popular product groups"
+    },
+    "catalog": {
+      "subGroups": "Subgroups",
+      "subGroupsLabel": "Subgroups",
+      "sort": "Sort",
+      "view": "View",
+      "grid": "Grid view",
+      "list": "List view",
+      "noResults": "No products match your search.",
+      "filter": "Product filter",
+      "browse": "View",
+      "featured": "Featured products",
+      "productsFallback": "G4 PRODUCTS",
+      "searchProduct": "Search by product name or reference code"
+    },
+    "productDetail": {
+      "image": "Image {index}",
+      "zoom": "Enlarge image",
+      "orderHintBefore": "Order: the contact form opens and the product, code and",
+      "orderHintAfter": "are filled in automatically.",
+      "linkCopied": "Link copied"
+    },
+    "lightbox": {
+      "close": "Close",
+      "next": "Next",
+      "previous": "Previous",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out"
+    },
+    "carousel": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "mail": {
+      "name": "Full name: {value}",
+      "email": "Email: {value}",
+      "phone": "Phone: {value}",
+      "hello": "Hello,",
+      "thanks": "Thank you.",
+      "opening": "Opening your email application",
+      "prepared": "Your message has been prepared for {email}.",
+      "sendHint": "Send: your email application will open."
+    },
+    "searchIndex": {
+      "productFallback": "G4 Products",
+      "productGroup": "Product group · {number}",
+      "service": "Service · {number}",
+      "product": "Product"
+    },
+    "subGroups": {
+      "siringa-igne": "Syringe & Needle",
+      "sonda-kateter": "Tube & Catheter",
+      "solunum-anestezi": "Respiratory & Anaesthesia",
+      "cerrahi-pansuman": "Surgical & Dressing",
+      "kardiyoloji-kagit": "Cardiology & Paper",
+      "laboratuvar-tup": "Laboratory & Tube",
+      "koruyucu-diger": "Protective & Other"
+    },
+    "meta": {
+      "news": {
+        "title": "News",
+        "description": "G4 corporate news and announcements."
+      },
+      "contact": {
+        "description": "Our professional team will get back to you as soon as possible."
+      }
+    },
+    "news": {
+      "ghost": "News",
+      "image": "News image",
+      "gallery": "Photo gallery",
+      "photo": "{title} — photo {number}"
+    },
+    "contact": {
+      "ghost": "Hello",
+      "mapTitle": "G4 location map: {address}",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "searchType": {
+      "urun": "Product",
+      "grup": "Product group",
+      "hizmet": "Service"
+    }
+  },
+  "home": {
+    "hero": {
+      "tag": "Medical Supplies · Hospital Textiles · Medical Devices",
+      "lines": [
+        "For Health",
+        "Reliable",
+        "Solutions"
+      ],
+      "rotating": [
+        "General Medical Consumables",
+        "Medical Devices",
+        "Bipolar Forceps"
+      ],
+      "text": "We provide the products and solutions needed by hospitals, clinics and healthcare institutions under one roof.",
+      "primary": "View Products",
+      "secondary": "Request Information",
+      "imageLabel": "G4 MEDICAL",
+      "badgeRing": "G4 MEDICAL · HOSPITAL · CLINIC · LABORATORY · "
+    },
+    "intro": {
+      "tag": "G4 Medical",
+      "statement": {
+        "before": "At G4, we provide the",
+        "accent": "products, equipment and professional solutions",
+        "after": "needed by the healthcare sector under one roof."
+      },
+      "paragraphs": [
+        "We serve hospitals, medical centres, clinics, polyclinics, laboratories and healthcare institutions with our broad product range tailored to their needs.",
+        "Thanks to our expert team and strong supply network, we manage product sourcing processes quickly, reliably and effectively, contributing to our customers' operational efficiency."
+      ]
+    },
+    "services": {
+      "tag": "Professional Solutions",
+      "title": "Our Medical Services",
+      "all": "All Services",
+      "readMore": "Read More",
+      "closing": "We make a difference in our sector with a quality, reliable and innovative approach to service."
+    },
+    "categories": {
+      "tag": "You Choose, We Deliver",
+      "title": "Product Groups",
+      "text": "With our diverse product range, we meet the needs of different industries while making a difference through high quality standards."
+    },
+    "featured": {
+      "tag": "Products",
+      "title": "Our Featured Products",
+      "all": "Show All"
+    },
+    "references": {
+      "title": "Our References",
+      "text": "You can review some of the projects we have delivered with companies that have chosen our reliability and quality here.",
+      "all": "View All"
+    }
+  },
+  "pages": {
+    "about": {
+      "title": "About Us",
+      "lead": "We would like to introduce ourselves more closely through our innovative vision and corporate approach.",
+      "intro": [
+        "Our company acts with an understanding of quality, trust and sustainable success; it aims to make a difference in the sector with its modern business model, professional approach and vision open to development.",
+        "We continue to grow and produce with projects that add value to the future and a service approach based on customer satisfaction."
+      ],
+      "vision": {
+        "tag": "Our Vision",
+        "before": "Our vision at G4 is to develop innovative projects in investment, construction and medical fields, becoming",
+        "accent": "a strong brand that leads its sector",
+        "after": "with reliability, quality and a professional service structure."
+      },
+      "sectors": [
+        {
+          "title": "Investment and Construction",
+          "lead": "In investment and construction, our company develops projects that build strong infrastructures, add value to the future and suit modern living needs, always prioritising reliability and quality.",
+          "paragraphs": [
+            "We aim to attain a strong position in the sector by building sustainable structures through projects that bring together aesthetics, durability and functionality."
+          ]
+        },
+        {
+          "title": "Medical",
+          "lead": "In the medical sector, we provide professional services in quality medical product supply, healthcare solutions and innovative technologies with an approach focused on human health.",
+          "paragraphs": [
+            "By closely following developments in the healthcare sector, we bring modern, reliable and high-standard solutions to our customers.",
+            "With our trust-focused approach, we aim to build long-term collaborations in the medical field and create strong brand value."
+          ]
+        }
+      ],
+      "band": [
+        "Quality",
+        "Trust",
+        "Sustainable Success"
+      ]
+    },
+    "services": {
+      "tag": "Professional Solutions",
+      "title": "Our Services",
+      "lead": "We make a difference in our sector with a quality, reliable and innovative approach to service.",
+      "formTitle": "Quote Form",
+      "formText": "Our professional team will get back to you as soon as possible."
+    },
+    "references": {
+      "title": "References",
+      "lead": "You can review some of the projects we have delivered with companies that have chosen our reliability and quality here.",
+      "cta": "Would You Like to Work With Us?",
+      "ctaEyebrow": "New partnerships",
+      "ctaText": "Tell us what your institution needs, and we will support you with the right products and services.",
+      "ctaButton": "Get in Touch",
+      "drift": "NBA Güven · Güven Ayrancı · Ufuk University · Electro BISMED"
+    },
+    "career": {
+      "ghost": "HR",
+      "titleLines": [
+        "Human Resources",
+        "Form"
+      ],
+      "lead": "Would you like to join an inspiring team that will shape your career? Join us and let us build the future together.",
+      "steps": [
+        "For current vacancies or a general job application, complete the HR form and send it to us.",
+        "Complete all fields in the form in full.",
+        "The application review committee will evaluate applications, and candidates assessed positively will be invited by G4 to a scheduled interview."
+      ],
+      "asideTitle": {
+        "before": "Would You Like to",
+        "accent": "Work With Us?"
+      },
+      "asideLead": "We approach our work with a broad perspective, imagine, and adopt different solutions and new ideas.",
+      "asideText": "We would like to know what we can do for you too; why not contact us and get acquainted?",
+      "formTag": "HR Application Form",
+      "subject": "HR Application"
+    },
+    "faq": {
+      "titleLines": [
+        "Frequently Asked",
+        "Questions"
+      ],
+      "lead": "Quick and clear answers to frequently asked questions; contact us if you cannot find what you are looking for."
+    },
+    "news": {
+      "titleLines": [
+        "Latest",
+        "News"
+      ],
+      "tag": "Latest News",
+      "next": "Next",
+      "share": "Share",
+      "kicker": "News",
+      "source": "G4 · Corporate"
+    },
+    "search": {
+      "title": "Search",
+      "lead": "Search by product name, reference code, product group or service name."
+    }
+  },
+  "about": {
+    "summary": "G4 is an innovative and strong organisation operating in investment, construction, medical, technology and foreign trade.",
+    "vision": [
+      "G4 is an innovative and strong organisation operating in investment, construction, medical, technology and foreign trade. Our company acts with an understanding of quality, trust and sustainable success; it aims to make a difference in the sector with its modern business model, professional approach and vision open to development.",
+      "Our vision at G4 is to develop innovative projects in investment, construction and medical fields, becoming a strong brand that leads its sector with reliability, quality and a professional service structure. We continue to grow and produce with projects that add value to the future and a service approach based on customer satisfaction."
+    ],
+    "construction": [
+      "In investment and construction, our company develops projects that build strong infrastructures, add value to the future and suit modern living needs, always prioritising reliability and quality. We aim to attain a strong position in the sector by building sustainable structures through projects that bring together aesthetics, durability and functionality."
+    ],
+    "medical": [
+      "In the medical sector, we provide professional services in quality medical product supply, healthcare solutions and innovative technologies with an approach focused on human health. By closely following developments in the healthcare sector, we bring modern, reliable and high-standard solutions to our customers. With our trust-focused approach, we aim to build long-term collaborations in the medical field and create strong brand value."
+    ],
+    "callToAction": {
+      "title": "Would You Like to Work With Us?",
+      "text": "We approach our work with a broad perspective, imagine, and adopt different solutions and new ideas. We would like to know what we can do for you too; why not contact us and get acquainted?"
+    },
+    "callBack": {
+      "title": "Let Us Call You",
+      "text": "Click the contact button to get in touch and receive detailed information.",
+      "button": "Contact Us"
+    }
+  },
+  "language": {
+    "label": "Language selector",
+    "turkish": "Turkish",
+    "english": "English"
+  }
+}

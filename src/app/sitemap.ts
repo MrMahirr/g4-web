@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { container } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -7,7 +7,7 @@ type Entry = MetadataRoute.Sitemap[number];
 
 /** /sitemap.xml — tüm statik sayfalar + ürün, kategori, hizmet ve haber sayfaları. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const catalog = container.resolve("CatalogService");
+  const catalog = getCatalog("tr");
   const entry = (path: string, priority: number, changeFrequency: Entry["changeFrequency"] = "monthly"): Entry => ({
     url: absoluteUrl(path),
     changeFrequency,
