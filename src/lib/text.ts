@@ -16,12 +16,24 @@ export function splitInTwo(title: string): [string, string] | [string] {
   return [words.slice(0, half).join(" "), words.slice(half).join(" ")];
 }
 
+/** Metni kelime ortasından kesmeden kısa özete çevirir. */
+export function excerpt(text: string, maxLength = 160): string {
+  if (text.length <= maxLength) return text;
+  const cut = text.slice(0, maxLength);
+  return `${cut.slice(0, cut.lastIndexOf(" "))}…`;
+}
+
 const intlLocales = { tr: "tr-TR", en: "en-GB" } as const;
 
 const dateFormats = Object.fromEntries(
   Object.entries(intlLocales).map(([locale, tag]) => [
     locale,
-    new Intl.DateTimeFormat(tag, { day: "2-digit", month: "short", year: "numeric", timeZone: "Europe/Istanbul" }),
+    new Intl.DateTimeFormat(tag, {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      timeZone: "Europe/Istanbul",
+    }),
   ]),
 ) as Record<keyof typeof intlLocales, Intl.DateTimeFormat>;
 

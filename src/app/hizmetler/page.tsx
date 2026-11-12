@@ -22,7 +22,7 @@ export default async function ServicesPage() {
   const t = await getTranslations();
   const copy = await getTranslations("pages");
   const catalog = getCatalog(await getLocale());
-  const services = catalog.getServices();
+  const services = catalog.services.getServices();
 
   return (
     <>
@@ -31,12 +31,12 @@ export default async function ServicesPage() {
         title={[copy("services.title")]}
         description={copy("services.lead")}
         ghost={String(services.length).padStart(2, "0")}
-        image={catalog.getImage("hero/hizmetler")}
+        image={catalog.images.getImage("hero/hizmetler")}
       />
 
       <Container as="section" className="pt-lead pb-section">
         {services.map((service, index) => {
-          const image = catalog.getImage(service.imageKey);
+          const image = catalog.images.getImage(service.imageKey);
           return (
             <Link
               key={service.slug}
@@ -86,7 +86,7 @@ export default async function ServicesPage() {
       </Container>
 
       <Container as="section" className="pb-section">
-        <CallBackCard phone={catalog.getCompany().phone} variant="wide" />
+        <CallBackCard phone={catalog.site.getCompany().phone} variant="wide" />
       </Container>
     </>
   );

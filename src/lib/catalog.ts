@@ -1,7 +1,7 @@
 import type { ProductItem, ProductQuery, ProductSort, SearchEntry, SearchEntryType } from "@/core/types";
 
 /**
- * Sunucuda (CatalogService) ve tarayıcıda (arama katmanı, kategori filtresi) ortak kullanılan
+ * Sunucuda (ürün kataloğu) ve tarayıcıda (arama katmanı, kategori filtresi) ortak kullanılan
  * saf fonksiyonlar. Veri dosyalarını içe aktarmaz; istemci paketine yalnız mantık girer.
  */
 

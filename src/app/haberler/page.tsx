@@ -10,7 +10,7 @@ import { underlineLinkClass } from "@/components/ui/UnderlineLink";
 import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
-import { formatShortDate, splitSentences } from "@/lib/text";
+import { excerpt, formatShortDate, splitSentences } from "@/lib/text";
 import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -23,8 +23,8 @@ export default async function NewsPage() {
   const t = await getTranslations();
   const locale = await getLocale();
   const catalog = getCatalog(locale);
-  const [lead, ...rest] = catalog.getNews();
-  const leadImage = lead ? catalog.getImage(lead.imageKey) : null;
+  const [lead, ...rest] = catalog.news.getNews();
+  const leadImage = lead ? catalog.images.getImage(lead.imageKey) : null;
 
   return (
     <>
@@ -36,7 +36,7 @@ export default async function NewsPage() {
             {t("pages.news.titleLines.1")}
           </span>,
         ]}
-        image={catalog.getImage("hero/haberler")}
+        image={catalog.images.getImage("hero/haberler")}
       />
 
       {lead ? (
@@ -85,8 +85,8 @@ export default async function NewsPage() {
                 href={routes.newsItem(item.slug)}
                 index={formatShortDate(item.publishedAt, locale)}
                 title={item.title}
-                description={catalog.getNewsExcerpt(item, 90)}
-                previewSrc={catalog.getImage(item.imageKey)?.src ?? null}
+                description={excerpt(item.paragraphs[0] ?? "", 90)}
+                previewSrc={catalog.images.getImage(item.imageKey)?.src ?? null}
                 titleClassName="text-[clamp(22px,2.4vw,34px)] leading-[1.15] tracking-[-0.03em]"
                 className="grid-cols-[160px_minmax(0,1fr)_auto] max-row:grid-cols-1"
               />

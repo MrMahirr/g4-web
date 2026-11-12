@@ -1,6 +1,11 @@
 import { loadContent } from "@/content/load";
 import type { Locale } from "@/i18n/request";
-import type { ICatalogRepository } from "@/core/interfaces/ICatalogRepository";
+import type { IImageRepository } from "@/core/interfaces/IImageRepository";
+import type { INewsRepository } from "@/core/interfaces/INewsRepository";
+import type { IProductRepository } from "@/core/interfaces/IProductRepository";
+import type { IReferenceRepository } from "@/core/interfaces/IReferenceRepository";
+import type { IServiceRepository } from "@/core/interfaces/IServiceRepository";
+import type { ISiteContentRepository } from "@/core/interfaces/ISiteContentRepository";
 import type {
   CompanyInfo,
   FaqItem,
@@ -14,7 +19,15 @@ import type {
   ServiceItem,
 } from "@/core/types";
 
-export class JsonCatalogRepository implements ICatalogRepository {
+export class JsonCatalogRepository
+  implements
+    ISiteContentRepository,
+    IServiceRepository,
+    IProductRepository,
+    IReferenceRepository,
+    INewsRepository,
+    IImageRepository
+{
   constructor(private readonly locale: Locale) {}
 
   private get content() {

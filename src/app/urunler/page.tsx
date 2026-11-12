@@ -25,9 +25,9 @@ export default async function ProductsPage() {
   const home = await getTranslations("home");
   const locale = await getLocale();
   const catalog = getCatalog(locale);
-  const categories = catalog.getCategories();
+  const categories = catalog.products.getCategories();
   const total = String(categories.length).padStart(2, "0");
-  const productVariety = catalog.getCompany().stats.find((stat) => stat.id === "products")?.value;
+  const productVariety = catalog.site.getCompany().stats.find((stat) => stat.id === "products")?.value;
 
   return (
     <>
@@ -40,7 +40,7 @@ export default async function ProductsPage() {
           </span>,
         ]}
         description={home("categories.text")}
-        image={catalog.getImage("hero/urunler")}
+        image={catalog.images.getImage("hero/urunler")}
         ghost={productVariety ? String(productVariety) : undefined}
       >
         <SearchTrigger label={t("i18n.catalog.searchProduct")} />
@@ -49,7 +49,7 @@ export default async function ProductsPage() {
       <Container as="section" aria-label={home("categories.title")} className="pt-lead pb-section">
         <div className="grid grid-cols-6 gap-4 max-stack:grid-cols-2 max-[37.5rem]:grid-cols-1">
           {categories.map((category, index) => {
-            const image = catalog.getImage(category.imageKey);
+            const image = catalog.images.getImage(category.imageKey);
             const wide = index < 2;
             return (
               <Reveal
@@ -109,7 +109,7 @@ export default async function ProductsPage() {
         <Container>
           <FeaturedProductList
             filterable
-            rows={catalog.getHomeFeaturedProducts().map((product) => toFeaturedRow(catalog, product))}
+            rows={catalog.products.getHomeFeaturedProducts().map((product) => toFeaturedRow(catalog, product))}
             heading={
               <div className="flex flex-col gap-5">
                 <h2 className="font-display text-d2">{home("featured.title")}</h2>

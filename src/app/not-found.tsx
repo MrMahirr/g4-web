@@ -8,7 +8,7 @@ import { routes } from "@/data/navigation.data";
 export default async function NotFound() {
   const t = await getTranslations();
   const catalog = getCatalog(await getLocale());
-  const categories = catalog.getCategories().filter((category) => category.productCount > 0).slice(0, 4);
+  const categories = catalog.products.getCategories().filter((category) => category.productCount > 0).slice(0, 4);
 
   return (
     <Container as="section" className="relative isolate flex min-h-[65vh] flex-col justify-center overflow-hidden py-24">

@@ -9,6 +9,7 @@ type Rule = {
 
 const sourceRoot = resolve(process.cwd(), "src");
 const importPattern = /(?:import|export)\s+(?:type\s+)?(?:[\s\S]*?\s+from\s+)?["']([^"']+)["']/g;
+const serviceClassPattern = /export class \w+ implements I\w+/g;
 
 const rules: Rule[] = [
   { directory: "core", forbidden: ["@/data", "@/components", "@/app", "@/hooks", "@/store"] },
@@ -88,5 +89,16 @@ describe("katman bağımlılıkları", () => {
         .map(({ path, line }) => `${relative(sourceRoot, file)}:${line} → ${path}`),
     );
     expect(violations, `types bağımlılık ihlalleri:\n${violations.join("\n")}`).toEqual([]);
+  });
+
+  it("her katalog servisi tek bir dar arayüz uygular", () => {
+    const services = sourceFiles(join(sourceRoot, "core", "services"));
+    for (const service of services) {
+      const content = readFileSync(service, "utf8");
+      const exportedClasses = content.match(/export class \w+/g) ?? [];
+      const implementations = content.match(serviceClassPattern) ?? [];
+      expect(exportedClasses, relative(sourceRoot, service)).toHaveLength(1);
+      expect(implementations, relative(sourceRoot, service)).toHaveLength(1);
+    }
   });
 });

@@ -24,7 +24,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/icerik/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const document = isLegalSlug(slug) ? getCatalog(await getLocale()).getLegalDocument(slug) : null;
+  const document = isLegalSlug(slug) ? getCatalog(await getLocale()).site.getLegalDocument(slug) : null;
   if (!document) return {};
   return pageMetadata({ title: document.title, path: `/icerik/${document.slug}`, noindex: document.approvalPending });
 }
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps<"/icerik/[slug]">):
 export default async function LegalPage({ params }: PageProps<"/icerik/[slug]">) {
   const t = await getTranslations();
   const { slug } = await params;
-  const document = isLegalSlug(slug) ? getCatalog(await getLocale()).getLegalDocument(slug) : null;
+  const document = isLegalSlug(slug) ? getCatalog(await getLocale()).site.getLegalDocument(slug) : null;
   if (!document) notFound();
 
   return (
