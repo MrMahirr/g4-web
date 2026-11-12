@@ -215,6 +215,11 @@ export interface QuoteLine {
 
 export type InquiryType = "siparis" | "bilgi" | "soru";
 
+export interface InquiryRequest {
+  type: InquiryType | null;
+  product: QuoteLine | null;
+}
+
 /** Ürün sayfasından iletişim formuna taşınan tek ürün talebi. */
 export interface InquiryDraft {
   type: InquiryType;

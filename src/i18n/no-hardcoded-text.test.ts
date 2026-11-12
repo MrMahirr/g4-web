@@ -47,7 +47,6 @@ const textObjectKeys = new Set(["label", "title", "description", "alt", "placeho
 const turkishAllowedFiles: Record<string, string> = {
   [join("core", "container.ts")]: "geliştiriciye yönelik hata mesajı",
   [join("hooks", "useCatalogSummary.ts")]: "geliştiriciye yönelik hata mesajı",
-  [join("core", "services", "InquiryService.ts")]: "Faz 7 form endpoint doğrulaması, henüz arayüze bağlı değil",
   [join("lib", "structured-data.ts")]: "schema.org adres değerleri (ülke adı)",
 };
 

@@ -84,7 +84,8 @@
     "remove": "Listeden çıkar",
     "added": "Teklif listesine eklendi",
     "updated": "Teklif listesi güncellendi",
-    "removed": "Listeden çıkarıldı"
+    "removed": "Listeden çıkarıldı",
+    "cleared": "Teklif listesi temizlendi"
   },
   "inquiry": {
     "labels": {
@@ -130,6 +131,7 @@
       "email": "Geçerli bir e-posta adresi girin.",
       "phone": "Geçerli bir telefon numarası girin.",
       "messageShort": "Mesajınız en az 10 karakter olmalı.",
+      "productRequired": "Ürün seçilmelidir.",
       "kvkk": "Devam etmek için onay vermeniz gerekir.",
       "cvType": "Yalnız PDF, DOC veya DOCX dosyası seçebilirsiniz.",
       "cvSize": "Dosya en fazla 5 MB olabilir."

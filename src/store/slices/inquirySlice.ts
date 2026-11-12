@@ -1,17 +1,12 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { InquiryType, QuoteLine } from "@/core/types";
+import type { InquiryRequest, InquiryType, QuoteLine } from "@/core/types";
 
 /**
  * Ürün sayfasından iletişim formuna taşınan talep.
  * - "siparis": form, teklif listesindeki tüm ürünleri taşır (liste quoteCart'tadır).
  * - "bilgi" / "soru": yalnız `product` alanındaki tek ürün hakkındadır; listeye eklenmez.
  */
-export interface InquiryState {
-  type: InquiryType | null;
-  product: QuoteLine | null;
-}
-
-const initialState: InquiryState = { type: null, product: null };
+const initialState: InquiryRequest = { type: null, product: null };
 
 const inquirySlice = createSlice({
   name: "inquiry",

@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { UnderlineLink, underlineLinkClass } from "@/components/ui/UnderlineLink";
 import type { ImageEntry, InquiryType, QuoteUnit } from "@/core/types";
+import { isOrderInquiry } from "@/core/inquiry";
 import { routes } from "@/data/navigation.data";
 import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
 import { useInquiry } from "@/hooks/useInquiry";
@@ -47,19 +48,11 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
 
   const request = (type: InquiryType) => {
     const line = { productSlug: product.slug, qty, unit };
-    switch (type) {
-      case "siparis":
-        cart.upsert(line);
-        inquiry.requestOrder();
-        break;
-      case "bilgi":
-      case "soru":
-        inquiry.askAboutProduct({ ...line, ref: product.code, type });
-        break;
-      default: {
-        const exhaustive: never = type;
-        return exhaustive;
-      }
+    if (isOrderInquiry(type)) {
+      addToList();
+      inquiry.requestOrder();
+    } else {
+      inquiry.askAboutProduct({ ...line, ref: product.code, type });
     }
     router.push(routes.contactForm);
   };

@@ -6,9 +6,11 @@ import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/Button";
+import { useContactSender } from "@/components/forms/ContactSenderProvider";
 import { Field, Textarea, TextInput } from "@/components/ui/Field";
 import { Tag } from "@/components/ui/Tag";
 import { cn } from "@/lib/utils";
+import { composeContactBody } from "@/lib/contact/compose";
 import { createContactSchemas, type LeadValues } from "@/lib/validations/contact";
 import { CvUpload } from "./CvUpload";
 import { KvkkConsent } from "./KvkkConsent";
@@ -48,6 +50,7 @@ function schemaFor(kind: Kind, t: ReturnType<typeof useTranslations>) {
  */
 export function LeadForm({ kind, idPrefix, subject, email, tag, className }: Props) {
   const t = useTranslations();
+  const sender = useContactSender();
   const { register, handleSubmit, formState, reset, control, setValue } = useForm<LeadValues>({
     resolver: zodResolver(schemaFor(kind, t)),
     defaultValues: { name: "", email: "", phone: "", message: "", kvkk: false },
@@ -60,15 +63,19 @@ export function LeadForm({ kind, idPrefix, subject, email, tag, className }: Pro
   const [cvKey, setCvKey] = useState(0);
 
   const onSubmit = (values: LeadValues) => {
-    const body = [
-      t("i18n.mail.name", { value: values.name }),
-      t("i18n.mail.email", { value: values.email }),
-      t("i18n.mail.phone", { value: values.phone }),
-      ...(cv ? [t("i18n.mail.cv", { value: cv.name })] : []),
-      "",
-      values.message,
-    ].join("\n");
-    window.location.assign(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+    sender.send({
+      to: email,
+      subject,
+      body: composeContactBody(
+        { ...values, extra: cv ? [t("i18n.mail.cv", { value: cv.name })] : undefined },
+        values.message,
+        {
+          name: (value) => t("i18n.mail.name", value),
+          email: (value) => t("i18n.mail.email", value),
+          phone: (value) => t("i18n.mail.phone", value),
+        },
+      ),
+    });
     const description = cv ? t("i18n.mail.attachCv", { name: cv.name }) : t("i18n.mail.prepared", { email });
     toast.message(t("i18n.mail.opening"), { description, duration: cv ? 10000 : undefined });
     reset();

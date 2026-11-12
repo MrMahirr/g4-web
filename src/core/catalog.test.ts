@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { container, getCatalog } from "@/core/container";
+import { getCatalog } from "@/core/container";
 import { sarfSubGroups } from "@/content/constants";
 import { routes, sectionForPath } from "@/data/navigation.data";
 import { legacyProductSlugs } from "@/data/redirects.data";
@@ -175,21 +175,6 @@ describe("diğer içerik", () => {
       .filter(([, entry]) => !entry || !entry.src.endsWith(".webp") || !existsSync(join(process.cwd(), "public", entry.src)))
       .map(([key, entry]) => `${key} → ${entry?.src ?? "missing"}`);
     expect(missing).toEqual([]);
-  });
-});
-
-describe("talep doğrulaması", () => {
-  const inquiry = container.resolve("InquiryService");
-
-  it("geçerli taslağı kabul eder; eksik ürün ve geçersiz miktarı reddeder", () => {
-    expect(inquiry.validateDraft({ type: "bilgi", productSlug: "igneler", qty: 2, unit: "Kutu" })).toEqual({
-      ok: true,
-      value: { type: "bilgi", productSlug: "igneler", qty: 2, unit: "Kutu" },
-    });
-    expect(inquiry.validateDraft({ type: "soru", productSlug: "", qty: 0, unit: "Palet" })).toMatchObject({
-      ok: false,
-      issues: { productSlug: expect.any(String), qty: expect.any(String), unit: expect.any(String) },
-    });
   });
 });
 
