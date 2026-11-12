@@ -204,9 +204,6 @@ export function ProductDetail({ product, category, images, whatsappUrl }: Props)
           </div>
           <div className="flex flex-wrap gap-2.5">
             <Button onClick={() => request("siparis")}>{t("product.order")}</Button>
-            <Button variant="ghost" arrow="none" onClick={() => request("bilgi")}>
-              {t("common.requestInfo")}
-            </Button>
             <Button variant="ghost" arrow="none" onClick={addToList} aria-pressed={inList}>
               {inList ? `${t("product.inQuote")} ✓` : t("product.addToQuote")}
             </Button>

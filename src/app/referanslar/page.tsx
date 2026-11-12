@@ -1,6 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import { Drift } from "@/components/motion/Drift";
 import { Reveal } from "@/components/motion/Reveal";
 import { ReferenceCard } from "@/components/sections/references/ReferenceCard";
 import { ReferencesCta } from "@/components/sections/references/ReferencesCta";
@@ -8,6 +7,7 @@ import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/ui/Container";
 import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
+import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -66,11 +66,21 @@ export default async function ReferencesPage() {
       </Container>
 
       <section aria-hidden="true" className="overflow-hidden pb-section">
-        <Drift>
-          <div className="font-display text-[clamp(90px,13vw,200px)] leading-none font-extrabold tracking-[-0.06em] whitespace-nowrap text-transparent [-webkit-text-stroke:1.5px_var(--color-line)] select-none">
-            {copy("references.drift")}
-          </div>
-        </Drift>
+        {/* Kendi kendine kayan şerit: metin iki kez dizilir, animate-marquee −%50'ye kayıp başa sarar. */}
+        <div className="flex w-max animate-marquee motion-reduce:animate-none">
+          {[0, 1].map((copyIndex) => (
+            <div
+              key={copyIndex}
+              className={cn(
+                "shrink-0 pr-[0.5em] font-display text-[clamp(90px,13vw,200px)] leading-none font-extrabold",
+                "tracking-[-0.06em] whitespace-nowrap text-transparent select-none",
+                "[-webkit-text-stroke:1.5px_var(--color-line)]",
+              )}
+            >
+              {copy("references.drift")} ·
+            </div>
+          ))}
+        </div>
       </section>
     </>
   );
