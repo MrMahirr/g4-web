@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+.gitignore
+.env*
+.claude-flow
+.swarm
+.idea
+audit-screens
+gorsel-arsivi
+coverage
+lighthouse-*.json
+*.tsbuildinfo
+Dockerfile
+docker-compose.yml
+.dockerignore
+npm-debug.log*
