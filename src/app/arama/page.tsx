@@ -5,6 +5,7 @@ import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/ui/Container";
 import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
+import { buildSearchIndex } from "@/lib/search-index";
 import { SearchResults } from "./SearchResults";
 import { pageMetadata } from "@/lib/seo";
 
@@ -18,7 +19,12 @@ export default async function SearchPage() {
   const t = await getTranslations();
   const pages = await getTranslations("pages");
   const catalog = getCatalog(await getLocale());
-  const index = catalog.getSearchIndex().map((entry) => ({ ...entry, imageSrc: catalog.getImage(entry.imageKey)?.src }));
+  const index = buildSearchIndex(catalog, {
+    productFallback: t("i18n.searchIndex.productFallback"),
+    productGroup: t("i18n.searchIndex.productGroup"),
+    service: t("i18n.searchIndex.service"),
+    productRef: t("i18n.searchIndex.productRef"),
+  }).map((entry) => ({ ...entry, imageSrc: catalog.getImage(entry.imageKey)?.src }));
 
   return (
     <>

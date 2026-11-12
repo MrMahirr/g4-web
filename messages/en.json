@@ -269,6 +269,7 @@
       "productFallback": "G4 Products",
       "productGroup": "Product group · {number}",
       "service": "Service · {number}",
+      "productRef": "Ref: {code}",
       "product": "Product"
     },
     "subGroups": {

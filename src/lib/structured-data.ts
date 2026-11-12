@@ -1,7 +1,7 @@
 import type { BreadcrumbList, FAQPage, NewsArticle, Organization, Product, Service, Thing, WithContext } from "schema-dts";
-import type { Crumb } from "@/components/shared/Breadcrumb";
 import type { CompanyInfo, FaqItem, ImageEntry, NewsItem, ProductItem, ServiceItem } from "@/core/types";
 import { absoluteUrl, siteUrl } from "@/lib/seo";
+import type { Crumb } from "@/types/navigation";
 
 /** Şemalar arası bağlantı kimlikleri (ör. haberin yayıncısı = kuruluş). */
 export const schemaIds = {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { CatalogSummary } from "@/components/layout/types";
+import type { CatalogSummary } from "@/types/catalog-view";
 
 export const CATALOG_SUMMARY_URL = "/api/katalog-ozet";
 

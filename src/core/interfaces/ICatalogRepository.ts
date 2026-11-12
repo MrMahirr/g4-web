@@ -12,7 +12,7 @@ import type {
 } from "@/core/types";
 
 /**
- * Ham içerik kaynağı. Bugün yerel TS dosyaları (StaticCatalogRepository);
+ * Ham içerik kaynağı. Bugün yerel TS dosyaları (JsonCatalogRepository);
  * yarın REST/CMS olursa yalnız bu arayüzün yeni bir uygulaması yazılır, servis ve arayüz değişmez.
  */
 export interface ICatalogRepository {

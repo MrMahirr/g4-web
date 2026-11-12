@@ -9,7 +9,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useMemo } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
-import type { QuoteProductInfo } from "@/components/layout/types";
+import type { QuoteProductInfo } from "@/types/catalog-view";
 import { KvkkConsent } from "@/components/forms/KvkkConsent";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";

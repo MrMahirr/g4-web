@@ -16,7 +16,7 @@ import { useQuoteCart } from "@/hooks/useQuoteCart";
 import { EASE_SOFT } from "@/lib/utils";
 import { useCatalogSummary } from "@/hooks/useCatalogSummary";
 import { useReturnFocus } from "@/hooks/useReturnFocus";
-import type { QuoteProductInfo } from "./types";
+import type { QuoteProductInfo } from "@/types/catalog-view";
 
 const NO_PRODUCTS: QuoteProductInfo[] = [];
 

@@ -10,7 +10,6 @@ import type {
   ProductQuery,
   ReferenceItem,
   SarfSubGroup,
-  SearchEntry,
   ServiceItem,
 } from "@/core/types";
 
@@ -19,7 +18,6 @@ export interface ICatalogService {
   getCompany(): CompanyInfo;
 
   getServices(): ServiceItem[];
-  getHomeServices(): ServiceItem[];
   getServiceBySlug(slug: string): ServiceItem | null;
 
   /** Ürün sayısıyla birlikte, menü sırasıyla. */
@@ -49,6 +47,4 @@ export interface ICatalogService {
 
   getImage(key: ImageKey | undefined): ImageEntry | null;
 
-  /** Arama katmanına gönderilen hafif dizin (ürün + ürün grubu + hizmet). */
-  getSearchIndex(): SearchEntry[];
 }

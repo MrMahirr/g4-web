@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { makeStore } from "@/store";
+import { MAX_QTY } from "@/core/types";
 import { inquiryCleared, orderRequested, productAsked, selectInquiry } from "@/store/slices/inquirySlice";
 import {
   cartCleared,
@@ -8,7 +9,6 @@ import {
   lineRemoved,
   lineUnitChanged,
   lineUpserted,
-  MAX_QTY,
   sanitizeLines,
   selectIsHydrated,
   selectLineCount,

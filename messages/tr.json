@@ -269,6 +269,7 @@
       "productFallback": "G4 Ürünleri",
       "productGroup": "Ürün grubu · {number}",
       "service": "Hizmet · {number}",
+      "productRef": "Ref: {code}",
       "product": "Ürün"
     },
     "subGroups": {

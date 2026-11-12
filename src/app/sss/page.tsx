@@ -44,7 +44,7 @@ export default async function FaqPage() {
       </Container>
 
       <Container as="section" className="max-w-[1100px] pb-section">
-        <CallBackCard variant="plain" />
+        <CallBackCard phone={catalog.getCompany().phone} variant="plain" />
       </Container>
     </>
   );

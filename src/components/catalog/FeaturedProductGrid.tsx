@@ -4,7 +4,7 @@ import { Picture } from "@/components/shared/Picture";
 import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
 import { AddQuoteButton } from "./AddQuoteButton";
-import type { FeaturedRow } from "./FeaturedProductList";
+import type { FeaturedRow } from "@/types/catalog-view";
 
 /** Mobil ürün ızgarası: 2 sütun, kare görselli kompakt kartlar; teklif düğmesi görselin köşesinde. */
 export function FeaturedProductGrid({ rows, className }: { rows: FeaturedRow[]; className?: string }) {

@@ -15,7 +15,8 @@ import { useSearchOverlay } from "@/hooks/useSearchOverlay";
 import type { SearchFilter } from "@/lib/catalog";
 import { cn, EASE_SOFT } from "@/lib/utils";
 import { SearchResultRow } from "./SearchResultRow";
-import type { NavLinkItem, SearchEntryWithImage } from "./types";
+import type { NavLinkItem } from "./types";
+import type { SearchEntryWithImage } from "@/types/catalog-view";
 
 const NO_ENTRIES: SearchEntryWithImage[] = [];
 

@@ -86,7 +86,7 @@ export default async function ServicesPage() {
       </Container>
 
       <Container as="section" className="pb-section">
-        <CallBackCard variant="wide" />
+        <CallBackCard phone={catalog.getCompany().phone} variant="wide" />
       </Container>
     </>
   );

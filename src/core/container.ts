@@ -54,7 +54,7 @@ export function getCatalog(locale: Locale): ICatalogService {
   if (existing) return existing;
 
   const messages = locale === "tr" ? tr : en;
-  const catalog = new CatalogService(new JsonCatalogRepository(locale), messages.i18n);
+  const catalog = new CatalogService(new JsonCatalogRepository(locale), messages.i18n.subGroups);
   catalogs.set(locale, catalog);
   return catalog;
 }

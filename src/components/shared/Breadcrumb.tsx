@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Fragment } from "react";
-
-export type Crumb = { label: string; href?: string };
+import type { Crumb } from "@/types/navigation";
 
 /** Sayfa yolu. Son öğe geçerli sayfadır ve bağlantı değildir. */
 export function Breadcrumb({ items }: { items: Crumb[] }) {

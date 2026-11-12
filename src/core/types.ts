@@ -204,6 +204,7 @@ export interface SearchEntry {
 /* ---------- Teklif listesi ve talep ---------- */
 
 export const QUOTE_UNITS = ["Adet", "Kutu", "Koli"] as const;
+export const MAX_QTY = 99_999;
 export type QuoteUnit = (typeof QUOTE_UNITS)[number];
 
 export interface QuoteLine {

@@ -14,9 +14,9 @@ import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
 import { splitSentences } from "@/lib/text";
 import { pageMetadata } from "@/lib/seo";
-import type { Crumb } from "@/components/shared/Breadcrumb";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbLd, serviceLd } from "@/lib/structured-data";
+import type { Crumb } from "@/types/navigation";
 
 /** Dikey fotoğrafların geniş kapakta hangi bölgesinin görüneceği (varsayılan: orta). */
 const heroPositions: Record<string, string> = {
@@ -113,7 +113,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
                 );
               })}
             </nav>
-            <CallBackCard variant="sidebar" />
+            <CallBackCard phone={catalog.getCompany().phone} variant="sidebar" />
           </aside>
 
           <div className="flex flex-col gap-[26px]">

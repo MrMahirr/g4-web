@@ -14,8 +14,8 @@ import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/shared/JsonLd";
-import type { Crumb } from "@/components/shared/Breadcrumb";
 import { breadcrumbLd } from "@/lib/structured-data";
+import type { Crumb } from "@/types/navigation";
 
 /** Veride olmayan adres gerçek 404 döner (Cache Components kapalıyken desteklenir). */
 export const dynamicParams = false;

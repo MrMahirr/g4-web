@@ -5,7 +5,7 @@ import { container, getCatalog } from "@/core/container";
 import { sarfSubGroups } from "@/content/constants";
 import { routes, sectionForPath } from "@/data/navigation.data";
 import { legacyProductSlugs } from "@/data/redirects.data";
-import { countByType, filterProducts, searchEntries, trLower } from "@/lib/catalog";
+import { filterProducts } from "@/lib/catalog";
 
 const catalog = getCatalog("tr");
 const products = catalog.getProducts();
@@ -115,7 +115,6 @@ describe("katalog sorguları", () => {
 describe("diğer içerik", () => {
   it("4 hizmet, 7 referans, 4 haber, 5 SSS", () => {
     expect(catalog.getServices()).toHaveLength(4);
-    expect(catalog.getHomeServices()).toHaveLength(2);
     expect(catalog.getReferences()).toHaveLength(7);
     expect(catalog.getHomeReferences()).toHaveLength(5);
     expect(catalog.getNews()).toHaveLength(4);
@@ -175,40 +174,6 @@ describe("talep doğrulaması", () => {
       ok: false,
       issues: { productSlug: expect.any(String), qty: expect.any(String), unit: expect.any(String) },
     });
-  });
-});
-
-describe("site içi arama", () => {
-  const index = catalog.getSearchIndex();
-
-  it("dizin 68 ürün + 7 ürün grubu + 4 hizmet içerir", () => {
-    expect(index).toHaveLength(79);
-  });
-
-  it("eşleşen kısmı ayırır ve türlere göre sayar", () => {
-    const hits = searchEntries(index, "tekstil");
-    const counts = countByType(hits);
-    expect(counts.all).toBe(hits.length);
-    expect(counts.urun).toBe(1);
-    expect(counts.grup).toBe(1);
-    expect(counts.hizmet).toBe(1);
-    const hit = hits.find((item) => item.entry.type === "grup");
-    expect(`${hit?.pre}|${hit?.hit}|${hit?.post}`).toBe("Hastane |Tekstil|i");
-  });
-
-  it("Ref koduyla bulur; eşleşme adda değilse vurgu boş kalır", () => {
-    const hits = searchEntries(index, "01-040v");
-    expect(hits).toHaveLength(2);
-    expect(hits[0].hit).toBe("");
-    expect(hits[0].pre).toBe(hits[0].entry.name);
-  });
-
-  it("boş sorguda sonuç dönmez", () => {
-    expect(searchEntries(index, "  ")).toEqual([]);
-  });
-
-  it("trLower Türkçe İ/I dönüşümünü doğru yapar", () => {
-    expect(trLower("IŞIK İĞNE")).toBe("ışık iğne");
   });
 });
 

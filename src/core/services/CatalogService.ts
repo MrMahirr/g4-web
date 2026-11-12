@@ -6,26 +6,15 @@ import type {
   ProductCategoryWithCount,
   ProductItem,
   ProductQuery,
-  SearchEntry,
 } from "@/core/types";
 import { SARF_CATEGORY_SLUG, sarfSubGroups } from "@/content/constants";
-import { routes } from "@/data/navigation.data";
-import { filterProducts, pad2, trLower } from "@/lib/catalog";
-
-type CatalogLabels = {
-  searchIndex: {
-    productFallback: string;
-    productGroup: string;
-    service: string;
-  };
-  subGroups: Record<string, string>;
-};
+import { filterProducts } from "@/lib/catalog";
 
 /** İçerik sorguları. Veri kaynağını bilmez; yalnız ICatalogRepository ile konuşur. */
 export class CatalogService implements ICatalogService {
   constructor(
     private readonly repository: ICatalogRepository,
-    private readonly labels: CatalogLabels,
+    private readonly subGroupLabels: Record<string, string>,
   ) {}
 
   getCompany() {
@@ -36,10 +25,6 @@ export class CatalogService implements ICatalogService {
 
   getServices() {
     return this.repository.getServices();
-  }
-
-  getHomeServices() {
-    return this.getServices().filter((service) => service.isFeaturedOnHome);
   }
 
   getServiceBySlug(slug: string) {
@@ -65,7 +50,7 @@ export class CatalogService implements ICatalogService {
     const inCategory = this.getProducts({ categorySlug });
     return sarfSubGroups.map((group) => ({
       ...group,
-      title: this.labels.subGroups[group.slug],
+      title: this.subGroupLabels[group.slug],
       productCount: inCategory.filter((product) => product.subGroup === group.slug).length,
     }));
   }
@@ -141,33 +126,4 @@ export class CatalogService implements ICatalogService {
     return key ? this.repository.getImage(key) : null;
   }
 
-  getSearchIndex(): SearchEntry[] {
-    const productEntries: SearchEntry[] = this.repository.getProducts().map((product) => ({
-      type: "urun",
-      name: product.name,
-      meta: product.code ? `Ref: ${product.code}` : this.labels.searchIndex.productFallback,
-      href: routes.product(product.slug),
-      imageKey: product.imageKey,
-      haystack: trLower(`${product.title} ${product.code ?? ""}`),
-    }));
-
-    const categoryEntries: SearchEntry[] = this.repository.getCategories().map((category, index) => ({
-      type: "grup",
-      name: category.title,
-      meta: this.labels.searchIndex.productGroup.replace("{number}", pad2(index + 1)),
-      href: routes.category(category.slug),
-      imageKey: category.imageKey,
-      haystack: trLower(category.title),
-    }));
-
-    const serviceEntries: SearchEntry[] = this.repository.getServices().map((service, index) => ({
-      type: "hizmet",
-      name: service.title,
-      meta: this.labels.searchIndex.service.replace("{number}", pad2(index + 1)),
-      href: routes.service(service.slug),
-      haystack: trLower(`${service.title} ${service.shortDescription}`),
-    }));
-
-    return [...productEntries, ...categoryEntries, ...serviceEntries];
-  }
 }

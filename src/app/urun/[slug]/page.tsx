@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { FeaturedProductList } from "@/components/catalog/FeaturedProductList";
 import { ProductDetail } from "@/components/catalog/ProductDetail";
 import { Enter } from "@/components/motion/Reveal";
-import { Breadcrumb, type Crumb } from "@/components/shared/Breadcrumb";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/ui/Container";
 import { UnderlineLink } from "@/components/ui/UnderlineLink";
 import { getCatalog } from "@/core/container";
@@ -14,6 +14,7 @@ import { toFeaturedRow } from "@/lib/featured";
 import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbLd, productLd } from "@/lib/structured-data";
+import type { Crumb } from "@/types/navigation";
 
 /** Veride olmayan adres gerçek 404 döner (Cache Components kapalıyken desteklenir). */
 export const dynamicParams = false;

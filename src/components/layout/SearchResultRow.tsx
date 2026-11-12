@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import type { SearchHit } from "@/lib/catalog";
 import { EASE_SOFT } from "@/lib/utils";
-import type { SearchEntryWithImage } from "./types";
+import type { SearchEntryWithImage } from "@/types/catalog-view";
 
 type Props = {
   hit: SearchHit<SearchEntryWithImage>;
