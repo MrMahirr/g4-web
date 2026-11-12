@@ -14,7 +14,6 @@ import { KvkkConsent } from "@/components/forms/KvkkConsent";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Field, Textarea, TextInput } from "@/components/ui/Field";
-import { Tag } from "@/components/ui/Tag";
 import type { InquiryType, QuoteLine } from "@/core/types";
 import { routes } from "@/data/navigation.data";
 import { useInquiry } from "@/hooks/useInquiry";
@@ -131,10 +130,9 @@ export function ContactForm({ email, products }: Props) {
         onSubmit={handleSubmit(onSubmit)}
         className="grid h-full scroll-mt-28 grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] content-start gap-x-6 gap-y-[30px] rounded-card bg-white p-[clamp(28px,4vw,56px)]"
       >
-        <div className="col-span-full flex flex-col gap-3.5">
-          <Tag>{t("common.requestInfo")}</Tag>
-          <h2 className="font-display text-[clamp(32px,3.4vw,52px)] leading-none font-bold tracking-[-0.04em]">{t("nav.contact")}</h2>
-        </div>
+        <h2 className="col-span-full font-display text-[clamp(32px,3.4vw,52px)] leading-none font-bold tracking-[-0.04em]">
+          {t("nav.contact")}
+        </h2>
 
         {type && (lines.length > 0 || legacyProduct) ? (
           <motion.div

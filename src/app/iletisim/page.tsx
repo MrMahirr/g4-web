@@ -23,7 +23,7 @@ const infoTextClass = "font-display text-[20px] leading-[1.35] font-semibold tra
 function InfoCell({ index, tag, children }: { index: number; tag: string; children: ReactNode }) {
   return (
     <Reveal index={index} className="flex flex-col gap-3 border-b border-line py-6 last:border-b-0">
-      <Tag>{tag}</Tag>
+      <Tag className="text-sm font-bold">{tag}</Tag>
       {children}
     </Reveal>
   );
