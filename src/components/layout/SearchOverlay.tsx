@@ -5,7 +5,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import { useRef, type FormEvent } from "react";
 import { routes } from "@/data/navigation.data";
 import { useCatalogSummary } from "@/hooks/useCatalogSummary";
@@ -59,7 +59,7 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
         {search.isOpen ? (
           <Dialog.Portal forceMount>
             <Dialog.Content asChild forceMount aria-describedby={undefined} onKeyDown={onKeyDown} {...returnFocus}>
-              <motion.div
+              <m.div
                 className="fixed inset-0 z-[200] overflow-auto bg-ivory/60 backdrop-blur-[14px] backdrop-saturate-[1.4]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -175,7 +175,7 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
                     <SearchSuggestions categories={categories} onSelect={close} onQuery={search.setQuery} />
                   )}
                 </div>
-              </motion.div>
+              </m.div>
             </Dialog.Content>
           </Dialog.Portal>
         ) : null}

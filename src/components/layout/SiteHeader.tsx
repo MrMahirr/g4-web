@@ -1,24 +1,31 @@
 "use client";
 import { useTranslations } from "next-intl";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Search, ShoppingBag } from "lucide-react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { m, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { G4Logo } from "@/components/shared/G4Logo";
 import { LanguageToggle } from "@/components/layout/LanguageToggle";
 import { Button } from "@/components/ui/Button";
 import { routes, sectionForPath } from "@/data/navigation.data";
 import { useOverlay } from "@/hooks/useOverlay";
 import { useHotkey } from "@/hooks/useHotkey";
+import { useLatch } from "@/hooks/useLatch";
 import { useQuoteCart } from "@/hooks/useQuoteCart";
 import { cn, EASE_SOFT } from "@/lib/utils";
-import { MobileNav } from "./MobileNav";
-import { QuoteCartDrawer } from "./QuoteCartDrawer";
-import { SearchOverlay } from "./SearchOverlay";
 import { DesktopNav } from "./header/DesktopNav";
 import { IconButton } from "./header/IconButton";
 import type { HeaderData } from "./types";
+
+const loadSearchOverlay = () => import("./SearchOverlay").then((module) => module.SearchOverlay);
+const loadMobileNav = () => import("./MobileNav").then((module) => module.MobileNav);
+const loadQuoteCartDrawer = () => import("./QuoteCartDrawer").then((module) => module.QuoteCartDrawer);
+
+const SearchOverlay = dynamic(loadSearchOverlay);
+const MobileNav = dynamic(loadMobileNav);
+const QuoteCartDrawer = dynamic(loadQuoteCartDrawer);
 
 /**
  * Yüzen kapsül header (tasarım: D4Header).
@@ -38,6 +45,13 @@ export function SiteHeader({ data }: { data: HeaderData }) {
   const mobile = useOverlay("mobileNav");
   const drawer = useOverlay("quoteCart");
   const cart = useQuoteCart();
+  // Katmanlar ilk açılışta çizilir; açılış başka bileşenden (ör. AddQuoteButton, SearchTrigger) de gelebilir.
+  const searchMounted = useLatch(search.isOpen);
+  const mobileMounted = useLatch(mobile.isOpen);
+  const drawerMounted = useLatch(drawer.isOpen);
+  const preloadSearchOverlay = () => void loadSearchOverlay();
+  const preloadMobileNav = () => void loadMobileNav();
+  const preloadQuoteCartDrawer = () => void loadQuoteCartDrawer();
 
   // Ctrl/⌘ + K her sayfada aramayı açar.
   useHotkey("k", search.open, { mod: true });
@@ -53,7 +67,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
 
       <header id="top" className="pointer-events-none fixed inset-x-0 top-4 z-[80]">
         <div className="px-4">
-          <motion.div
+          <m.div
             initial={reduceMotion ? false : { opacity: 0, y: -18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE_SOFT }}
@@ -71,10 +85,10 @@ export function SiteHeader({ data }: { data: HeaderData }) {
             <DesktopNav active={active} data={data} />
 
             <div className="flex flex-none items-center gap-3.5">
-              <IconButton label={t("search.open")} onClick={search.open}>
+              <IconButton label={t("search.open")} onClick={search.open} onPreload={preloadSearchOverlay}>
                 <Search size={19} aria-hidden="true" />
               </IconButton>
-              <IconButton label={t("quote.open")} onClick={drawer.open}>
+              <IconButton label={t("quote.open")} onClick={drawer.open} onPreload={preloadQuoteCartDrawer}>
                 <ShoppingBag size={18} aria-hidden="true" />
                 {cart.hydrated && cart.count > 0 ? (
                   <span className="absolute -top-0.5 -right-0.5 grid size-5 place-items-center rounded-full bg-ember-d font-mono text-[10px] text-white">
@@ -99,24 +113,26 @@ export function SiteHeader({ data }: { data: HeaderData }) {
                 type="button"
                 aria-label={t("nav.openMenu")}
                 onClick={mobile.open}
+                onPointerEnter={preloadMobileNav}
+                onFocus={preloadMobileNav}
                 className="hidden size-[52px] cursor-pointer place-items-center rounded-btn bg-ember text-white max-nav:grid"
               >
                 <Menu size={22} aria-hidden="true" />
               </button>
             </div>
 
-            <motion.span
+            <m.span
               aria-hidden="true"
               className="absolute inset-x-2 bottom-0 h-0.5 origin-left bg-ember"
               style={{ scaleX: reduceMotion ? 0 : scrollYProgress }}
             />
-          </motion.div>
+          </m.div>
         </div>
       </header>
 
-      <SearchOverlay categories={data.categoryLinks} />
-      <MobileNav data={data} />
-      <QuoteCartDrawer />
+      {searchMounted ? <SearchOverlay categories={data.categoryLinks} /> : null}
+      {mobileMounted ? <MobileNav data={data} /> : null}
+      {drawerMounted ? <QuoteCartDrawer /> : null}
     </>
   );
 }

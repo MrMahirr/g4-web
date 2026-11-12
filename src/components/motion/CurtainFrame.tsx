@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useSpring, useTransform, type MotionValue } from "motion/react";
+import { m, useReducedMotion, useSpring, useTransform, type MotionValue } from "motion/react";
 import { useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { useCoverProgress } from "./useCoverProgress";
@@ -65,17 +65,17 @@ export function CurtainFrame({ children, mirrored = false, veil = true, scaleEnd
 
   return (
     <div ref={ref} className="absolute inset-0">
-      <motion.div className="absolute inset-0" style={reduceMotion ? undefined : { scale }}>
+      <m.div className="absolute inset-0" style={reduceMotion ? undefined : { scale }}>
         {children}
-      </motion.div>
+      </m.div>
       {reduceMotion || !veil ? null : (
         <div aria-hidden="true" className={cn("absolute inset-0 z-[4]", mirrored && "-scale-x-100")}>
-          <motion.span
+          <m.span
             aria-hidden="true"
             className="absolute inset-0 z-[4] backdrop-blur-[2px]"
             style={{ backgroundImage: backVeil, maskImage: backMask, WebkitMaskImage: backMask }}
           />
-          <motion.span
+          <m.span
             aria-hidden="true"
             className="absolute inset-0 z-[5]"
             style={{ backgroundImage: frontVeil, maskImage: frontMask, WebkitMaskImage: frontMask }}

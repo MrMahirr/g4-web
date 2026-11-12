@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, type MotionValue } from "motion/react";
+import { m, useReducedMotion, useScroll, type MotionValue } from "motion/react";
 import { createContext, useContext, useRef, type ReactNode } from "react";
 
 const ProgressContext = createContext<MotionValue<number> | null>(null);
@@ -28,7 +28,7 @@ export function ProgressLine() {
   const reduceMotion = useReducedMotion();
   return (
     <span aria-hidden="true" className="relative block h-0.5 w-60 bg-ink/15">
-      <motion.span
+      <m.span
         className="absolute inset-0 origin-left bg-ember"
         style={{ scaleX: reduceMotion || !progress ? 1 : progress }}
       />

@@ -4,7 +4,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Check } from "lucide-react";
 import { PiGlobeSimple } from "react-icons/pi";
 import { GB, TR } from "country-flag-icons/react/3x2";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useOptimistic, useTransition } from "react";
@@ -71,7 +71,7 @@ export function LanguageToggle() {
         >
           {options.map((option, index) => (
             <DropdownMenu.Item key={option} asChild onSelect={() => select(option)}>
-              <motion.button
+              <m.button
                 type="button"
                 disabled={pending}
                 aria-label={t(option === "tr" ? "language.turkish" : "language.english")}
@@ -83,7 +83,7 @@ export function LanguageToggle() {
                 <Flag locale={option} />
                 <span className="flex-1 font-mono tracking-[0.06em]">{code(option)}</span>
                 {current === option ? <Check size={15} aria-hidden="true" className="text-ember-d" /> : null}
-              </motion.button>
+              </m.button>
             </DropdownMenu.Item>
           ))}
         </DropdownMenu.Content>

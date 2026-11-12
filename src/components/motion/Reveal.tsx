@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { m, useInView, useReducedMotion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -84,7 +84,7 @@ export function Reveal({ children, kind = "up", index = 0, radius = 0, className
   };
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className={className}
       style={style}
@@ -93,7 +93,7 @@ export function Reveal({ children, kind = "up", index = 0, radius = 0, className
       transition={{ duration: 0.9 + end, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 import type { InquiryType, QuoteLine } from "@/core/types";
 import { routes } from "@/data/navigation.data";
@@ -31,7 +31,7 @@ export function InquiryNote({
   const locale = useLocale();
   const reduceMotion = useReducedMotion();
   return (
-    <motion.div
+    <m.div
       className="col-span-full grid grid-cols-[auto_minmax(0,1fr)] items-start gap-5 rounded-card bg-tint p-[22px] max-row:grid-cols-1"
       initial={reduceMotion ? false : { opacity: 0, clipPath: "inset(0 100% 0 0)" }}
       animate={{ opacity: 1, clipPath: "inset(0 0% 0 0)" }}
@@ -81,6 +81,6 @@ export function InquiryNote({
           <strong className="text-[15px] leading-[1.4]">{legacyProduct}</strong>
         )}
       </div>
-    </motion.div>
+    </m.div>
   );
 }

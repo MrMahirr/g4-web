@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import { X } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { G4Logo } from "@/components/shared/G4Logo";
 import { LanguageList } from "@/components/layout/LanguageToggle";
 import { routes } from "@/data/navigation.data";
@@ -38,7 +38,7 @@ export function MobileNav({ data }: { data: HeaderData }) {
         {menu.isOpen ? (
           <Dialog.Portal forceMount>
             <Dialog.Content asChild forceMount aria-describedby={undefined} {...returnFocus}>
-              <motion.div
+              <m.div
                 className="fixed inset-0 z-[90] overflow-auto bg-white px-8 pt-[120px] pb-10"
                 initial={reduceMotion ? { opacity: 0 } : { clipPath: `circle(0px at ${ORIGIN})` }}
                 animate={reduceMotion ? { opacity: 1 } : { clipPath: `circle(150% at ${ORIGIN})` }}
@@ -63,7 +63,7 @@ export function MobileNav({ data }: { data: HeaderData }) {
 
                 <nav aria-label={t("nav.main")}>
                   {groups.map((group, index) => (
-                    <motion.div
+                    <m.div
                       key={group.href}
                       initial={{ opacity: 0, y: 24 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ export function MobileNav({ data }: { data: HeaderData }) {
                           ))}
                         </div>
                       ) : null}
-                    </motion.div>
+                    </m.div>
                   ))}
                 </nav>
 
@@ -105,7 +105,7 @@ export function MobileNav({ data }: { data: HeaderData }) {
                 </p>
 
                 <LanguageList />
-              </motion.div>
+              </m.div>
             </Dialog.Content>
           </Dialog.Portal>
         ) : null}

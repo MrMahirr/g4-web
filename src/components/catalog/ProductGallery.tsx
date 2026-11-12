@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import { useState } from "react";
 import { Enter } from "@/components/motion/Reveal";
 import type { ImageEntry } from "@/core/types";
@@ -64,7 +64,7 @@ export function ProductGallery({ product, category, images }: Props) {
           {current ? <span className="sr-only">{t("i18n.productDetail.zoom")}</span> : null}
           <AnimatePresence initial={false}>
             {current ? (
-              <motion.span
+              <m.span
                 key={current.src}
                 className="absolute inset-0"
                 initial={{ opacity: 0 }}
@@ -81,7 +81,7 @@ export function ProductGallery({ product, category, images }: Props) {
                   sizes="(max-width: 960px) 100vw, 55vw"
                   className="object-contain p-[12%]"
                 />
-              </motion.span>
+              </m.span>
             ) : (
               <span className="absolute inset-0 flex items-center justify-center bg-checker font-mono text-xs tracking-[0.06em] text-muted uppercase">
                 {t("common.imagePlaceholder")}

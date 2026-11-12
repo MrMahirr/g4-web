@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { EASE_SOFT } from "@/lib/utils";
 import type { NavLinkItem } from "./types";
 
@@ -17,7 +17,7 @@ export function SearchSuggestions({ categories, onSelect, onQuery }: Props) {
   const t = useTranslations();
 
   return (
-    <motion.div
+    <m.div
       className="flex flex-col gap-7"
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
@@ -53,6 +53,6 @@ export function SearchSuggestions({ categories, onSelect, onQuery }: Props) {
           ))}
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
