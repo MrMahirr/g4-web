@@ -83,14 +83,14 @@ export function CvUpload({ id, file, onChange, className }: Props) {
           htmlFor={id}
           className={cn(
             "inline-flex min-h-10 flex-none cursor-pointer items-center gap-2 rounded-btn border border-ink/20 px-4",
-            "text-[14px] font-semibold text-ink transition-colors duration-300 hover:border-ink hover:bg-ink hover:text-white",
+            "text-[0.875rem] font-semibold text-ink transition-colors duration-300 hover:border-ink hover:bg-ink hover:text-white",
             "peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ember",
           )}
         >
           <Paperclip size={16} aria-hidden="true" />
           {t("cvChoose")}
         </label>
-        <span className={cn("flex min-w-0 flex-1 items-center gap-2 text-[15px]", file ? "text-ink" : "text-muted")}>
+        <span className={cn("flex min-w-0 flex-1 items-center gap-2 text-[0.9375rem]", file ? "text-ink" : "text-muted")}>
           {file ? <FileText size={16} aria-hidden="true" className="flex-none text-ember-d" /> : null}
           <span className="truncate" aria-live="polite">
             {file ? t("cvSelected", { name: file.name, size: sizeMb }) : t("cvEmpty")}
@@ -107,11 +107,11 @@ export function CvUpload({ id, file, onChange, className }: Props) {
           </button>
         ) : null}
       </div>
-      <p id={hintId} className="font-mono text-[11px] tracking-[0.04em] text-muted uppercase">
+      <p id={hintId} className="font-mono text-[0.6875rem] tracking-[0.04em] text-muted uppercase">
         {t("cvHint")}
       </p>
       {error ? (
-        <p id={errorId} role="alert" className="text-[13px] text-ember-d">
+        <p id={errorId} role="alert" className="text-[0.8125rem] text-ember-d">
           {error}
         </p>
       ) : null}

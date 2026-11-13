@@ -51,7 +51,7 @@ export async function Hero({ image }: { image: ImageEntry | null }) {
             ]}
           />
 
-          <Enter delay={0.8} className="flex min-h-[1.5em] w-full items-center gap-3.5 py-1 font-display text-[clamp(18px,1.6vw,22px)] font-medium">
+          <Enter delay={0.8} className="flex min-h-[1.5em] w-full items-center gap-3.5 py-1 font-display text-[clamp(1.125rem,1.6vw,1.375rem)] font-medium">
             <span aria-hidden="true" className="font-mono text-xs text-ember-d">→</span>
             <span className="sr-only">{rotating.join(", ")}</span>
             <span aria-hidden="true" className="grid h-[1.5em] min-w-0 flex-1 overflow-hidden leading-[1.5em]">

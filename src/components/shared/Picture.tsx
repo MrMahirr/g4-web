@@ -25,7 +25,7 @@ type Props = {
   /** Tarayıcıya görselin kaplayacağı genişlik ipucu. */
   sizes?: string;
   placeholderLabel?: string;
-  /** Kap boyutu (yükseklik / en-boy oranı) ve köşe yarıçapı buradan verilir: "h-[560px] rounded-btn". */
+  /** Kap boyutu (yükseklik / en-boy oranı) ve köşe yarıçapı buradan verilir: "h-[35rem] rounded-btn". */
   className?: string;
 };
 

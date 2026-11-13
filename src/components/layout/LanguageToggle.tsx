@@ -67,7 +67,7 @@ export function LanguageToggle() {
         <DropdownMenu.Content
           align="end"
           sideOffset={10}
-          className="z-[120] min-w-[168px] origin-(--radix-dropdown-menu-content-transform-origin) rounded-[8px] border border-line bg-white p-1.5 shadow-[0_24px_48px_-24px_rgb(30_48_64/0.4)] data-[state=closed]:animate-mega-out data-[state=open]:animate-mega-in motion-reduce:animate-none"
+          className="z-[120] min-w-[10.5rem] origin-(--radix-dropdown-menu-content-transform-origin) rounded-[8px] border border-line bg-white p-1.5 shadow-[0_24px_48px_-24px_rgb(30_48_64/0.4)] data-[state=closed]:animate-mega-out data-[state=open]:animate-mega-in motion-reduce:animate-none"
         >
           {options.map((option, index) => (
             <DropdownMenu.Item key={option} asChild onSelect={() => select(option)}>
@@ -78,7 +78,7 @@ export function LanguageToggle() {
                 initial={reduceMotion ? false : { opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, ease: EASE_SOFT, delay: 0.04 * index }}
-                className="flex h-10 w-full cursor-pointer items-center gap-3 rounded-btn px-3 text-left text-[14px] font-medium text-ink outline-none data-[highlighted]:bg-ink/7 data-[disabled]:cursor-wait"
+                className="flex h-10 w-full cursor-pointer items-center gap-3 rounded-btn px-3 text-left text-[0.875rem] font-medium text-ink outline-none data-[highlighted]:bg-ink/7 data-[disabled]:cursor-wait"
               >
                 <Flag locale={option} />
                 <span className="flex-1 font-mono tracking-[0.06em]">{code(option)}</span>
@@ -111,7 +111,7 @@ export function LanguageList() {
             aria-label={t(option === "tr" ? "language.turkish" : "language.english")}
             onClick={() => select(option)}
             className={cn(
-              "flex min-h-12 cursor-pointer items-center justify-center gap-2.5 rounded-btn border px-3 text-[15px] font-medium transition-colors duration-300 disabled:cursor-wait",
+              "flex min-h-12 cursor-pointer items-center justify-center gap-2.5 rounded-btn border px-3 text-[0.9375rem] font-medium transition-colors duration-300 disabled:cursor-wait",
               active ? "border-ember-d bg-ember/10 text-ink" : "border-ink/12 text-muted hover:bg-ink/5",
             )}
           >

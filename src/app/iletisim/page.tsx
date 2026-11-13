@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({ title: t("nav.contact"), description: t("i18n.meta.contact.description"), path: routes.contact });
 }
 
-const infoTextClass = "font-display text-[20px] leading-[1.35] font-semibold tracking-[-0.02em] break-words";
+const infoTextClass = "font-display text-[1.25rem] leading-[1.35] font-semibold tracking-[-0.02em] break-words";
 
 function InfoCell({ index, tag, children }: { index: number; tag: string; children: ReactNode }) {
   return (
@@ -53,13 +53,13 @@ export default async function ContactPage() {
       <Container as="section" className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 pt-lead pb-section">
         {/* Form istemcide çizilir (useSearchParams); yer tutucu da "form" çapasını taşır ki
             /iletisim#form ile doğrudan gelindiğinde tarayıcı kaydırabilsin (plan 8.7). */}
-        <Suspense fallback={<div id="form" className="min-h-[640px] scroll-mt-28 rounded-card bg-white" />}>
+        <Suspense fallback={<div id="form" className="min-h-[40rem] scroll-mt-28 rounded-card bg-white" />}>
           <ContactForm email={company.email} products={products} />
         </Suspense>
 
         <div className="relative">
           <div className="flex flex-col gap-8 lg:absolute lg:inset-0">
-            <Reveal index={1} className="relative flex min-h-[320px] flex-1 overflow-hidden rounded-card bg-tint-2 lg:min-h-0">
+            <Reveal index={1} className="relative flex min-h-[20rem] flex-1 overflow-hidden rounded-card bg-tint-2 lg:min-h-0">
               <iframe
                 src={company.address.mapsEmbedUrl}
                 title={t("i18n.contact.mapTitle", {

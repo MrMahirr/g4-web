@@ -72,7 +72,7 @@ export default async function ReferencesPage() {
             <div
               key={copyIndex}
               className={cn(
-                "shrink-0 pr-[0.5em] font-display text-[clamp(90px,13vw,200px)] leading-none font-extrabold",
+                "shrink-0 pr-[0.5em] font-display text-[clamp(5.625rem,13vw,12.5rem)] leading-none font-extrabold",
                 "tracking-[-0.06em] whitespace-nowrap text-transparent select-none",
                 "[-webkit-text-stroke:1.5px_var(--color-line)]",
               )}

@@ -58,7 +58,7 @@ export function ProductRequestBox({ product, category }: Props) {
 
   return (
     <>
-      <Enter kind="rise" delay={0.35} className="flex flex-col gap-[22px] rounded-card bg-white p-[26px]">
+      <Enter kind="rise" delay={0.35} className="flex flex-col gap-[1.375rem] rounded-card bg-white p-[1.625rem]">
         <div className="flex flex-wrap gap-5">
           <div className="flex flex-col gap-2">
             <label htmlFor="urun-miktar" className="font-mono text-xs tracking-[0.06em] text-muted uppercase">
@@ -86,7 +86,7 @@ export function ProductRequestBox({ product, category }: Props) {
         </p>
       </Enter>
 
-      <Enter kind="rise" delay={0.45} className="flex flex-wrap gap-[18px]">
+      <Enter kind="rise" delay={0.45} className="flex flex-wrap gap-[1.125rem]">
         <button
           type="button"
           onClick={() => request("soru")}

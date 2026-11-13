@@ -70,7 +70,7 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
                 <Dialog.Close
                   className={cn(
                     "fixed top-6 right-6 flex min-h-10 cursor-pointer items-center gap-2.5 rounded-full py-0 pr-1.5 pl-3.5",
-                    "text-[13px] tracking-[0.06em] text-muted transition-colors duration-200 hover:bg-ink/6 hover:text-ink",
+                    "text-[0.8125rem] tracking-[0.06em] text-muted transition-colors duration-200 hover:bg-ink/6 hover:text-ink",
                   )}
                 >
                   {t("common.close").toLocaleUpperCase(locale)}
@@ -79,7 +79,7 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
                   </i>
                 </Dialog.Close>
 
-                <div className="mx-auto flex max-w-[720px] flex-col gap-7 px-7 pt-[16vh] pb-16">
+                <div className="mx-auto flex max-w-[45rem] flex-col gap-7 px-7 pt-[16vh] pb-16">
                   <form
                     role="search"
                     onSubmit={submit}
@@ -103,7 +103,7 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
                       value={search.query}
                       onChange={(event) => search.setQuery(event.target.value)}
                       className={cn(
-                        "min-h-14 min-w-0 flex-1 border-0 bg-transparent p-0 font-display text-[clamp(26px,3.4vw,40px)] font-normal tracking-[-0.03em] text-ink outline-none",
+                        "min-h-14 min-w-0 flex-1 border-0 bg-transparent p-0 font-display text-[clamp(1.625rem,3.4vw,2.5rem)] font-normal tracking-[-0.03em] text-ink outline-none",
                         "placeholder:text-[#9AAAB6] focus-visible:outline-none [&::-webkit-search-cancel-button]:hidden",
                       )}
                     />
@@ -111,19 +111,19 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
                       <button
                         type="button"
                         onClick={() => search.setQuery("")}
-                        className="min-h-9 flex-none cursor-pointer px-1 text-[13px] text-faint hover:text-ink"
+                        className="min-h-9 flex-none cursor-pointer px-1 text-[0.8125rem] text-faint hover:text-ink"
                       >
                         {t("search.clear")}
                       </button>
                     ) : null}
-                    <span aria-hidden="true" className="flex-none rounded-btn border border-line px-[7px] py-[3px] font-mono text-[11px] text-faint">
+                    <span aria-hidden="true" className="flex-none rounded-btn border border-line px-[0.4375rem] py-[0.1875rem] font-mono text-[0.6875rem] text-faint">
                       ESC
                     </span>
                   </form>
 
                   {hasQuery ? (
-                    <div className="flex flex-col gap-[18px]">
-                      <div role="group" aria-label={t("search.filterLabel")} className="flex flex-wrap gap-[22px]">
+                    <div className="flex flex-col gap-[1.125rem]">
+                      <div role="group" aria-label={t("search.filterLabel")} className="flex flex-wrap gap-[1.375rem]">
                         {FILTERS.map((filter) => (
                           <button
                             key={filter}
@@ -137,7 +137,7 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
                             )}
                           >
                             {t(`search.filters.${filter}`)}
-                            <sup className="ml-[3px] text-[10px] text-faint">{search.counts[filter]}</sup>
+                            <sup className="ml-[0.1875rem] text-[0.625rem] text-faint">{search.counts[filter]}</sup>
                           </button>
                         ))}
                       </div>
@@ -156,12 +156,12 @@ export function SearchOverlay({ categories }: { categories: readonly NavLinkItem
                           </Link>
                         ) : null}
                         {loading ? (
-                          <p role="status" className="py-[18px] text-[15px] leading-[1.6] text-muted">
+                          <p role="status" className="py-[1.125rem] text-[0.9375rem] leading-[1.6] text-muted">
                             {t("search.loading")}
                           </p>
                         ) : null}
                         {!loading && shown.length === 0 ? (
-                          <p className="py-[18px] text-[15px] leading-[1.6] text-muted">
+                          <p className="py-[1.125rem] text-[0.9375rem] leading-[1.6] text-muted">
                             “{search.query}” {t("search.noResultsBefore")}{" "}
                             <Link href={routes.contact} onClick={close} className="font-semibold text-ink">
                               {t("search.noResultsLink")}

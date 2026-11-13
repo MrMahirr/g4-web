@@ -26,7 +26,7 @@ export function ListRow({ href, index, title, meta, description, previewSrc, tit
     <Link
       href={href}
       className={cn(
-        "group/row relative isolate grid grid-cols-[minmax(72px,auto)_minmax(0,1fr)_auto] items-center gap-6 border-b border-line py-[26px]",
+        "group/row relative isolate grid grid-cols-[minmax(4.5rem,auto)_minmax(0,1fr)_auto] items-center gap-6 border-b border-line py-[1.625rem]",
         "text-ink no-underline transition-[padding] duration-[600ms] ease-soft hover:pl-5 focus-visible:pl-5",
         "before:absolute before:inset-y-0 before:-inset-x-8 before:-z-10 before:origin-bottom before:scale-y-0 before:bg-tint before:content-['']",
         "before:transition-transform before:duration-[600ms] before:ease-soft hover:before:scale-y-100 focus-visible:before:scale-y-100",
@@ -35,25 +35,25 @@ export function ListRow({ href, index, title, meta, description, previewSrc, tit
         className,
       )}
     >
-      <span className="font-mono text-[13px] text-muted transition-colors duration-300 group-hover/row:text-ember-d">
+      <span className="font-mono text-[0.8125rem] text-muted transition-colors duration-300 group-hover/row:text-ember-d">
         {index}
       </span>
       <span className="flex min-w-0 flex-col gap-1.5">
         <strong
           className={cn(
-            "font-display text-[clamp(18px,1.8vw,24px)] leading-tight font-semibold tracking-[-0.02em]",
+            "font-display text-[clamp(1.125rem,1.8vw,1.5rem)] leading-tight font-semibold tracking-[-0.02em]",
             titleClassName,
           )}
         >
           {title}
         </strong>
         {meta ? <span className="font-mono text-xs tracking-[0.04em] opacity-70">{meta}</span> : null}
-        {description ? <span className="text-[15px] leading-relaxed opacity-75">{description}</span> : null}
+        {description ? <span className="text-[0.9375rem] leading-relaxed opacity-75">{description}</span> : null}
       </span>
       <span
         aria-hidden="true"
         className={cn(
-          "relative flex size-[52px] items-center justify-center overflow-hidden rounded-full border border-current transition-colors duration-500 ease-soft",
+          "relative flex size-[3.25rem] items-center justify-center overflow-hidden rounded-full border border-current transition-colors duration-500 ease-soft",
           "group-hover/row:border-ember group-hover/row:bg-ember group-hover/row:text-white",
           "group-focus-visible/row:border-ember group-focus-visible/row:bg-ember group-focus-visible/row:text-white",
           "max-row:hidden",
@@ -68,7 +68,7 @@ export function ListRow({ href, index, title, meta, description, previewSrc, tit
           fit="contain"
           sizes="220px"
           className={cn(
-            "pointer-events-none !absolute top-1/2 right-[120px] z-[2] h-[150px] w-[220px] -translate-y-1/2 scale-[0.6] -rotate-6 rounded-btn opacity-0",
+            "pointer-events-none !absolute top-1/2 right-[7.5rem] z-[2] h-[9.375rem] w-[13.75rem] -translate-y-1/2 scale-[0.6] -rotate-6 rounded-btn opacity-0",
             "transition-[opacity,scale,rotate] duration-700 ease-soft group-hover/row:scale-100 group-hover/row:rotate-0 group-hover/row:opacity-100",
             "max-row:hidden",
           )}

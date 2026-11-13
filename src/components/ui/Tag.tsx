@@ -19,7 +19,7 @@ export function Chip({ className, ...rest }: ComponentPropsWithoutRef<"span">) {
   return (
     <span
       {...rest}
-      className={cn("rounded-tag bg-sand px-[7px] py-0.5 font-mono text-xs tracking-[0.04em] text-ink", className)}
+      className={cn("rounded-tag bg-sand px-[0.4375rem] py-0.5 font-mono text-xs tracking-[0.04em] text-ink", className)}
     />
   );
 }

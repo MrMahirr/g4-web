@@ -41,16 +41,16 @@ export default async function ServicesPage() {
             <Link
               key={service.slug}
               href={routes.service(service.slug)}
-              className="group grid grid-cols-[90px_minmax(0,1.2fr)_minmax(0,1fr)] items-start gap-[clamp(24px,4vw,64px)] border-t border-line py-16 text-ink no-underline max-stack:grid-cols-1"
+              className="group grid grid-cols-[5.625rem_minmax(0,1.2fr)_minmax(0,1fr)] items-start gap-[clamp(1.5rem,4vw,4rem)] border-t border-line py-16 text-ink no-underline max-stack:grid-cols-1"
             >
               <Reveal>
                 <span className="block pt-3.5 font-mono text-sm text-ember-d">{String(index + 1).padStart(2, "0")}</span>
               </Reveal>
-              <div className="flex flex-col gap-[22px]">
+              <div className="flex flex-col gap-[1.375rem]">
                 <Reveal kind="skew">
                   <h2
                     className={cn(
-                      "font-display text-[clamp(34px,4.4vw,68px)] leading-[1.02] font-bold tracking-[-0.04em]",
+                      "font-display text-[clamp(2.125rem,4.4vw,4.25rem)] leading-[1.02] font-bold tracking-[-0.04em]",
                       "transition-[color,translate] duration-700 ease-soft group-hover:translate-x-3.5 group-hover:text-ember-d",
                     )}
                   >
@@ -58,14 +58,14 @@ export default async function ServicesPage() {
                   </h2>
                 </Reveal>
                 <Reveal>
-                  <p className="max-w-[560px] text-lead text-pretty text-muted">{service.shortDescription}</p>
+                  <p className="max-w-[35rem] text-lead text-pretty text-muted">{service.shortDescription}</p>
                 </Reveal>
                 <Reveal>
                   <span className="mt-2 inline-flex items-center gap-2.5 font-semibold">
                     {t("common.readMore")}
                     <span
                       aria-hidden="true"
-                      className="relative flex size-[46px] items-center justify-center overflow-hidden rounded-full bg-ink text-white transition-colors duration-500 ease-soft group-hover:bg-ember"
+                      className="relative flex size-[2.875rem] items-center justify-center overflow-hidden rounded-full bg-ink text-white transition-colors duration-500 ease-soft group-hover:bg-ember"
                     >
                       <ArrowSwap trigger="plain" />
                     </span>

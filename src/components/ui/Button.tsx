@@ -8,7 +8,7 @@ import { ArrowSwap } from "./ArrowSwap";
 const buttonVariants = cva(
   [
     "group/bt relative isolate inline-flex max-w-full cursor-pointer items-stretch overflow-hidden rounded-btn",
-    "text-[15px] font-semibold no-underline transition-colors duration-300",
+    "text-[0.9375rem] font-semibold no-underline transition-colors duration-300",
     "before:absolute before:inset-0 before:-z-10 before:origin-bottom before:scale-y-0 before:content-['']",
     "before:transition-transform before:duration-500 before:ease-soft hover:before:scale-y-100",
     "disabled:pointer-events-none disabled:opacity-50",

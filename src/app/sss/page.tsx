@@ -39,11 +39,11 @@ export default async function FaqPage() {
         image={catalog.images.getImage("hero/sorular")}
       />
 
-      <Container as="section" className="max-w-[1100px] pt-lead pb-section">
+      <Container as="section" className="max-w-[68.75rem] pt-lead pb-section">
         <FaqAccordion items={faq} />
       </Container>
 
-      <Container as="section" className="max-w-[1100px] pb-section">
+      <Container as="section" className="max-w-[68.75rem] pb-section">
         <CallBackCard phone={catalog.site.getCompany().phone} variant="plain" />
       </Container>
     </>

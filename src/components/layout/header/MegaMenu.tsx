@@ -8,8 +8,8 @@ import type { NavLinkItem } from "@/components/layout/types";
 import { cn, EASE_SOFT } from "@/lib/utils";
 
 export const navLinkClass = cn(
-  "group/nv inline-flex h-11 cursor-pointer items-center gap-1.5 rounded-btn px-[clamp(7px,0.9vw,14px)]",
-  "text-[clamp(13px,1.05vw,15px)] font-medium whitespace-nowrap text-ink no-underline transition-colors duration-300",
+  "group/nv inline-flex h-11 cursor-pointer items-center gap-1.5 rounded-btn px-[clamp(0.4375rem,0.9vw,0.875rem)]",
+  "text-[clamp(0.8125rem,1.05vw,0.9375rem)] font-medium whitespace-nowrap text-ink no-underline transition-colors duration-300",
   "hover:bg-ink/8 data-[state=open]:bg-ink/8 data-[active=true]:text-ember-d",
 );
 
@@ -46,7 +46,7 @@ export function MegaLayout({ intro, links, image }: { intro: ReactNode; links: R
     <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_minmax(0,1fr)] gap-9">
       <div className="flex flex-col justify-between gap-3.5">{intro}</div>
       {links}
-      <div className="relative min-h-[260px] overflow-hidden rounded-btn bg-sand">
+      <div className="relative min-h-[16.25rem] overflow-hidden rounded-btn bg-sand">
         {image ? <Image src={image} alt="" fill sizes="320px" className="object-cover" /> : null}
       </div>
     </div>
@@ -86,8 +86,8 @@ export function MegaLinks({ links, columns = 1, titleClassName }: {
                 "transition-[color,padding] duration-500 ease-soft hover:pl-3 hover:text-ember-d focus-visible:pl-3",
               )}
             >
-              <span className="min-w-[26px] font-mono text-xs text-muted">{String(index + 1).padStart(2, "0")}</span>
-              <span className={cn("font-display text-[22px] font-semibold tracking-[-0.02em]", titleClassName)}>
+              <span className="min-w-[1.625rem] font-mono text-xs text-muted">{String(index + 1).padStart(2, "0")}</span>
+              <span className={cn("font-display text-[1.375rem] font-semibold tracking-[-0.02em]", titleClassName)}>
                 {link.label}
               </span>
             </Link>

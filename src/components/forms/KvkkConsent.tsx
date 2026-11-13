@@ -59,7 +59,7 @@ export function KvkkConsent({ id, error, checked, onChange }: Props) {
       </div>
 
       {error ? (
-        <p id={`${id}-hata`} role="alert" className="text-[13px] text-ember-d">
+        <p id={`${id}-hata`} role="alert" className="text-[0.8125rem] text-ember-d">
           {error}
         </p>
       ) : null}
@@ -69,10 +69,10 @@ export function KvkkConsent({ id, error, checked, onChange }: Props) {
           <Dialog.Overlay className="fixed inset-0 z-[210] bg-ink/50 backdrop-blur-[2px]" />
           <Dialog.Content
             aria-describedby={undefined}
-            className="fixed top-1/2 left-1/2 z-[220] flex max-h-[min(85dvh,640px)] w-[calc(100%-32px)] max-w-[560px] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-card bg-white shadow-[0_40px_80px_-30px_rgb(30_48_64/0.5)]"
+            className="fixed top-1/2 left-1/2 z-[220] flex max-h-[min(85dvh,40rem)] w-[calc(100%-2rem)] max-w-[35rem] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-card bg-white shadow-[0_40px_80px_-30px_rgb(30_48_64/0.5)]"
           >
             <div className="flex items-center justify-between gap-4 border-b border-ink/10 px-6 py-4">
-              <Dialog.Title className="font-display text-[20px] font-semibold tracking-[-0.02em] text-ink">
+              <Dialog.Title className="font-display text-[1.25rem] font-semibold tracking-[-0.02em] text-ink">
                 {kvkk?.title ?? t("form.kvkkLink")}
               </Dialog.Title>
               <Dialog.Close

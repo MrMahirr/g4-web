@@ -41,7 +41,7 @@ export function Field({ id, label, error, className, children }: FieldProps) {
         </label>
       </div>
       {error ? (
-        <p id={`${id}-hata`} role="alert" className="text-[13px] text-ember-d">
+        <p id={`${id}-hata`} role="alert" className="text-[0.8125rem] text-ember-d">
           {error}
         </p>
       ) : null}
@@ -57,7 +57,7 @@ type SharedInputProps = {
 
 function inputClass(auto: boolean | undefined, className: string | undefined) {
   return cn(
-    "block min-h-14 w-full rounded-none border-0 border-b-[1.5px] border-line bg-transparent py-3.5 text-[17px] text-ink",
+    "block min-h-14 w-full rounded-none border-0 border-b-[1.5px] border-line bg-transparent py-3.5 text-[1.0625rem] text-ink",
     "transition-colors duration-300 outline-none focus:border-ember focus-visible:outline-none",
     "aria-invalid:border-ember-d",
     auto && "border-ember bg-linear-to-r from-ember/8 to-transparent to-70%",
@@ -102,7 +102,7 @@ export function Textarea({
       {...rest}
       aria-invalid={invalid || undefined}
       aria-describedby={describedBy(rest.id, invalid)}
-      className={inputClass(auto, cn("min-h-[130px] resize-y", className))}
+      className={inputClass(auto, cn("min-h-[8.125rem] resize-y", className))}
     />
   );
 }

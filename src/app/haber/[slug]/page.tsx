@@ -81,7 +81,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
           "pb-[min(13.75rem,25svh)]",
         )}
       >
-        <Container className="flex max-w-[1164px] flex-col gap-[30px]">
+        <Container className="flex max-w-[72.75rem] flex-col gap-[1.875rem]">
           <Enter>
             <Breadcrumb
               items={[
@@ -108,7 +108,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
         </Container>
       </section>
 
-      <Container className="relative z-[2] -mt-[170px]">
+      <Container className="relative z-[2] -mt-[10.625rem]">
         <Reveal kind="scale" radius={6} className="overflow-hidden rounded-card">
           <Picture
             src={cover?.src}
@@ -117,13 +117,13 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
             curtain
             eager
             sizes="100vw"
-            className="h-[620px] max-row:h-[360px]"
+            className="h-[38.75rem] max-row:h-[22.5rem]"
           />
         </Reveal>
       </Container>
 
       <Container as="section" className="pt-lead pb-section">
-        <div className="mx-auto grid max-w-[1100px] grid-cols-[200px_minmax(0,1fr)] items-start gap-[clamp(28px,5vw,80px)] max-[53.75rem]:grid-cols-1">
+        <div className="mx-auto grid max-w-[68.75rem] grid-cols-[12.5rem_minmax(0,1fr)] items-start gap-[clamp(1.75rem,5vw,5rem)] max-[53.75rem]:grid-cols-1">
           <NewsArticleSidebar
             publishedAt={item.publishedAt}
             locale={locale}
@@ -139,7 +139,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
                 case "lead":
                   return (
                     <Reveal key={index}>
-                      <p className="font-display text-[clamp(22px,2.2vw,28px)] leading-normal font-medium tracking-[-0.02em] text-pretty">
+                      <p className="font-display text-[clamp(1.375rem,2.2vw,1.75rem)] leading-normal font-medium tracking-[-0.02em] text-pretty">
                         {block.text}
                       </p>
                     </Reveal>
@@ -153,7 +153,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
                 case "quote":
                   return (
                     <Reveal key={index} kind="skew">
-                      <blockquote className="my-3 border-l-[3px] border-ember pl-7 font-display text-[clamp(24px,2.4vw,34px)] leading-[1.35] font-semibold tracking-[-0.025em]">
+                      <blockquote className="my-3 border-l-[0.1875rem] border-ember pl-7 font-display text-[clamp(1.5rem,2.4vw,2.125rem)] leading-[1.35] font-semibold tracking-[-0.025em]">
                         {block.text}
                       </blockquote>
                     </Reveal>
@@ -168,7 +168,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
                         placeholderLabel={t("i18n.news.gallery")}
                         curtain
                         sizes="(max-width: 860px) 100vw, 860px"
-                        className="h-[440px] rounded-card max-row:h-[280px]"
+                        className="h-[27.5rem] rounded-card max-row:h-[17.5rem]"
                       />
                     </figure>
                   );
@@ -187,7 +187,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
             index={copy("news.next").toLocaleUpperCase(locale)}
                   title={next.title}
                   titleClassName="text-2xl"
-                  className="grid-cols-[120px_minmax(0,1fr)_auto]"
+                  className="grid-cols-[7.5rem_minmax(0,1fr)_auto]"
                 />
               </div>
             ) : null}

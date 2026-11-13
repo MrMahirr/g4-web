@@ -25,13 +25,13 @@ export function SearchSuggestions({ categories, onSelect, onQuery }: Props) {
     >
       <div className="flex flex-col gap-3">
         <span className="text-xs tracking-[0.08em] text-faint uppercase">{t("search.popular")}</span>
-        <div className="flex flex-wrap items-baseline gap-x-[18px] gap-y-1.5">
+        <div className="flex flex-wrap items-baseline gap-x-[1.125rem] gap-y-1.5">
           {(t.raw("navLinks.popularSearches") as string[]).map((term) => (
             <button
               key={term}
               type="button"
               onClick={() => onQuery(term)}
-              className="cursor-pointer border-b border-transparent py-1 text-[15px] text-ink transition-colors duration-200 hover:border-ink"
+              className="cursor-pointer border-b border-transparent py-1 text-[0.9375rem] text-ink transition-colors duration-200 hover:border-ink"
             >
               {term}
             </button>
@@ -40,13 +40,13 @@ export function SearchSuggestions({ categories, onSelect, onQuery }: Props) {
       </div>
       <div className="flex flex-col gap-3">
         <span className="text-xs tracking-[0.08em] text-faint uppercase">{t("search.groups")}</span>
-        <div className="flex flex-wrap items-baseline gap-x-[18px] gap-y-1.5">
+        <div className="flex flex-wrap items-baseline gap-x-[1.125rem] gap-y-1.5">
           {categories.map((category) => (
             <Link
               key={category.href}
               href={category.href}
               onClick={onSelect}
-              className="border-b border-transparent py-1 text-[15px] text-ink no-underline transition-colors duration-200 hover:border-ink"
+              className="border-b border-transparent py-1 text-[0.9375rem] text-ink no-underline transition-colors duration-200 hover:border-ink"
             >
               {category.label}
             </Link>

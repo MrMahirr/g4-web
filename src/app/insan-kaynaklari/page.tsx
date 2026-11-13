@@ -42,7 +42,7 @@ export default async function CareerPage() {
               <div
                 key={step}
                 className={cn(
-                  "flex flex-col gap-[18px] border-r border-ink/14 pt-10 pr-8 pb-11 last:border-r-0 not-first:pl-8",
+                  "flex flex-col gap-[1.125rem] border-r border-ink/14 pt-10 pr-8 pb-11 last:border-r-0 not-first:pl-8",
                   "max-[56.25rem]:border-r-0 max-[56.25rem]:border-b max-[56.25rem]:not-first:pl-0",
                 )}
               >
@@ -58,9 +58,9 @@ export default async function CareerPage() {
 
       <Container
         as="section"
-        className="grid grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] items-start gap-[clamp(32px,6vw,96px)] py-section"
+        className="grid grid-cols-[repeat(auto-fit,minmax(min(26.25rem,100%),1fr))] items-start gap-[clamp(2rem,6vw,6rem)] py-section"
       >
-        <div className="flex flex-col gap-[22px]">
+        <div className="flex flex-col gap-[1.375rem]">
           <Reveal kind="skew">
             <h2 className="font-display text-d2 text-balance">
               {copy("career.asideTitle.before")} <span className="text-ember">{copy("career.asideTitle.accent")}</span>
@@ -74,7 +74,7 @@ export default async function CareerPage() {
           </Reveal>
         </div>
         <Reveal>
-          <div className="rounded-card bg-white p-[clamp(28px,4vw,56px)]">
+          <div className="rounded-card bg-white p-[clamp(1.75rem,4vw,3.5rem)]">
             <LeadForm kind="career" idPrefix="ik" tag={copy("career.formTag")} subject={copy("career.subject")} email={email} />
           </div>
         </Reveal>

@@ -37,7 +37,7 @@ export function DesktopNav({ active, data }: { active: NavSection | null; data: 
           <MegaLayout
             intro={
               <div className="flex flex-col gap-3.5">
-                <p className="text-[15px] leading-[1.75] text-muted">{t("mega.corporate.text")}</p>
+                <p className="text-[0.9375rem] leading-[1.75] text-muted">{t("mega.corporate.text")}</p>
               </div>
             }
             links={<MegaLinks links={corporateLinks} />}
@@ -50,7 +50,7 @@ export function DesktopNav({ active, data }: { active: NavSection | null; data: 
             intro={
               <>
                 <div className="flex flex-col gap-3.5">
-                  <p className="text-[15px] leading-[1.75] text-muted">{t("mega.services.text")}</p>
+                  <p className="text-[0.9375rem] leading-[1.75] text-muted">{t("mega.services.text")}</p>
                 </div>
                 <MegaOverviewLink href={routes.services}>{t("mega.services.allLabel")}</MegaOverviewLink>
               </>
@@ -64,14 +64,14 @@ export function DesktopNav({ active, data }: { active: NavSection | null; data: 
           <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,2.3fr)] gap-9">
             <div className="flex flex-col justify-between gap-3.5">
               <div className="flex flex-col gap-3.5">
-                <strong className="font-display text-[30px] font-bold tracking-[-0.03em]">
+                <strong className="font-display text-[1.875rem] font-bold tracking-[-0.03em]">
                   {t("mega.products.title")}
                 </strong>
-                <p className="text-[15px] leading-[1.75] text-muted">{t("mega.products.text")}</p>
+                <p className="text-[0.9375rem] leading-[1.75] text-muted">{t("mega.products.text")}</p>
               </div>
               <MegaOverviewLink href={routes.products}>{t("mega.products.allLabel")}</MegaOverviewLink>
             </div>
-            <MegaLinks links={data.categoryLinks} columns={2} titleClassName="text-[19px]" />
+            <MegaLinks links={data.categoryLinks} columns={2} titleClassName="text-[1.1875rem]" />
           </div>
         </MegaItem>
 
@@ -84,7 +84,7 @@ export function DesktopNav({ active, data }: { active: NavSection | null; data: 
         </NavigationMenu.Item>
       </NavigationMenu.List>
 
-      <div className="absolute inset-x-0 top-[calc(100%+10px)]">
+      <div className="absolute inset-x-0 top-[calc(100%+0.625rem)]">
         <NavigationMenu.Viewport
           className={cn(
             "relative h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-[8px] border border-line bg-white",

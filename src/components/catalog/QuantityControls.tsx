@@ -21,7 +21,7 @@ export function QuantityBox({ id, value, onChange, size = "md", label }: QtyProp
   const height = size === "md" ? "h-14" : "h-11";
   const button = cn(
     "flex cursor-pointer items-center justify-center text-ink transition-colors duration-200 hover:bg-tint",
-    size === "md" ? "w-[52px]" : "w-10",
+    size === "md" ? "w-[3.25rem]" : "w-10",
   );
 
   return (
@@ -42,7 +42,7 @@ export function QuantityBox({ id, value, onChange, size = "md", label }: QtyProp
           "appearance-none border-x border-line bg-transparent text-center font-display font-bold text-ink",
           "focus:outline-2 focus:-outline-offset-2 focus:outline-ember",
           "[&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]",
-          size === "md" ? "w-[72px] text-xl" : "w-14 text-base",
+          size === "md" ? "w-[4.5rem] text-xl" : "w-14 text-base",
         )}
       />
       <button type="button" aria-label={t("product.increase")} onClick={() => onChange(clamp(value + 1))} className={button}>
@@ -76,7 +76,7 @@ export function UnitSegment({ value, onChange, size = "md" }: UnitProps) {
           className={cn(
             "cursor-pointer border-l border-line font-mono text-xs tracking-[0.06em] text-ink uppercase transition-colors duration-300 first:border-l-0",
             "aria-pressed:bg-tint",
-            size === "md" ? "min-w-[72px] px-4" : "min-w-14 px-3",
+            size === "md" ? "min-w-[4.5rem] px-4" : "min-w-14 px-3",
           )}
         >
           {unit}

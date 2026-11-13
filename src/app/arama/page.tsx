@@ -30,7 +30,7 @@ export default async function SearchPage() {
         description={pages("search.lead")}
       />
       <Container as="section" className="pt-lead pb-section">
-        <Suspense fallback={<div className="mx-auto h-24 max-w-[720px]" />}>
+        <Suspense fallback={<div className="mx-auto h-24 max-w-[45rem]" />}>
           <SearchResults index={index} />
         </Suspense>
       </Container>

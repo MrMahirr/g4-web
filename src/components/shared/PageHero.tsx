@@ -72,13 +72,13 @@ export function PageHero({
           kind="ghost"
           delay={0.2}
           aria-hidden
-          className="absolute -right-[2vw] -bottom-[6vw] -z-10 font-display text-[clamp(200px,28vw,440px)] leading-[0.8] font-extrabold tracking-[-0.06em] whitespace-nowrap text-ghost select-none"
+          className="absolute -right-[2vw] -bottom-[6vw] -z-10 font-display text-[clamp(12.5rem,28vw,27.5rem)] leading-[0.8] font-extrabold tracking-[-0.06em] whitespace-nowrap text-ghost select-none"
         >
           {ghost}
         </Enter>
       ) : null}
       <Container className="flex flex-wrap items-end justify-between gap-10">
-        <div className="flex max-w-[1100px] min-w-0 flex-col gap-[30px]">
+        <div className="flex max-w-[68.75rem] min-w-0 flex-col gap-[1.875rem]">
           <Enter calmOnSiblingNav={calmOnSiblingNav}>
             <Breadcrumb items={crumbs} />
           </Enter>
@@ -103,7 +103,7 @@ export function PageHero({
           )}
           {description ? (
             <Enter kind="rise" delay={0.5} calmOnSiblingNav={calmOnSiblingNav}>
-              <p className="max-w-[640px] text-lead text-pretty text-muted">{description}</p>
+              <p className="max-w-[40rem] text-lead text-pretty text-muted">{description}</p>
             </Enter>
           ) : null}
           {children}

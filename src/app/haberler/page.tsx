@@ -43,7 +43,7 @@ export default async function NewsPage() {
         <Container as="section" className="pt-lead pb-section">
           <Link
             href={routes.newsItem(lead.slug)}
-            className="group grid grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-end gap-[clamp(28px,4vw,64px)] text-ink no-underline max-stack:grid-cols-1"
+            className="group grid grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-end gap-[clamp(1.75rem,4vw,4rem)] text-ink no-underline max-stack:grid-cols-1"
           >
             <Picture
               src={leadImage?.src}
@@ -54,14 +54,14 @@ export default async function NewsPage() {
               curtainScaleEnd={0.35}
               eager
               sizes="(max-width: 960px) 100vw, 58vw"
-              className="h-[520px] rounded-card max-row:h-[340px]"
+              className="h-[32.5rem] rounded-card max-row:h-[21.25rem]"
             />
-            <div className="flex flex-col gap-[22px] pb-2.5">
+            <div className="flex flex-col gap-[1.375rem] pb-2.5">
               <Reveal>
-                <span className="font-mono text-[13px] text-ember-d">{formatShortDate(lead.publishedAt, locale)}</span>
+                <span className="font-mono text-[0.8125rem] text-ember-d">{formatShortDate(lead.publishedAt, locale)}</span>
               </Reveal>
               <Reveal kind="skew">
-                <h2 className="font-display text-d2 text-[clamp(32px,3.6vw,54px)] transition-colors duration-400 group-hover:text-ember-d">
+                <h2 className="font-display text-d2 text-[clamp(2rem,3.6vw,3.375rem)] transition-colors duration-400 group-hover:text-ember-d">
                   {lead.title}
                 </h2>
               </Reveal>
@@ -87,8 +87,8 @@ export default async function NewsPage() {
                 title={item.title}
                 description={excerpt(item.paragraphs[0] ?? "", 90)}
                 previewSrc={catalog.images.getImage(item.imageKey)?.src ?? null}
-                titleClassName="text-[clamp(22px,2.4vw,34px)] leading-[1.15] tracking-[-0.03em]"
-                className="grid-cols-[160px_minmax(0,1fr)_auto] max-row:grid-cols-1"
+                titleClassName="text-[clamp(1.375rem,2.4vw,2.125rem)] leading-[1.15] tracking-[-0.03em]"
+                className="grid-cols-[10rem_minmax(0,1fr)_auto] max-row:grid-cols-1"
               />
             ))}
           </div>
