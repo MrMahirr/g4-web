@@ -59,7 +59,7 @@ export default async function ContactPage() {
 
         <div className="relative">
           <div className="flex flex-col gap-8 lg:absolute lg:inset-0">
-            <Reveal index={1} className="relative flex min-h-[20rem] flex-1 overflow-hidden rounded-card bg-tint-2 lg:min-h-0">
+            <Reveal index={1} className="relative flex aspect-[4/3] flex-1 overflow-hidden rounded-card bg-tint-2 lg:aspect-auto lg:min-h-0">
               <iframe
                 src={company.address.mapsEmbedUrl}
                 title={t("i18n.contact.mapTitle", {
@@ -68,7 +68,7 @@ export default async function ContactPage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
-                className="size-full border-0"
+                className="absolute inset-0 size-full border-0"
               />
               <a
                 href={company.address.mapsUrl}

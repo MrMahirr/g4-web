@@ -34,7 +34,7 @@ export async function SiteFooter({
   return (
     <footer className="relative overflow-hidden bg-tint text-ink grain">
       <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(min(12.5rem,100%),1fr))] items-start gap-x-10 gap-y-10 px-[clamp(1rem,2vw,2rem)] pt-14 pb-10 lg:grid-cols-[minmax(0,2.4fr)_1fr_1fr_1.3fr_auto]">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6 lg:col-span-1">
+        <div className="col-span-full flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6 lg:col-span-1 lg:flex-col xl:flex-row">
           <G4Logo size="footer" className="shrink-0 self-start" />
           <div className="flex min-w-0 flex-col gap-3.5">
             <Reveal kind="skew">
