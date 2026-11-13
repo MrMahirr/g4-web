@@ -18,11 +18,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({ title: t("nav.contact"), description: t("i18n.meta.contact.description"), path: routes.contact });
 }
 
-const infoTextClass = "font-display text-[1.25rem] leading-[1.35] font-semibold tracking-[-0.02em] break-words";
+const infoTextClass = "font-display text-[clamp(1rem,1.6vw,1.25rem)] leading-[1.35] font-semibold tracking-[-0.02em] break-words";
 
 function InfoCell({ index, tag, children }: { index: number; tag: string; children: ReactNode }) {
   return (
-    <Reveal index={index} className="flex flex-col gap-3 border-b border-line py-6 last:border-b-0">
+    <Reveal index={index} className="flex flex-col gap-[clamp(0.5rem,1vw,0.75rem)] border-b border-line py-[clamp(1rem,2vw,1.5rem)] last:border-b-0">
       <Tag className="text-sm font-bold">{tag}</Tag>
       {children}
     </Reveal>
@@ -50,7 +50,7 @@ export default async function ContactPage() {
         image={catalog.images.getImage("hero/iletisim")}
       />
 
-      <Container as="section" className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 pt-lead pb-section">
+      <Container as="section" className="grid grid-cols-1 items-stretch gap-[clamp(1.25rem,2.5vw,2rem)] md:grid-cols-2 pt-lead pb-section">
         {/* Form istemcide çizilir (useSearchParams); yer tutucu da "form" çapasını taşır ki
             /iletisim#form ile doğrudan gelindiğinde tarayıcı kaydırabilsin (plan 8.7). */}
         <Suspense fallback={<div id="form" className="min-h-[40rem] scroll-mt-28 rounded-card bg-white" />}>
@@ -58,8 +58,8 @@ export default async function ContactPage() {
         </Suspense>
 
         <div className="relative">
-          <div className="flex flex-col gap-8 lg:absolute lg:inset-0">
-            <Reveal index={1} className="relative flex aspect-[4/3] flex-1 overflow-hidden rounded-card bg-tint-2 lg:aspect-auto lg:min-h-0">
+          <div className="flex flex-col gap-[clamp(1.25rem,2.5vw,2rem)] md:absolute md:inset-0">
+            <Reveal index={1} className="relative flex aspect-[4/3] flex-1 overflow-hidden rounded-card bg-tint-2 md:aspect-auto md:min-h-0">
               <iframe
                 src={company.address.mapsEmbedUrl}
                 title={t("i18n.contact.mapTitle", {

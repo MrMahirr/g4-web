@@ -21,7 +21,7 @@ export function Field({ id, label, error, className, children }: FieldProps) {
     <div className={cn("flex flex-col gap-2", className)}>
       <div
         className={cn(
-          "group/field relative pt-5",
+          "group/field @container relative pt-5",
           "after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-ember after:content-['']",
           "after:transition-transform after:duration-500 after:ease-soft focus-within:after:scale-x-100",
         )}
@@ -30,7 +30,7 @@ export function Field({ id, label, error, className, children }: FieldProps) {
         <label
           htmlFor={id}
           className={cn(
-            "pointer-events-none absolute top-0 left-0 origin-left font-mono text-xs tracking-[0.06em] text-muted uppercase",
+            "pointer-events-none absolute top-0 left-0 origin-left font-mono text-[length:min(0.75rem,6.4cqi)] leading-4 tracking-[0.06em] text-muted uppercase",
             "transition-[translate,scale,color] duration-500 ease-soft motion-reduce:transition-none",
             "group-focus-within/field:text-ember-d",
             "group-has-[:placeholder-shown]/field:group-not-focus-within/field:translate-y-10",
