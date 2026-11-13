@@ -19,10 +19,16 @@ export function ContactFields({ auto, form }: Props) {
   const kvkkChecked = useWatch({ control, name: "kvkk" });
   return (
     <>
-      <Field id="iletisim-ad" label={`${t("form.name")}*`} error={errors.name?.message}>
+      {/* Küçük ekranda ad ve e-posta tam genişlik; telefon + konu yan yana. */}
+      <Field id="iletisim-ad" label={`${t("form.name")}*`} error={errors.name?.message} className="col-span-full sm:col-span-1">
         <TextInput id="iletisim-ad" autoComplete="name" invalid={Boolean(errors.name)} {...register("name")} />
       </Field>
-      <Field id="iletisim-eposta" label={`${t("form.email")}*`} error={errors.email?.message}>
+      <Field
+        id="iletisim-eposta"
+        label={`${t("form.email")}*`}
+        error={errors.email?.message}
+        className="col-span-full sm:col-span-1"
+      >
         <TextInput
           id="iletisim-eposta"
           type="email"
@@ -53,7 +59,7 @@ export function ContactFields({ auto, form }: Props) {
           id="iletisim-mesaj"
           auto={auto}
           invalid={Boolean(errors.message)}
-          className="min-h-[clamp(7.5rem,5.625rem+8.33vw,13.125rem)]"
+          className="min-h-[clamp(5.5rem,3.5rem+8.33vw,13.125rem)]"
           {...register("message")}
         />
       </Field>
@@ -63,7 +69,7 @@ export function ContactFields({ auto, form }: Props) {
         checked={kvkkChecked}
         onChange={(value) => setValue("kvkk", value, { shouldValidate: true })}
       />
-      <div className="col-span-full flex flex-wrap items-center gap-5">
+      <div className="col-span-full flex flex-wrap items-center gap-x-5 gap-y-2.5">
         <Button type="submit" disabled={isSubmitting}>
           {isSubmitting ? t("form.submitting") : t("form.submit")}
         </Button>

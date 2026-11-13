@@ -22,9 +22,9 @@ const infoTextClass = "font-display text-[clamp(1rem,0.92rem+0.35vw,1.25rem)] le
 
 const infoLinkClass = "self-start text-[clamp(0.875rem,0.82rem+0.25vw,1rem)] text-ember-d";
 
-function InfoCell({ index, tag, children }: { index: number; tag: string; children: ReactNode }) {
+function InfoCell({ index, tag, className, children }: { index: number; tag: string; className?: string; children: ReactNode }) {
   return (
-    <Reveal index={index} className="flex flex-col gap-[clamp(0.375rem,0.25rem+0.55vw,0.75rem)] border-b border-line py-[clamp(0.75rem,0.5rem+1.11vw,1.5rem)] last:border-b-0">
+    <Reveal index={index} className={cn("flex min-w-0 flex-col gap-[clamp(0.25rem,0.15rem+0.5vw,0.75rem)] py-[clamp(0.625rem,0.4rem+1.11vw,1.5rem)]", className)}>
       <Tag className="text-[clamp(0.75rem,0.7rem+0.2vw,0.875rem)] font-bold">{tag}</Tag>
       {children}
     </Reveal>
@@ -55,13 +55,13 @@ export default async function ContactPage() {
       <Container as="section" className="grid grid-cols-1 items-stretch gap-[clamp(1.25rem,2.5vw,2rem)] md:grid-cols-2 pt-lead pb-section">
         {/* Form istemcide çizilir (useSearchParams); yer tutucu da "form" çapasını taşır ki
             /iletisim#form ile doğrudan gelindiğinde tarayıcı kaydırabilsin (plan 8.7). */}
-        <Suspense fallback={<div id="form" className="min-h-[40rem] scroll-mt-28 rounded-card bg-white" />}>
+        <Suspense fallback={<div id="form" className="min-h-[30rem] scroll-mt-28 md:min-h-[40rem] rounded-card bg-white" />}>
           <ContactForm email={company.email} products={products} />
         </Suspense>
 
         <div className="relative">
           <div className="flex flex-col gap-[clamp(1.25rem,2.5vw,2rem)] md:absolute md:inset-0">
-            <Reveal index={1} className="relative flex aspect-[16/10] flex-1 overflow-hidden rounded-card bg-tint-2 md:aspect-auto md:min-h-0">
+            <Reveal index={1} className="relative flex aspect-[2/1] flex-1 overflow-hidden rounded-card bg-tint-2 md:aspect-auto md:min-h-0">
               <iframe
                 src={company.address.mapsEmbedUrl}
                 title={t("i18n.contact.mapTitle", {
@@ -82,20 +82,21 @@ export default async function ContactPage() {
               </a>
             </Reveal>
 
-            <div className="border-t border-line">
-              <InfoCell index={2} tag={t("i18n.contact.address")}>
+            {/* Adres tam genişlik; telefon ve e-posta ≥400px yan yana (küçük ekranda dikey uzunluğu azaltır). */}
+            <div className="grid grid-cols-2 border-t border-line">
+              <InfoCell index={2} tag={t("i18n.contact.address")} className="col-span-2 border-b border-line">
                 <p className={infoTextClass}>{company.address.full}</p>
                 <a href={company.address.mapsUrl} target="_blank" rel="noreferrer" className={cn(underlineLinkClass, infoLinkClass)}>
                   {t("common.viewOnMap")}
                 </a>
               </InfoCell>
-              <InfoCell index={3} tag={t("i18n.contact.phone")}>
+              <InfoCell index={3} tag={t("i18n.contact.phone")} className="col-span-2 border-line max-[25rem]:border-b min-[25rem]:col-span-1 min-[25rem]:pr-4">
                 <p className={infoTextClass}>{company.phone.display}</p>
                 <a href={`tel:${company.phone.tel}`} className={cn(underlineLinkClass, infoLinkClass)}>
                   {t("common.callNow")}
                 </a>
               </InfoCell>
-              <InfoCell index={4} tag={t("i18n.contact.email")}>
+              <InfoCell index={4} tag={t("i18n.contact.email")} className="col-span-2 border-line min-[25rem]:col-span-1 min-[25rem]:border-l min-[25rem]:pl-4">
                 <p className={infoTextClass}>{company.email}</p>
                 <a href={`mailto:${company.email}`} className={cn(underlineLinkClass, infoLinkClass)}>
                   {t("common.sendEmail")}
