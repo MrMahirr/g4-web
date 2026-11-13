@@ -44,6 +44,8 @@
   --radius-btn: 4px;
   --radius-card: 6px;
   --container-site: 1320px;
+  /* Yüzen header yüksekliği: 390px → 64px, 1440px → 72px (kaydırınca 8px daralır). */
+  --spacing-header: clamp(4rem, 3.5rem + 1.25vw, 4.5rem);
   /* Anasayfa bölümleri arası dikey ritim: 390px → 72px, 1440px → 120px. Her bölüm yalnız alt boşluk taşır. */
   --spacing-section: clamp(4.5rem, 8.3334vw, 7.5rem);
   /* İç sayfa ritmi: hero sonrası ilk bölümün üst boşluğu · hero üst/alt boşluğu (başlık sabit menünün altında kalır). */
