@@ -41,9 +41,9 @@ export function SearchResultRow({ hit, position, onSelect }: Props) {
             <b className="font-semibold text-ember-d">{hit.hit}</b>
             {hit.post}
           </span>
-          <span className="text-[13px] text-faint">{hit.entry.meta}</span>
+          <span className="truncate text-[13px] text-faint">{hit.entry.meta}</span>
         </span>
-        <span className="flex-none text-xs text-faint">{t(hit.entry.type)}</span>
+        <span className="flex-none text-xs text-faint max-[25rem]:hidden">{t(hit.entry.type)}</span>
         <ArrowRight
           size={16}
           aria-hidden="true"

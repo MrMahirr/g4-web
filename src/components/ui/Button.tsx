@@ -7,7 +7,7 @@ import { ArrowSwap } from "./ArrowSwap";
 /** Tasarım D düğmesi: köşeli, ok kutulu; üzerine gelince zıt renk alttan dolar. */
 const buttonVariants = cva(
   [
-    "group/bt relative isolate inline-flex cursor-pointer items-stretch overflow-hidden rounded-btn",
+    "group/bt relative isolate inline-flex max-w-full cursor-pointer items-stretch overflow-hidden rounded-btn",
     "text-[15px] font-semibold no-underline transition-colors duration-300",
     "before:absolute before:inset-0 before:-z-10 before:origin-bottom before:scale-y-0 before:content-['']",
     "before:transition-transform before:duration-500 before:ease-soft hover:before:scale-y-100",
@@ -60,7 +60,9 @@ export function Button(props: LinkButtonProps | NativeButtonProps) {
   const classes = cn(buttonVariants({ variant, size }), className);
   const content = (
     <>
-      <span className="flex items-center px-6 whitespace-nowrap">{children}</span>
+      <span className="flex min-w-0 items-center px-6 whitespace-nowrap max-sm:py-3 max-sm:whitespace-normal">
+        {children}
+      </span>
       {arrow !== "none" ? (
         <span className={arrowBoxVariants({ variant, size })}>
           <ArrowSwap trigger="bt" direction={arrow} size={arrow === "right" ? 18 : 16} />

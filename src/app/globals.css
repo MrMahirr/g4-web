@@ -24,19 +24,19 @@
   --color-wine: #8e1b26; /* hover, ikincil vurgu */
 
   /* Yazı ölçeği: text-d1 / text-d2 / text-d3 / text-lead */
-  --text-d1: clamp(48px, 8.4vw, 132px);
+  --text-d1: clamp(3rem, 8.4vw, 8.25rem);
   --text-d1--line-height: 0.95;
   --text-d1--letter-spacing: -0.05em;
   --text-d1--font-weight: 700;
-  --text-d2: clamp(36px, 5vw, 76px);
+  --text-d2: clamp(2.25rem, 5vw, 4.75rem);
   --text-d2--line-height: 1;
   --text-d2--letter-spacing: -0.04em;
   --text-d2--font-weight: 700;
-  --text-d3: clamp(22px, 2.2vw, 30px);
+  --text-d3: clamp(1.375rem, 2.2vw, 1.875rem);
   --text-d3--line-height: 1.15;
   --text-d3--letter-spacing: -0.025em;
   --text-d3--font-weight: 600;
-  --text-lead: clamp(18px, 1.5vw, 21px);
+  --text-lead: clamp(1.125rem, 1.5vw, 1.3125rem);
   --text-lead--line-height: 1.65;
 
   /* Biçim */
@@ -45,11 +45,11 @@
   --radius-card: 6px;
   --container-site: 1320px;
   /* Anasayfa bölümleri arası dikey ritim: 390px → 72px, 1440px → 120px. Her bölüm yalnız alt boşluk taşır. */
-  --spacing-section: clamp(72px, 8.3334vw, 120px);
+  --spacing-section: clamp(4.5rem, 8.3334vw, 7.5rem);
   /* İç sayfa ritmi: hero sonrası ilk bölümün üst boşluğu · hero üst/alt boşluğu (başlık sabit menünün altında kalır). */
-  --spacing-lead: clamp(40px, 5vw, 72px);
-  --spacing-hero-top: clamp(136px, 13.2vw, 190px);
-  --spacing-hero-bottom: clamp(56px, 6.25vw, 90px);
+  --spacing-lead: clamp(2.5rem, 5vw, 4.5rem);
+  --spacing-hero-top: max(6.75rem, min(clamp(8.5rem, 13.2vw, 11.875rem), 22svh));
+  --spacing-hero-bottom: min(clamp(3.5rem, 6.25vw, 5.625rem), 8svh);
 
   /* Kırılımlar (tasarımdaki 1080 / 960 / 760px): max-nav: · max-stack: · max-row: */
   --breakpoint-row: 47.5rem;

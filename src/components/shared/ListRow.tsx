@@ -26,12 +26,12 @@ export function ListRow({ href, index, title, meta, description, previewSrc, tit
     <Link
       href={href}
       className={cn(
-        "group/row relative isolate grid grid-cols-[72px_minmax(0,1fr)_auto] items-center gap-6 border-b border-line py-[26px]",
+        "group/row relative isolate grid grid-cols-[minmax(72px,auto)_minmax(0,1fr)_auto] items-center gap-6 border-b border-line py-[26px]",
         "text-ink no-underline transition-[padding] duration-[600ms] ease-soft hover:pl-5 focus-visible:pl-5",
         "before:absolute before:inset-y-0 before:-inset-x-8 before:-z-10 before:origin-bottom before:scale-y-0 before:bg-tint before:content-['']",
         "before:transition-transform before:duration-[600ms] before:ease-soft hover:before:scale-y-100 focus-visible:before:scale-y-100",
         "motion-reduce:transition-none motion-reduce:before:transition-none",
-        "max-row:grid-cols-[44px_minmax(0,1fr)]",
+        "max-row:grid-cols-[auto_minmax(0,1fr)]",
         className,
       )}
     >

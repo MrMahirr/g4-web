@@ -41,7 +41,7 @@ export default async function LegalPage({ params }: PageProps<"/icerik/[slug]">)
       <PageHero
         crumbs={[{ label: t("common.home"), href: routes.home }, { label: t("nav.corporate") }, { label: document.title }]}
         title={[document.title]}
-        titleClassName="text-[clamp(42px,6vw,96px)]"
+        titleClassName="text-[max(2.5rem,min(clamp(42px,6vw,96px),12svh))]"
       />
       <Container as="section" className="max-w-[860px] pt-lead pb-section">
         {document.approvalPending ? (

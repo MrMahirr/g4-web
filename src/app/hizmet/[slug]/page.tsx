@@ -77,7 +77,10 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
         crumbs={crumbs}
         title={[service.title]}
         titleMotion="rise"
-        titleClassName="max-w-[1100px] text-[clamp(42px,6vw,96px)] leading-none tracking-[-0.04em]"
+        titleClassName={cn(
+          "max-w-[1100px] text-[max(2.5rem,min(clamp(42px,6vw,96px),12svh))]",
+          "leading-none tracking-[-0.04em]",
+        )}
         description={copy("services.lead")}
         calmOnSiblingNav
         image={catalog.images.getImage(`hero/hizmet-${service.imageKey.split("/")[1]}`)}

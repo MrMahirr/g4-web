@@ -23,7 +23,7 @@ export function MaskedHeading({ lines, as: Heading = "h1", size = "d1", delay = 
       className={cn(
         // Kalınlık ve aralıklar ayrıca, en sonda yazılır: çağıran boyutu (text-[...]) değiştirse de
         // tailwind-merge satır aralığını silmez, tasarımdaki ağırlık korunur.
-        "font-display font-bold text-balance",
+        "font-display font-bold text-balance wrap-break-word hyphens-auto",
         size === "d1" ? "text-d1" : "text-d2",
         className,
         size === "d1" ? "leading-[0.95] tracking-[-0.05em]" : "leading-none tracking-[-0.04em]",

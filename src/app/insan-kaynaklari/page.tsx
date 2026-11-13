@@ -35,9 +35,9 @@ export default async function CareerPage() {
         ]}
         description={copy("career.lead")}
         image={catalog.images.getImage("hero/kariyer")}
-        className="pb-[60px]"
+        className="pb-[min(3.75rem,6svh)]"
         footer={
-          <Enter kind="rise" delay={0.7} className="mt-[50px] grid grid-cols-3 border-t border-ink/14 max-[56.25rem]:grid-cols-1">
+          <Enter kind="rise" delay={0.7} className="mt-[min(3.125rem,5svh)] grid grid-cols-3 border-t border-ink/14 max-[56.25rem]:grid-cols-1">
             {steps.map((step, index) => (
               <div
                 key={step}
@@ -46,7 +46,7 @@ export default async function CareerPage() {
                   "max-[56.25rem]:border-r-0 max-[56.25rem]:border-b max-[56.25rem]:not-first:pl-0",
                 )}
               >
-                <span aria-hidden="true" className="font-display text-[96px] leading-[0.8] font-extrabold tracking-[-0.06em] text-ember text-outline">
+                <span aria-hidden="true" className="font-display text-[min(6rem,11svh)] leading-[0.8] font-extrabold tracking-[-0.06em] text-ember text-outline">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <p className="leading-[1.75] text-pretty text-muted">{step}</p>

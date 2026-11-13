@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import type { ImageEntry } from "@/core/types";
 import { routes } from "@/data/navigation.data";
+import { cn } from "@/lib/utils";
 
 /** Anasayfa hero (tasarım: .hero2). */
 export async function Hero({ image }: { image: ImageEntry | null }) {
@@ -15,21 +16,34 @@ export async function Hero({ image }: { image: ImageEntry | null }) {
   const rotating = t.raw("rotating") as string[];
 
   return (
-    <section className="relative isolate min-h-[860px] overflow-hidden bg-white pt-[150px] pb-[72px] grain max-stack:min-h-0">
+    <section
+      className={cn(
+        "relative isolate flex min-h-svh flex-col justify-center overflow-hidden bg-white grain",
+        "pt-[max(6.75rem,min(9.375rem,18svh))] pb-[min(4.5rem,7svh)]",
+      )}
+    >
       <div aria-hidden="true" className="absolute inset-0 -z-20">
         <Picture src={image?.src} alt="" eager sizes="100vw" className="size-full" />
       </div>
       <div aria-hidden="true" className="absolute inset-0 -z-10 backdrop-blur-[10px] [mask-image:linear-gradient(to_right,black_30%,transparent_85%)] max-stack:backdrop-blur-[2px] max-stack:[mask-image:none]" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-r from-white/85 via-white/55 via-40% to-white/0 max-stack:from-white/80 max-stack:via-white/50 max-stack:via-60% max-stack:to-white/10" />
-      <Enter aria-hidden className="absolute top-[90px] -left-[4vw] -z-10 font-display text-[clamp(260px,42vw,640px)] leading-[0.8] font-extrabold tracking-[-0.06em] text-ghost [-webkit-text-stroke-color:rgb(30_48_64/0.08)] [-webkit-text-stroke-width:1.5px] select-none">
+      <Enter
+        aria-hidden
+        className={cn(
+          "absolute top-[min(5.625rem,10svh)] -left-[4vw] -z-10 font-display",
+          "text-[min(clamp(16.25rem,42vw,40rem),70svh)] leading-[0.8] font-extrabold",
+          "tracking-[-0.06em] text-ghost [-webkit-text-stroke-color:rgb(30_48_64/0.08)]",
+          "[-webkit-text-stroke-width:1.5px] select-none",
+        )}
+      >
         G4
       </Enter>
 
       <Container className="grid grid-cols-[minmax(0,7fr)_minmax(0,5fr)] items-center gap-14 max-stack:grid-cols-1">
-        <HeroAway className="flex min-w-0 flex-col items-start gap-[34px]">
+        <HeroAway className="flex min-w-0 flex-col items-start gap-[min(2.125rem,3.5svh)]">
           <MaskedHeading
             delay={0.15}
-            className="text-[clamp(44px,7.4vw,116px)]"
+            className="text-[max(2.25rem,min(clamp(2.75rem,7.4vw,7.25rem),10.5svh))]"
             lines={[
               lines[0],
               <span key="em" className="text-ember">{lines[1]}</span>,
@@ -52,11 +66,11 @@ export async function Hero({ image }: { image: ImageEntry | null }) {
             </span>
           </Enter>
 
-          <Enter kind="rise" delay={0.9}>
-            <p className="max-w-[600px] text-lead text-pretty text-muted">{t("text")}</p>
+          <Enter kind="rise" delay={0.9} className="w-full">
+            <p className="max-w-[37.5rem] text-lead text-pretty text-muted">{t("text")}</p>
           </Enter>
 
-          <Enter kind="rise" delay={1} className="flex flex-wrap gap-3">
+          <Enter kind="rise" delay={1} className="flex w-full flex-wrap gap-3">
             <Button href={routes.products} className="max-sm:w-full max-sm:justify-between">{t("primary")}</Button>
             <Button href={routes.contact} variant="ghost" className="max-sm:w-full max-sm:justify-between">{t("secondary")}</Button>
           </Enter>

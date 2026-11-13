@@ -55,7 +55,12 @@ export function PageHero({
 }: Props) {
   const headingDelay = delay;
   return (
-    <section className={cn("relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-hero-top pb-hero-bottom grain", className)}>
+    <section
+      className={cn(
+        "relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-hero-top pb-hero-bottom grain",
+        className,
+      )}
+    >
       {image ? (
         <>
           <Image src={image.src} alt="" fill priority sizes="100vw" className={cn("-z-20 object-cover", imagePosition)} />
@@ -79,12 +84,22 @@ export function PageHero({
           </Enter>
           {titleMotion === "rise" ? (
             <Enter kind="rise" delay={headingDelay} calmOnSiblingNav={calmOnSiblingNav}>
-              <h1 className={cn("font-display text-d1 leading-[0.95] font-bold tracking-[-0.05em] text-balance", titleClassName)}>
+              <h1
+                className={cn(
+                  "font-display text-d1 text-[max(2.5rem,min(var(--text-d1),12svh))] leading-[0.95]",
+                  "font-bold tracking-[-0.05em] text-balance wrap-break-word hyphens-auto",
+                  titleClassName,
+                )}
+              >
                 {title}
               </h1>
             </Enter>
           ) : (
-            <MaskedHeading lines={title} delay={headingDelay} className={titleClassName} />
+            <MaskedHeading
+              lines={title}
+              delay={headingDelay}
+              className={cn("text-[max(2.5rem,min(var(--text-d1),12svh))]", titleClassName)}
+            />
           )}
           {description ? (
             <Enter kind="rise" delay={0.5} calmOnSiblingNav={calmOnSiblingNav}>

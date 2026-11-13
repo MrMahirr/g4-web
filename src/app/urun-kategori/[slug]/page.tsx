@@ -13,6 +13,7 @@ import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
+import { breakAfterSlash } from "@/lib/text";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbLd } from "@/lib/structured-data";
 import type { Crumb } from "@/types/navigation";
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: PageProps<"/urun-kategori/[sl
 
 /** Başlığı iki satıra böler: son kelime kor renkli satır olur (tasarım: "Bipolar / Forceps"). */
 function splitTitle(title: string) {
-  const words = title.split(" ");
+  const words = breakAfterSlash(title).split(" ");
   const last = words.pop() ?? title;
   const accent = (
     <span key="em" className="text-ember">

@@ -44,7 +44,7 @@ export function ServiceShowcase({ items, interval = 5000 }: Props) {
 
   return (
     <div
-      className="grid grid-cols-[minmax(0,6fr)_minmax(0,5fr)] items-stretch gap-[clamp(32px,6vw,96px)] max-stack:grid-cols-1"
+      className="grid grid-cols-[minmax(0,6fr)_minmax(0,5fr)] items-stretch gap-[clamp(2rem,6vw,6rem)] max-stack:grid-cols-1"
       onMouseLeave={() => setPaused(false)}
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-btn bg-sand max-stack:aspect-[16/11]">
@@ -101,7 +101,7 @@ export function ServiceShowcase({ items, interval = 5000 }: Props) {
                 <span className="flex flex-col gap-3">
                   <span
                     className={cn(
-                      "font-display text-[clamp(22px,2.2vw,30px)] leading-[1.15] font-semibold tracking-[-0.03em] transition-colors duration-500",
+                      "font-display text-[clamp(1.375rem,2.2vw,1.875rem)] leading-[1.15] font-semibold tracking-[-0.03em] transition-colors duration-500",
                       isActive ? "text-ink" : "text-muted",
                     )}
                   >
@@ -114,7 +114,7 @@ export function ServiceShowcase({ items, interval = 5000 }: Props) {
                     )}
                   >
                     <span className="overflow-hidden">
-                      <span className="block max-w-[460px] leading-[1.7] text-pretty text-muted">{item.description}</span>
+                      <span className="block max-w-[28.75rem] leading-[1.7] text-pretty text-muted">{item.description}</span>
                     </span>
                   </span>
                 </span>

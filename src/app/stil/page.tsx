@@ -125,7 +125,9 @@ export default function StyleGuidePage() {
           </div>
           <div className="border-t border-line">
             <TypeRow label="Display · text-d1" spec="clamp(48px, 8.4vw, 132px)">
-              <span className="font-display text-d1 !text-[76px]">Güvenilir Çözümler</span>
+              <span className="font-display text-d1 !text-[clamp(2.75rem,5.2778vw,4.75rem)]">
+                Güvenilir Çözümler
+              </span>
             </TypeRow>
             <TypeRow label="Başlık · text-d2" spec="clamp(36px, 5vw, 76px)">
               <span className="font-display text-d2 !text-[50px]">Ürün Grupları</span>

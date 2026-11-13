@@ -13,6 +13,7 @@ import { getCatalog } from "@/core/container";
 import type { ImageEntry } from "@/core/types";
 import { routes } from "@/data/navigation.data";
 import { articleBlocks, excerpt, splitInTwo } from "@/lib/text";
+import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbLd, newsArticleLd } from "@/lib/structured-data";
@@ -74,7 +75,12 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
       />
       <ReadingProgress />
 
-      <section className="relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-hero-top pb-[220px] grain">
+      <section
+        className={cn(
+          "relative isolate overflow-hidden bg-linear-170 from-white to-tint pt-hero-top grain",
+          "pb-[min(13.75rem,25svh)]",
+        )}
+      >
         <Container className="flex max-w-[1164px] flex-col gap-[30px]">
           <Enter>
             <Breadcrumb
@@ -87,7 +93,7 @@ export default async function NewsArticlePage({ params }: PageProps<"/haber/[slu
           <MaskedHeading
             size="d2"
             delay={0.15}
-            className="text-[clamp(40px,5.4vw,84px)]"
+            className="text-[max(2.5rem,min(clamp(2.5rem,5.4vw,5.25rem),12svh))]"
             lines={
               secondLine
                 ? [
