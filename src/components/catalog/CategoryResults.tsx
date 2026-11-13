@@ -35,7 +35,7 @@ function toSort(value: string | null): ProductSort {
 const toCard = ({ slug, name, code, imageSrc }: CategoryProduct): ProductCard => ({ slug, name, code, imageSrc });
 
 const indexClass = cn(
-  "flex min-h-11 cursor-pointer items-baseline justify-between gap-3 border-b border-line bg-transparent px-1 py-2.5 text-left text-[15px] text-ink",
+  "flex min-h-11 cursor-pointer items-baseline justify-between gap-3 border-b border-line bg-transparent px-1 py-2.5 text-left text-[0.9375rem] text-ink",
   "transition-colors duration-300 hover:text-ember-d aria-pressed:border-b-2 aria-pressed:border-ember aria-pressed:font-bold",
   "max-stack:border max-stack:px-3 max-stack:aria-pressed:border-2",
 );
@@ -75,7 +75,7 @@ export function CategoryResults({ products, subGroups }: Props) {
   const hasSidebar = subGroups.length > 0;
 
   return (
-    <div className={cn("grid gap-12", hasSidebar && "grid-cols-[240px_1fr] max-stack:grid-cols-1")}>
+    <div className={cn("grid gap-12", hasSidebar && "grid-cols-[15rem_1fr] max-stack:grid-cols-1")}>
       {hasSidebar ? (
         <aside className="self-start min-[60.0625rem]:sticky min-[60.0625rem]:top-28">
           <h2 className="mb-2 border-b-2 border-ink pb-3 font-mono text-xs tracking-[0.12em] uppercase">{t("i18n.catalog.subGroups")}</h2>
@@ -96,7 +96,7 @@ export function CategoryResults({ products, subGroups }: Props) {
 
       <div className="flex min-w-0 flex-col gap-8">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-ink pb-4">
-          <span className="font-mono text-[13px] tracking-[0.04em] text-muted" aria-live="polite">
+          <span className="font-mono text-[0.8125rem] tracking-[0.04em] text-muted" aria-live="polite">
             {String(filtered.length).padStart(2, "0")} {countLabel}
           </span>
 
@@ -109,7 +109,7 @@ export function CategoryResults({ products, subGroups }: Props) {
                 value={query}
                 placeholder={t("product.searchInCategory")}
                 onChange={(event) => update("q", event.target.value)}
-                className="w-[200px] min-w-0 bg-transparent text-[15px] text-ink outline-none placeholder:text-faint focus-visible:outline-none"
+                className="w-[12.5rem] min-w-0 bg-transparent text-[0.9375rem] text-ink outline-none placeholder:text-faint focus-visible:outline-none"
               />
             </label>
 

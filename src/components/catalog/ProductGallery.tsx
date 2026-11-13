@@ -30,8 +30,8 @@ export function ProductGallery({ product, category, images }: Props) {
       {/* Galeri */}
       <Enter
         className={cn(
-          "sticky top-[110px] grid gap-3.5 max-stack:static",
-          hasThumbs && "grid-cols-[96px_minmax(0,1fr)] max-stack:grid-cols-1",
+          "sticky top-[6.875rem] grid gap-3.5 max-stack:static",
+          hasThumbs && "grid-cols-[6rem_minmax(0,1fr)] max-stack:grid-cols-1",
         )}
       >
         {hasThumbs ? (
@@ -92,13 +92,13 @@ export function ProductGallery({ product, category, images }: Props) {
             // Kategori sayfa yolunda ve bilgi sütununda da var; düğme adına karışmasın.
             <span
               aria-hidden="true"
-              className="absolute top-4 left-4 rounded-tag bg-tint px-2.5 py-1.5 font-mono text-[11px] tracking-[0.04em] text-ink uppercase"
+              className="absolute top-4 left-4 rounded-tag bg-tint px-2.5 py-1.5 font-mono text-[0.6875rem] tracking-[0.04em] text-ink uppercase"
             >
               {category.title}
             </span>
           ) : null}
           {current?.representative ? (
-            <span className="absolute bottom-4 left-4 rounded-tag bg-white/90 px-2.5 py-1.5 font-mono text-[11px] tracking-[0.04em] text-muted uppercase">
+            <span className="absolute bottom-4 left-4 rounded-tag bg-white/90 px-2.5 py-1.5 font-mono text-[0.6875rem] tracking-[0.04em] text-muted uppercase">
               {t("common.representativeImage")}
             </span>
           ) : null}

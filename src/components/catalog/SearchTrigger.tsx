@@ -12,14 +12,14 @@ export function SearchTrigger({ label, className }: { label: string; className?:
       type="button"
       onClick={search.open}
       className={cn(
-        "group/st flex w-full max-w-[460px] cursor-pointer items-center gap-4 border-b border-ink/30 pb-3.5 text-left text-faint",
+        "group/st flex w-full max-w-[28.75rem] cursor-pointer items-center gap-4 border-b border-ink/30 pb-3.5 text-left text-faint",
         "transition-colors duration-300 hover:border-ink hover:text-ink",
         className,
       )}
     >
       <Search size={20} strokeWidth={1.8} aria-hidden="true" />
       <span className="flex-1 font-display text-xl tracking-[-0.02em]">{label}</span>
-      <span aria-hidden="true" className="rounded-btn border border-line px-[7px] py-[3px] font-mono text-[11px]">
+      <span aria-hidden="true" className="rounded-btn border border-line px-[0.4375rem] py-[0.1875rem] font-mono text-[0.6875rem]">
         Ctrl K
       </span>
     </button>

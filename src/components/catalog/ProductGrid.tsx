@@ -27,7 +27,7 @@ export function ProductGrid({ products, view = "grid", animationKey = "" }: { pr
     <ul
       className={cn(
         "m-0 list-none p-0",
-        isList ? "flex flex-col gap-3" : "grid grid-cols-[repeat(auto-fill,minmax(min(280px,100%),1fr))] gap-4",
+        isList ? "flex flex-col gap-3" : "grid grid-cols-[repeat(auto-fill,minmax(min(17.5rem,100%),1fr))] gap-4",
       )}
     >
       {products.map((product, index) => (
@@ -57,7 +57,7 @@ export function ProductGrid({ products, view = "grid", animationKey = "" }: { pr
                 className="!absolute inset-0 border-0"
               />
             </div>
-            <div className={cn("flex flex-1 flex-col gap-3 p-[22px]", isList ? "border-l border-sand max-[37.5rem]:border-t max-[37.5rem]:border-l-0" : "border-t border-sand")}>
+            <div className={cn("flex flex-1 flex-col gap-3 p-[1.375rem]", isList ? "border-l border-sand max-[37.5rem]:border-t max-[37.5rem]:border-l-0" : "border-t border-sand")}>
               <span className="font-mono text-xs tracking-[0.04em] text-ember-d">
                 {product.code ? `REF: ${product.code}` : t("i18n.catalog.productsFallback")}
               </span>

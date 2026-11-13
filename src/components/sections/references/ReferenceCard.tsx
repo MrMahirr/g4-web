@@ -77,7 +77,7 @@ export function ReferenceCard({ reference, logo, photo, index, total }: Props) {
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-6">
-        <span className="font-mono text-[11px] tracking-[0.08em] text-ember-d uppercase">
+        <span className="font-mono text-[0.6875rem] tracking-[0.08em] text-ember-d uppercase">
           {reference.sectorLabel}
         </span>
         <h3

@@ -13,6 +13,7 @@ import { getCatalog } from "@/core/container";
 import { routes } from "@/data/navigation.data";
 import { cn } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
+import { breakAfterSlash } from "@/lib/text";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbLd } from "@/lib/structured-data";
 import type { Crumb } from "@/types/navigation";
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: PageProps<"/urun-kategori/[sl
 
 /** Başlığı iki satıra böler: son kelime kor renkli satır olur (tasarım: "Bipolar / Forceps"). */
 function splitTitle(title: string) {
-  const words = title.split(" ");
+  const words = breakAfterSlash(title).split(" ");
   const last = words.pop() ?? title;
   const accent = (
     <span key="em" className="text-ember">
@@ -104,7 +105,7 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
                   href={routes.category(item.slug)}
                   current={current}
                   className={cn(
-                    "relative flex min-h-14 flex-none items-center px-[18px] font-medium whitespace-nowrap text-muted no-underline",
+                    "relative flex min-h-14 flex-none items-center px-[1.125rem] font-medium whitespace-nowrap text-muted no-underline",
                     "after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:scale-x-0 after:bg-ember after:content-['']",
                     "after:transition-transform after:duration-500 after:ease-soft hover:after:scale-x-100",
                     "aria-[current=page]:font-bold aria-[current=page]:text-ink aria-[current=page]:after:scale-x-100",
@@ -128,11 +129,11 @@ export default async function CategoryPage({ params }: PageProps<"/urun-kategori
             <CategoryResults products={products} subGroups={catalog.products.getSubGroups(slug)} />
           </Suspense>
         ) : (
-          <div className="flex flex-col items-start gap-5 rounded-card bg-white p-[clamp(28px,4vw,56px)]">
-            <h2 className="max-w-[720px] font-display text-[clamp(28px,3vw,44px)] leading-[1.1] font-bold tracking-[-0.03em]">
+          <div className="flex flex-col items-start gap-5 rounded-card bg-white p-[clamp(1.75rem,4vw,3.5rem)]">
+            <h2 className="max-w-[45rem] font-display text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.1] font-bold tracking-[-0.03em]">
               {t("product.emptyCategoryTitle")}
             </h2>
-            <p className="max-w-[620px] text-lead text-muted">{t("product.emptyCategoryText")}</p>
+            <p className="max-w-[38.75rem] text-lead text-muted">{t("product.emptyCategoryText")}</p>
             <Button href={routes.contactForm}>{t("common.requestInfo")}</Button>
           </div>
         )}

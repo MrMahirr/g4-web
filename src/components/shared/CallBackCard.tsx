@@ -33,7 +33,7 @@ export async function CallBackCard({
       return (
         <div className={cn("flex flex-col gap-3.5 rounded-card bg-tint p-7", className)}>
           <Tag>{title}</Tag>
-          <p className="text-[15px] leading-[1.75] text-muted">{text}</p>
+          <p className="text-[0.9375rem] leading-[1.75] text-muted">{text}</p>
           <Button href={routes.contact} className="self-start">
             {button}
           </Button>
@@ -49,14 +49,14 @@ export async function CallBackCard({
           <div
             className={cn(
               "relative flex flex-wrap items-center justify-between gap-8 overflow-hidden rounded-card grain",
-              variant === "wide" ? "bg-tint-2 p-[clamp(32px,5vw,64px)]" : "bg-tint p-[clamp(28px,4vw,48px)]",
+              variant === "wide" ? "bg-tint-2 p-[clamp(2rem,5vw,4rem)]" : "bg-tint p-[clamp(1.75rem,4vw,3rem)]",
               className,
             )}
           >
-            <div className={cn("flex flex-col", variant === "wide" ? "max-w-[680px] gap-3.5" : "max-w-[600px] gap-2.5")}>
+            <div className={cn("flex flex-col", variant === "wide" ? "max-w-[42.5rem] gap-3.5" : "max-w-[37.5rem] gap-2.5")}>
               <Tag>{title}</Tag>
               {variant === "wide" ? (
-                <p className="font-display text-[clamp(24px,2.6vw,36px)] leading-[1.2] font-semibold tracking-[-0.03em]">{text}</p>
+                <p className="font-display text-[clamp(1.5rem,2.6vw,2.25rem)] leading-[1.2] font-semibold tracking-[-0.03em]">{text}</p>
               ) : (
                 <p className="leading-[1.75] text-muted">{text}</p>
               )}

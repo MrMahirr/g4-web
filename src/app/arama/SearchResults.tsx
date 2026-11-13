@@ -35,7 +35,7 @@ export function SearchResults({ index }: { index: SearchEntryWithImage[] }) {
   };
 
   return (
-    <div className="mx-auto flex max-w-[720px] flex-col gap-7">
+    <div className="mx-auto flex max-w-[45rem] flex-col gap-7">
       <form
         role="search"
         onSubmit={(event) => event.preventDefault()}
@@ -57,13 +57,13 @@ export function SearchResults({ index }: { index: SearchEntryWithImage[] }) {
           placeholder={t("search.placeholder")}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          className="min-h-14 min-w-0 flex-1 bg-transparent font-display text-[clamp(26px,3.4vw,40px)] tracking-[-0.03em] text-ink outline-none placeholder:text-[#9AAAB6] focus-visible:outline-none [&::-webkit-search-cancel-button]:hidden"
+          className="min-h-14 min-w-0 flex-1 bg-transparent font-display text-[clamp(1.625rem,3.4vw,2.5rem)] tracking-[-0.03em] text-ink outline-none placeholder:text-[#9AAAB6] focus-visible:outline-none [&::-webkit-search-cancel-button]:hidden"
         />
       </form>
 
       {query.trim() ? (
-        <div className="flex flex-col gap-[18px]">
-          <div role="group" aria-label={t("search.filterLabel")} className="flex flex-wrap gap-[22px]">
+        <div className="flex flex-col gap-[1.125rem]">
+          <div role="group" aria-label={t("search.filterLabel")} className="flex flex-wrap gap-[1.375rem]">
             {FILTERS.map((item) => (
               <button
                 key={item}
@@ -77,7 +77,7 @@ export function SearchResults({ index }: { index: SearchEntryWithImage[] }) {
                 )}
               >
                 {t(`search.filters.${item}`)}
-                <sup className="ml-[3px] text-[10px] text-faint">{counts[item]}</sup>
+                <sup className="ml-[0.1875rem] text-[0.625rem] text-faint">{counts[item]}</sup>
               </button>
             ))}
           </div>
@@ -86,7 +86,7 @@ export function SearchResults({ index }: { index: SearchEntryWithImage[] }) {
               <SearchResultRow key={`${filter}-${hit.entry.type}-${hit.entry.href}`} hit={hit} position={position} />
             ))}
             {shown.length === 0 ? (
-              <p className="py-[18px] text-[15px] leading-[1.6] text-muted">
+              <p className="py-[1.125rem] text-[0.9375rem] leading-[1.6] text-muted">
                 “{query}” {t("search.noResultsBefore")}{" "}
                 <Link href={routes.contact} className="font-semibold text-ink">
                   {t("search.noResultsLink")}

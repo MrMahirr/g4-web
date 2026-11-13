@@ -47,7 +47,7 @@ export function FeaturedProductList({
           aria-pressed={group === selected}
           onClick={() => setSelected(group)}
           className={cn(
-            "min-h-11 cursor-pointer rounded-tag border border-ink/25 bg-transparent px-[18px] font-mono text-xs tracking-[0.06em] text-ink uppercase",
+            "min-h-11 cursor-pointer rounded-tag border border-ink/25 bg-transparent px-[1.125rem] font-mono text-xs tracking-[0.06em] text-ink uppercase",
             "transition-colors duration-300 hover:border-ink aria-pressed:border-ink aria-pressed:bg-tint",
           )}
         >
@@ -82,7 +82,7 @@ export function FeaturedProductList({
               meta={row.code ? `REF: ${row.code}` : t("i18n.catalog.productsFallback")}
               previewSrc={preview ? row.imageSrc : undefined}
               titleClassName={titleClassName}
-              className="border-ink/14 pr-[64px]"
+              className="border-ink/14 pr-[4rem]"
             />
             <AddQuoteButton slug={row.slug} name={row.name} className="absolute top-1/2 right-0 z-[3] -translate-y-1/2" />
           </m.li>

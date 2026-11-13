@@ -32,16 +32,16 @@ export function InquiryNote({
   const reduceMotion = useReducedMotion();
   return (
     <m.div
-      className="col-span-full grid grid-cols-[auto_minmax(0,1fr)] items-start gap-5 rounded-card bg-tint p-[22px] max-row:grid-cols-1"
+      className="col-span-full grid grid-cols-[auto_minmax(0,1fr)] items-start gap-5 rounded-card bg-tint p-[1.375rem] max-row:grid-cols-1"
       initial={reduceMotion ? false : { opacity: 0, clipPath: "inset(0 100% 0 0)" }}
       animate={{ opacity: 1, clipPath: "inset(0 0% 0 0)" }}
       transition={{ duration: 0.8, ease: EASE_SOFT }}
     >
-      <span className="flex size-[52px] items-center justify-center rounded-full bg-ember text-white">
+      <span className="flex size-[3.25rem] items-center justify-center rounded-full bg-ember text-white">
         <ShoppingBag size={22} aria-hidden="true" />
       </span>
       <div className="flex min-w-0 flex-col gap-3">
-        <span className="font-mono text-[11px] tracking-[0.08em] text-ember-d uppercase">
+        <span className="font-mono text-[0.6875rem] tracking-[0.08em] text-ember-d uppercase">
           {t(`inquiry.labels.${type}`)} · {t("inquiry.addedToForm")}
         </span>
         {lines.length > 0 ? (
@@ -51,7 +51,7 @@ export function InquiryNote({
               return (
                 <li key={line.productSlug} className="flex flex-wrap items-center justify-between gap-3">
                   <span className="flex min-w-0 flex-col gap-1">
-                    <strong className="text-[15px] leading-[1.4]">{product?.name ?? line.productSlug}</strong>
+                    <strong className="text-[0.9375rem] leading-[1.4]">{product?.name ?? line.productSlug}</strong>
                     <span className="font-mono text-xs tracking-[0.04em] text-muted">
                       {product?.code
                         ? `REF: ${product.code}`
@@ -78,7 +78,7 @@ export function InquiryNote({
             })}
           </ul>
         ) : (
-          <strong className="text-[15px] leading-[1.4]">{legacyProduct}</strong>
+          <strong className="text-[0.9375rem] leading-[1.4]">{legacyProduct}</strong>
         )}
       </div>
     </m.div>

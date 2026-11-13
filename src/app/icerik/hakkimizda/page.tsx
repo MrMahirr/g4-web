@@ -46,12 +46,12 @@ export default async function AboutPage() {
             curtainVeil={false}
             eager
             sizes="100vw"
-            className="h-[620px] max-row:h-[380px]"
+            className="h-[38.75rem] max-row:h-[23.75rem]"
           />
         </Reveal>
       </Container>
 
-      <Container as="section" className="grid grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] gap-12 py-section">
+      <Container as="section" className="grid grid-cols-[repeat(auto-fit,minmax(min(23.75rem,100%),1fr))] gap-12 py-section">
         {intro.map((paragraph, index) => (
           <Reveal key={paragraph} index={index}>
             <p className="text-lead text-pretty text-muted">{paragraph}</p>
@@ -60,12 +60,12 @@ export default async function AboutPage() {
       </Container>
 
       <section className="relative overflow-hidden bg-tint py-section grain">
-        <Container className="flex flex-col gap-[34px]">
+        <Container className="flex flex-col gap-[2.125rem]">
           <Reveal>
             <Quote size={56} fill="currentColor" strokeWidth={0} className="text-ember" aria-hidden="true" />
           </Reveal>
           <Reveal kind="skew">
-            <p className="max-w-[1150px] font-display text-[clamp(26px,3.2vw,46px)] leading-[1.25] font-medium tracking-[-0.03em] text-balance">
+            <p className="max-w-[71.875rem] font-display text-[clamp(1.625rem,3.2vw,2.875rem)] leading-[1.25] font-medium tracking-[-0.03em] text-balance">
               {copy("about.vision.before")} <span className="text-ember">{copy("about.vision.accent")}</span> {copy("about.vision.after")}
             </p>
           </Reveal>
@@ -81,7 +81,7 @@ export default async function AboutPage() {
           return (
             <div
               key={sector.title}
-              className="grid grid-cols-2 items-center gap-[clamp(32px,6vw,96px)] border-t border-line py-[clamp(48px,6.25vw,90px)] max-stack:grid-cols-1"
+              className="grid grid-cols-2 items-center gap-[clamp(2rem,6vw,6rem)] border-t border-line py-[clamp(3rem,6.25vw,5.625rem)] max-stack:grid-cols-1"
             >
               <Picture
                 src={image?.src}
@@ -89,11 +89,11 @@ export default async function AboutPage() {
                 curtain
                 curtainMirrored={meta.domain === "medical"}
                 sizes="(max-width: 960px) 100vw, 50vw"
-                className={cn("h-[520px] rounded-btn max-row:h-[360px]", reversed && "order-2 max-stack:order-none")}
+                className={cn("h-[32.5rem] rounded-btn max-row:h-[22.5rem]", reversed && "order-2 max-stack:order-none")}
               />
               <div className="flex flex-col gap-6">
                 <Reveal kind="skew">
-                  <h2 className="font-display text-d2 text-[clamp(32px,3.6vw,56px)]">{sector.title}</h2>
+                  <h2 className="font-display text-d2 text-[clamp(2rem,3.6vw,3.5rem)]">{sector.title}</h2>
                 </Reveal>
                 <Reveal>
                   <p className="text-lead text-pretty text-muted">{sector.lead}</p>

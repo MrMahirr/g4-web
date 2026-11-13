@@ -55,12 +55,12 @@ export default async function ProductsPage() {
               <Reveal
                 key={category.slug}
                 index={index % 3}
-                className={cn(wide ? "col-span-3 min-h-[440px]" : "col-span-2 min-h-[360px]", "max-stack:col-span-1 max-stack:min-h-[360px]")}
+                className={cn(wide ? "col-span-3 min-h-[27.5rem]" : "col-span-2 min-h-[22.5rem]", "max-stack:col-span-1 max-stack:min-h-[22.5rem]")}
               >
                 <Link
                   href={routes.category(category.slug)}
                   className={cn(
-                    "group/cg relative isolate flex h-full flex-col justify-between overflow-hidden rounded-card bg-white p-[22px] text-ink no-underline",
+                    "group/cg relative isolate flex h-full flex-col justify-between overflow-hidden rounded-card bg-white p-[1.375rem] text-ink no-underline",
                     "before:absolute before:inset-0 before:-z-20 before:bg-tint before:content-[''] before:[clip-path:inset(100%_0_0_0)]",
                     "before:transition-[clip-path] before:duration-700 before:ease-soft hover:before:[clip-path:inset(0)] focus-visible:before:[clip-path:inset(0)]",
                   )}
@@ -73,7 +73,7 @@ export default async function ProductsPage() {
                       {category.productCount} {t("product.countSuffix").toLocaleUpperCase(locale)}
                     </span>
                   </span>
-                  <span className="absolute inset-[60px_30px_90px] -z-10">
+                  <span className="absolute inset-[3.75rem_1.875rem_5.625rem] -z-10">
                     {image ? (
                       <Image
                         src={image.src}
@@ -91,7 +91,7 @@ export default async function ProductsPage() {
                     <span
                       aria-hidden="true"
                       className={cn(
-                        "relative flex size-[52px] flex-none items-center justify-center overflow-hidden rounded-full border border-current transition-colors duration-500 ease-soft",
+                        "relative flex size-[3.25rem] flex-none items-center justify-center overflow-hidden rounded-full border border-current transition-colors duration-500 ease-soft",
                         "group-hover/cg:border-ember group-hover/cg:bg-ember group-hover/cg:text-white",
                       )}
                     >

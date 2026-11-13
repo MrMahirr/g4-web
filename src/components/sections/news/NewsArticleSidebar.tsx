@@ -21,7 +21,7 @@ export function NewsArticleSidebar({
   share,
 }: Props) {
   return (
-    <aside className="sticky top-[120px] flex flex-col gap-[18px] font-mono text-xs tracking-[0.06em] uppercase max-[53.75rem]:static max-[53.75rem]:flex-row max-[53.75rem]:flex-wrap max-[53.75rem]:items-center">
+    <aside className="sticky top-[7.5rem] flex flex-col gap-[1.125rem] font-mono text-xs tracking-[0.06em] uppercase max-[53.75rem]:static max-[53.75rem]:flex-row max-[53.75rem]:flex-wrap max-[53.75rem]:items-center">
       <span className="text-muted">{kicker}</span>
       <span className="text-ember-d">{source}</span>
       <time dateTime={publishedAt} className="text-muted">

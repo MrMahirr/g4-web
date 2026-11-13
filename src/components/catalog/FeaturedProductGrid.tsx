@@ -25,10 +25,10 @@ export function FeaturedProductGrid({ rows, className }: { rows: FeaturedRow[]; 
               className="aspect-square w-full border-0 border-b border-line"
             />
             <span className="flex flex-1 flex-col gap-1 p-3">
-              <span className="truncate font-mono text-[11px] tracking-[0.04em] text-ember-d">
+              <span className="truncate font-mono text-[0.6875rem] tracking-[0.04em] text-ember-d">
                 {row.code ? `REF: ${row.code}` : t("i18n.catalog.productsFallback")}
               </span>
-              <strong className="line-clamp-2 font-display text-[15px] leading-snug font-semibold tracking-[-0.01em] text-pretty">
+              <strong className="line-clamp-2 font-display text-[0.9375rem] leading-snug font-semibold tracking-[-0.01em] text-pretty">
                 {row.name}
               </strong>
             </span>

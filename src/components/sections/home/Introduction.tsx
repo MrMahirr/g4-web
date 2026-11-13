@@ -18,16 +18,16 @@ export function Introduction({ services, stats }: Props) {
   const t = useTranslations();
   const paragraphs = t.raw("home.intro.paragraphs") as string[];
   return (
-    <Container as="section" className="flex flex-col gap-[clamp(40px,5vw,72px)] pt-section pb-section">
+    <Container as="section" className="flex flex-col gap-[clamp(2.5rem,5vw,4.5rem)] pt-section pb-section">
       <div className="flex flex-col gap-7">
         <Reveal kind="skew">
-          <p className="max-w-[1150px] font-display text-[clamp(28px,3.6vw,52px)] leading-[1.18] font-semibold tracking-[-0.03em] text-balance">
+          <p className="max-w-[71.875rem] font-display text-[clamp(1.75rem,3.6vw,3.25rem)] leading-[1.18] font-semibold tracking-[-0.03em] text-balance">
             {t("home.intro.statement.before")} <span className="text-ember">{t("home.intro.statement.accent")}</span> {t("home.intro.statement.after")}
           </p>
         </Reveal>
       </div>
 
-      <div className="grid grid-cols-2 gap-[clamp(24px,5vw,80px)] max-stack:grid-cols-1">
+      <div className="grid grid-cols-2 gap-[clamp(1.5rem,5vw,5rem)] max-stack:grid-cols-1">
         {paragraphs.map((paragraph) => (
           <Reveal key={paragraph}>
             <p className="text-pretty text-muted">{paragraph}</p>
@@ -50,15 +50,15 @@ export function Introduction({ services, stats }: Props) {
             key={stat.label}
             index={index}
             className={cn(
-              "flex flex-col gap-2 border-r border-line pt-[34px] pr-7 pb-2.5 last:border-r-0 not-first:pl-7",
-              "max-stack:border-r-0 max-stack:not-first:pl-0",
+              "flex flex-col gap-2 border-r border-line pt-[2.125rem] pr-7 pb-2.5 last:border-r-0 not-first:pl-7",
+              "max-stack:border-r-0 max-stack:pr-4 max-stack:not-first:pl-0",
             )}
           >
             <span className="font-mono text-xs tracking-[0.08em] text-muted uppercase">{stat.kicker}</span>
             <CountUp
               value={stat.value}
               className={cn(
-                "font-display text-[clamp(56px,6vw,96px)] leading-none font-bold tracking-[-0.05em]",
+                "font-display text-[clamp(3.5rem,6vw,6rem)] leading-none font-bold tracking-[-0.05em] max-[22.5rem]:text-[2.75rem]",
                 index === stats.length - 1 ? "text-ember-d" : "text-ink",
               )}
             />

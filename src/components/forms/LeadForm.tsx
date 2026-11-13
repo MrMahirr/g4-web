@@ -87,7 +87,7 @@ export function LeadForm({ kind, idPrefix, subject, email, tag, className }: Pro
     <form
       noValidate
       onSubmit={handleSubmit(onSubmit)}
-      className={cn("grid grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] content-start gap-x-6 gap-y-7", className)}
+      className={cn("grid grid-cols-[repeat(auto-fit,minmax(min(13.75rem,100%),1fr))] content-start gap-x-6 gap-y-7", className)}
     >
       {tag ? <Tag className="col-span-full">{tag}</Tag> : null}
 

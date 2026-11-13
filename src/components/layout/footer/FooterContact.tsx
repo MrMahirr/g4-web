@@ -24,7 +24,7 @@ export async function FooterContact({ company }: { company: CompanyInfo }) {
   return (
     <div className="flex flex-col gap-3">
       <span
-        className="mb-3 inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] text-faint uppercase"
+        className="mb-3 inline-flex items-center gap-2 font-mono text-[0.6875rem] tracking-[0.12em] text-faint uppercase"
       >
         <MapPin size={14} aria-hidden="true" className="text-ember-d" />
         {t("footer.contact")}
@@ -47,7 +47,7 @@ export async function FooterContact({ company }: { company: CompanyInfo }) {
       <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
         {company.socials.map((social) => {
           const item =
-            "inline-flex min-h-9 items-center gap-1.5 font-mono text-[11px] tracking-[0.08em] uppercase no-underline";
+            "inline-flex min-h-9 items-center gap-1.5 font-mono text-[0.6875rem] tracking-[0.08em] uppercase no-underline";
           const SocialIcon = socialIcons[social.channel];
           return social.href ? (
             <a

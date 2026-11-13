@@ -53,8 +53,8 @@ export async function getSearchIndexLabels(): Promise<SearchIndexLabels> {
   const t = await getTranslations();
   return {
     productFallback: t("i18n.searchIndex.productFallback"),
-    productGroup: t("i18n.searchIndex.productGroup"),
-    service: t("i18n.searchIndex.service"),
-    productRef: t("i18n.searchIndex.productRef"),
+    productGroup: t.raw("i18n.searchIndex.productGroup") as string,
+    service: t.raw("i18n.searchIndex.service") as string,
+    productRef: t.raw("i18n.searchIndex.productRef") as string,
   };
 }

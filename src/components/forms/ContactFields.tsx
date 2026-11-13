@@ -53,7 +53,7 @@ export function ContactFields({ auto, form }: Props) {
           id="iletisim-mesaj"
           auto={auto}
           invalid={Boolean(errors.message)}
-          className="min-h-[210px]"
+          className="min-h-[13.125rem]"
           {...register("message")}
         />
       </Field>

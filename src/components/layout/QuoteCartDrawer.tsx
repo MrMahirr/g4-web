@@ -69,14 +69,14 @@ export function QuoteCartDrawer() {
             </Dialog.Overlay>
             <Dialog.Content asChild forceMount aria-describedby={undefined} {...returnFocus}>
               <m.div
-                className="fixed inset-y-0 right-0 z-[95] flex w-full max-w-[520px] flex-col bg-paper shadow-[0_40px_80px_-30px_rgb(30_48_64/0.45)]"
+                className="fixed inset-y-0 right-0 z-[95] flex w-full max-w-[32.5rem] flex-col bg-paper shadow-[0_40px_80px_-30px_rgb(30_48_64/0.45)]"
                 initial={reduceMotion ? { opacity: 0 } : { x: "100%" }}
                 animate={reduceMotion ? { opacity: 1 } : { x: 0 }}
                 exit={reduceMotion ? { opacity: 0 } : { x: "100%" }}
                 transition={{ duration: 0.6, ease: EASE_SOFT }}
               >
                 <div className="flex items-center justify-between gap-4 border-b border-line px-7 py-6">
-                  <Dialog.Title className="font-display text-[30px] leading-none font-bold tracking-[-0.03em]">
+                  <Dialog.Title className="font-display text-[1.875rem] leading-none font-bold tracking-[-0.03em]">
                     {t("quote.title")}
                   </Dialog.Title>
                   <Dialog.Close
@@ -95,7 +95,7 @@ export function QuoteCartDrawer() {
                         const name = product?.name ?? line.productSlug;
                         return (
                           <li key={line.productSlug} className="flex flex-col gap-4 border-b border-line py-6">
-                            <div className="grid grid-cols-[56px_minmax(0,1fr)_auto] items-start gap-4">
+                            <div className="grid grid-cols-[3.5rem_minmax(0,1fr)_auto] items-start gap-4">
                               <span className="relative size-14 overflow-hidden rounded-btn bg-white ring-1 ring-line">
                                 {product?.imageSrc ? (
                                   <Image src={product.imageSrc} alt="" fill sizes="56px" className="object-contain p-1.5" />
@@ -106,7 +106,7 @@ export function QuoteCartDrawer() {
                                 <Link
                                   href={routes.product(line.productSlug)}
                                   onClick={drawer.close}
-                                  className="font-display text-[17px] leading-snug font-semibold tracking-[-0.015em] text-ink no-underline hover:text-ember-d"
+                                  className="font-display text-[1.0625rem] leading-snug font-semibold tracking-[-0.015em] text-ink no-underline hover:text-ember-d"
                                 >
                                   {name}
                                 </Link>
@@ -123,7 +123,7 @@ export function QuoteCartDrawer() {
                                 <Trash2 size={17} aria-hidden="true" />
                               </button>
                             </div>
-                            <div className="flex flex-wrap gap-3 pl-[72px] max-row:pl-0">
+                            <div className="flex flex-wrap gap-3 pl-[4.5rem] max-row:pl-0">
                               <QuantityBox
                                 id={`teklif-adet-${line.productSlug}`}
                                 label={`${name} — ${t("product.qty")}`}
@@ -156,10 +156,10 @@ export function QuoteCartDrawer() {
                   </>
                 ) : (
                   <div className="flex flex-1 flex-col items-start justify-center gap-6 px-7">
-                    <span className="grid size-[52px] place-items-center rounded-full bg-ember text-white">
+                    <span className="grid size-[3.25rem] place-items-center rounded-full bg-ember text-white">
                       <ShoppingBag size={22} aria-hidden="true" />
                     </span>
-                    <p className="max-w-[360px] text-lead text-muted">{t("quote.empty")}</p>
+                    <p className="max-w-[22.5rem] text-lead text-muted">{t("quote.empty")}</p>
                     <Button href={routes.products} onClick={drawer.close}>
                       {t("common.seeProducts")}
                     </Button>

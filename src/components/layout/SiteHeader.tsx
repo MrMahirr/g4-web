@@ -73,7 +73,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
             transition={{ duration: 0.8, ease: EASE_SOFT }}
             style={reduceMotion ? undefined : { maxWidth, height, backgroundColor: background }}
             className={cn(
-              "pointer-events-auto relative mx-auto flex h-[72px] max-w-site items-center justify-between gap-[clamp(8px,1.2vw,20px)]",
+              "pointer-events-auto relative mx-auto flex h-[4.5rem] max-w-site items-center justify-between gap-[clamp(0.5rem,1.2vw,1.25rem)]",
               "rounded-[8px] border border-ink/10 bg-white/90 pr-2 pl-3.5 shadow-[0_12px_32px_-20px_rgb(30_48_64/0.35)]",
               "backdrop-blur-[18px] backdrop-saturate-[1.4]",
             )}
@@ -91,7 +91,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
               <IconButton label={t("quote.open")} onClick={drawer.open} onPreload={preloadQuoteCartDrawer}>
                 <ShoppingBag size={18} aria-hidden="true" />
                 {cart.hydrated && cart.count > 0 ? (
-                  <span className="absolute -top-0.5 -right-0.5 grid size-5 place-items-center rounded-full bg-ember-d font-mono text-[10px] text-white">
+                  <span className="absolute -top-0.5 -right-0.5 grid size-5 place-items-center rounded-full bg-ember-d font-mono text-[0.625rem] text-white">
                     {cart.count}
                   </span>
                 ) : null}
@@ -104,7 +104,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
                   href={routes.contact}
                   size="sm"
                   arrow="up-right"
-                  className="max-[73.75rem]:[&>span:last-child]:hidden [&>span:first-child]:px-[clamp(12px,1.2vw,18px)] [&>span:first-child]:text-[clamp(13px,1vw,15px)]"
+                  className="max-[73.75rem]:[&>span:last-child]:hidden [&>span:first-child]:px-[clamp(0.75rem,1.2vw,1.125rem)] [&>span:first-child]:text-[clamp(0.8125rem,1vw,0.9375rem)]"
                 >
                   {t("common.requestInfo")}
                 </Button>
@@ -115,7 +115,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
                 onClick={mobile.open}
                 onPointerEnter={preloadMobileNav}
                 onFocus={preloadMobileNav}
-                className="hidden size-[52px] cursor-pointer place-items-center rounded-btn bg-ember text-white max-nav:grid"
+                className="hidden size-[3.25rem] cursor-pointer place-items-center rounded-btn bg-ember text-white max-nav:grid"
               >
                 <Menu size={22} aria-hidden="true" />
               </button>

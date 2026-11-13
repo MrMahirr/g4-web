@@ -23,6 +23,11 @@ export function excerpt(text: string, maxLength = 160): string {
   return `${cut.slice(0, cut.lastIndexOf(" "))}…`;
 }
 
+/** Gives headings a soft wrap opportunity after a slash. */
+export function breakAfterSlash(text: string): string {
+  return text.replaceAll("/", "/\u200B");
+}
+
 const intlLocales = { tr: "tr-TR", en: "en-GB" } as const;
 
 const dateFormats = Object.fromEntries(

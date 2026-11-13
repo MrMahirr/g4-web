@@ -16,13 +16,13 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               <h2>
                 <Accordion.Trigger
                   className={cn(
-                    "group grid w-full cursor-pointer grid-cols-[64px_minmax(0,1fr)_48px] items-center gap-4 py-[30px] text-left",
-                    "font-display text-[clamp(19px,1.8vw,24px)] font-semibold tracking-[-0.02em] text-ink",
-                    "max-[43.75rem]:grid-cols-[40px_minmax(0,1fr)_48px]",
+                    "group grid w-full cursor-pointer grid-cols-[4rem_minmax(0,1fr)_3rem] items-center gap-4 py-[1.875rem] text-left",
+                    "font-display text-[clamp(1.1875rem,1.8vw,1.5rem)] font-semibold tracking-[-0.02em] text-ink",
+                    "max-[43.75rem]:grid-cols-[2.5rem_minmax(0,1fr)_3rem]",
                   )}
                 >
-                  <span className="font-mono text-[13px] font-normal text-ember-d">{String(index + 1).padStart(2, "0")}</span>
-                  <span>{item.question}</span>
+                  <span className="font-mono text-[0.8125rem] font-normal text-ember-d">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="min-w-0 wrap-break-word">{item.question}</span>
                   <span
                     aria-hidden="true"
                     className={cn(
@@ -30,8 +30,8 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
                       "group-data-[state=open]:rotate-180 group-data-[state=open]:border-ember-d group-data-[state=open]:bg-ember-d group-data-[state=open]:text-white",
                     )}
                   >
-                    <span className="absolute inset-x-[15px] top-[23px] h-0.5 bg-current" />
-                    <span className="absolute inset-x-[15px] top-[23px] h-0.5 rotate-90 bg-current transition-transform duration-500 ease-soft group-data-[state=open]:rotate-0" />
+                    <span className="absolute inset-x-[0.9375rem] top-[1.4375rem] h-0.5 bg-current" />
+                    <span className="absolute inset-x-[0.9375rem] top-[1.4375rem] h-0.5 rotate-90 bg-current transition-transform duration-500 ease-soft group-data-[state=open]:rotate-0" />
                   </span>
                 </Accordion.Trigger>
               </h2>

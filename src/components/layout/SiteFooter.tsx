@@ -33,17 +33,17 @@ export async function SiteFooter({
   const t = await getTranslations();
   return (
     <footer className="relative overflow-hidden bg-tint text-ink grain">
-      <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] items-start gap-x-10 gap-y-10 px-[clamp(16px,2vw,32px)] pt-14 pb-10 lg:grid-cols-[minmax(0,2.4fr)_1fr_1fr_1.3fr_auto]">
+      <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(min(12.5rem,100%),1fr))] items-start gap-x-10 gap-y-10 px-[clamp(1rem,2vw,2rem)] pt-14 pb-10 lg:grid-cols-[minmax(0,2.4fr)_1fr_1fr_1.3fr_auto]">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6 lg:col-span-1">
           <G4Logo size="footer" className="shrink-0 self-start" />
           <div className="flex min-w-0 flex-col gap-3.5">
             <Reveal kind="skew">
-              <h2 className="font-display text-[clamp(28px,3.4vw,44px)] leading-[1.05] font-bold tracking-[-0.03em] text-balance">
+              <h2 className="font-display text-[clamp(1.75rem,3.4vw,2.75rem)] leading-[1.05] font-bold tracking-[-0.03em] text-balance">
                 {t("footer.ctaBefore")} {" "}
                 <span className="text-ember">{t("footer.ctaAccent")}</span>
               </h2>
             </Reveal>
-            <p className="max-w-[520px] text-[15px] leading-relaxed text-pretty text-muted">
+            <p className="max-w-[32.5rem] text-[0.9375rem] leading-relaxed text-pretty text-muted">
               {t("about.callToAction.text")}
             </p>
           </div>
@@ -83,7 +83,7 @@ export async function SiteFooter({
             <svg
               viewBox="0 0 200 200"
               aria-hidden="true"
-              className="absolute -inset-[14px] size-[calc(100%+28px)] animate-spin-ring [animation-play-state:paused] group-hover/ring:[animation-play-state:running] motion-reduce:animate-none"
+              className="absolute -inset-[0.875rem] size-[calc(100%+1.75rem)] animate-spin-ring [animation-play-state:paused] group-hover/ring:[animation-play-state:running] motion-reduce:animate-none"
             >
               <defs>
                 <path
@@ -116,14 +116,14 @@ export async function SiteFooter({
         className="flex justify-center overflow-hidden pb-2.5"
       >
         <Reveal>
-          <div className="font-display text-[clamp(120px,20vw,300px)] leading-[0.85] font-extrabold tracking-[-0.06em] whitespace-nowrap text-ghost [-webkit-text-stroke-color:rgb(30_48_64/0.16)] select-none">
+          <div className="font-display text-[clamp(7.5rem,20vw,18.75rem)] leading-[0.85] font-extrabold tracking-[-0.06em] whitespace-nowrap text-ghost [-webkit-text-stroke-color:rgb(30_48_64/0.16)] select-none">
             {t("footer.trust")}
           </div>
         </Reveal>
       </div>
 
       <div className="border-t border-line">
-        <div className="flex w-full flex-wrap justify-between gap-3 px-[clamp(16px,2vw,32px)] py-4 font-mono text-[11px] tracking-[0.08em] text-faint uppercase">
+        <div className="flex w-full flex-wrap justify-between gap-3 px-[clamp(1rem,2vw,2rem)] py-4 font-mono text-[0.6875rem] tracking-[0.08em] text-faint uppercase">
           <span>{t("footer.copyright", { rights: t("common.rights") })}</span>
           <span className="flex flex-wrap gap-x-6 gap-y-1">
             {footerLegalLinks.map((link) => (

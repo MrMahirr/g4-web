@@ -77,7 +77,10 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
         crumbs={crumbs}
         title={[service.title]}
         titleMotion="rise"
-        titleClassName="max-w-[1100px] text-[clamp(42px,6vw,96px)] leading-none tracking-[-0.04em]"
+        titleClassName={cn(
+          "max-w-[68.75rem] text-[max(2.5rem,min(clamp(2.625rem,6vw,6rem),12svh))]",
+          "leading-none tracking-[-0.04em]",
+        )}
         description={copy("services.lead")}
         calmOnSiblingNav
         image={catalog.images.getImage(`hero/hizmet-${service.imageKey.split("/")[1]}`)}
@@ -86,13 +89,13 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
 
       <Container as="section" className="pt-lead">
         <Reveal kind="scale" radius={6} className="overflow-hidden rounded-card">
-          <Picture src={image?.src} alt={image?.alt ?? service.title} curtain curtainVeil={false} eager sizes="100vw" className="h-[560px] max-row:h-[360px]" />
+          <Picture src={image?.src} alt={image?.alt ?? service.title} curtain curtainVeil={false} eager sizes="100vw" className="h-[35rem] max-row:h-[22.5rem]" />
         </Reveal>
       </Container>
 
       <Container as="section" className="py-section">
-        <div className="grid grid-cols-[minmax(0,4fr)_minmax(0,8fr)] items-start gap-[clamp(32px,6vw,96px)] max-stack:grid-cols-1">
-          <aside className="sticky top-[120px] flex flex-col gap-6 max-stack:static">
+        <div className="grid grid-cols-[minmax(0,4fr)_minmax(0,8fr)] items-start gap-[clamp(2rem,6vw,6rem)] max-stack:grid-cols-1">
+          <aside className="sticky top-[7.5rem] flex flex-col gap-6 max-stack:static">
             <nav aria-label={t("footer.services")} className="border-t border-line">
               {services.map((item, index) => {
                 const current = item.slug === slug;
@@ -102,7 +105,7 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
                     href={routes.service(item.slug)}
                     aria-current={current ? "page" : undefined}
                     className={cn(
-                      "grid grid-cols-[36px_minmax(0,1fr)] items-baseline gap-3 border-b border-line py-[18px] font-medium text-ink no-underline",
+                      "grid grid-cols-[2.25rem_minmax(0,1fr)] items-baseline gap-3 border-b border-line py-[1.125rem] font-medium text-ink no-underline",
                       "transition-[padding,color] duration-500 ease-soft hover:pl-2.5 hover:text-ember-d",
                       current && "font-bold text-ember-d",
                     )}
@@ -116,10 +119,10 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
             <CallBackCard phone={catalog.site.getCompany().phone} variant="sidebar" />
           </aside>
 
-          <div className="flex flex-col gap-[26px]">
+          <div className="flex flex-col gap-[1.625rem]">
             {lead ? (
               <Reveal>
-                <p className="font-display text-[clamp(22px,2.2vw,30px)] leading-[1.4] font-medium tracking-[-0.02em] text-pretty">{lead}</p>
+                <p className="font-display text-[clamp(1.375rem,2.2vw,1.875rem)] leading-[1.4] font-medium tracking-[-0.02em] text-pretty">{lead}</p>
               </Reveal>
             ) : null}
             {paragraphs.map((paragraph) => (
@@ -139,8 +142,8 @@ export default async function ServicePage({ params }: PageProps<"/hizmet/[slug]"
       </Container>
 
       <Container as="section" className="pb-section">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] gap-14 rounded-card bg-white p-[clamp(32px,5vw,72px)]">
-          <div className="flex flex-col gap-[18px]">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(23.75rem,100%),1fr))] gap-14 rounded-card bg-white p-[clamp(2rem,5vw,4.5rem)]">
+          <div className="flex flex-col gap-[1.125rem]">
             <Reveal kind="skew">
               <h2 className="font-display text-d2">{copy("services.formTitle")}</h2>
             </Reveal>

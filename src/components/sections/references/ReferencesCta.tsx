@@ -18,7 +18,7 @@ export async function ReferencesCta() {
           aria-hidden="true"
           className={cn(
             "absolute -right-6 -bottom-16 -z-10 select-none font-display",
-            "text-[clamp(160px,22vw,320px)] leading-none font-extrabold text-transparent",
+            "text-[clamp(10rem,22vw,20rem)] leading-none font-extrabold text-transparent",
             "[-webkit-text-stroke:1.5px_rgb(255_255_255/0.12)]",
           )}
         >
@@ -34,7 +34,7 @@ export async function ReferencesCta() {
             <h2
               id="references-cta-title"
               className={cn(
-                "mt-4 max-w-[14ch] font-display text-[clamp(32px,4.4vw,56px)]",
+                "mt-4 max-w-[14ch] font-display text-[clamp(2rem,4.4vw,3.5rem)]",
                 "leading-[1.05] font-bold tracking-[-0.03em] text-balance",
               )}
             >

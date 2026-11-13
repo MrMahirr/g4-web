@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { articleBlocks, excerpt, formatShortDate, splitInTwo, splitSentences } from "./text";
+import { articleBlocks, breakAfterSlash, excerpt, formatShortDate, splitInTwo, splitSentences } from "./text";
 
 describe("metin yardımcıları", () => {
   it("cümlelere böler, büyük harfle başlamayan devamı bölmez", () => {
@@ -38,5 +38,9 @@ describe("metin yardımcıları", () => {
   it("özeti kelime ortasında kesmeden üç nokta ile tamamlar", () => {
     expect(excerpt("Bir iki üç dört", 9)).toBe("Bir iki…");
     expect(excerpt("Kısa metin", 160)).toBe("Kısa metin");
+  });
+
+  it("eğik çizgiden sonra başlık satır sonuna izin verir", () => {
+    expect(breakAfterSlash("Gıda Takviyesi/Vitaminler")).toBe("Gıda Takviyesi/\u200BVitaminler");
   });
 });

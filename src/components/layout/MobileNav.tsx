@@ -39,7 +39,7 @@ export function MobileNav({ data }: { data: HeaderData }) {
           <Dialog.Portal forceMount>
             <Dialog.Content asChild forceMount aria-describedby={undefined} {...returnFocus}>
               <m.div
-                className="fixed inset-0 z-[90] overflow-auto bg-white px-8 pt-[120px] pb-10"
+                className="fixed inset-0 z-[90] overflow-auto bg-white px-8 pt-[7.5rem] pb-10"
                 initial={reduceMotion ? { opacity: 0 } : { clipPath: `circle(0px at ${ORIGIN})` }}
                 animate={reduceMotion ? { opacity: 1 } : { clipPath: `circle(150% at ${ORIGIN})` }}
                 exit={reduceMotion ? { opacity: 0 } : { clipPath: `circle(0px at ${ORIGIN})` }}
@@ -47,14 +47,14 @@ export function MobileNav({ data }: { data: HeaderData }) {
               >
                 <Dialog.Title className="sr-only">{t("nav.main")}</Dialog.Title>
 
-                <div className="fixed inset-x-4 top-4 flex h-[72px] items-center justify-between pr-2 pl-3.5">
+                <div className="fixed inset-x-4 top-4 flex h-[4.5rem] items-center justify-between pr-2 pl-3.5">
                   <Link href={routes.home} onClick={menu.close} aria-label={t("i18n.logoHome")}>
                     <G4Logo />
                   </Link>
                   <div className="flex items-center gap-2">
                     <Dialog.Close
                       aria-label={t("nav.closeMenu")}
-                      className="grid size-[52px] cursor-pointer place-items-center rounded-btn bg-ember text-white"
+                      className="grid size-[3.25rem] cursor-pointer place-items-center rounded-btn bg-ember text-white"
                     >
                       <X size={22} aria-hidden="true" />
                     </Dialog.Close>
@@ -72,7 +72,7 @@ export function MobileNav({ data }: { data: HeaderData }) {
                       <Link
                         href={group.href}
                         onClick={menu.close}
-                        className="block border-b border-ink/10 py-2.5 font-display text-[32px] font-semibold tracking-[-0.03em] text-ink no-underline"
+                        className="block border-b border-ink/10 py-2.5 font-display text-[2rem] font-semibold tracking-[-0.03em] text-ink no-underline"
                       >
                         {group.label}
                       </Link>
@@ -83,7 +83,7 @@ export function MobileNav({ data }: { data: HeaderData }) {
                               key={child.href}
                               href={child.href}
                               onClick={menu.close}
-                              className="block border-b border-ink/10 py-2 pl-[18px] text-lg font-medium text-muted no-underline"
+                              className="block border-b border-ink/10 py-2 pl-[1.125rem] text-lg font-medium text-muted no-underline"
                             >
                               {child.label}
                             </Link>
@@ -94,7 +94,7 @@ export function MobileNav({ data }: { data: HeaderData }) {
                   ))}
                 </nav>
 
-                <p className="mt-7 font-mono text-[13px] tracking-[0.04em] text-muted">
+                <p className="mt-7 font-mono text-[0.8125rem] tracking-[0.04em] text-muted">
                   <a href={`tel:${data.phone.tel}`} className="text-inherit no-underline">
                     {data.phone.display}
                   </a>{" "}
