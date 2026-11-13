@@ -82,9 +82,9 @@ export function ContactForm({ email, products }: Props) {
         id="form"
         noValidate
         onSubmit={handleSubmit(onSubmit)}
-        className="grid h-full scroll-mt-28 grid-cols-[repeat(auto-fit,minmax(min(13.75rem,100%),1fr))] content-start gap-x-6 gap-y-[1.875rem] rounded-card bg-white p-[clamp(1.75rem,4vw,3.5rem)]"
+        className="grid h-full scroll-mt-28 grid-cols-[repeat(auto-fit,minmax(min(10rem,100%),1fr))] content-start gap-x-[clamp(1rem,2vw,1.5rem)] gap-y-[clamp(0.875rem,0.54rem+1.48vw,1.875rem)] rounded-card bg-white p-[clamp(1.25rem,3.6vw,3.5rem)]"
       >
-        <h2 className="col-span-full font-display text-[clamp(2rem,3.4vw,3.25rem)] leading-none font-bold tracking-[-0.04em]">
+        <h2 className="col-span-full font-display text-[clamp(1.625rem,3.4vw,3.25rem)] leading-none font-bold tracking-[-0.04em]">
           {t("nav.contact")}
         </h2>
         {inquiry.type && (inquiry.lines.length > 0 || inquiry.legacyProduct) ? (

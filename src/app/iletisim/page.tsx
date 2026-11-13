@@ -18,12 +18,14 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({ title: t("nav.contact"), description: t("i18n.meta.contact.description"), path: routes.contact });
 }
 
-const infoTextClass = "font-display text-[1.25rem] leading-[1.35] font-semibold tracking-[-0.02em] break-words";
+const infoTextClass = "font-display text-[clamp(1rem,0.92rem+0.35vw,1.25rem)] leading-[1.35] font-semibold tracking-[-0.02em] break-words";
+
+const infoLinkClass = "self-start text-[clamp(0.875rem,0.82rem+0.25vw,1rem)] text-ember-d";
 
 function InfoCell({ index, tag, children }: { index: number; tag: string; children: ReactNode }) {
   return (
-    <Reveal index={index} className="flex flex-col gap-3 border-b border-line py-6 last:border-b-0">
-      <Tag className="text-sm font-bold">{tag}</Tag>
+    <Reveal index={index} className="flex flex-col gap-[clamp(0.375rem,0.25rem+0.55vw,0.75rem)] border-b border-line py-[clamp(0.75rem,0.5rem+1.11vw,1.5rem)] last:border-b-0">
+      <Tag className="text-[clamp(0.75rem,0.7rem+0.2vw,0.875rem)] font-bold">{tag}</Tag>
       {children}
     </Reveal>
   );
@@ -50,7 +52,7 @@ export default async function ContactPage() {
         image={catalog.images.getImage("hero/iletisim")}
       />
 
-      <Container as="section" className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 pt-lead pb-section">
+      <Container as="section" className="grid grid-cols-1 items-stretch gap-[clamp(1.25rem,2.5vw,2rem)] md:grid-cols-2 pt-lead pb-section">
         {/* Form istemcide çizilir (useSearchParams); yer tutucu da "form" çapasını taşır ki
             /iletisim#form ile doğrudan gelindiğinde tarayıcı kaydırabilsin (plan 8.7). */}
         <Suspense fallback={<div id="form" className="min-h-[40rem] scroll-mt-28 rounded-card bg-white" />}>
@@ -58,8 +60,8 @@ export default async function ContactPage() {
         </Suspense>
 
         <div className="relative">
-          <div className="flex flex-col gap-8 lg:absolute lg:inset-0">
-            <Reveal index={1} className="relative flex min-h-[20rem] flex-1 overflow-hidden rounded-card bg-tint-2 lg:min-h-0">
+          <div className="flex flex-col gap-[clamp(1.25rem,2.5vw,2rem)] md:absolute md:inset-0">
+            <Reveal index={1} className="relative flex aspect-[16/10] flex-1 overflow-hidden rounded-card bg-tint-2 md:aspect-auto md:min-h-0">
               <iframe
                 src={company.address.mapsEmbedUrl}
                 title={t("i18n.contact.mapTitle", {
@@ -68,7 +70,7 @@ export default async function ContactPage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen
-                className="size-full border-0"
+                className="absolute inset-0 size-full border-0"
               />
               <a
                 href={company.address.mapsUrl}
@@ -83,19 +85,19 @@ export default async function ContactPage() {
             <div className="border-t border-line">
               <InfoCell index={2} tag={t("i18n.contact.address")}>
                 <p className={infoTextClass}>{company.address.full}</p>
-                <a href={company.address.mapsUrl} target="_blank" rel="noreferrer" className={cn(underlineLinkClass, "self-start text-ember-d")}>
+                <a href={company.address.mapsUrl} target="_blank" rel="noreferrer" className={cn(underlineLinkClass, infoLinkClass)}>
                   {t("common.viewOnMap")}
                 </a>
               </InfoCell>
               <InfoCell index={3} tag={t("i18n.contact.phone")}>
                 <p className={infoTextClass}>{company.phone.display}</p>
-                <a href={`tel:${company.phone.tel}`} className={cn(underlineLinkClass, "self-start text-ember-d")}>
+                <a href={`tel:${company.phone.tel}`} className={cn(underlineLinkClass, infoLinkClass)}>
                   {t("common.callNow")}
                 </a>
               </InfoCell>
               <InfoCell index={4} tag={t("i18n.contact.email")}>
                 <p className={infoTextClass}>{company.email}</p>
-                <a href={`mailto:${company.email}`} className={cn(underlineLinkClass, "self-start text-ember-d")}>
+                <a href={`mailto:${company.email}`} className={cn(underlineLinkClass, infoLinkClass)}>
                   {t("common.sendEmail")}
                 </a>
               </InfoCell>

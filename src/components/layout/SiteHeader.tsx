@@ -37,8 +37,10 @@ export function SiteHeader({ data }: { data: HeaderData }) {
   const active = sectionForPath(pathname);
   const reduceMotion = useReducedMotion();
   const { scrollY, scrollYProgress } = useScroll();
-  const maxWidth = useTransform(scrollY, [0, 200], [1320, 1240]);
-  const height = useTransform(scrollY, [0, 200], [72, 64]);
+  // Daralma oranı (0 → 1). Ölçüler ekrana göre akışkan: her genişlikte görünür bir daralma olur.
+  const shrink = useTransform(scrollY, [0, 200], [0, 1]);
+  const maxWidth = useTransform(shrink, (p) => `min(calc(100% - ${p * 5}vw), ${82.5 - p * 5}rem)`);
+  const height = useTransform(shrink, (p) => `calc(var(--spacing-header) - ${p * 0.5}rem)`);
   const background = useTransform(scrollY, [0, 200], ["rgba(255,255,255,0.9)", "rgba(255,255,255,0.98)"]);
 
   const search = useOverlay("search");
@@ -65,16 +67,16 @@ export function SiteHeader({ data }: { data: HeaderData }) {
         {t("common.skipToContent")}
       </a>
 
-      <header id="top" className="pointer-events-none fixed inset-x-0 top-4 z-[80]">
-        <div className="px-4">
+      <header id="top" className="pointer-events-none fixed inset-x-0 top-[clamp(0.5rem,1.2vw,1rem)] z-[80]">
+        <div className="px-[clamp(0.5rem,1.6vw,1rem)]">
           <m.div
             initial={reduceMotion ? false : { opacity: 0, y: -18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE_SOFT }}
             style={reduceMotion ? undefined : { maxWidth, height, backgroundColor: background }}
             className={cn(
-              "pointer-events-auto relative mx-auto flex h-[4.5rem] max-w-site items-center justify-between gap-[clamp(0.5rem,1.2vw,1.25rem)]",
-              "rounded-[8px] border border-ink/10 bg-white/90 pr-2 pl-3.5 shadow-[0_12px_32px_-20px_rgb(30_48_64/0.35)]",
+              "pointer-events-auto relative mx-auto flex h-header max-w-site items-center justify-between gap-[clamp(0.5rem,1.2vw,1.25rem)]",
+              "rounded-[8px] border border-ink/10 bg-white/90 pr-[clamp(0.375rem,0.8vw,0.5rem)] pl-[clamp(0.5rem,1.2vw,0.875rem)] shadow-[0_12px_32px_-20px_rgb(30_48_64/0.35)]",
               "backdrop-blur-[18px] backdrop-saturate-[1.4]",
             )}
           >
@@ -84,7 +86,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
 
             <DesktopNav active={active} data={data} />
 
-            <div className="flex flex-none items-center gap-3.5">
+            <div className="flex min-w-0 flex-none items-center gap-[clamp(0.125rem,1vw,0.875rem)]">
               <IconButton label={t("search.open")} onClick={search.open} onPreload={preloadSearchOverlay}>
                 <Search size={19} aria-hidden="true" />
               </IconButton>
@@ -115,7 +117,7 @@ export function SiteHeader({ data }: { data: HeaderData }) {
                 onClick={mobile.open}
                 onPointerEnter={preloadMobileNav}
                 onFocus={preloadMobileNav}
-                className="hidden size-[3.25rem] cursor-pointer place-items-center rounded-btn bg-ember text-white max-nav:grid"
+                className="hidden size-[clamp(2.75rem,calc(var(--spacing-header)-1rem),3.25rem)] cursor-pointer place-items-center rounded-btn bg-ember text-white max-nav:grid"
               >
                 <Menu size={22} aria-hidden="true" />
               </button>

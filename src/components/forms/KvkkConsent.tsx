@@ -39,7 +39,7 @@ export function KvkkConsent({ id, error, checked, onChange }: Props) {
           aria-describedby={error ? `${id}-hata` : undefined}
           onClick={toggle}
           className={cn(
-            "mt-0.5 grid size-5 flex-none cursor-pointer place-items-center rounded-[4px] border transition-colors duration-300",
+            "mt-0.5 grid size-5 flex-none cursor-pointer place-items-center rounded-[0.25rem] border transition-colors duration-300",
             checked ? "border-ember-d bg-ember-d text-white" : "border-ink/30 bg-white",
             error && !checked && "border-ember-d",
           )}
@@ -66,10 +66,10 @@ export function KvkkConsent({ id, error, checked, onChange }: Props) {
 
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 z-[210] bg-ink/50 backdrop-blur-[2px]" />
+          <Dialog.Overlay className="fixed inset-0 z-[210] bg-ink/50 backdrop-blur-[0.125rem]" />
           <Dialog.Content
             aria-describedby={undefined}
-            className="fixed top-1/2 left-1/2 z-[220] flex max-h-[min(85dvh,40rem)] w-[calc(100%-2rem)] max-w-[35rem] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-card bg-white shadow-[0_40px_80px_-30px_rgb(30_48_64/0.5)]"
+            className="fixed top-1/2 left-1/2 z-[220] flex max-h-[min(85dvh,40rem)] w-[calc(100%-2rem)] max-w-[35rem] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-card bg-white shadow-[0_2.5rem_5rem_-1.875rem_rgb(30_48_64/0.5)]"
           >
             <div className="flex items-center justify-between gap-4 border-b border-ink/10 px-6 py-4">
               <Dialog.Title className="font-display text-[1.25rem] font-semibold tracking-[-0.02em] text-ink">
